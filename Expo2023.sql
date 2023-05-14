@@ -71,6 +71,17 @@ foreign key references [dbo].[tbBodegas]
 );
 go
 
+/*Proximos contendores de productos nuevo */
+create table tbContenedortes (
+idContenedor		INT identity (1,1) primary key,
+Nombre_ctd			varchar(100),
+EmpresaContenedor	varchar(200),
+idProducto		int
+foreign key references  [dbo].[tbProductos]([idProducto])
+);
+go
+
+
 /*Apartado clientes*/
 create table tbClientes(
 idCliente			int identity (1,1) primary key,
