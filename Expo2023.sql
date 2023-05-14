@@ -13,6 +13,9 @@ TipoEmpleado		varchar(500) not null
 );
 go
 
+insert into [dbo].[tbTipoEmpleados] ([TipoEmpleado]) values ('Proveedor');
+go
+
 create table tbGeneros(
 idGenero			int identity (1,1) primary key,
 Genero				VARCHAR(20) not null
