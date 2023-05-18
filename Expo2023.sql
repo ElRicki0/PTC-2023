@@ -29,6 +29,7 @@ emp_documento		varchar(8000)not null,
 emp_fecha			date,
 emp_direccion		varchar(500)not null,
 emp_telefono		varchar(10),
+emp_correo			varchar(300), 
 idGenero			int
 foreign key references [dbo].[tbGeneros] (idGenero),
 idTipoEmpleado		int
@@ -48,14 +49,16 @@ go
 /*Productos*/
 create table tbMarcaProductos(
 idMarcaProducto		int identity(1,1) primary key,
-MarcaProducto		varchar(1000)not null
+MarcaProducto		varchar(1000)not null,
+CorreoProducto		varchar(30)
 );
 go
 
 create table tbBodegas(
 idBodega			int identity (1,1) primary key,
 NombreBodega		varchar(500)not null,
-UbicacionBodega		varchar(8000)not null
+UbicacionBodega		varchar(8000)not null,
+CorreoBodega	varchar(300) not null
 );
 go
 
@@ -76,6 +79,7 @@ create table tbContenedortes (
 idContenedor		INT identity (1,1) primary key,
 Nombre_ctd			varchar(100),
 EmpresaContenedor	varchar(200),
+Correo	varchar(300) not null,
 idProducto		int
 foreign key references  [dbo].[tbProductos]([idProducto])
 );
@@ -88,6 +92,7 @@ idCliente			int identity (1,1) primary key,
 NombreCliente		varchar(100) not null,
 EdadCliente			int not null,
 TelefonoCliente		varchar(10),
+CorreoElectronico		varchar(300) not null,
 idGenero			int
 foreign key references  [dbo].[tbGeneros]([idGenero])
 );
@@ -98,6 +103,7 @@ idTienda			int identity(1,1) primary key,
 NombreTd		varchar(500)not null,
 DireccionTd		VARCHAR(8000)NOT NULL,
 ReferenciasLDireccionTd	varchar(1000),
+CorreoElectronico		varchar(300) not null
 );
 go
 
