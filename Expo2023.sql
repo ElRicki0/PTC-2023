@@ -146,7 +146,7 @@ create table tbMantenimiento(
 idMantenimiento		int identity (1,1) primary key,
 Taller				varchar(8000) not null,
 Mecanico			varchar(50) not null,
-TFTaller			varchar(10),
+NumTelTaller	varchar(10),
 idVehiculo			INT
 foreign key references tbVehiculos(idVehiculo)
 );
