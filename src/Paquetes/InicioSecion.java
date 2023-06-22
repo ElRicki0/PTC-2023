@@ -5,6 +5,12 @@
  */
 package Paquetes;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import javax.swing.JComponent;
+import javax.swing.plaf.basic.BasicProgressBarUI;
+import javax.swing.JProgressBar;
+
 /**
  *
  * @author rnmel
@@ -16,6 +22,16 @@ public class InicioSecion extends javax.swing.JFrame {
      */
     public InicioSecion() {
         initComponents();
+        jProgress.setUI(new BasicProgressBarUI(){
+
+            @Override
+            protected void paintDeterminate(Graphics g, JComponent c) {
+                super.paintDeterminate(g, c); //To change body of generated methods, choose Tools | Templates.
+                Graphics2D G2= (Graphics2D)g;
+            }
+            
+        });
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -27,17 +43,45 @@ public class InicioSecion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jProgress = new javax.swing.JProgressBar();
+        jLabel1 = new javax.swing.JLabel();
+        jProgress1 = new javax.swing.JProgressBar();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(808, 452));
+        setMinimumSize(new java.awt.Dimension(808, 452));
+        setPreferredSize(new java.awt.Dimension(812, 458));
+
+        jPanel1.setMaximumSize(new java.awt.Dimension(808, 452));
+        jPanel1.setPreferredSize(new java.awt.Dimension(808, 452));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jProgress.setBackground(new java.awt.Color(66, 82, 116));
+        jProgress.setForeground(new java.awt.Color(203, 151, 52));
+        jProgress.setBorderPainted(false);
+        jProgress.setPreferredSize(new java.awt.Dimension(150, 17));
+        jPanel1.add(jProgress, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 371, 700, 13));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Loading 3.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 840, -1));
+
+        jProgress1.setBackground(new java.awt.Color(66, 82, 116));
+        jProgress1.setForeground(new java.awt.Color(203, 151, 52));
+        jProgress1.setPreferredSize(new java.awt.Dimension(150, 17));
+        jPanel1.add(jProgress1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 700, 11));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -73,11 +117,27 @@ public class InicioSecion extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InicioSecion().setVisible(true);
+                InicioSecion S = new InicioSecion();
+                //new InicioSecion().setVisible(true);
             }
         });
+        InicioSecion S = new InicioSecion();
+        S.setVisible(true);
+        try{
+            for(int seg=0; seg<=100;seg++)
+            {
+                Thread.sleep(60);
+                S.jProgress.setValue(seg);
+            }
+        }
+        catch(Exception ex){         
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JProgressBar jProgress;
+    private javax.swing.JProgressBar jProgress1;
     // End of variables declaration//GEN-END:variables
 }
