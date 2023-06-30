@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Paquetes;
+package Vista;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -49,9 +49,7 @@ public class InicioSecion extends javax.swing.JFrame {
         jProgress1 = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(808, 452));
         setMinimumSize(new java.awt.Dimension(808, 452));
-        setPreferredSize(new java.awt.Dimension(812, 458));
 
         jPanel1.setMaximumSize(new java.awt.Dimension(808, 452));
         jPanel1.setPreferredSize(new java.awt.Dimension(808, 452));
