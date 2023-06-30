@@ -22,6 +22,7 @@ public class InicioSecion extends javax.swing.JFrame {
      */
     public InicioSecion() {
         initComponents();
+//        setIconImage(image);
         jProgress.setUI(new BasicProgressBarUI(){
 
             @Override
