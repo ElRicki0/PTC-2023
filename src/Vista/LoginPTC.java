@@ -21,8 +21,8 @@ public class LoginPTC extends javax.swing.JFrame {
         setIconImage(new ImageIcon(getClass().getResource("/Vista/Imagenes/lupa.png")).getImage());
         this.setLocationRelativeTo(null);
         rsscalelabel.RSScaleLabel.setScaleLabel(txtImagen, "src/Vista/Imagenes/trabajador.png");
-        TextPrompt txtUsuario = new TextPrompt("Inserte el Usuario", txtusuario);
-        TextPrompt txtContraseña = new TextPrompt("Inserte la Contraseña", this.txtContraseña);
+        TextPrompt txtUsuario = new TextPrompt("Usuario", txtusuario);
+        TextPrompt txtContraseña = new TextPrompt("Contraseñas", this.txtContraseña);
 
     }
 
@@ -43,12 +43,12 @@ public class LoginPTC extends javax.swing.JFrame {
         txtusuario = new javax.swing.JTextField();
         panelCurvas3 = new Vista.PanelCurvas();
         txtContraseña = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
         panelCurvas4 = new Vista.PanelCurvas();
         jLabel3 = new javax.swing.JLabel();
         txtImagen = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Inicio de Sesión");
         setResizable(false);
         setSize(new java.awt.Dimension(600, 400));
 
@@ -57,7 +57,7 @@ public class LoginPTC extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(64, 81, 115));
 
-        panelCurvas1.setBackground(new java.awt.Color(204, 204, 204));
+        panelCurvas1.setBackground(new java.awt.Color(51, 153, 255));
         panelCurvas1.setRoundBottomLeft(50);
         panelCurvas1.setRoundBottomRight(50);
         panelCurvas1.setRoundTopLeft(50);
@@ -66,15 +66,15 @@ public class LoginPTC extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Usuario");
+        jLabel1.setText("Inicio Sesión");
 
-        panelCurvas2.setBackground(new java.awt.Color(64, 81, 115));
+        panelCurvas2.setBackground(new java.awt.Color(255, 255, 255));
         panelCurvas2.setRoundBottomLeft(25);
         panelCurvas2.setRoundBottomRight(25);
         panelCurvas2.setRoundTopLeft(25);
         panelCurvas2.setRoundTopRight(25);
 
-        txtusuario.setBackground(new java.awt.Color(64, 81, 115));
+        txtusuario.setBackground(new java.awt.Color(255, 255, 255));
         txtusuario.setForeground(new java.awt.Color(51, 51, 51));
         txtusuario.setBorder(null);
         txtusuario.addActionListener(new java.awt.event.ActionListener() {
@@ -100,13 +100,13 @@ public class LoginPTC extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panelCurvas3.setBackground(new java.awt.Color(64, 81, 115));
+        panelCurvas3.setBackground(new java.awt.Color(255, 255, 255));
         panelCurvas3.setRoundBottomLeft(25);
         panelCurvas3.setRoundBottomRight(25);
         panelCurvas3.setRoundTopLeft(25);
         panelCurvas3.setRoundTopRight(25);
 
-        txtContraseña.setBackground(new java.awt.Color(64, 81, 115));
+        txtContraseña.setBackground(new java.awt.Color(255, 255, 255));
         txtContraseña.setForeground(new java.awt.Color(51, 51, 51));
         txtContraseña.setBorder(null);
         txtContraseña.addActionListener(new java.awt.event.ActionListener() {
@@ -132,12 +132,7 @@ public class LoginPTC extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Contraseña");
-
-        panelCurvas4.setBackground(new java.awt.Color(51, 153, 255));
+        panelCurvas4.setBackground(new java.awt.Color(255, 255, 255));
         panelCurvas4.setRoundBottomLeft(25);
         panelCurvas4.setRoundBottomRight(25);
         panelCurvas4.setRoundTopLeft(25);
@@ -145,7 +140,7 @@ public class LoginPTC extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("MS PGothic", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Iniciar Secion");
+        jLabel3.setText("Iniciar Sesión");
 
         javax.swing.GroupLayout panelCurvas4Layout = new javax.swing.GroupLayout(panelCurvas4);
         panelCurvas4.setLayout(panelCurvas4Layout);
@@ -154,33 +149,30 @@ public class LoginPTC extends javax.swing.JFrame {
             .addGroup(panelCurvas4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelCurvas4Layout.setVerticalGroup(
             panelCurvas4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCurvas4Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCurvas4Layout.createSequentialGroup()
+                .addContainerGap(26, Short.MAX_VALUE)
                 .addComponent(jLabel3)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addGap(24, 24, 24))
         );
 
         javax.swing.GroupLayout panelCurvas1Layout = new javax.swing.GroupLayout(panelCurvas1);
         panelCurvas1.setLayout(panelCurvas1Layout);
         panelCurvas1Layout.setHorizontalGroup(
             panelCurvas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCurvas1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(75, 75, 75))
             .addGroup(panelCurvas1Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(panelCurvas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelCurvas1Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jLabel1))
                     .addGroup(panelCurvas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(panelCurvas2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(panelCurvas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(panelCurvas3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelCurvas1Layout.createSequentialGroup()
-                                .addGap(11, 11, 11)
-                                .addComponent(jLabel2))))
+                        .addComponent(panelCurvas3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(panelCurvas4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
@@ -191,9 +183,7 @@ public class LoginPTC extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelCurvas2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(72, 72, 72)
                 .addComponent(panelCurvas3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addComponent(panelCurvas4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -218,7 +208,7 @@ public class LoginPTC extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 310, 410));
-        jPanel1.add(txtImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 250, 250));
+        jPanel1.add(txtImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 290, 290));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -279,7 +269,6 @@ public class LoginPTC extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
