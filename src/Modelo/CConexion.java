@@ -1,21 +1,22 @@
 
 //El paquete al que pertenece nuestra clase de conexión
-package Controlador; // <- Editar por su paquete
+package Modelo; // <- Editar por su paquete
 
 //Importamos la libreria JDBC
 import java.sql.*;
 
 //Creación de la clase de conexión (la cual tiene el mismo nombre del archivo de la clase)
-public class ConexionSQL { // <- Editar por el nombre del archivo de la clase
+public class CConexion { // <- Editar por el nombre del archivo de la clase
    
     //Creación del metodo de conexión que retorna la conexión
     public static Connection getConexion(){
-        
-         //Cadena de conexión
-        String conexionUrl  = "jdbc:sqlserver://localhost:****;" // <- Editar por su puerto de SQL
-                            + "databaseName=*****;" // <- Editar por su base de datos
-                            + "user=sa;"
-                            + "password=itr2023;" 
+        try {
+            try {
+             //Cadena de conexión
+        String conexionUrl  = "jdbc:sqlserver://localhost:1433;" // <- Editar por su puerto de SQL
+                            + "databaseName=EXPOdb;" // <- Editar por su base de datos
+                            + "user=admin;"
+                            + "password=pass123;" 
                             + "encrypt=true;trustServerCertificate=true";
         
         //Retornamos la conexion
@@ -28,6 +29,19 @@ public class ConexionSQL { // <- Editar por el nombre del archivo de la clase
             //Si no funciona, imprimimos en consola el error y retornamos un valor nulo
             System.out.println(ex.toString());
             return null;
+            }
+        } 
+        catch (Exception e) {
+            System.out.println(e.toString());
+            return null;
         }
-    } 
+        } catch (Exception epa) {
+            System.out.println("Error de conexion" + epa.toString());
+            return null;
+        }
+        
+        
+        
+        
+    }
 }

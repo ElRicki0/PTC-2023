@@ -5,25 +5,61 @@
  */
 package Vista;
 
+import Modelo.CConexion;
+import com.sun.jdi.connect.spi.Connection;
 import javax.swing.ImageIcon;
+import java.sql.*;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author rnmel
  */
 public class LoginPTC extends javax.swing.JFrame {
-
-    /**
-     * Creates new form LoginPTC
-     */
+    
+    CConexion cc = new CConexion();
+//    Connection con=(Connection) cc.getConexion();
+    
     public LoginPTC() {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/Vista/Imagenes/lupa.png")).getImage());
         this.setLocationRelativeTo(null);
         rsscalelabel.RSScaleLabel.setScaleLabel(txtImagen, "src/Vista/Imagenes/trabajador.png");
-        TextPrompt txtUsuario = new TextPrompt("Usuario", txtusuario);
+        TextPrompt txtUsuario = new TextPrompt("Usuario", this.txtUsuario);
         TextPrompt txtContraseña = new TextPrompt("Contraseñas", this.txtContraseña);
 
+    }
+    public void ValidarUsuario(){
+        
+        
+        int resultado=0;
+        String usuario= txtUsuario.getText();        
+        String contraseña= txtContraseña.getText();
+        String SQL="select*from tbUsuarios where usr_nombre='"+usuario+"' and usr_contraseña='"+contraseña+"';";
+        
+        try{
+            Statement sta = CConexion.getConexion().createStatement();
+            ResultSet rs= sta.executeQuery(SQL);
+            if (rs.next()) 
+            {
+                resultado=1;
+                if (resultado==1) 
+                {
+                    Main main = new Main();
+                    main.setVisible(true);
+                    this.dispose();
+                }
+            } 
+            else 
+            {
+                JOptionPane.showMessageDialog(null, "error de acceso de usuario");
+            }
+        }   
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error "+e.getMessage());
+
+        }
+        
     }
 
     /**
@@ -40,10 +76,10 @@ public class LoginPTC extends javax.swing.JFrame {
         panelCurvas1 = new Vista.PanelCurvas();
         jLabel1 = new javax.swing.JLabel();
         panelCurvas2 = new Vista.PanelCurvas();
-        txtusuario = new javax.swing.JTextField();
+        txtUsuario = new javax.swing.JTextField();
         panelCurvas3 = new Vista.PanelCurvas();
         txtContraseña = new javax.swing.JTextField();
-        panelCurvas4 = new Vista.PanelCurvas();
+        bntSesion = new Vista.PanelCurvas();
         jLabel3 = new javax.swing.JLabel();
         txtImagen = new javax.swing.JLabel();
 
@@ -74,12 +110,12 @@ public class LoginPTC extends javax.swing.JFrame {
         panelCurvas2.setRoundTopLeft(25);
         panelCurvas2.setRoundTopRight(25);
 
-        txtusuario.setBackground(new java.awt.Color(255, 255, 255));
-        txtusuario.setForeground(new java.awt.Color(51, 51, 51));
-        txtusuario.setBorder(null);
-        txtusuario.addActionListener(new java.awt.event.ActionListener() {
+        txtUsuario.setBackground(new java.awt.Color(255, 255, 255));
+        txtUsuario.setForeground(new java.awt.Color(51, 51, 51));
+        txtUsuario.setBorder(null);
+        txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtusuarioActionPerformed(evt);
+                txtUsuarioActionPerformed(evt);
             }
         });
 
@@ -89,14 +125,14 @@ public class LoginPTC extends javax.swing.JFrame {
             panelCurvas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCurvas2Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(txtusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(21, Short.MAX_VALUE))
         );
         panelCurvas2Layout.setVerticalGroup(
             panelCurvas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCurvas2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -132,28 +168,33 @@ public class LoginPTC extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        panelCurvas4.setBackground(new java.awt.Color(255, 255, 255));
-        panelCurvas4.setRoundBottomLeft(25);
-        panelCurvas4.setRoundBottomRight(25);
-        panelCurvas4.setRoundTopLeft(25);
-        panelCurvas4.setRoundTopRight(25);
+        bntSesion.setBackground(new java.awt.Color(255, 255, 255));
+        bntSesion.setRoundBottomLeft(25);
+        bntSesion.setRoundBottomRight(25);
+        bntSesion.setRoundTopLeft(25);
+        bntSesion.setRoundTopRight(25);
+        bntSesion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bntSesionMouseClicked(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("MS PGothic", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Iniciar Sesión");
 
-        javax.swing.GroupLayout panelCurvas4Layout = new javax.swing.GroupLayout(panelCurvas4);
-        panelCurvas4.setLayout(panelCurvas4Layout);
-        panelCurvas4Layout.setHorizontalGroup(
-            panelCurvas4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCurvas4Layout.createSequentialGroup()
+        javax.swing.GroupLayout bntSesionLayout = new javax.swing.GroupLayout(bntSesion);
+        bntSesion.setLayout(bntSesionLayout);
+        bntSesionLayout.setHorizontalGroup(
+            bntSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bntSesionLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        panelCurvas4Layout.setVerticalGroup(
-            panelCurvas4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCurvas4Layout.createSequentialGroup()
+        bntSesionLayout.setVerticalGroup(
+            bntSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bntSesionLayout.createSequentialGroup()
                 .addContainerGap(26, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(24, 24, 24))
@@ -173,7 +214,7 @@ public class LoginPTC extends javax.swing.JFrame {
                     .addGroup(panelCurvas1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(panelCurvas2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(panelCurvas3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(panelCurvas4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bntSesion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         panelCurvas1Layout.setVerticalGroup(
@@ -186,7 +227,7 @@ public class LoginPTC extends javax.swing.JFrame {
                 .addGap(72, 72, 72)
                 .addComponent(panelCurvas3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                .addComponent(panelCurvas4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bntSesion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -224,13 +265,17 @@ public class LoginPTC extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtusuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtusuarioActionPerformed
+    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtusuarioActionPerformed
+    }//GEN-LAST:event_txtUsuarioActionPerformed
 
     private void txtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtContraseñaActionPerformed
+
+    private void bntSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bntSesionMouseClicked
+        ValidarUsuario();
+    }//GEN-LAST:event_bntSesionMouseClicked
 
     /**
      * @param args the command line arguments
@@ -268,6 +313,7 @@ public class LoginPTC extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private Vista.PanelCurvas bntSesion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
@@ -275,9 +321,8 @@ public class LoginPTC extends javax.swing.JFrame {
     private Vista.PanelCurvas panelCurvas1;
     private Vista.PanelCurvas panelCurvas2;
     private Vista.PanelCurvas panelCurvas3;
-    private Vista.PanelCurvas panelCurvas4;
     private javax.swing.JTextField txtContraseña;
     private javax.swing.JLabel txtImagen;
-    private javax.swing.JTextField txtusuario;
+    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

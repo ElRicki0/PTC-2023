@@ -108,7 +108,7 @@
                                   <Component id="panelCurvas2" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="panelCurvas3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="panelCurvas4" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="bntSesion" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="23" max="32767" attributes="0"/>
                       </Group>
@@ -124,7 +124,7 @@
                           <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
                           <Component id="panelCurvas3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="52" max="32767" attributes="0"/>
-                          <Component id="panelCurvas4" min="-2" max="-2" attributes="0"/>
+                          <Component id="bntSesion" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -161,7 +161,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                              <Component id="txtusuario" min="-2" pref="217" max="-2" attributes="0"/>
+                              <Component id="txtUsuario" min="-2" pref="217" max="-2" attributes="0"/>
                               <EmptySpace pref="21" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -170,14 +170,14 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtusuario" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="txtUsuario" min="-2" pref="30" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JTextField" name="txtusuario">
+                    <Component class="javax.swing.JTextField" name="txtUsuario">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -190,7 +190,7 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtusuarioActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUsuarioActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>
@@ -245,7 +245,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="Vista.PanelCurvas" name="panelCurvas4">
+                <Container class="Vista.PanelCurvas" name="bntSesion">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -255,6 +255,9 @@
                     <Property name="roundTopLeft" type="int" value="25"/>
                     <Property name="roundTopRight" type="int" value="25"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bntSesionMouseClicked"/>
+                  </Events>
 
                   <Layout>
                     <DimensionLayout dim="0">
