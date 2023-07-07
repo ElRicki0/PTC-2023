@@ -1,29 +1,38 @@
-use master
-go
-
 create database EXPOdb
 go
 
 use EXPOdb
 go
 
-create table tbTipoEmpleados(
+create table tbTiposEmpleados(
 idTipoEmpleado		int identity (1,1) primary key,
 TipoEmpleado		varchar(500) not null
 );
 go
 
+insert into tbTiposEmpleados(TipoEmpleado) values('Administrador'); 
+go
+select*from tbTiposEmpleados;
+go
 
 create table tbGeneros(
 idGenero			int identity (1,1) primary key,
 Genero				VARCHAR(20) not null
 );
 go
+insert into tbGeneros(Genero) values('Hombre');
+insert into tbGeneros(Genero) values('Mujer');
+insert into tbGeneros(Genero) values('Comedia');
+insert into tbGeneros(Genero) values('Sorbete');
+insert into tbGeneros(Genero) values('Horny');
+go
+select*from tbgeneros
+go
 
 create table tbEmpleados(
 idEmpleado			int identity (1,1) primary key,
 emp_nombre			varchar(50) not null,
-emp_documento		varchar(8000)not null,
+emp_documento		varchar(8000),
 emp_fecha			date,
 emp_direccion		varchar(500)not null,
 emp_telefono		varchar(10),
@@ -31,16 +40,22 @@ emp_correo			varchar(300),
 idGenero			int
 foreign key references [dbo].[tbGeneros] (idGenero),
 idTipoEmpleado		int
-foreign key references [dbo].[tbTipoEmpleados] ([idTipoEmpleado])
+foreign key references [dbo].[tbTiposEmpleados] ([idTipoEmpleado])
 );
+go
+insert into tbEmpleados(emp_nombre, emp_direccion,		emp_telefono, emp_correo,			idGenero, idTipoEmpleado) 
+values                 ('Ricardo Melara',  'AV. Los Proceres', '7229-1462', 'Ricdo06melara@gmail.com', 4, 1);
 go
 
 create table tbNivelesUsuarios
 (idNivelUser		int identity (1,1) primary key,
-NombreNivelUser		varchar(50) not null,
-DescripcionUser		varchar(500)
+usr_Nivel		varchar(50) not null,
+usr_Descripcion varchar(500)
 );
 go
+insert into tbNivelesUsuarios(usr_Nivel, usr_Descripcion) values('Administrador', 'Controlador del sistema');
+go
+
 
 /*Productos*/
 create table tbMarcaProductos(
@@ -52,16 +67,20 @@ go
 
 create table tbBodegas(
 idBodega			int identity (1,1) primary key,
-NombreBodega		varchar(500)not null,
-UbicacionBodega		varchar(8000)not null,
-CorreoBodega	varchar(300) not null
+bdg_nombre		varchar(500)not null,
+bdg_ubicacion	varchar(8000)not null,
+bdg_correo		varchar(300) not null
 );
+go
+insert into tbBodegas(bdg_nombre, bdg_ubicacion, bdg_correo) VALUES('Bodega de paco', 'calle1', 'bodega1@gmail.com');
+insert into tbBodegas(bdg_nombre, bdg_ubicacion, bdg_correo) VALUES('Bodega 2', 'calle2', 'bodega2@gmail.com');
+insert into tbBodegas(bdg_nombre, bdg_ubicacion, bdg_correo) VALUES('Bodega 3', 'calle3', 'bodega3@gmail.com');
 go
 
 create table tbUsuarios(
 idUsuario			int identity (1,1) primary key,
-Usuario				varchar(50) not null,
-Contraseña			varchar(50) not null,
+usr_nombre			varchar(50) not null,
+usr_contraseña	varchar(50) not null,
 idEmpleado			int
 foreign key references [dbo].[tbEmpleados]([idEmpleado]),
 idNivelUser			int
@@ -69,6 +88,10 @@ foreign key references [dbo].[tbNivelesUsuarios]([idNivelUser]),
 idBodega			int
 foreign key references [dbo].[tbBodegas]([idBodega])
 );
+go
+insert into tbUsuarios(usr_nombre, usr_contraseña, idEmpleado, idNivelUser, idBodega)values('admin', 'pass123', 1, 1, 1);
+insert into tbUsuarios(usr_nombre, usr_contraseña, idEmpleado, idNivelUser, idBodega)values('admin2', 'pass1234', 1, 1, 1);
+select*from tbUsuarios
 go
 
 create table tbProductos(
