@@ -5,17 +5,34 @@
  */
 package Vista;
 
+import javax.swing.ImageIcon;
+import desplazable.Desface;
+import java.awt.Color;
+
 /**
  *
  * @author rnmel
  */
 public class Main extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Main
-     */
+    Desface desplace;
     public Main() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/Vista/Iconos/CASA.png")).getImage());
+
+        rsscalelabel.RSScaleLabel.setScaleLabel(txtLogo, "src/Vista/Iconos/logo.png");
+        rsscalelabel.RSScaleLabel.setScaleLabel(txtCasa, "src/Vista/Iconos/hogar.png");
+        rsscalelabel.RSScaleLabel.setScaleLabel(txtProducto, "src/Vista/Iconos/bolso.png");
+        rsscalelabel.RSScaleLabel.setScaleLabel(txtCliente, "src/Vista/Iconos/usuario.png");
+        rsscalelabel.RSScaleLabel.setScaleLabel(txtBitacora, "src/Vista/Iconos/libreta.png");
+        rsscalelabel.RSScaleLabel.setScaleLabel(txtTrabajador, "src/Vista/Iconos/obrero.png");
+        rsscalelabel.RSScaleLabel.setScaleLabel(txtRuta, "src/Vista/Iconos/entrega.png");
+        rsscalelabel.RSScaleLabel.setScaleLabel(txtBodega, "src/Vista/Iconos/guardarropa.png");
+        rsscalelabel.RSScaleLabel.setScaleLabel(txtBarras, "src/Vista/Iconos/lista.png");
+        
+        desplace = new Desface();
+        
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -28,28 +45,245 @@ public class Main extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        MenuPlegable = new javax.swing.JPanel();
+        btnCasa = new Vista.PanelCurvas();
+        txtCasa = new javax.swing.JLabel();
+        btnProducto = new Vista.PanelCurvas();
+        txtProducto = new javax.swing.JLabel();
+        btnCliente = new Vista.PanelCurvas();
+        txtCliente = new javax.swing.JLabel();
+        btnTrabajador = new Vista.PanelCurvas();
+        txtTrabajador = new javax.swing.JLabel();
+        btnRuta = new Vista.PanelCurvas();
+        txtRuta = new javax.swing.JLabel();
+        btnBitacora = new Vista.PanelCurvas();
+        txtBitacora = new javax.swing.JLabel();
+        txtLogo = new javax.swing.JLabel();
+        btnBodega = new Vista.PanelCurvas();
+        txtBodega = new javax.swing.JLabel();
+        txtBarras = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1000, 640));
+        setPreferredSize(new java.awt.Dimension(1080, 700));
         setResizable(false);
-        setSize(new java.awt.Dimension(1000, 640));
+        setSize(new java.awt.Dimension(1080, 700));
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        MenuPlegable.setBackground(new java.awt.Color(64, 81, 115));
+        MenuPlegable.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnCasa.setBackground(new java.awt.Color(64, 81, 115));
+        btnCasa.setRoundBottomLeft(25);
+        btnCasa.setRoundBottomRight(25);
+        btnCasa.setRoundTopLeft(25);
+        btnCasa.setRoundTopRight(25);
+        btnCasa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCasaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCasaMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout btnCasaLayout = new javax.swing.GroupLayout(btnCasa);
+        btnCasa.setLayout(btnCasaLayout);
+        btnCasaLayout.setHorizontalGroup(
+            btnCasaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnCasaLayout.createSequentialGroup()
+                .addGap(0, 217, Short.MAX_VALUE)
+                .addComponent(txtCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        btnCasaLayout.setVerticalGroup(
+            btnCasaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnCasaLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(txtCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        MenuPlegable.add(btnCasa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, -1, -1));
+
+        btnProducto.setBackground(new java.awt.Color(64, 81, 115));
+        btnProducto.setRoundBottomLeft(25);
+        btnProducto.setRoundBottomRight(25);
+        btnProducto.setRoundTopLeft(25);
+        btnProducto.setRoundTopRight(25);
+
+        javax.swing.GroupLayout btnProductoLayout = new javax.swing.GroupLayout(btnProducto);
+        btnProducto.setLayout(btnProductoLayout);
+        btnProductoLayout.setHorizontalGroup(
+            btnProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnProductoLayout.createSequentialGroup()
+                .addGap(0, 217, Short.MAX_VALUE)
+                .addComponent(txtProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        btnProductoLayout.setVerticalGroup(
+            btnProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnProductoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(txtProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        MenuPlegable.add(btnProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, -1, 50));
+
+        btnCliente.setBackground(new java.awt.Color(64, 81, 115));
+        btnCliente.setRoundBottomLeft(25);
+        btnCliente.setRoundBottomRight(25);
+        btnCliente.setRoundTopLeft(25);
+        btnCliente.setRoundTopRight(25);
+
+        javax.swing.GroupLayout btnClienteLayout = new javax.swing.GroupLayout(btnCliente);
+        btnCliente.setLayout(btnClienteLayout);
+        btnClienteLayout.setHorizontalGroup(
+            btnClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnClienteLayout.createSequentialGroup()
+                .addGap(0, 217, Short.MAX_VALUE)
+                .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        btnClienteLayout.setVerticalGroup(
+            btnClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnClienteLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        MenuPlegable.add(btnCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, -1, -1));
+
+        btnTrabajador.setBackground(new java.awt.Color(64, 81, 115));
+        btnTrabajador.setRoundBottomLeft(25);
+        btnTrabajador.setRoundBottomRight(25);
+        btnTrabajador.setRoundTopLeft(25);
+        btnTrabajador.setRoundTopRight(25);
+
+        javax.swing.GroupLayout btnTrabajadorLayout = new javax.swing.GroupLayout(btnTrabajador);
+        btnTrabajador.setLayout(btnTrabajadorLayout);
+        btnTrabajadorLayout.setHorizontalGroup(
+            btnTrabajadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnTrabajadorLayout.createSequentialGroup()
+                .addGap(0, 217, Short.MAX_VALUE)
+                .addComponent(txtTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        btnTrabajadorLayout.setVerticalGroup(
+            btnTrabajadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnTrabajadorLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(txtTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        MenuPlegable.add(btnTrabajador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, -1, -1));
+
+        btnRuta.setBackground(new java.awt.Color(64, 81, 115));
+        btnRuta.setRoundBottomLeft(25);
+        btnRuta.setRoundBottomRight(25);
+        btnRuta.setRoundTopLeft(25);
+        btnRuta.setRoundTopRight(25);
+
+        javax.swing.GroupLayout btnRutaLayout = new javax.swing.GroupLayout(btnRuta);
+        btnRuta.setLayout(btnRutaLayout);
+        btnRutaLayout.setHorizontalGroup(
+            btnRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnRutaLayout.createSequentialGroup()
+                .addGap(0, 217, Short.MAX_VALUE)
+                .addComponent(txtRuta, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        btnRutaLayout.setVerticalGroup(
+            btnRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnRutaLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(txtRuta, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        MenuPlegable.add(btnRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, -1, -1));
+
+        btnBitacora.setBackground(new java.awt.Color(64, 81, 115));
+        btnBitacora.setRoundBottomLeft(25);
+        btnBitacora.setRoundBottomRight(25);
+        btnBitacora.setRoundTopLeft(25);
+        btnBitacora.setRoundTopRight(25);
+
+        javax.swing.GroupLayout btnBitacoraLayout = new javax.swing.GroupLayout(btnBitacora);
+        btnBitacora.setLayout(btnBitacoraLayout);
+        btnBitacoraLayout.setHorizontalGroup(
+            btnBitacoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnBitacoraLayout.createSequentialGroup()
+                .addGap(0, 217, Short.MAX_VALUE)
+                .addComponent(txtBitacora, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        btnBitacoraLayout.setVerticalGroup(
+            btnBitacoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnBitacoraLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(txtBitacora, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        MenuPlegable.add(btnBitacora, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, -1, -1));
+        MenuPlegable.add(txtLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 120, 120));
+
+        btnBodega.setBackground(new java.awt.Color(64, 81, 115));
+        btnBodega.setRoundBottomLeft(25);
+        btnBodega.setRoundBottomRight(25);
+        btnBodega.setRoundTopLeft(25);
+        btnBodega.setRoundTopRight(25);
+
+        javax.swing.GroupLayout btnBodegaLayout = new javax.swing.GroupLayout(btnBodega);
+        btnBodega.setLayout(btnBodegaLayout);
+        btnBodegaLayout.setHorizontalGroup(
+            btnBodegaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnBodegaLayout.createSequentialGroup()
+                .addGap(0, 217, Short.MAX_VALUE)
+                .addComponent(txtBodega, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        btnBodegaLayout.setVerticalGroup(
+            btnBodegaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnBodegaLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(txtBodega, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        MenuPlegable.add(btnBodega, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, -1, -1));
+
+        txtBarras.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtBarrasMouseClicked(evt);
+            }
+        });
+        MenuPlegable.add(txtBarras, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 53, 53));
+
+        jPanel1.add(MenuPlegable, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 270, 700));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1081, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 701, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtBarrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtBarrasMouseClicked
+        if (MenuPlegable.getX()==0) {
+            desplace.desplazarIzquierda(MenuPlegable, MenuPlegable.getX(), -200, 20, 20);
+        } else if(MenuPlegable.getX() == -200) {
+            desplace.desplazarDerecha(MenuPlegable, MenuPlegable.getX(), 0, 20, 20);
+        }
+        
+        
+    }//GEN-LAST:event_txtBarrasMouseClicked
+
+    private void btnCasaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseEntered
+        btnCasa.setBackground(new Color(45,40,37));
+    }//GEN-LAST:event_btnCasaMouseEntered
+
+    private void btnCasaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseExited
+               btnCasa.setBackground(new Color(64,81,115));
+    }//GEN-LAST:event_btnCasaMouseExited
 
     /**
      * @param args the command line arguments
@@ -87,6 +321,23 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel MenuPlegable;
+    private Vista.PanelCurvas btnBitacora;
+    private Vista.PanelCurvas btnBodega;
+    private Vista.PanelCurvas btnCasa;
+    private Vista.PanelCurvas btnCliente;
+    private Vista.PanelCurvas btnProducto;
+    private Vista.PanelCurvas btnRuta;
+    private Vista.PanelCurvas btnTrabajador;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel txtBarras;
+    private javax.swing.JLabel txtBitacora;
+    private javax.swing.JLabel txtBodega;
+    private javax.swing.JLabel txtCasa;
+    private javax.swing.JLabel txtCliente;
+    private javax.swing.JLabel txtLogo;
+    private javax.swing.JLabel txtProducto;
+    private javax.swing.JLabel txtRuta;
+    private javax.swing.JLabel txtTrabajador;
     // End of variables declaration//GEN-END:variables
 }
