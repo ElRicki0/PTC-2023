@@ -1,22 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Vista;
 
 import javax.swing.ImageIcon;
 import desplazable.Desface;
 import java.awt.Color;
 
-/**
- *
- * @author rnmel
- */
-public class Main extends javax.swing.JFrame {
+public class Cliente extends javax.swing.JFrame {
 
     Desface desplace;
-    public Main() {
+    public Cliente() {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/Vista/Iconos/CASA.png")).getImage());
 
@@ -74,9 +65,10 @@ public class Main extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(1080, 760));
         setMinimumSize(new java.awt.Dimension(1080, 760));
         setPreferredSize(new java.awt.Dimension(1080, 760));
+        setResizable(false);
         setSize(new java.awt.Dimension(1080, 760));
 
-        jPanel1.setBackground(new java.awt.Color(0, 102, 204));
+        jPanel1.setBackground(new java.awt.Color(102, 255, 102));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         MenuPlegable.setBackground(new java.awt.Color(64, 81, 115));
@@ -174,9 +166,6 @@ public class Main extends javax.swing.JFrame {
         btnCliente.setRoundTopLeft(25);
         btnCliente.setRoundTopRight(25);
         btnCliente.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnClienteMouseClicked(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnClienteMouseEntered(evt);
             }
@@ -217,9 +206,6 @@ public class Main extends javax.swing.JFrame {
         btnTrabajador.setRoundTopLeft(25);
         btnTrabajador.setRoundTopRight(25);
         btnTrabajador.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnTrabajadorMouseClicked(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnTrabajadorMouseEntered(evt);
             }
@@ -260,9 +246,6 @@ public class Main extends javax.swing.JFrame {
         btnRuta.setRoundTopLeft(25);
         btnRuta.setRoundTopRight(25);
         btnRuta.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnRutaMouseClicked(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnRutaMouseEntered(evt);
             }
@@ -303,9 +286,6 @@ public class Main extends javax.swing.JFrame {
         btnBitacora.setRoundTopLeft(25);
         btnBitacora.setRoundTopRight(25);
         btnBitacora.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnBitacoraMouseClicked(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnBitacoraMouseEntered(evt);
             }
@@ -347,9 +327,6 @@ public class Main extends javax.swing.JFrame {
         btnBodega.setRoundTopLeft(25);
         btnBodega.setRoundTopRight(25);
         btnBodega.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnBodegaMouseClicked(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnBodegaMouseEntered(evt);
             }
@@ -397,7 +374,7 @@ public class Main extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1081, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1080, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -407,91 +384,21 @@ public class Main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtBarrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtBarrasMouseClicked
-        if (MenuPlegable.getX()==0) {
-            desplace.desplazarIzquierda(MenuPlegable, MenuPlegable.getX(), -150, 15, 10);
-        } else if(MenuPlegable.getX() == -150) {
-            desplace.desplazarDerecha(MenuPlegable, MenuPlegable.getX(), 0, 15, 10);
-        }
-
-    }//GEN-LAST:event_txtBarrasMouseClicked
-
-    //BTN_REACCION_CURSOR////////////////////////////////////////////////////////////
-    private void btnCasaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseExited
-        btnCasa.setBackground(new Color(64,81,115));        
-        txtCasa.setForeground(new Color(45,40,37));
-    }//GEN-LAST:event_btnCasaMouseExited
+    private void btnCasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseClicked
+        Main main = new Main();
+        main.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnCasaMouseClicked
 
     private void btnCasaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseEntered
-        btnCasa.setBackground(new Color(45,40,37));        
+        btnCasa.setBackground(new Color(45,40,37));
         txtCasa.setForeground(Color.white);
-
     }//GEN-LAST:event_btnCasaMouseEntered
 
-    private void btnProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseEntered
-        btnProducto.setBackground(new Color(45,40,37));        
-        txtproducto.setForeground(Color.white);
-    }//GEN-LAST:event_btnProductoMouseEntered
-
-    private void btnProductoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseExited
-        btnProducto.setBackground(new Color(64,81,115));        
-        txtproducto.setForeground(new Color(45,40,37));
-    }//GEN-LAST:event_btnProductoMouseExited
-
-    private void btnClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseExited
-        btnCliente.setBackground(new Color(64,81,115));        
-        txtCliente.setForeground(new Color(45,40,37));
-    }//GEN-LAST:event_btnClienteMouseExited
-
-    private void btnClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseEntered
-        btnCliente.setBackground(new Color(45,40,37));        
-        txtCliente.setForeground(Color.white);
-    }//GEN-LAST:event_btnClienteMouseEntered
-
-    private void btnBitacoraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitacoraMouseExited
-        btnBitacora.setBackground(new Color(64,81,115));        
-        txtBitacora.setForeground(new Color(45,40,37));
-    }//GEN-LAST:event_btnBitacoraMouseExited
-
-    private void btnBitacoraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitacoraMouseEntered
-        btnBitacora.setBackground(new Color(45,40,37));        
-        txtBitacora.setForeground(Color.white);
-    }//GEN-LAST:event_btnBitacoraMouseEntered
-
-    private void btnTrabajadorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadorMouseExited
-        btnTrabajador.setBackground(new Color(64,81,115));        
-        txtEmpleado.setForeground(new Color(45,40,37));
-    }//GEN-LAST:event_btnTrabajadorMouseExited
-
-    private void btnTrabajadorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadorMouseEntered
-        btnTrabajador.setBackground(new Color(45,40,37));        
-        txtEmpleado.setForeground(Color.white);
-    }//GEN-LAST:event_btnTrabajadorMouseEntered
-
-    private void btnRutaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseExited
-        btnRuta.setBackground(new Color(64,81,115));        
-        txtRuta.setForeground(new Color(45,40,37));
-    }//GEN-LAST:event_btnRutaMouseExited
-
-    private void btnRutaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseEntered
-        btnRuta.setBackground(new Color(45,40,37));        
-        txtRuta.setForeground(Color.white);
-    }//GEN-LAST:event_btnRutaMouseEntered
-
-    private void btnBodegaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseExited
-        btnBodega.setBackground(new Color(64,81,115));        
-        txtBodega.setForeground(new Color(45,40,37));
-    }//GEN-LAST:event_btnBodegaMouseExited
-
-    private void btnBodegaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseEntered
-        btnBodega.setBackground(new Color(45,40,37));        
-        txtBodega.setForeground(Color.white);
-    }//GEN-LAST:event_btnBodegaMouseEntered
-
-    //BTN_MOVIMIENTO///////////////////////////////////////////////////////////////
-    private void btnCasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseClicked
-        
-    }//GEN-LAST:event_btnCasaMouseClicked
+    private void btnCasaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseExited
+        btnCasa.setBackground(new Color(64,81,115));
+        txtCasa.setForeground(new Color(45,40,37));
+    }//GEN-LAST:event_btnCasaMouseExited
 
     private void btnProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseClicked
         Producto producto = new Producto();
@@ -499,35 +406,73 @@ public class Main extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnProductoMouseClicked
 
-    private void btnClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseClicked
-        Cliente cliente = new Cliente();
-        cliente.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_btnClienteMouseClicked
+    private void btnProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseEntered
+        btnProducto.setBackground(new Color(45,40,37));
+        txtproducto.setForeground(Color.white);
+    }//GEN-LAST:event_btnProductoMouseEntered
 
-    private void btnBitacoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitacoraMouseClicked
-        Bitacora bitacora = new Bitacora();
-        bitacora.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_btnBitacoraMouseClicked
+    private void btnProductoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseExited
+        btnProducto.setBackground(new Color(64,81,115));
+        txtproducto.setForeground(new Color(45,40,37));
+    }//GEN-LAST:event_btnProductoMouseExited
 
-    private void btnTrabajadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadorMouseClicked
-        Empleados empleados = new Empleados();
-        empleados.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_btnTrabajadorMouseClicked
+    private void btnClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseEntered
+        btnCliente.setBackground(new Color(45,40,37));
+        txtCliente.setForeground(Color.white);
+    }//GEN-LAST:event_btnClienteMouseEntered
 
-    private void btnRutaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseClicked
-        Rutas rutas = new Rutas();
-        rutas.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_btnRutaMouseClicked
+    private void btnClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseExited
+        btnCliente.setBackground(new Color(64,81,115));
+        txtCliente.setForeground(new Color(45,40,37));
+    }//GEN-LAST:event_btnClienteMouseExited
 
-    private void btnBodegaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseClicked
-        Bodegas bodegas = new Bodegas();
-        bodegas.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_btnBodegaMouseClicked
+    private void btnTrabajadorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadorMouseEntered
+        btnTrabajador.setBackground(new Color(45,40,37));
+        txtEmpleado.setForeground(Color.white);
+    }//GEN-LAST:event_btnTrabajadorMouseEntered
+
+    private void btnTrabajadorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadorMouseExited
+        btnTrabajador.setBackground(new Color(64,81,115));
+        txtEmpleado.setForeground(new Color(45,40,37));
+    }//GEN-LAST:event_btnTrabajadorMouseExited
+
+    private void btnRutaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseEntered
+        btnRuta.setBackground(new Color(45,40,37));
+        txtRuta.setForeground(Color.white);
+    }//GEN-LAST:event_btnRutaMouseEntered
+
+    private void btnRutaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseExited
+        btnRuta.setBackground(new Color(64,81,115));
+        txtRuta.setForeground(new Color(45,40,37));
+    }//GEN-LAST:event_btnRutaMouseExited
+
+    private void btnBitacoraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitacoraMouseEntered
+        btnBitacora.setBackground(new Color(45,40,37));
+        txtBitacora.setForeground(Color.white);
+    }//GEN-LAST:event_btnBitacoraMouseEntered
+
+    private void btnBitacoraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitacoraMouseExited
+        btnBitacora.setBackground(new Color(64,81,115));
+        txtBitacora.setForeground(new Color(45,40,37));
+    }//GEN-LAST:event_btnBitacoraMouseExited
+
+    private void btnBodegaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseEntered
+        btnBodega.setBackground(new Color(45,40,37));
+        txtBodega.setForeground(Color.white);
+    }//GEN-LAST:event_btnBodegaMouseEntered
+
+    private void btnBodegaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseExited
+        btnBodega.setBackground(new Color(64,81,115));
+        txtBodega.setForeground(new Color(45,40,37));
+    }//GEN-LAST:event_btnBodegaMouseExited
+
+    private void txtBarrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtBarrasMouseClicked
+        if (MenuPlegable.getX()==0) {
+            desplace.desplazarIzquierda(MenuPlegable, MenuPlegable.getX(), -150, 15, 10);
+        } else if(MenuPlegable.getX() == -150) {
+            desplace.desplazarDerecha(MenuPlegable, MenuPlegable.getX(), 0, 15, 10);
+        }
+    }//GEN-LAST:event_txtBarrasMouseClicked
 
     /**
      * @param args the command line arguments
@@ -546,20 +491,20 @@ public class Main extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Main().setVisible(true);
+                new Cliente().setVisible(true);
             }
         });
     }
