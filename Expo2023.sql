@@ -96,6 +96,7 @@ go
 
 create table tbProductos(
 idProducto			int identity (1,1) primary key,
+Nombre_Pdt			varchar(50	),
 idMarcaproducto		int
 foreign key references [dbo].[tbMarcaProductos]([idMarcaProducto]),
 Unidades			int not null,
