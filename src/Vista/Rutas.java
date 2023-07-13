@@ -166,6 +166,9 @@ public class Rutas extends javax.swing.JFrame {
         btnCliente.setRoundTopLeft(25);
         btnCliente.setRoundTopRight(25);
         btnCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnClienteMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnClienteMouseEntered(evt);
             }
@@ -249,6 +252,9 @@ public class Rutas extends javax.swing.JFrame {
         btnRuta.setRoundTopLeft(25);
         btnRuta.setRoundTopRight(25);
         btnRuta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRutaMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnRutaMouseEntered(evt);
             }
@@ -289,6 +295,9 @@ public class Rutas extends javax.swing.JFrame {
         btnBitacora.setRoundTopLeft(25);
         btnBitacora.setRoundTopRight(25);
         btnBitacora.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBitacoraMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnBitacoraMouseEntered(evt);
             }
@@ -330,6 +339,9 @@ public class Rutas extends javax.swing.JFrame {
         btnBodega.setRoundTopLeft(25);
         btnBodega.setRoundTopRight(25);
         btnBodega.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBodegaMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnBodegaMouseEntered(evt);
             }
@@ -480,6 +492,31 @@ public class Rutas extends javax.swing.JFrame {
             desplace.desplazarDerecha(MenuPlegable, MenuPlegable.getX(), 0, 15, 10);
         }
     }//GEN-LAST:event_txtBarrasMouseClicked
+
+    ///BTN_ACTIONES///////////////////////////////////////////////////////////////////////
+    private void btnClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseClicked
+        Cliente cliente = new Cliente();
+        cliente.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnClienteMouseClicked
+
+    private void btnBitacoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitacoraMouseClicked
+        Bitacora bitacora = new Bitacora();
+        bitacora.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnBitacoraMouseClicked
+
+    private void btnRutaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseClicked
+        Rutas rutas = new Rutas();
+        rutas.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnRutaMouseClicked
+
+    private void btnBodegaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseClicked
+        Bodegas bodegas = new Bodegas();
+        bodegas.setVisible(false);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnBodegaMouseClicked
 
     /**
      * @param args the command line arguments

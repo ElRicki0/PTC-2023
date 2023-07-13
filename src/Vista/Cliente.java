@@ -64,7 +64,6 @@ public class Cliente extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1080, 760));
         setMinimumSize(new java.awt.Dimension(1080, 760));
-        setPreferredSize(new java.awt.Dimension(1080, 760));
         setResizable(false);
         setSize(new java.awt.Dimension(1080, 760));
 
@@ -206,6 +205,9 @@ public class Cliente extends javax.swing.JFrame {
         btnTrabajador.setRoundTopLeft(25);
         btnTrabajador.setRoundTopRight(25);
         btnTrabajador.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnTrabajadorMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnTrabajadorMouseEntered(evt);
             }
@@ -246,6 +248,9 @@ public class Cliente extends javax.swing.JFrame {
         btnRuta.setRoundTopLeft(25);
         btnRuta.setRoundTopRight(25);
         btnRuta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRutaMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnRutaMouseEntered(evt);
             }
@@ -286,6 +291,9 @@ public class Cliente extends javax.swing.JFrame {
         btnBitacora.setRoundTopLeft(25);
         btnBitacora.setRoundTopRight(25);
         btnBitacora.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBitacoraMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnBitacoraMouseEntered(evt);
             }
@@ -327,6 +335,9 @@ public class Cliente extends javax.swing.JFrame {
         btnBodega.setRoundTopLeft(25);
         btnBodega.setRoundTopRight(25);
         btnBodega.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBodegaMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnBodegaMouseEntered(evt);
             }
@@ -473,6 +484,31 @@ public class Cliente extends javax.swing.JFrame {
             desplace.desplazarDerecha(MenuPlegable, MenuPlegable.getX(), 0, 15, 10);
         }
     }//GEN-LAST:event_txtBarrasMouseClicked
+
+    //BTN_MOVIMIENTOS//////////////////////////////////////////////////////////////////
+    private void btnBitacoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitacoraMouseClicked
+        Bitacora bitacora = new Bitacora();
+        bitacora.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnBitacoraMouseClicked
+
+    private void btnTrabajadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadorMouseClicked
+        Empleados empleados = new Empleados();
+        empleados.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnTrabajadorMouseClicked
+
+    private void btnRutaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseClicked
+        Rutas rutas = new Rutas();
+        rutas.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnRutaMouseClicked
+
+    private void btnBodegaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseClicked
+        Bodegas bodegas = new Bodegas();
+        bodegas.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnBodegaMouseClicked
 
     /**
      * @param args the command line arguments
