@@ -74,6 +74,7 @@ public class Main extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(1080, 760));
         setMinimumSize(new java.awt.Dimension(1080, 760));
         setPreferredSize(new java.awt.Dimension(1080, 760));
+        setResizable(false);
         setSize(new java.awt.Dimension(1080, 760));
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 204));
@@ -391,7 +392,7 @@ public class Main extends javax.swing.JFrame {
         });
         MenuPlegable.add(txtBarras, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 53, 53));
 
-        jPanel1.add(MenuPlegable, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 760));
+        jPanel1.add(MenuPlegable, new org.netbeans.lib.awtextra.AbsoluteConstraints(-150, 0, 230, 760));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -408,10 +409,10 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtBarrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtBarrasMouseClicked
-        if (MenuPlegable.getX()==0) {
-            desplace.desplazarIzquierda(MenuPlegable, MenuPlegable.getX(), -150, 15, 10);
-        } else if(MenuPlegable.getX() == -150) {
+        if (MenuPlegable.getX()==-150) {
             desplace.desplazarDerecha(MenuPlegable, MenuPlegable.getX(), 0, 15, 10);
+        } else if(MenuPlegable.getX() == 0) {
+            desplace.desplazarIzquierda(MenuPlegable, MenuPlegable.getX(), -150, 15, 10);
         }
 
     }//GEN-LAST:event_txtBarrasMouseClicked

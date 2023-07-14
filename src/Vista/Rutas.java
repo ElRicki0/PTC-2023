@@ -383,7 +383,7 @@ public class Rutas extends javax.swing.JFrame {
         });
         MenuPlegable.add(txtBarras, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 53, 53));
 
-        jPanel1.add(MenuPlegable, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 760));
+        jPanel1.add(MenuPlegable, new org.netbeans.lib.awtextra.AbsoluteConstraints(-150, 0, 230, 760));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -507,14 +507,12 @@ public class Rutas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBitacoraMouseClicked
 
     private void btnRutaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseClicked
-        Rutas rutas = new Rutas();
-        rutas.setVisible(true);
-        this.setVisible(false);
+        
     }//GEN-LAST:event_btnRutaMouseClicked
 
     private void btnBodegaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseClicked
         Bodegas bodegas = new Bodegas();
-        bodegas.setVisible(false);
+        bodegas.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnBodegaMouseClicked
 

@@ -13,9 +13,9 @@ public class CConexion { // <- Editar por el nombre del archivo de la clase
         try {
             try {
              //Cadena de conexión
-        String conexionUrl  = "jdbc:sqlserver://localhost:1433;" // <- Editar por su puerto de SQL
+        String conexionUrl  = "jdbc:sqlserver://localhost:54855;" // <- Editar por su puerto de SQL
                             + "databaseName=EXPOdb;" // <- Editar por su base de datos
-                            + "user=admin;"
+                            + "user=admin1;"
                             + "password=pass123;" 
                             + "encrypt=true;trustServerCertificate=true";
         
