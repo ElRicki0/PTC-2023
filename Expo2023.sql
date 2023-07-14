@@ -59,9 +59,10 @@ go
 
 /*Productos*/
 create table tbMarcaProductos(
-idMarcaProducto		int identity(1,1) primary key,
-MarcaProducto		varchar(1000)not null,
-CorreoProducto		varchar(30)
+id_MP				int identity(1,1) primary key,
+Nombre_MP			varchar(1000)not null,
+NumeroContacto_MP	varchar(10),
+Correo_MP			varchar(30)
 );
 go
 
@@ -95,13 +96,13 @@ select*from tbUsuarios
 go
 
 create table tbProductos(
-idProducto			int identity (1,1) primary key,
-Nombre_Pdt			varchar(50	),
-idMarcaproducto		int
-foreign key references [dbo].[tbMarcaProductos]([idMarcaProducto]),
-Unidades			int not null,
-PrecioUnitario		money,
-idBodega			int
+idProducto				int identity (1,1) primary key,
+Nombre_pdt				varchar(50	),
+idMarca_pdt				int
+foreign key references [dbo].[tbMarcaProductos](id_MP),
+Unidades_pdt			int not null,
+PrecioUnitario_pdt		money,
+idBodega_pdt			int
 foreign key references [dbo].[tbBodegas] 
 ([idBodega])
 );
