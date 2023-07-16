@@ -6,11 +6,11 @@ go
 
 create table tbTiposEmpleados(
 idTipoEmpleado		int identity (1,1) primary key,
-TipoEmpleado		varchar(500) not null
+Tipo_Emp		varchar(500) not null
 );
 go
 
-insert into tbTiposEmpleados(TipoEmpleado) values('Administrador'); 
+insert into tbTiposEmpleados(Tipo_Emp) values('Administrador'); 
 go
 select*from tbTiposEmpleados;
 go
@@ -60,9 +60,9 @@ go
 /*Productos*/
 create table tbMarcaProductos(
 id_MP				int identity(1,1) primary key,
-Nombre_MP			varchar(1000)not null,
-NumeroContacto_MP	varchar(10),
-Correo_MP			varchar(30)
+MP_Nombre			varchar(1000)not null,
+MP_NumeroContacto	varchar(10),
+MP_Correo			varchar(30)
 );
 go
 
@@ -81,7 +81,7 @@ go
 create table tbUsuarios(
 idUsuario			int identity (1,1) primary key,
 usr_nombre			varchar(50) not null,
-usr_contraseña	varchar(50) not null,
+usr_contrase�a	varchar(50) not null,
 idEmpleado			int
 foreign key references [dbo].[tbEmpleados]([idEmpleado]),
 idNivelUser			int
@@ -90,19 +90,19 @@ idBodega			int
 foreign key references [dbo].[tbBodegas]([idBodega])
 );
 go
-insert into tbUsuarios(usr_nombre, usr_contraseña, idEmpleado, idNivelUser, idBodega)values('admin', 'pass123', 1, 1, 1);
-insert into tbUsuarios(usr_nombre, usr_contraseña, idEmpleado, idNivelUser, idBodega)values('admin2', 'pass1234', 1, 1, 1);
+insert into tbUsuarios(usr_nombre, usr_contrase�a, idEmpleado, idNivelUser, idBodega)values('admin', 'pass123', 1, 1, 1);
+insert into tbUsuarios(usr_nombre, usr_contrase�a, idEmpleado, idNivelUser, idBodega)values('admin2', 'pass1234', 1, 1, 1);
 select*from tbUsuarios
 go
 
 create table tbProductos(
 idProducto				int identity (1,1) primary key,
-Nombre_pdt				varchar(50	),
-idMarca_pdt				int
+Prod_Nombre				varchar(50	),
+Prod_idMarca				int
 foreign key references [dbo].[tbMarcaProductos](id_MP),
-Unidades_pdt			int not null,
-PrecioUnitario_pdt		money,
-idBodega_pdt			int
+Prod_Unidades			int not null,
+Prod_PrecioUnitario		money,
+idBodega			int
 foreign key references [dbo].[tbBodegas] 
 ([idBodega])
 );
@@ -110,7 +110,7 @@ go
 
 create table tbDatosDistribucion(
 idDatoDistribucion	int identity (1,1) primary key,
-CantidadProducto	int,
+DaDis_CantidadProducto	int,
 idProducto			int
 foreign key references [dbo].[tbProductos]([idProducto])
 );
@@ -128,9 +128,9 @@ go
 /*Proximos contendores de productos nuevo */
 create table tbContenedortes (
 idContenedor		INT identity (1,1) primary key,
-Nombre_ctd			varchar(100),
-EmpresaContenedor	varchar(200),
-Correo	varchar(300) not null,
+ctd_Nombre			varchar(100),
+ctd_Empresa	varchar(200),
+ctd_Correo      varchar(300) not null,
 idProducto		int
 foreign key references  [dbo].[tbProductos]([idProducto]),
 idPaqueteria		int
@@ -141,10 +141,10 @@ go
 /*Apartado clientes*/
 create table tbClientes(
 idCliente			int identity (1,1) primary key,
-NombreCliente		varchar(100) not null,
-EdadCliente			int not null,
-TelefonoCliente		varchar(10),
-CorreoElectronico		varchar(300) not null,
+clie_Nombre		varchar(100) not null,
+clie_Edad			int not null,
+clie_Telefono		varchar(10),
+clie_Correo		varchar(300) not null,
 idGenero			int
 foreign key references  [dbo].[tbGeneros]([idGenero])
 );
@@ -152,17 +152,17 @@ go
 
 create table tbTiendas(
 idTienda			int identity(1,1) primary key,
-NombreTd		varchar(500)not null,
-DireccionTd		VARCHAR(8000)NOT NULL,
-ReferenciasLDireccionTd	varchar(1000),
-CorreoElectronico		varchar(300) not null
+Tien_Nombre		varchar(500)not null,
+Tien_Direccion  Varchar(8000)NOT NULL,
+Tien_ReferenciasLDireccion	varchar(1000),
+Tien_Correo 	varchar(300) not null
 );
 go
 
 create table tbDatosTiendas(
 idDatosTienda		int identity(1,1)primary key,
-NumeroTelefonoTd	varchar(10)not null,
-PersonaDestinatarioTd	varchar(50)not null,
+DT_NumeroTelefono	varchar(10)not null,
+DT_PersonaDestinatario	varchar(50)not null,
 idCliente			int
 foreign key references [dbo].[tbClientes] ([idCliente]),
 idTienda			int
@@ -173,10 +173,10 @@ go
 /*apartado distribucion de producto*/
 create table tbTalleres(
 idTaller			int identity(1,1) primary key,
-NombreTaller		varchar(300) not null,
-TelTaller			varchar(10) not null,
-CorreoTaller		varchar(30) not null,
-DueñoTaller			varchar(50)
+Tall_Nombre		varchar(300) not null,
+Tall_Telefono			varchar(10) not null,
+Tall_Correo		varchar(30) not null,
+Tall_Due�o			varchar(50)
 );
 go
 
@@ -199,15 +199,16 @@ go
 create table tbModelos(
 idModelo			int identity (1,1) primary key,
 Modelo				varchar(150)not null,
-año					int, 
+Mo_a�o					int, 
 idMarcavehiculo		int
 foreign key references tbMarcasvehiculos(idMarcavehiculo)
 );
 go
 
+
 create table tbVehiculos(
 idVehiculo			int identity (1,1) primary key,
-Matricula			varchar(10) not null,
+vehi_Matricula			varchar(10) not null,
 idModelo			int 
 foreign key references [dbo].[tbModelos]([idModelo]),
 idMantenimeinto		int
