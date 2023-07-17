@@ -81,7 +81,7 @@ go
 create table tbUsuarios(
 idUsuario			int identity (1,1) primary key,
 usr_nombre			varchar(50) not null,
-usr_contrase�a	varchar(50) not null,
+usr_contrasenia	varchar(50) not null,
 idEmpleado			int
 foreign key references [dbo].[tbEmpleados]([idEmpleado]),
 idNivelUser			int
@@ -90,8 +90,8 @@ idBodega			int
 foreign key references [dbo].[tbBodegas]([idBodega])
 );
 go
-insert into tbUsuarios(usr_nombre, usr_contrase�a, idEmpleado, idNivelUser, idBodega)values('admin', 'pass123', 1, 1, 1);
-insert into tbUsuarios(usr_nombre, usr_contrase�a, idEmpleado, idNivelUser, idBodega)values('admin2', 'pass1234', 1, 1, 1);
+insert into tbUsuarios(usr_nombre, usr_contrasenia, idEmpleado, idNivelUser, idBodega)values('admin', 'pass123', 1, 1, 1);
+insert into tbUsuarios(usr_nombre, usr_contrasenia, idEmpleado, idNivelUser, idBodega)values('admin2', 'pass1234', 1, 1, 1);
 select*from tbUsuarios
 go
 
@@ -176,7 +176,7 @@ idTaller			int identity(1,1) primary key,
 Tall_Nombre		varchar(300) not null,
 Tall_Telefono			varchar(10) not null,
 Tall_Correo		varchar(30) not null,
-Tall_Due�o			varchar(50)
+Tall_Duenio			varchar(50)
 );
 go
 
@@ -199,7 +199,7 @@ go
 create table tbModelos(
 idModelo			int identity (1,1) primary key,
 Modelo				varchar(150)not null,
-Mo_a�o					int, 
+Mo_anio					int, 
 idMarcavehiculo		int
 foreign key references tbMarcasvehiculos(idMarcavehiculo)
 );
