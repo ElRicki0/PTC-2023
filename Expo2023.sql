@@ -101,12 +101,13 @@ Prod_Nombre				varchar(50	),
 Prod_idMarca				int
 foreign key references [dbo].[tbMarcaProductos](id_MP),
 Prod_Unidades			int not null,
-Prod_PrecioUnitario		money,
+Prod_PrecioUnitario		float,
 idBodega			int
 foreign key references [dbo].[tbBodegas] 
 ([idBodega])
 );
 go
+select Prod_Nombre , Prod_idMarca, Prod_Unidades, Prod_PrecioUnitario, idBodega from tbProductos;
 
 create table tbDatosDistribucion(
 idDatoDistribucion	int identity (1,1) primary key,
