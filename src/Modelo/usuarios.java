@@ -5,10 +5,12 @@
  */
 package Modelo;
 
-/**
- *
- * @author Javier
- */
+import Vista.LoginPTC;
+import Vista.Main;
+import java.sql.*;
+import javax.swing.JOptionPane;
+
+
 public class usuarios {
     private int idUsuario;
     private String usr_nombre;
@@ -64,5 +66,32 @@ public class usuarios {
     public void setIdBodega(int idBodega) {
         this.idBodega = idBodega;
     }
+    
+    public void ValidarUsuario(usuarios modeloUsuario){
+        int resultado=0;
+        String SQL="select*from tbUsuarios where usr_nombre='"+usr_nombre+"' and usr_contrasenia='"+usr_contra+"';";
+
+        try {
+            Statement sta = CConexion.getConexion().createStatement();
+            ResultSet rs= sta.executeQuery(SQL);
+            if (rs.next()) 
+            {
+                resultado=1;
+                if (resultado==1) 
+                {
+                    Main main = new Main();
+                    main.setVisible(true);
+                    LoginPTC login= new LoginPTC();
+                    login.setVisible(false);
+                }else 
+            {
+                JOptionPane.showMessageDialog(null, "error de acceso de usuario");
+            }
+            } 
+        } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error "+e.getMessage());
+        }
+    }
+            
     
 }
