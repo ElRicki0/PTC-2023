@@ -5,10 +5,10 @@
  */
 package Modelo;
 
-/**
- *
- * @author Javier
- */
+import java.sql.*;
+import Vista.Producto;
+import javax.swing.table.DefaultTableModel;
+
 public class productos {
     private int idProducto;
     private String prod_nombre;
@@ -64,4 +64,7 @@ public class productos {
     public void setIdBodega(int idBodega) {
         this.idBodega = idBodega;
     }
+    
+    
+
 }

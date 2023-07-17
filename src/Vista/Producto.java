@@ -1,8 +1,13 @@
 package Vista;
 
+import Modelo.CConexion;
 import javax.swing.ImageIcon;
 import desplazable.Desface;
 import java.awt.Color;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class Producto extends javax.swing.JFrame {
 
@@ -29,6 +34,7 @@ public class Producto extends javax.swing.JFrame {
 
         
         this.setLocationRelativeTo(null);
+        MostrarProductos();
     }
 
     /** This method is called from within the constructor to
@@ -982,6 +988,28 @@ public class Producto extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void MostrarProductos(){
+        
+        
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(new Object[]{"Nombre","Marca","Unidades","Precio C/U", "Bodega"});
+        try {
+            Statement st= CConexion.getConexion().createStatement();
+            String SQL ="select Prod_Nombre , Prod_idMarca, Prod_Unidades, Prod_PrecioUnitario, idBodega from tbProductos;";
+            ResultSet rs = st.executeQuery(SQL);
+            
+            while (rs.next()) {
+                modelo.addRow(new Object[]{rs.getString("Prod_Nombre"), rs.getInt("Prod_idMarca"), rs.getInt("Prod_Unidades"), rs.getFloat("Prod_PrecioUnitario"), rs.getInt("idBodega")});
+            }
+            tbProductos.setModel(modelo);            
+        } 
+        catch (Exception e) 
+        {
+            JOptionPane.showMessageDialog(null, "Error 3"+e.getMessage());                
+        }
+    
+    }
+    
     private void btnCasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseClicked
         Main main= new Main();
         main.setVisible(true);
@@ -1245,7 +1273,7 @@ public class Producto extends javax.swing.JFrame {
     private Vista.PanelCurvas panelCurvas7;
     private Vista.PanelCurvas panelCurvas8;
     private Vista.PanelCurvas panelCurvas9;
-    private javax.swing.JTable tbProductos;
+    public javax.swing.JTable tbProductos;
     private javax.swing.JTable tbProductos1;
     private javax.swing.JLabel txtBarras;
     private javax.swing.JLabel txtBitacora;
