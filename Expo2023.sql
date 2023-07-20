@@ -69,6 +69,7 @@ insert into tbMarcaProductos (MP_Nombre, MP_NumeroContacto, MP_Correo) values('N
 insert into tbMarcaProductos (MP_Nombre, MP_NumeroContacto, MP_Correo) values('Nombre2','22222222','Correo2@gmail.com');
 insert into tbMarcaProductos (MP_Nombre, MP_NumeroContacto, MP_Correo) values('Nombre3','33333333','Correo3@gmail.com');
 go
+select MP_Nombre, MP_NumeroContacto, MP_Correo from tbMarcaProductos
 
 create table tbBodegas(
 idBodega			int identity (1,1) primary key,
@@ -102,7 +103,7 @@ go
 create table tbProductos(
 idProducto				int identity (1,1) primary key,
 Prod_Nombre				varchar(50	),
-Prod_idMarca				int
+id_MP					int
 foreign key references [dbo].[tbMarcaProductos](id_MP),
 Prod_Unidades			int not null,
 Prod_PrecioUnitario		float,
@@ -111,11 +112,15 @@ foreign key references [dbo].[tbBodegas]
 ([idBodega])
 );
 go
-insert into tbProductos (Prod_Nombre, Prod_idMarca, Prod_Unidades, Prod_PrecioUnitario, idBodega) values ('Papas miles', 1, 10, 3, 1);
-insert into tbProductos (Prod_Nombre, Prod_idMarca, Prod_Unidades, Prod_PrecioUnitario, idBodega) values ('Alfajor miles', 2, 10, 2, 2);
-insert into tbProductos (Prod_Nombre, Prod_idMarca, Prod_Unidades, Prod_PrecioUnitario, idBodega) values ('Torta miles', 3, 10, 3, 3);
-go
-select*from tbProductos
+insert into tbProductos (Prod_Nombre, id_MP, Prod_Unidades, Prod_PrecioUnitario, idBodega) values ('Papas miles', 1, 10, 3, 1);
+insert into tbProductos (Prod_Nombre, id_MP, Prod_Unidades, Prod_PrecioUnitario, idBodega) values ('Alfajor miles', 2, 10, 2, 2);
+insert into tbProductos (Prod_Nombre, id_MP, Prod_Unidades, Prod_PrecioUnitario, idBodega) values ('Torta miles', 3, 10, 3, 3);
+	go
+	select id_MP, MP_Nombre from tbMarcaProductos
+	select idBodega, bdg_nombre from tbBodegas
+	select*from tbProductos
+	/*
+	select*from tbProductos inner join tbMarcaProductos on tbProductos.Prod_idMarca = tbMarcaProductos.id_MP    *//*comparar tablas */
 go
 
 select Prod_Nombre , Prod_idMarca, Prod_Unidades, Prod_PrecioUnitario, idBodega from tbProductos;
