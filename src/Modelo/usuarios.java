@@ -36,7 +36,7 @@ public class usuarios {
     }
 
     public String getUsr_contra() {
-        return usr_contra;
+        return usr_contra; 
     }
 
     public void setUsr_contra(String usr_contra) {
@@ -83,11 +83,12 @@ public class usuarios {
                     main.setVisible(true);
                     LoginPTC login= new LoginPTC();
                     login.setVisible(false);
-                }else 
+                }
+            }
+            else 
             {
                 JOptionPane.showMessageDialog(null, "error de acceso de usuario");
             }
-            } 
         } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error "+e.getMessage());
         }

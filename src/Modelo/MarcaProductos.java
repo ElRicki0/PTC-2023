@@ -5,6 +5,13 @@
  */
 package Modelo;
 
+import java.sql.PreparedStatement;
+import javax.swing.JOptionPane;
+import java.sql.*;
+import Vista.Producto;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Javier
@@ -47,4 +54,22 @@ public class MarcaProductos {
         this.MP_correo = MP_correo;
     }
     
+    
+    public boolean AgregarMarca(MarcaProductos marcamodelo){
+        String SQL="insert into tbMarcaProductos (MP_Nombre, MP_NumeroContacto, MP_Correo) values(?,?,?)";
+        try {
+            PreparedStatement AMarca = CConexion.getConexion().prepareStatement(SQL);
+            AMarca.setString(1, marcamodelo.getMP_nombre());
+            AMarca.setString(2, marcamodelo.getMP_NumeroContacto());
+            AMarca.setString(3, marcamodelo.getMP_correo());
+            AMarca.executeUpdate();
+            JOptionPane.showMessageDialog(null, "La Marca se agrego correctamente");
+            Producto ProductoVista = new Producto();
+            ProductoVista.MostrarMarcas();
+            return true;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERROR EN EL METODO DEL MODELO marca"+ e.toString());                        
+            return false;
+        }
+    }
 }

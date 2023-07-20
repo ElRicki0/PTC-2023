@@ -496,8 +496,10 @@ public class Main extends javax.swing.JFrame {
 
     private void btnProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseClicked
         Producto producto = new Producto();
-        producto.setVisible(true);
+        producto.NIT();
+      //  producto.setVisible(true);
         this.setVisible(false);
+        
     }//GEN-LAST:event_btnProductoMouseClicked
 
     private void btnClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseClicked

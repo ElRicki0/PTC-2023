@@ -12,6 +12,8 @@ import java.sql.*;
 import javax.swing.JOptionPane;
 import Modelo.usuarios;
 import Controlador.ctrlValidarUsuario;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class LoginPTC extends javax.swing.JFrame {
     
