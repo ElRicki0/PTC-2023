@@ -8,6 +8,7 @@ import Modelo.MarcaProductos;
 import javax.swing.ImageIcon;
 import desplazable.Desface;
 import java.awt.Color;
+import java.awt.TextField;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -46,9 +47,7 @@ public class Producto extends javax.swing.JFrame {
         TextPrompt Numero_MC     = new TextPrompt("Numero de telefono...", txtNumeroMC);
         TextPrompt Correo_MC         = new TextPrompt("Correo...", txtCorreosMC);
         
-        this.setLocationRelativeTo(null);
-        MostrarProductos();
-        MostrarMarcas();
+        this.setLocationRelativeTo(null);        
         transpareciaBoton();
         
         ModeloProductos.RellenarMarcaCBX("MP_Nombre", jcbMarca_pdt);
@@ -115,8 +114,6 @@ public class Producto extends javax.swing.JFrame {
         btnEliminarMC = new javax.swing.JButton();
         modificar1 = new Vista.PanelCurvas();
         btnModificarMC = new javax.swing.JButton();
-        actualizar1 = new Vista.PanelCurvas();
-        btnActualizarMC = new javax.swing.JButton();
         jpProductos = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbProductos = new javax.swing.JTable();
@@ -568,9 +565,14 @@ public class Producto extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbMarca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbMarcaMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tbMarca);
 
-        jpMarcas.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, 460));
+        jpMarcas.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 550, 460));
 
         panelCurvas3.setBackground(new java.awt.Color(172, 147, 110));
         panelCurvas3.setRoundBottomLeft(35);
@@ -596,6 +598,11 @@ public class Producto extends javax.swing.JFrame {
         txtNombreMC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreMCActionPerformed(evt);
+            }
+        });
+        txtNombreMC.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreMCKeyTyped(evt);
             }
         });
 
@@ -629,6 +636,11 @@ public class Producto extends javax.swing.JFrame {
         txtNumeroMC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNumeroMCActionPerformed(evt);
+            }
+        });
+        txtNumeroMC.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumeroMCKeyTyped(evt);
             }
         });
 
@@ -702,7 +714,7 @@ public class Producto extends javax.swing.JFrame {
         jLabel13.setText("Informacion");
         panelCurvas3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 167, 41));
 
-        jpMarcas.add(panelCurvas3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 70, 410, 460));
+        jpMarcas.add(panelCurvas3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 70, 410, 460));
 
         jLabel14.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(51, 51, 51));
@@ -764,8 +776,9 @@ public class Producto extends javax.swing.JFrame {
         eliminar1Layout.setHorizontalGroup(
             eliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eliminar1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnEliminarMC, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnEliminarMC, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         eliminar1Layout.setVerticalGroup(
             eliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -774,7 +787,7 @@ public class Producto extends javax.swing.JFrame {
                 .addComponent(btnEliminarMC, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jpMarcas.add(eliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 550, -1, -1));
+        jpMarcas.add(eliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 550, -1, -1));
 
         modificar1.setBackground(new java.awt.Color(172, 147, 110));
         modificar1.setRoundBottomLeft(25);
@@ -798,36 +811,7 @@ public class Producto extends javax.swing.JFrame {
                 .addComponent(btnModificarMC, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jpMarcas.add(modificar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 550, 160, 60));
-
-        actualizar1.setBackground(new java.awt.Color(172, 147, 110));
-        actualizar1.setRoundBottomLeft(25);
-        actualizar1.setRoundBottomRight(25);
-        actualizar1.setRoundTopLeft(25);
-        actualizar1.setRoundTopRight(25);
-
-        btnActualizarMC.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        btnActualizarMC.setText("Actualizar");
-        btnActualizarMC.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnActualizarMCMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout actualizar1Layout = new javax.swing.GroupLayout(actualizar1);
-        actualizar1.setLayout(actualizar1Layout);
-        actualizar1Layout.setHorizontalGroup(
-            actualizar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnActualizarMC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-        );
-        actualizar1Layout.setVerticalGroup(
-            actualizar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, actualizar1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnActualizarMC, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jpMarcas.add(actualizar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 550, 160, 60));
+        jpMarcas.add(modificar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 550, 160, 60));
 
         jPanel1.add(jpMarcas, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 1000, 650));
 
@@ -836,6 +820,7 @@ public class Producto extends javax.swing.JFrame {
 
         jScrollPane1.setBackground(new java.awt.Color(172, 147, 110));
 
+        tbProductos.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         tbProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -847,9 +832,11 @@ public class Producto extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbProductos.setFocusable(false);
+        tbProductos.setRowHeight(30);
         jScrollPane1.setViewportView(tbProductos);
 
-        jpProductos.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, 460));
+        jpProductos.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 70, 560, 460));
 
         panelCurvas1.setBackground(new java.awt.Color(172, 147, 110));
         panelCurvas1.setRoundBottomLeft(35);
@@ -993,7 +980,7 @@ public class Producto extends javax.swing.JFrame {
         jLabel7.setText("Informacion");
         panelCurvas1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 167, 41));
 
-        jpProductos.add(panelCurvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 70, 410, 460));
+        jpProductos.add(panelCurvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 70, 410, 460));
 
         jLabel2.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
@@ -1329,7 +1316,7 @@ public class Producto extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarMouseClicked
 
     private void btnAgregarMCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMCMouseClicked
-        MostrarMarcas(); 
+//        MostrarMarcas(); 
     }//GEN-LAST:event_btnAgregarMCMouseClicked
 
     private void btnAgregarMCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarMCActionPerformed
@@ -1344,24 +1331,45 @@ public class Producto extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNumeroMCActionPerformed
 
-    private void btnActualizarMCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMCMouseClicked
-        MostrarMarcas(); 
-    }//GEN-LAST:event_btnActualizarMCMouseClicked
-
     private void txtCorreosMCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreosMCActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCorreosMCActionPerformed
 
+    private void txtNombreMCKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreMCKeyTyped
+        
+            
+    }//GEN-LAST:event_txtNombreMCKeyTyped
+
+    private void txtNumeroMCKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroMCKeyTyped
+       
+    }//GEN-LAST:event_txtNumeroMCKeyTyped
+
+    private void tbMarcaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbMarcaMouseClicked
+          int filaSeleccionada = tbMarca.getSelectedRow();
+
+        String MCNombre = tbMarca.getValueAt(filaSeleccionada, 1).toString();
+        String MCNumero = tbMarca.getValueAt(filaSeleccionada, 2).toString();
+        String MCCorreo = tbMarca.getValueAt(filaSeleccionada, 3).toString();
+        
+        txtNombreMC.setText(MCNombre);
+        txtNumeroMC.setText(MCNumero);
+        txtCorreosMC.setText(MCCorreo);
+    }//GEN-LAST:event_tbMarcaMouseClicked
+
     /**
      * @param args the command line arguments
      */
+    
+            
     public void NIT(){
         productos modeloProductos= new productos();
         Producto vista= new Producto();
         ctrlProducto control = new ctrlProducto(modeloProductos,vista);
+        modeloProductos.MostrarProductos(vista);
         
         MarcaProductos modeloMarca= new MarcaProductos();
-        ctrlMarca controlMarca= new ctrlMarca(modeloMarca, vista);
+        ctrlMarca controlMarca= new ctrlMarca(modeloMarca, vista);        
+        modeloMarca.MostrarMarcas(vista);
         
         jpProductos.setVisible(false);
         jpMarcas.setVisible(false);
@@ -1376,43 +1384,14 @@ public class Producto extends javax.swing.JFrame {
         btnAgregarMC.setOpaque(false);        
         btnAgregarMC.setContentAreaFilled(false);
         btnAgregarMC.setBorderPainted(false);
+        btnEliminarMC.setOpaque(false);        
+        btnEliminarMC.setContentAreaFilled(false);
+        btnEliminarMC.setBorderPainted(false);
     }
     
-    public void MostrarMarcas(){
-        DefaultTableModel modelo = new DefaultTableModel();
-        modelo.setColumnIdentifiers(new Object[]{"Nombre", "Numero de Telefono", "Correo Electronico"});
-        try {
-            Statement st = CConexion.getConexion().createStatement();
-            String SQL ="select MP_Nombre, MP_NumeroContacto, MP_Correo from tbMarcaProductos;";
-            ResultSet rs = st.executeQuery(SQL);
-            while (rs.next()) {                
-                modelo.addRow(new Object[]{rs.getString("MP_Nombre"), rs.getString("MP_NumeroContacto"), rs.getString("MP_Correo")});
-            }
-            tbMarca.setModel(modelo);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error 4"+e.getMessage());                
-        }
-    }
     
-    public void MostrarProductos(){        
-        DefaultTableModel modelo = new DefaultTableModel();
-        modelo.setColumnIdentifiers(new Object[]{"Nombre","Marca","Unidades","Precio C/U", "Bodega"});
-        try {
-            Statement st= CConexion.getConexion().createStatement();
-            String SQL ="select Prod_Nombre , id_MP, Prod_Unidades, Prod_PrecioUnitario, idBodega from tbProductos;";
-            ResultSet rs = st.executeQuery(SQL);
-            
-            while (rs.next()) {
-                modelo.addRow(new Object[]{rs.getString("Prod_Nombre"), rs.getInt("id_MP"), rs.getInt("Prod_Unidades"), rs.getFloat("Prod_PrecioUnitario"), rs.getInt("idBodega")});
-            }
-            tbProductos.setModel(modelo);            
-        } 
-        catch (Exception e) 
-        {
-            JOptionPane.showMessageDialog(null, "Error 3"+e.getMessage());                
-        }
     
-    }
+    
     
     
     public static void main(String args[]) {
@@ -1457,11 +1436,9 @@ public class Producto extends javax.swing.JFrame {
     private javax.swing.JLabel Rutaicon;
     private javax.swing.JLabel Trabajadoricon;
     private Vista.PanelCurvas actualizar;
-    private Vista.PanelCurvas actualizar1;
     private Vista.PanelCurvas agregar;
     private Vista.PanelCurvas agregar1;
     public javax.swing.JButton btnActualizar;
-    public javax.swing.JButton btnActualizarMC;
     public javax.swing.JButton btnAgregar;
     public javax.swing.JButton btnAgregarMC;
     private Vista.PanelCurvas btnBitacora;

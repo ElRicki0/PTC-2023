@@ -20,7 +20,8 @@ public class ctrlProducto implements  ActionListener{
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==vistaProducto.btnAgregar)
         {
-            System.out.println("SE DA CLIC");
+            try {
+                System.out.println("SE DA CLIC");
             modeloProductos.setProd_nombre(vistaProducto.txtNombre_pdt.getText());
             modeloProductos.setIdMarca(vistaProducto.jcbMarca_pdt.getSelectedItem().toString());
             modeloProductos.setProd_unidades(Integer.parseInt(vistaProducto.txtUnidades_pdt.getText()));
@@ -28,6 +29,11 @@ public class ctrlProducto implements  ActionListener{
             modeloProductos.setIdBodega(vistaProducto.jcbBodega.getSelectedItem().toString());
             
             modeloProductos.AgregarProducto(modeloProductos);
+            modeloProductos.MostrarProductos(vistaProducto);
+            } catch (Exception epa) {
+                System.out.println("eror en control producto" +epa.toString());
+            }
+            
         }
         
 //        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

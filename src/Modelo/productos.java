@@ -77,12 +77,33 @@ public class productos {
             st= conexion.createStatement();
             ResultSet rs= st.executeQuery(SQL) ;
             while(rs.next()){
-                combo1.addItem(rs.getString(Marca));
+                combo1.addItem(rs.getString("id_MP"));
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error en marca "+ e.toString());
         }
-}          
+    }          
+    
+    public void MostrarProductos(Producto vistaProducto){        
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(new Object[]{"ID Producto", "Nombre","Marca","Unidades","Precio C/U", "Bodega"});
+        try {
+            Statement st= CConexion.getConexion().createStatement();
+            String SQL ="select tbProductos.idProducto, tbProductos.Prod_Nombre, tbMarcaProductos.MP_Nombre, tbProductos.Prod_Unidades, tbProductos.Prod_PrecioUnitario, tbBodegas.bdg_nombre \n" +
+"	from tbProductos inner join tbMarcaProductos  on tbProductos.id_MP = tbMarcaProductos.id_MP inner join tbBodegas on tbProductos.idBodega = tbBodegas.idBodega";
+            ResultSet rs = st.executeQuery(SQL);
+            
+            while (rs.next()) {
+                modelo.addRow(new Object[]{rs.getInt("idProducto"), rs.getString("Prod_Nombre"), rs.getString("MP_Nombre"), rs.getInt("Prod_Unidades"), rs.getFloat("Prod_PrecioUnitario"), rs.getString("bdg_nombre")});
+            }
+            vistaProducto.tbProductos.setModel(modelo);            
+        } 
+        catch (Exception e) 
+        {
+            JOptionPane.showMessageDialog(null, "Error 3"+e.getMessage());                
+        }
+    
+    }
     
     public void RellenarBodegaCBX(String Bodega, JComboBox combo2){
     String SQL="select idBodega, bdg_nombre from tbBodegas ";
@@ -93,7 +114,7 @@ public class productos {
             st= conexion.createStatement();
             ResultSet rs= st.executeQuery(SQL) ;
             while(rs.next()){
-                combo2.addItem(rs.getString(Bodega));
+                combo2.addItem(rs.getString("idBodega"));
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error en Bodega     "+ e.toString());
@@ -110,8 +131,8 @@ public class productos {
             AProducto.setInt(5, Integer.parseInt(productomodelo.getIdBodega()));
             AProducto.executeUpdate();
             JOptionPane.showMessageDialog(null, "El producto  se agrego correctamente");
-            Producto productoVista= new Producto();
-            productoVista.MostrarProductos();
+            
+            
             return true;                    
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "ERROR EN EL METODO DEL MODELO"+ e.toString());                        
