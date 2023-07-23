@@ -40,7 +40,8 @@ emp_correo			varchar(300),
 idGenero			int
 foreign key references [dbo].[tbGeneros] (idGenero),
 idTipoEmpleado		int
-foreign key references [dbo].[tbTiposEmpleados] ([idTipoEmpleado])
+foreign key references [dbo].[tbTiposEmpleados] ([idTipoEmpleado]),
+emp_imagen			image
 );
 go
 insert into tbEmpleados(emp_nombre, emp_direccion,		emp_telefono, emp_correo,			idGenero, idTipoEmpleado) 
@@ -62,14 +63,10 @@ create table tbMarcaProductos(
 id_MP				int identity(1,1) primary key,
 MP_Nombre			varchar(1000)not null,
 MP_NumeroContacto	varchar(10),
-MP_Correo			varchar(30)
+MP_Correo			varchar(30),
+MP_Imagen			image
 );
 go
-insert into tbMarcaProductos (MP_Nombre, MP_NumeroContacto, MP_Correo) values('Nombre1','11111111','Correo1@gmail.com');
-insert into tbMarcaProductos (MP_Nombre, MP_NumeroContacto, MP_Correo) values('Nombre2','22222222','Correo2@gmail.com');
-insert into tbMarcaProductos (MP_Nombre, MP_NumeroContacto, MP_Correo) values('Nombre3','33333333','Correo3@gmail.com');
-go
-select MP_Nombre, MP_NumeroContacto, MP_Correo from tbMarcaProductos
 
 create table tbBodegas(
 idBodega			int identity (1,1) primary key,
@@ -92,35 +89,28 @@ foreign key references [dbo].[tbEmpleados]([idEmpleado]),
 idNivelUser			int
 foreign key references [dbo].[tbNivelesUsuarios]([idNivelUser]),
 idBodega			int
-foreign key references [dbo].[tbBodegas]([idBodega])
+foreign key references [dbo].[tbBodegas]([idBodega]),
+usr_imagen image
 );
 go
+/*
+select idUsuario from tbUsuarios
 insert into tbUsuarios(usr_nombre, usr_contrasenia, idEmpleado, idNivelUser, idBodega)values('admin', 'pass123', 1, 1, 1);
 insert into tbUsuarios(usr_nombre, usr_contrasenia, idEmpleado, idNivelUser, idBodega)values('admin2', 'pass1234', 1, 1, 1);
 select*from tbUsuarios
-go
+go*/
 
 create table tbProductos(
 idProducto				int identity (1,1) primary key,
 Prod_Nombre				varchar(50	),
-id_MP					int
+Prod_idMarca				int
 foreign key references [dbo].[tbMarcaProductos](id_MP),
 Prod_Unidades			int not null,
 Prod_PrecioUnitario		float,
 idBodega			int
-foreign key references [dbo].[tbBodegas] 
-([idBodega])
+foreign key references [dbo].[tbBodegas] ([idBodega])
+Prod_imagen				image
 );
-go
-insert into tbProductos (Prod_Nombre, id_MP, Prod_Unidades, Prod_PrecioUnitario, idBodega) values ('Papas miles', 1, 10, 3, 1);
-insert into tbProductos (Prod_Nombre, id_MP, Prod_Unidades, Prod_PrecioUnitario, idBodega) values ('Alfajor miles', 2, 10, 2, 2);
-insert into tbProductos (Prod_Nombre, id_MP, Prod_Unidades, Prod_PrecioUnitario, idBodega) values ('Torta miles', 3, 10, 3, 3);
-	go
-	select id_MP, MP_Nombre from tbMarcaProductos
-	select idBodega, bdg_nombre from tbBodegas
-	select*from tbProductos
-	/*
-	select*from tbProductos inner join tbMarcaProductos on tbProductos.Prod_idMarca = tbMarcaProductos.id_MP    *//*comparar tablas */
 go
 
 select Prod_Nombre , Prod_idMarca, Prod_Unidades, Prod_PrecioUnitario, idBodega from tbProductos;
@@ -163,7 +153,8 @@ clie_Edad			int not null,
 clie_Telefono		varchar(10),
 clie_Correo		varchar(300) not null,
 idGenero			int
-foreign key references  [dbo].[tbGeneros]([idGenero])
+foreign key references  [dbo].[tbGeneros]([idGenero]),
+clie_imagen			image
 );
 go
 
@@ -183,7 +174,8 @@ DT_PersonaDestinatario	varchar(50)not null,
 idCliente			int
 foreign key references [dbo].[tbClientes] ([idCliente]),
 idTienda			int
-foreign key references [dbo].[tbTiendas]([idTienda])
+foreign key references [dbo].[tbTiendas]([idTienda]),
+DT_Imagen			image
 );
 go
 
