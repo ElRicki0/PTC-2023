@@ -131,11 +131,12 @@ public class productos {
             AProducto.setInt(5, Integer.parseInt(productomodelo.getIdBodega()));
             AProducto.executeUpdate();
             JOptionPane.showMessageDialog(null, "El producto  se agrego correctamente");
-            
+            setProd_preciounitario("error 1a");
             
             return true;                    
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "ERROR EN EL METODO DEL MODELO"+ e.toString());                        
+            setProd_preciounitario("error 1b");
             return false;
         }
         

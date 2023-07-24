@@ -11,7 +11,7 @@ import javax.swing.ImageIcon;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import Modelo.usuarios;
-import Controlador.ctrlValidarUsuario;
+import Controlador.ctrlUsuario;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -228,7 +228,7 @@ public class LoginPTC extends javax.swing.JFrame {
             public void run() {
                 usuarios modeloUsuario = new usuarios();
                 LoginPTC vistaLogin = new LoginPTC();
-                ctrlValidarUsuario controlador = new ctrlValidarUsuario(modeloUsuario, vistaLogin);
+                ctrlUsuario controlador = new ctrlUsuario(modeloUsuario, vistaLogin);
                 
                 vistaLogin.setVisible(true);
             }

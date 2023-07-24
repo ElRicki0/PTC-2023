@@ -8,12 +8,12 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 
-public class ctrlValidarUsuario implements ActionListener{
+public class ctrlUsuario implements ActionListener{
 
     private usuarios modeloUsuario;
     private LoginPTC vistaLogin;
             
-    public ctrlValidarUsuario(usuarios modeloUsuario, LoginPTC vistaLogin){
+    public ctrlUsuario(usuarios modeloUsuario, LoginPTC vistaLogin){
         this.modeloUsuario=modeloUsuario;
         this.vistaLogin=vistaLogin;
         this.vistaLogin.btnLogin.addActionListener(this);

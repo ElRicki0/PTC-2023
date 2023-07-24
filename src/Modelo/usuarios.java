@@ -7,7 +7,10 @@ package Modelo;
 
 import Vista.LoginPTC;
 import Vista.Main;
+import Vista.PrimerUso;
+import Vista.PrimerUsuario;
 import java.sql.*;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 
@@ -65,6 +68,34 @@ public class usuarios {
 
     public void setIdBodega(int idBodega) {
         this.idBodega = idBodega;
+    }
+               
+    
+    public void PrimerUso(usuarios modeloUsuario){
+        int resultado =0;
+        String sql="select idUsuario from tbUsuarios";
+        try {
+            Statement sta =CConexion.getConexion().createStatement();
+            ResultSet rs= sta.executeQuery(sql);
+            if (rs.next()) {
+                resultado=1;
+                if(resultado==1){
+                 LoginPTC login = new LoginPTC();
+                 login.setVisible(true);
+                   PrimerUso primer = new PrimerUso();
+                   primer.setVisible(false);
+                }                
+            }
+            else
+            {
+                PrimerUsuario primero = new PrimerUsuario();
+                primero.setVisible(true);
+
+            }
+            
+        } catch (Exception oe) {
+                JOptionPane.showMessageDialog(null, "error 1"+oe.toString());
+        }
     }
     
     public void ValidarUsuario(usuarios modeloUsuario){
