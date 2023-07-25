@@ -22,9 +22,6 @@ Genero				VARCHAR(20) not null
 go
 insert into tbGeneros(Genero) values('Hombre');
 insert into tbGeneros(Genero) values('Mujer');
-insert into tbGeneros(Genero) values('Comedia');
-insert into tbGeneros(Genero) values('Sorbete');
-insert into tbGeneros(Genero) values('Horny');
 go
 select*from tbgeneros
 go
@@ -44,8 +41,11 @@ foreign key references [dbo].[tbTiposEmpleados] ([idTipoEmpleado]),
 emp_imagen			image
 );
 go
-insert into tbEmpleados(emp_nombre, emp_direccion,		emp_telefono, emp_correo,			idGenero, idTipoEmpleado) 
-values                 ('Ricardo Melara',  'AV. Los Proceres', '7229-1462', 'Ricdo06melara@gmail.com', 4, 1);
+select*from tbEmpleados
+/*
+delete from tbEmpleados where emp_nombre = 'Ricardo Melara'
+insert into tbEmpleados(emp_nombre, emp_fecha, emp_direccion, emp_telefono, emp_correo, idGenero, idTipoEmpleado) 
+values                 ('Ricardo Melara', '2006/12/1',  'AV. Los Proceres', '7229-1462', 'Ricdo06melara@gmail.com', 1, 1);*/
 go
 
 create table tbNivelesUsuarios
@@ -56,6 +56,7 @@ usr_Descripcion varchar(500)
 go
 insert into tbNivelesUsuarios(usr_Nivel, usr_Descripcion) values('Administrador', 'Controlador del sistema');
 go
+select*from tbNivelesUsuarios
 
 
 /*Productos*/
@@ -67,6 +68,7 @@ MP_Correo			varchar(30),
 MP_Imagen			image
 );
 go
+
 
 create table tbBodegas(
 idBodega			int identity (1,1) primary key,
@@ -88,17 +90,16 @@ idEmpleado			int
 foreign key references [dbo].[tbEmpleados]([idEmpleado]),
 idNivelUser			int
 foreign key references [dbo].[tbNivelesUsuarios]([idNivelUser]),
-idBodega			int
-foreign key references [dbo].[tbBodegas]([idBodega]),
 usr_imagen image
 );
 go
 /*
 select idUsuario from tbUsuarios
-insert into tbUsuarios(usr_nombre, usr_contrasenia, idEmpleado, idNivelUser, idBodega)values('admin', 'pass123', 1, 1, 1);
-insert into tbUsuarios(usr_nombre, usr_contrasenia, idEmpleado, idNivelUser, idBodega)values('admin2', 'pass1234', 1, 1, 1);
-select*from tbUsuarios
+insert into tbUsuarios(usr_nombre, usr_contrasenia, idEmpleado, idNivelUser)values('admin', 'pass123', 1, 1);
+insert into tbUsuarios(usr_nombre, usr_contrasenia, idEmpleado, idNivelUser)values('admin2', 'pass1234', 1, 1);
+
 go*/
+select*from tbUsuarios where usr_nombre='ricardo' and usr_contrasenia = 'melara2006';
 
 create table tbProductos(
 idProducto				int identity (1,1) primary key,
@@ -108,12 +109,15 @@ foreign key references [dbo].[tbMarcaProductos](id_MP),
 Prod_Unidades			int not null,
 Prod_PrecioUnitario		float,
 idBodega			int
-foreign key references [dbo].[tbBodegas] ([idBodega])
+foreign key references [dbo].[tbBodegas] ([idBodega]),
 Prod_imagen				image
 );
 go
-
+/*
+insert into tbProductos (Prod_Nombre, Prod_idMarca, Prod_Unidades, Prod_PrecioUnitario, idBodega) values('nom1',1,1,1,1)*/
 select Prod_Nombre , Prod_idMarca, Prod_Unidades, Prod_PrecioUnitario, idBodega from tbProductos;
+select tbProductos.idProducto, tbProductos.Prod_Nombre, tbMarcaProductos.MP_Nombre, tbProductos.Prod_Unidades, tbProductos.Prod_PrecioUnitario, tbBodegas.bdg_nombre from tbProductos inner join tbMarcaProductos  on tbProductos.Prod_idMarca = tbMarcaProductos.id_MP inner join tbBodegas on tbProductos.idBodega = tbBodegas.idBodega
+
 
 create table tbDatosDistribucion(
 idDatoDistribucion	int identity (1,1) primary key,
@@ -127,7 +131,7 @@ create table tbPaqueteria(
 idPaqueteria		int identity(1,1) primary key,
 idUsuario			int
 foreign key references [dbo].[tbUsuarios]([idUsuario]),
-[idDatoDistribucion]			int
+idDatoDistribucion			int
 foreign key references [dbo].[tbDatosDistribucion]([idDatoDistribucion])
 );
 go
