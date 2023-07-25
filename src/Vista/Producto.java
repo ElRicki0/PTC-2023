@@ -50,8 +50,8 @@ public class Producto extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);        
         transpareciaBoton();
         
-        ModeloProductos.RellenarMarcaCBX("MP_Nombre", jcbMarca_pdt);
-        ModeloProductos.RellenarBodegaCBX("bdg_nombre", jcbBodega);
+        ModeloProductos.RellenarMarcaCBX( jcbMarca_pdt);
+        ModeloProductos.RellenarBodegaCBX( jcbBodega);
     }
 
     /** This method is called from within the constructor to
@@ -467,7 +467,7 @@ public class Producto extends javax.swing.JFrame {
         jpSubMenu.setBackground(new java.awt.Color(64, 81, 115));
         jpSubMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnSubProductos.setBackground(new java.awt.Color(64, 81, 152));
+        btnSubProductos.setBackground(new java.awt.Color(172, 147, 110));
         btnSubProductos.setRoundBottomLeft(25);
         btnSubProductos.setRoundBottomRight(25);
         btnSubProductos.setRoundTopLeft(25);
@@ -507,7 +507,7 @@ public class Producto extends javax.swing.JFrame {
 
         jpSubMenu.add(btnSubProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 150, -1));
 
-        btnSubMarcas.setBackground(new java.awt.Color(64, 81, 152));
+        btnSubMarcas.setBackground(new java.awt.Color(172, 147, 110));
         btnSubMarcas.setRoundBottomLeft(25);
         btnSubMarcas.setRoundBottomRight(25);
         btnSubMarcas.setRoundTopLeft(25);

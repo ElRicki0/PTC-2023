@@ -68,7 +68,7 @@ public class productos {
         this.idBodega = idBodega;
     }
     
-    public void RellenarMarcaCBX(String Marca, JComboBox combo1){
+    public void RellenarMarcaCBX( JComboBox combo1){
     String SQL="select id_MP, MP_Nombre from tbMarcaProductos ";
     Statement st;
     CConexion con = new CConexion();
@@ -89,8 +89,7 @@ public class productos {
         modelo.setColumnIdentifiers(new Object[]{"ID Producto", "Nombre","Marca","Unidades","Precio C/U", "Bodega"});
         try {
             Statement st= CConexion.getConexion().createStatement();
-            String SQL ="select tbProductos.idProducto, tbProductos.Prod_Nombre, tbMarcaProductos.MP_Nombre, tbProductos.Prod_Unidades, tbProductos.Prod_PrecioUnitario, tbBodegas.bdg_nombre \n" +
-"	from tbProductos inner join tbMarcaProductos  on tbProductos.id_MP = tbMarcaProductos.id_MP inner join tbBodegas on tbProductos.idBodega = tbBodegas.idBodega";
+            String SQL ="select tbProductos.idProducto, tbProductos.Prod_Nombre, tbMarcaProductos.MP_Nombre, tbProductos.Prod_Unidades, tbProductos.Prod_PrecioUnitario, tbBodegas.bdg_nombre from tbProductos inner join tbMarcaProductos  on tbProductos.Prod_idMarca = tbMarcaProductos.id_MP inner join tbBodegas on tbProductos.idBodega = tbBodegas.idBodega";
             ResultSet rs = st.executeQuery(SQL);
             
             while (rs.next()) {
@@ -105,7 +104,7 @@ public class productos {
     
     }
     
-    public void RellenarBodegaCBX(String Bodega, JComboBox combo2){
+    public void RellenarBodegaCBX( JComboBox combo2){
     String SQL="select idBodega, bdg_nombre from tbBodegas ";
     Statement st;
     CConexion con = new CConexion();
@@ -121,7 +120,7 @@ public class productos {
         }
 }
     public boolean AgregarProducto(productos productomodelo){
-        String SQL = "insert into tbProductos (Prod_Nombre, id_MP, Prod_Unidades, Prod_PrecioUnitario, idBodega) values(?,?,?,?,?)";
+        String SQL = "insert into tbProductos (Prod_Nombre, Prod_idMarca, Prod_Unidades, Prod_PrecioUnitario, idBodega) values(?,?,?,?,?)";
         try {
             PreparedStatement AProducto = CConexion.getConexion().prepareStatement(SQL);
             AProducto.setString (1, productomodelo.getProd_nombre());

@@ -535,6 +535,11 @@ public class Main extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    public void INIT(){
+        Main main= new Main();
+        main.setVisible(true);
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -562,7 +567,6 @@ public class Main extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Main().setVisible(true);
             }
         });
     }

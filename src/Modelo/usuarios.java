@@ -5,10 +5,7 @@
  */
 package Modelo;
 
-import Vista.LoginPTC;
-import Vista.Main;
-import Vista.PrimerUso;
-import Vista.PrimerUsuario;
+import Vista.*;
 import java.sql.*;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -70,6 +67,20 @@ public class usuarios {
         this.idBodega = idBodega;
     }
                
+    public void PMUsuario(usuarios modeloUsuario){
+        
+           String sql="insert into tbUsuarios(usr_nombre, usr_contrasenia, idEmpleado, idNivelUser)values(?, ?, 1, 1);";
+           try {
+            PreparedStatement AUsuario= CConexion.getConexion().prepareStatement(sql);
+            AUsuario.setString(1, modeloUsuario.getUsr_nombre());
+            AUsuario.setString(2, modeloUsuario.getUsr_contra());
+            JOptionPane.showMessageDialog(null, "Usuario agregado correctamente");        
+            AUsuario.execute();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al agregar Usuario " +e.toString());        
+        }
+        
+    }
     
     public void PrimerUso(usuarios modeloUsuario){
         int resultado =0;
@@ -81,15 +92,15 @@ public class usuarios {
                 resultado=1;
                 if(resultado==1){
                  LoginPTC login = new LoginPTC();
-                 login.setVisible(true);
+                 login.INIT();
                    PrimerUso primer = new PrimerUso();
                    primer.setVisible(false);
                 }                
             }
             else
             {
-                PrimerUsuario primero = new PrimerUsuario();
-                primero.setVisible(true);
+                PrimerEmpleado PU = new PrimerEmpleado();
+                PU.INIT();
 
             }
             
@@ -102,18 +113,23 @@ public class usuarios {
         int resultado=0;
         String SQL="select*from tbUsuarios where usr_nombre='"+usr_nombre+"' and usr_contrasenia='"+usr_contra+"';";
 
-        try {
+        try {            
             Statement sta = CConexion.getConexion().createStatement();
             ResultSet rs= sta.executeQuery(SQL);
+//            PreparedStatement VUsuario = CConexion.getConexion().prepareStatement(SQL);
+//            VUsuario.setString(1, getUsr_nombre());
+//            VUsuario.setString(2, getUsr_nombre());
+//            VUsuario.execute();
             if (rs.next()) 
             {
+                
                 resultado=1;
                 if (resultado==1) 
                 {
                     Main main = new Main();
-                    main.setVisible(true);
-                    LoginPTC login= new LoginPTC();
-                    login.setVisible(false);
+                    main.INIT();                            
+//                    LoginPTC login= new LoginPTC();
+//                    login.setVisible(false);
                 }
             }
             else 
@@ -121,7 +137,7 @@ public class usuarios {
                 JOptionPane.showMessageDialog(null, "error de acceso de usuario");
             }
         } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error "+e.getMessage());
+                JOptionPane.showMessageDialog(null, "Error en modelo usuario"+e.getMessage());
         }
     }
             

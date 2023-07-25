@@ -5,11 +5,14 @@
  */
 package Modelo;
 
+import Vista.PrimerEmpleado;
+import Vista.PrimerUsuario;
 import javax.swing.JComboBox;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
 public class EmpleadosM {
+        
     private int idEmpleado;
     private String Emp_nombre;
     private String Emp_documento;
@@ -18,7 +21,7 @@ public class EmpleadosM {
     private String Emp_telefono;
     private String Emp_correo;
     private String idGenero;
-    private int idTipoEmpleado;
+    private String idTipoEmpleado;
 
     public String getEmp_telefono() {
         return Emp_telefono;
@@ -44,11 +47,11 @@ public class EmpleadosM {
         this.idGenero = idGenero;
     }
 
-    public int getIdTipoEmpleado() {
+    public String getIdTipoEmpleado() {
         return idTipoEmpleado;
     }
 
-    public void setIdTipoEmpleado(int idTipoEmpleado) {
+    public void setIdTipoEmpleado(String idTipoEmpleado) {
         this.idTipoEmpleado = idTipoEmpleado;
     }
 
@@ -107,18 +110,26 @@ public class EmpleadosM {
             JOptionPane.showMessageDialog(null, "Error en cmdgenero "+ e.toString());
         }
     }
-    public boolean AgregarEmpleado(EmpleadosM modeloEmpleados){
-        String sql="insert into tbEmpleados(emp_nombre,emp_fecha, emp_direccion, emp_telefono, emp_correo, idGenero) values(?, ?, ?, ?, ?, ?)";
+    
+    private PrimerEmpleado PMEmpleado;
+    
+    
+    
+    public boolean AgregarEmpleado(EmpleadosM modeloEmpleados, PrimerEmpleado vistaEmpleado){        
         try {
-            PreparedStatement AEmpleado= CConexion.getConexion().prepareStatement(sql);
-            AEmpleado.setString(1, modeloEmpleados.getEmp_nombre());
-            AEmpleado.setString(2, modeloEmpleados.getEmp_fecha());
-            AEmpleado.setString(3, modeloEmpleados.getEmp_direccion());
-            AEmpleado.setString(4, modeloEmpleados.getEmp_telefono());
-            AEmpleado.setString(5, modeloEmpleados.getEmp_correo());
-            AEmpleado.setInt(6, Integer.parseInt(modeloEmpleados.getIdGenero()));
+            
+            String sql="insert into tbEmpleados(emp_nombre,emp_fecha, emp_direccion, emp_telefono, emp_correo, idGenero, idTipoEmpleado) values(?, ?, ?, ?, ?, ?, 1)";
 
-            JOptionPane.showMessageDialog(null, "El Empleado  se agrego correctamente");        
+        
+        PreparedStatement AEmpleado= CConexion.getConexion().prepareStatement(sql);
+        AEmpleado.setString(1, modeloEmpleados.getEmp_nombre());
+        AEmpleado.setString(2, modeloEmpleados.getEmp_fecha());
+        AEmpleado.setString(3, modeloEmpleados.getEmp_direccion());
+        AEmpleado.setString(4, modeloEmpleados.getEmp_telefono());
+        AEmpleado.setString(5, modeloEmpleados.getEmp_correo());
+        AEmpleado.setInt(6, Integer.parseInt(modeloEmpleados.getIdGenero()));
+        AEmpleado.execute();
+        JOptionPane.showMessageDialog(null, "El Empleado  se agrego correctamente");            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al agregar empleado " +e.toString());        
         }

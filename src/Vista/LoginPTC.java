@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Controlador.ctrlLogin;
 import Modelo.CConexion;
 import com.sun.jdi.connect.spi.Connection;
 import javax.swing.ImageIcon;
@@ -209,7 +210,7 @@ public class LoginPTC extends javax.swing.JFrame {
     }//GEN-LAST:event_bntSesionMouseClicked
 
     private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
-        this.setVisible(false);
+        
     }//GEN-LAST:event_btnLoginMouseClicked
 
     public void transpareciaBoton(){
@@ -221,16 +222,20 @@ public class LoginPTC extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    
+    public void INIT(){
+        usuarios modeloUsuario = new usuarios();
+        LoginPTC vistaLogin = new LoginPTC(); 
+        Main main = new Main();
+        ctrlLogin controlador = new ctrlLogin(modeloUsuario, vistaLogin, main);
+        vistaLogin.setVisible(true);
+    }
     public static void main(String args[]) {
         
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                usuarios modeloUsuario = new usuarios();
-                LoginPTC vistaLogin = new LoginPTC();
-                ctrlUsuario controlador = new ctrlUsuario(modeloUsuario, vistaLogin);
                 
-                vistaLogin.setVisible(true);
             }
         });
     }

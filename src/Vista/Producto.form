@@ -532,7 +532,7 @@
             <Container class="Vista.PanelCurvas" name="btnSubProductos">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="98" green="51" red="40" type="rgb"/>
+                  <Color blue="6e" green="93" red="ac" type="rgb"/>
                 </Property>
                 <Property name="roundBottomLeft" type="int" value="25"/>
                 <Property name="roundBottomRight" type="int" value="25"/>
@@ -587,7 +587,7 @@
             <Container class="Vista.PanelCurvas" name="btnSubMarcas">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="98" green="51" red="40" type="rgb"/>
+                  <Color blue="6e" green="93" red="ac" type="rgb"/>
                 </Property>
                 <Property name="roundBottomLeft" type="int" value="25"/>
                 <Property name="roundBottomRight" type="int" value="25"/>
