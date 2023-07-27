@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -6,12 +6,15 @@
 package Modelo;
 
 import java.sql.*;
-import Vista.Producto;
+import Vista.*;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class productos {
+    
+    Producto vistaProducto;
+    
     private int idProducto;
     private String prod_nombre;
     private String idMarca;
@@ -86,10 +89,11 @@ public class productos {
     
     public void MostrarProductos(Producto vistaProducto){        
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.setColumnIdentifiers(new Object[]{"ID Producto", "Nombre","Marca","Unidades","Precio C/U", "Bodega"});
+        modelo.setColumnIdentifiers(new Object[]{"ID", "Nombre","Marca","Unidades","Precio C/U", "Bodega"});
         try {
             Statement st= CConexion.getConexion().createStatement();
-            String SQL ="select tbProductos.idProducto, tbProductos.Prod_Nombre, tbMarcaProductos.MP_Nombre, tbProductos.Prod_Unidades, tbProductos.Prod_PrecioUnitario, tbBodegas.bdg_nombre from tbProductos inner join tbMarcaProductos  on tbProductos.Prod_idMarca = tbMarcaProductos.id_MP inner join tbBodegas on tbProductos.idBodega = tbBodegas.idBodega";
+                String SQL ="select tbProductos.idProducto, tbProductos.Prod_Nombre, tbMarcaProductos.MP_Nombre, tbProductos.Prod_Unidades, tbProductos.Prod_PrecioUnitario, tbBodegas.bdg_nombre"+
+                    " from tbProductos inner join tbMarcaProductos  on tbProductos.id_MP = tbMarcaProductos.id_MP inner join tbBodegas on tbProductos.idBodega = tbBodegas.idBodega";
             ResultSet rs = st.executeQuery(SQL);
             
             while (rs.next()) {
@@ -103,6 +107,7 @@ public class productos {
         }
     
     }
+    
     
     public void RellenarBodegaCBX( JComboBox combo2){
     String SQL="select idBodega, bdg_nombre from tbBodegas ";
@@ -119,8 +124,10 @@ public class productos {
             JOptionPane.showMessageDialog(null, "Error en Bodega     "+ e.toString());
         }
 }
+    
     public boolean AgregarProducto(productos productomodelo){
-        String SQL = "insert into tbProductos (Prod_Nombre, Prod_idMarca, Prod_Unidades, Prod_PrecioUnitario, idBodega) values(?,?,?,?,?)";
+                        
+        String SQL = "insert into tbProductos (Prod_Nombre, id_MP, Prod_Unidades, Prod_PrecioUnitario, idBodega) values(?,?,?,?,?)";
         try {
             PreparedStatement AProducto = CConexion.getConexion().prepareStatement(SQL);
             AProducto.setString (1, productomodelo.getProd_nombre());
@@ -128,19 +135,63 @@ public class productos {
             AProducto.setInt    (3, productomodelo.getProd_unidades());
             AProducto.setString (4, productomodelo.getProd_preciounitario());
             AProducto.setInt(5, Integer.parseInt(productomodelo.getIdBodega()));
-            AProducto.executeUpdate();
+            AProducto.execute();
             JOptionPane.showMessageDialog(null, "El producto  se agrego correctamente");
-            setProd_preciounitario("error 1a");
             
             return true;                    
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "ERROR EN EL METODO DEL MODELO"+ e.toString());                        
-            setProd_preciounitario("error 1b");
+            JOptionPane.showMessageDialog(null, "ERROR EN EL METODO DEL MODELO"+ e.toString());  
             return false;
         }
         
     }
               
+    public void EliminarProducto (Producto vistaProducto){
+        int filaSeleccionada = vistaProducto.tbProductos.getSelectedRow();
+        
+        //Obtenemos el id de la fila seleccionada
+        String miId = vistaProducto.tbProductos.getValueAt(filaSeleccionada, 0).toString();
+        //borramos 
+        try {
+            PreparedStatement deleteUser = CConexion.getConexion().prepareStatement("delete from tbProductos where idProducto = '" + miId + "'");
+            deleteUser.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Se elimino correctamente la marca");                           
+        } catch (Exception e) {
+         System.out.println(e.toString());
+          JOptionPane.showMessageDialog(null, "Error al intentar eliminar el producto");                           
+        }
+    }
     
+    public boolean Actualizarproducto(Producto vistaProducto){
+        
+            int filaSeleccionada = vistaProducto.tbProductos.getSelectedRow();      
+
+                            //Obtenemos el id de la fila seleccionada
+                              String miId = vistaProducto.tbProductos.getValueAt(filaSeleccionada, 0).toString();
+                                String nuevoValorIngresadoNombre = vistaProducto.txtNombre_pdt.getText();
+                                String nuevoValorIngresadoMarca = vistaProducto.jcbMarca_pdt.getSelectedItem().toString();
+                                String nuevoValorIngresadounidades = vistaProducto.txtUnidades_pdt.getText();
+                                String nuevoValorIngresadoprecio = vistaProducto.txtPrecioUnitario_pdt.getText();   
+                                String nuevoValorIngresadoBodega = vistaProducto.jcbBodega.getSelectedItem().toString();   
+
+                                try {
+
+                                 PreparedStatement updateUser = CConexion.getConexion().prepareStatement("update tbProductos set Prod_Nombre = ?, id_MP=?, Prod_Unidades = ?, Prod_PrecioUnitario = ?, idBodega = ? where idProducto = ?");
+                                    updateUser.setString(1, nuevoValorIngresadoNombre);
+                                    updateUser.setInt(2, Integer.parseInt( nuevoValorIngresadoMarca));
+                                    updateUser.setInt(3, Integer.parseInt( nuevoValorIngresadounidades));
+                                    updateUser.setString(4, nuevoValorIngresadoprecio);
+                                    updateUser.setInt(5, Integer.parseInt( nuevoValorIngresadoBodega));
+                                    updateUser.setString(6, miId);
+                                    JOptionPane.showMessageDialog(null, "El producto se actualizo correctamente");                           
+                                    updateUser.executeUpdate();
+                                    return true;
+                                    } catch (Exception e) {
+                                    System.out.println(e.toString());
+                                    JOptionPane.showMessageDialog(null, "Error en actualizar producto");  
+                                    return false;
+                                         }
+        
+    }
 
 }

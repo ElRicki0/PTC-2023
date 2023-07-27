@@ -5,7 +5,6 @@
 package Controlador;
 
 import Modelo.*;
-import Vista.Empleados;
 import Vista.PrimerEmpleado;
 import Vista.PrimerUsuario;
 import java.awt.event.ActionEvent;

@@ -172,7 +172,7 @@ public class PrimerEmpleado extends javax.swing.JFrame {
         panelCurvas7.setRoundTopLeft(50);
         panelCurvas7.setRoundTopRight(50);
 
-        btnAgregar.setFont(new java.awt.Font("Leelawadee UI", 0, 36)); // NOI18N
+        btnAgregar.setFont(new java.awt.Font("Leelawadee UI", 1, 40)); // NOI18N
         btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregar.setText("Agregar");
         btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -200,9 +200,9 @@ public class PrimerEmpleado extends javax.swing.JFrame {
 
         jPanel1.add(panelCurvas7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 580, 230, -1));
 
-        jLabel1.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel1.setText("Ingrese su cumpleaños");
+        jLabel1.setText("Ingrese su fecha de nacimiento");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, 350, 30));
 
         jLabel2.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
@@ -210,27 +210,27 @@ public class PrimerEmpleado extends javax.swing.JFrame {
         jLabel2.setText("<html> Saludos usuario, para poder iniciar el programa debemos iniciar creando un empleado con sus datos, este contara con control total del sistema</html>");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 520, 110));
 
-        jLabel3.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("Ingrese su genero");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 470, 230, 30));
 
-        jLabel4.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
         jLabel4.setText("Ingrese su nombre");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 220, 30));
 
-        jLabel5.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setText("Ingrese su correo ");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 470, 220, 30));
 
-        jLabel6.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
         jLabel6.setText("Ingrese su telefono");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, 220, 30));
 
-        jLabel7.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
         jLabel7.setText("Ingrese su direccion");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 360, 230, 30));

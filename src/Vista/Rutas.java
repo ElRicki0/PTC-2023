@@ -440,8 +440,7 @@ public class Rutas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClienteMouseExited
 
     private void btnTrabajadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadorMouseClicked
-        Empleados empleado = new Empleados();
-        empleado.setVisible(true);
+        VEmpleados empleado = new VEmpleados();
         this.setVisible(false);
     }//GEN-LAST:event_btnTrabajadorMouseClicked
 
@@ -495,9 +494,7 @@ public class Rutas extends javax.swing.JFrame {
 
     ///BTN_ACTIONES///////////////////////////////////////////////////////////////////////
     private void btnClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseClicked
-        Cliente cliente = new Cliente();
-        cliente.setVisible(true);
-        this.setVisible(false);
+        
     }//GEN-LAST:event_btnClienteMouseClicked
 
     private void btnBitacoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitacoraMouseClicked

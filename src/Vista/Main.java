@@ -498,14 +498,13 @@ public class Main extends javax.swing.JFrame {
         Producto producto = new Producto();
         producto.NIT();
       //  producto.setVisible(true);
-        this.setVisible(false);
-        
+        this.dispose();
     }//GEN-LAST:event_btnProductoMouseClicked
 
     private void btnClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseClicked
-        Cliente cliente = new Cliente();
-        cliente.setVisible(true);
-        this.setVisible(false);
+        VCliente cl= new VCliente();
+        cl.INIT();
+        this.dispose();
     }//GEN-LAST:event_btnClienteMouseClicked
 
     private void btnBitacoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitacoraMouseClicked
@@ -515,9 +514,9 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBitacoraMouseClicked
 
     private void btnTrabajadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadorMouseClicked
-        Empleados empleados = new Empleados();
-        empleados.setVisible(true);
-        this.setVisible(false);
+        VEmpleados empleados = new VEmpleados();
+        empleados.INIT();
+        this.dispose();
     }//GEN-LAST:event_btnTrabajadorMouseClicked
 
     private void btnRutaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseClicked

@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
 import java.sql.*;
 import Vista.Producto;
+import Vista.Producto_Marca;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -54,7 +55,7 @@ public class MarcaProductos {
         this.MP_correo = MP_correo;
     }
     
-    public void MostrarMarcas(Producto vistaProducto){
+    public void MostrarMarcas(Producto_Marca vistaProducto){
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(new Object[]{"ID Marca", "Nombre", "Numero de Telefono", "Correo Electronico"});
         try {
@@ -72,7 +73,7 @@ public class MarcaProductos {
     
         
     
-    public boolean AgregarMarca(MarcaProductos marcamodelo, Producto vistaProducto){
+    public boolean AgregarMarca(MarcaProductos marcamodelo, Producto_Marca vistaProducto){
         String textoTelefono = vistaProducto.txtNumeroMC.getText();
         String textoNombre = vistaProducto.txtNombreMC.getText();
         String textoCorreo = vistaProducto.txtCorreosMC.getText();
@@ -122,7 +123,7 @@ public class MarcaProductos {
     
     
     
-    public void eliminar(Producto vistaProducto){
+    public void eliminar(Producto_Marca vistaProducto){
     
         //obtenemos que fila seleccionó el usuario
         int filaSeleccionada = vistaProducto.tbMarca.getSelectedRow();
@@ -140,7 +141,7 @@ public class MarcaProductos {
         }
     }
     
-    public boolean actualizar(Producto vistamarca){
+    public boolean actualizar(Producto_Marca vistamarca){
         
         String textoTelefono = vistamarca.txtNumeroMC.getText();
         String textoNombre = vistamarca.txtNombreMC.getText();

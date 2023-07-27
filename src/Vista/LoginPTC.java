@@ -152,10 +152,15 @@ public class LoginPTC extends javax.swing.JFrame {
         bntSesion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnLogin.setFont(new java.awt.Font("MS PGothic", 1, 18)); // NOI18N
-        btnLogin.setText("jButton1");
+        btnLogin.setText("Ingresar");
         btnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnLoginMouseClicked(evt);
+            }
+        });
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
             }
         });
         bntSesion.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 80));
@@ -212,6 +217,10 @@ public class LoginPTC extends javax.swing.JFrame {
     private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
         
     }//GEN-LAST:event_btnLoginMouseClicked
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     public void transpareciaBoton(){
         btnLogin.setOpaque(false);        

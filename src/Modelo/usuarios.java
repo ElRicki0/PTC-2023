@@ -9,14 +9,15 @@ import Vista.*;
 import java.sql.*;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 
 public class usuarios {
     private int idUsuario;
     private String usr_nombre;
     private String usr_contra;
-    private int idEmpleado;
-    private int idnivelUser;
+    private String idEmpleado;
+    private String idnivelUser;
     private int idBodega;
 
     public int getIdUsuario() {
@@ -43,19 +44,19 @@ public class usuarios {
         this.usr_contra = usr_contra;
     }
 
-    public int getIdEmpleado() {
+    public String getIdEmpleado() {
         return idEmpleado;
     }
 
-    public void setIdEmpleado(int idEmpleado) {
+    public void setIdEmpleado(String idEmpleado) {
         this.idEmpleado = idEmpleado;
     }
 
-    public int getIdnivelUser() {
+    public String getIdnivelUser() {
         return idnivelUser;
     }
 
-    public void setIdnivelUser(int idnivelUser) {
+    public void setIdnivelUser(String idnivelUser) {
         this.idnivelUser = idnivelUser;
     }
 
@@ -116,10 +117,6 @@ public class usuarios {
         try {            
             Statement sta = CConexion.getConexion().createStatement();
             ResultSet rs= sta.executeQuery(SQL);
-//            PreparedStatement VUsuario = CConexion.getConexion().prepareStatement(SQL);
-//            VUsuario.setString(1, getUsr_nombre());
-//            VUsuario.setString(2, getUsr_nombre());
-//            VUsuario.execute();
             if (rs.next()) 
             {
                 
@@ -127,9 +124,7 @@ public class usuarios {
                 if (resultado==1) 
                 {
                     Main main = new Main();
-                    main.INIT();                            
-//                    LoginPTC login= new LoginPTC();
-//                    login.setVisible(false);
+                    main.INIT();                         
                 }
             }
             else 
@@ -140,6 +135,66 @@ public class usuarios {
                 JOptionPane.showMessageDialog(null, "Error en modelo usuario"+e.getMessage());
         }
     }
-            
     
+    public void mostrarUsuarios(VUsuarios vistaUsuarios){
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(new Object[]{"ID","Nombre", "Contraseña", "Nombre Empleado", "Nivel Usuario"});
+        try {
+            Statement st = CConexion.getConexion().createStatement();
+            String sql ="select idUsuario, usr_nombre, usr_contrasenia, idEmpleado, idNivelUser from tbUsuarios";
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+                modelo.addRow(new Object[]{rs.getInt("idUsuario"), rs.getString("usr_nombre"), rs.getString("usr_contrasenia"), rs.getInt("idEmpleado"), rs.getInt("idNivelUser")});
+            }
+            vistaUsuarios.tbEmpleados.setModel(modelo);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error tabla empleados "+e.getMessage());                
+        }
+    }
+            
+    public void AUsuarios(usuarios modeloUsuario){
+         try {
+            PreparedStatement AUsuario = CConexion.getConexion().prepareStatement("insert into tbUsuarios(usr_nombre, usr_contrasenia, idEmpleado, idNivelUser) values(?,?,?,?)");
+
+            AUsuario.setString(1, modeloUsuario.getUsr_nombre());
+            AUsuario.setString(2, modeloUsuario.getUsr_contra());
+            AUsuario.setInt(3, Integer.parseInt(modeloUsuario.getIdEmpleado()));
+            AUsuario.setInt(4, Integer.parseInt(modeloUsuario.getIdnivelUser()));
+            AUsuario.executeUpdate();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "el empleado ya esta en uso " +e.toString());        
+        }
+    }
+    
+    public void jcbEmpleado(JComboBox combox){
+        String sql="select idEmpleado from tbEmpleados";
+        Statement st;
+    CConexion con = new CConexion();
+    Connection conexion=con.getConexion();
+        try {
+            st= conexion.createStatement();
+            ResultSet rs= st.executeQuery(sql) ;
+            while(rs.next()){
+                combox.addItem(rs.getString("idEmpleado"));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error en modelo empleado cbx "+ e.toString());
+        }
+    }
+            
+    public void jcbNivelesU(JComboBox combox){
+        String sql="select idNivelUser from tbNivelesUsuarios";
+        Statement st;
+    CConexion con = new CConexion();
+    Connection conexion=con.getConexion();
+        try {
+            st= conexion.createStatement();
+            ResultSet rs= st.executeQuery(sql) ;
+            while(rs.next()){
+                combox.addItem(rs.getString("idNivelUser"));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error en niveles usuariocbx "+ e.toString());
+        }
+    }
 }
