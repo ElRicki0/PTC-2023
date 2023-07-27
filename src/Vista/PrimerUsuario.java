@@ -4,7 +4,7 @@
  */
 package Vista;
 
-import Controlador.ctrlUsuario;
+import Controlador.ctrlPrimerUsuario;
 import Modelo.usuarios;
 
 /**
@@ -159,7 +159,7 @@ public class PrimerUsuario extends javax.swing.JFrame {
             usuarios modeloUsuario= new usuarios();
             LoginPTC login=new LoginPTC();
 
-            ctrlUsuario cotrl = new ctrlUsuario(vistaPUsuario, modeloUsuario, login);
+            ctrlPrimerUsuario cotrl = new ctrlPrimerUsuario(vistaPUsuario, modeloUsuario, login);
             vistaPUsuario.setVisible(true);
         }   
     

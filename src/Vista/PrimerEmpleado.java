@@ -4,7 +4,7 @@
  */
 package Vista;
 
-import Controlador.ctrlEmpleado;
+import Controlador.ctrlPrimerEmpleado;
 import Modelo.*;
 import java.awt.Color;
 import java.awt.TextField;
@@ -35,7 +35,7 @@ public class PrimerEmpleado extends javax.swing.JFrame {
         PrimerEmpleado vistaPrimer= new PrimerEmpleado();
         EmpleadosM modeloEmpleado= new EmpleadosM();
         PrimerUsuario vistaPMUsuario = new PrimerUsuario();
-        ctrlEmpleado control = new ctrlEmpleado(modeloEmpleado, vistaPrimer, vistaPMUsuario);
+        ctrlPrimerEmpleado control = new ctrlPrimerEmpleado(modeloEmpleado, vistaPrimer, vistaPMUsuario);
         vistaPrimer.setVisible(true);
     }
     

@@ -1,8 +1,8 @@
 
 package Vista;
 
-import Controlador.ctrlEmpleadoM;
-import Controlador.ctrlNUsuarios;
+import Controlador.ctrlEmpleado;
+import Controlador.ctrlNivelesUsuarios;
 import Modelo.CConexion;
 import Modelo.EmpleadosM;
 import Modelo.NivelesUsuarios;
@@ -1030,30 +1030,12 @@ public class VNUsuarios extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    
-//    public boolean AgregarEmpleado(){        
-//        try {
-//            
-//        String sql="insert into tbEmpleados(emp_nombre,emp_fecha, emp_direccion, emp_telefono, emp_correo, idGenero, idTipoEmpleado) values(?, ?, ?, ?, ?, ?, ?)";
-//
-//        
-//        PreparedStatement AEmpleado= CConexion.getConexion().prepareStatement(sql);
-//        AEmpleado.setString(1, txtNombre_emp.getText());
-//        AEmpleado.setString(2, txtFN_emp.getText());
-//        AEmpleado.setInt(7, Integer.parseInt(jcbTipo.getSelectedItem().toString()));
-//        AEmpleado.execute();
-//        JOptionPane.showMessageDialog(null, "El Empleado  se agrego correctamente");            
-//        } catch (Exception e) {
-//                        JOptionPane.showMessageDialog(null, "Error en cmd genero "+ e.toString()); 
-//        }
-//        return true;
-//    }
-    
+        
     public void INIT(){
         VNUsuarios vistaNUsuarios = new VNUsuarios();
         NivelesUsuarios modelo = new NivelesUsuarios();
         modelo.MostrarNusuarios(vistaNUsuarios);
-        ctrlNUsuarios control = new ctrlNUsuarios(vistaNUsuarios, modelo);
+        ctrlNivelesUsuarios control = new ctrlNivelesUsuarios(vistaNUsuarios, modelo);
         vistaNUsuarios.setVisible(true);
     }
     public static void main(String args[]) {

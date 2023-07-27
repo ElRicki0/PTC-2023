@@ -12,7 +12,7 @@ import javax.swing.ImageIcon;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import Modelo.usuarios;
-import Controlador.ctrlUsuario;
+import Controlador.ctrlPrimerUsuario;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

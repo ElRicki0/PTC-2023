@@ -50,7 +50,8 @@ public class Producto extends javax.swing.JFrame {
         transpareciaBoton();
         
         ModeloProductos.RellenarMarcaCBX( jcbMarca_pdt);
-        ModeloProductos.RellenarBodegaCBX( jcbBodega);
+        ModeloProductos.RellenarBodegaCBX(jcbBodega1);
+        ModeloProductos.llenarBuscador(jcbBuscador);
     }
 
     /** This method is called from within the constructor to
@@ -107,9 +108,9 @@ public class Producto extends javax.swing.JFrame {
         panelCurvas5 = new Vista.PanelCurvas();
         txtPrecioUnitario_pdt = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jcbBodega = new javax.swing.JComboBox<>();
         jcbMarca_pdt = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
+        jcbBodega1 = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         agregar = new Vista.PanelCurvas();
         btnAgregar = new javax.swing.JButton();
@@ -118,8 +119,9 @@ public class Producto extends javax.swing.JFrame {
         modificar = new Vista.PanelCurvas();
         btnModificar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+        jcbBuscador = new javax.swing.JComboBox<>();
         panelCurvas3 = new Vista.PanelCurvas();
-        txtBuscar = new javax.swing.JTextField();
+        btnCXBuscar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1080, 760));
@@ -687,9 +689,6 @@ public class Producto extends javax.swing.JFrame {
         jLabel6.setText("Bodega:");
         panelCurvas1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 140, 41));
 
-        jcbBodega.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        panelCurvas1.add(jcbBodega, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, 240, 50));
-
         jcbMarca_pdt.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
         panelCurvas1.add(jcbMarca_pdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 240, 50));
 
@@ -697,6 +696,9 @@ public class Producto extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(51, 51, 51));
         jLabel8.setText("Informacion");
         panelCurvas1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 167, 41));
+
+        jcbBodega1.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        panelCurvas1.add(jcbBodega1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, 240, 50));
 
         jpProductos.add(panelCurvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 70, 410, 460));
 
@@ -802,22 +804,20 @@ public class Producto extends javax.swing.JFrame {
         jLabel7.setText("Buscar:");
         jpProductos.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 10, 80, 41));
 
-        panelCurvas3.setBackground(new java.awt.Color(172, 147, 110));
-        panelCurvas3.setRoundBottomLeft(25);
-        panelCurvas3.setRoundBottomRight(25);
-        panelCurvas3.setRoundTopLeft(25);
-        panelCurvas3.setRoundTopRight(25);
+        jcbBuscador.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        jpProductos.add(jcbBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, 240, 40));
 
-        txtBuscar.setBackground(new java.awt.Color(172, 147, 110));
-        txtBuscar.setBorder(null);
-        txtBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBuscarActionPerformed(evt);
+        btnCXBuscar.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        btnCXBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCXBuscar.setText("Buscar");
+        btnCXBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCXBuscarMouseClicked(evt);
             }
         });
-        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtBuscarKeyReleased(evt);
+        btnCXBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCXBuscarActionPerformed(evt);
             }
         });
 
@@ -825,20 +825,18 @@ public class Producto extends javax.swing.JFrame {
         panelCurvas3.setLayout(panelCurvas3Layout);
         panelCurvas3Layout.setHorizontalGroup(
             panelCurvas3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCurvas3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCurvas3Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnCXBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         panelCurvas3Layout.setVerticalGroup(
             panelCurvas3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCurvas3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(7, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCurvas3Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnCXBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jpProductos.add(panelCurvas3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, 310, 50));
+        jpProductos.add(panelCurvas3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 10, 120, 40));
 
         jPanel1.add(jpProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 1000, 650));
 
@@ -951,8 +949,8 @@ public class Producto extends javax.swing.JFrame {
     //BTN_MOVIMIENTO///////////////////////////////////////////////////////////////////////
     private void btnTrabajadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadorMouseClicked
         VEmpleados empleado = new VEmpleados();
-        empleado.setVisible(true);
-        this.setVisible(false);
+        empleado.INIT();
+        this.dispose();
     }//GEN-LAST:event_btnTrabajadorMouseClicked
 
     private void btnClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseClicked
@@ -964,19 +962,19 @@ public class Producto extends javax.swing.JFrame {
     private void btnBitacoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitacoraMouseClicked
         Bitacora bitacora = new Bitacora();
         bitacora.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_btnBitacoraMouseClicked
 
     private void btnRutaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseClicked
         Rutas rutas = new Rutas();
         rutas.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_btnRutaMouseClicked
 
     private void btnBodegaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseClicked
         Bodegas bodegas = new Bodegas();
         bodegas.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_btnBodegaMouseClicked
 
     private void txtNombre_pdtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombre_pdtActionPerformed
@@ -992,8 +990,8 @@ public class Producto extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPrecioUnitario_pdtActionPerformed
 
     private void btnSubProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubProductosMouseClicked
-        ModeloProductos.RellenarMarcaCBX(jcbBodega);
-        ModeloProductos.RellenarBodegaCBX(jcbBodega);
+        ModeloProductos.RellenarMarcaCBX(jcbBuscador);
+        ModeloProductos.RellenarBodegaCBX(jcbBuscador);
     }//GEN-LAST:event_btnSubProductosMouseClicked
 
     private void btnSubProductosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubProductosMouseEntered
@@ -1061,33 +1059,34 @@ public class Producto extends javax.swing.JFrame {
         txtPrecioUnitario_pdt.setText(Precio);
     }//GEN-LAST:event_tbProductosMouseClicked
 
-    private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
+    private void btnCXBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCXBuscarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtBuscarActionPerformed
+    }//GEN-LAST:event_btnCXBuscarActionPerformed
 
-    private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
-        //Creamos el modelo de datos 
-        DefaultTableModel modelo= new DefaultTableModel();
-        
-        //poner los encabesados de la tabla 
-        modelo.setColumnIdentifiers(new Object[]{"ID","Nombre", "Marca", "Unidades", "Precio C/U", "Bodega"});
-        //Hacemos un select 
-        try{
-            Statement statement  = CConexion.getConexion() . createStatement();
-            String query = "Select * from tbProductos where Prod_Nombre like '"+txtBuscar.getText()+"%'";
-            ResultSet rs = statement.executeQuery(query);
+    private void btnCXBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCXBuscarMouseClicked
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(new Object[]{"ID", "Nombre","Marca","Unidades","Precio C/U", "Bodega"});
+        try {
+            Statement st= CConexion.getConexion().createStatement();
+//                String SQL ="select tbProductos.idProducto, tbProductos.Prod_Nombre, tbMarcaProductos.MP_Nombre, tbProductos.Prod_Unidades, tbProductos.Prod_PrecioUnitario, tbBodegas.bdg_nombre"+
+//                    " from tbProductos inner join tbMarcaProductos  on tbProductos.id_MP = tbMarcaProductos.id_MP inner join tbBodegas on tbProductos.idBodega = tbBodegas.idBodega";
             
-            while (rs.next())
-            {                
+            String SQL="select tbProductos.idProducto, tbProductos.Prod_Nombre, tbMarcaProductos.MP_Nombre, tbProductos.Prod_Unidades, tbProductos.Prod_PrecioUnitario, tbBodegas.bdg_nombre\n" +
+            "from tbProductos inner join tbMarcaProductos  on tbProductos.id_MP = tbMarcaProductos.id_MP inner join tbBodegas on tbProductos.idBodega = tbBodegas.idBodega where MP_Nombre='"+jcbBuscador.getSelectedItem()+"'";
+            
+            
+            
+            ResultSet rs = st.executeQuery(SQL);
+            while (rs.next()) {
                 modelo.addRow(new Object[]{rs.getInt("idProducto"), rs.getString("Prod_Nombre"), rs.getString("MP_Nombre"), rs.getInt("Prod_Unidades"), rs.getFloat("Prod_PrecioUnitario"), rs.getString("bdg_nombre")});
             }
-            tbProductos.setModel(modelo);
-            
+            tbProductos.setModel(modelo);            
+        } 
+        catch (Exception e) 
+        {
+            JOptionPane.showMessageDialog(null, "Error 3"+e.getMessage());                
         }
-        catch (SQLException ex){
-            System.out.println(ex.toString());
-        }
-    }//GEN-LAST:event_txtBuscarKeyReleased
+    }//GEN-LAST:event_btnCXBuscarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1161,6 +1160,7 @@ public class Producto extends javax.swing.JFrame {
     public javax.swing.JButton btnAgregar;
     private Vista.PanelCurvas btnBitacora;
     private Vista.PanelCurvas btnBodega;
+    public javax.swing.JButton btnCXBuscar;
     private Vista.PanelCurvas btnCasa;
     private Vista.PanelCurvas btnCliente;
     public javax.swing.JButton btnEliminar;
@@ -1181,7 +1181,8 @@ public class Producto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JComboBox<String> jcbBodega;
+    public javax.swing.JComboBox<String> jcbBodega1;
+    public javax.swing.JComboBox<String> jcbBuscador;
     public javax.swing.JComboBox<String> jcbMarca_pdt;
     public javax.swing.JPanel jpProductos;
     private javax.swing.JPanel jpSubMenu;
@@ -1195,7 +1196,6 @@ public class Producto extends javax.swing.JFrame {
     private javax.swing.JLabel txtBarras;
     private javax.swing.JLabel txtBitacora;
     private javax.swing.JLabel txtBodega;
-    public javax.swing.JTextField txtBuscar;
     private javax.swing.JLabel txtCasa;
     private javax.swing.JLabel txtCliente;
     private javax.swing.JLabel txtEmpleado;

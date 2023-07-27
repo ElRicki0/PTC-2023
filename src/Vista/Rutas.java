@@ -416,7 +416,9 @@ public class Rutas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCasaMouseExited
 
     private void btnProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseClicked
-
+            Producto producto =new Producto();
+            producto.NIT();
+            this.dispose();
     }//GEN-LAST:event_btnProductoMouseClicked
 
     private void btnProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseEntered

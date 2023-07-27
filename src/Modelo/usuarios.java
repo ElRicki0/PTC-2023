@@ -13,12 +13,26 @@ import javax.swing.table.DefaultTableModel;
 
 
 public class usuarios {
+    
+    
+    
+    
     private int idUsuario;
     private String usr_nombre;
     private String usr_contra;
+    private String usr_preguntasSeguridad;
     private String idEmpleado;
     private String idnivelUser;
     private int idBodega;
+
+    public String getUsr_preguntasSeguridad() {
+        return usr_preguntasSeguridad;
+    }
+
+    public void setUsr_preguntasSeguridad(String usr_preguntasSeguridad) {
+        this.usr_preguntasSeguridad = usr_preguntasSeguridad;
+    }
+    
 
     public int getIdUsuario() {
         return idUsuario;
@@ -152,8 +166,15 @@ public class usuarios {
         }
     }
             
+    String NombreE = getIdEmpleado();
+    
     public void AUsuarios(usuarios modeloUsuario){
          try {
+//             String texto1 = vistaUsuarios.jcbEmpleado.getSelectedItem().toString();
+//            if (texto1==) {
+//                
+//            } else {
+//            }
             PreparedStatement AUsuario = CConexion.getConexion().prepareStatement("insert into tbUsuarios(usr_nombre, usr_contrasenia, idEmpleado, idNivelUser) values(?,?,?,?)");
 
             AUsuario.setString(1, modeloUsuario.getUsr_nombre());
@@ -162,7 +183,7 @@ public class usuarios {
             AUsuario.setInt(4, Integer.parseInt(modeloUsuario.getIdnivelUser()));
             AUsuario.executeUpdate();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "el empleado ya esta en uso " +e.toString());        
+            JOptionPane.showMessageDialog(null, "el empleado ya esta en uso ");        
         }
     }
     

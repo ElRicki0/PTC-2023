@@ -20,6 +20,7 @@ public class ctrllUsuario implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==vistaUsuario.btnAgregar){
+            
             modeloUsuario.setUsr_nombre(vistaUsuario.txtNombre_USR.getText());
             modeloUsuario.setUsr_contra(vistaUsuario.txtContra_USR.getText());
             modeloUsuario.setIdEmpleado(vistaUsuario.jcbEmpleado.getSelectedItem().toString());

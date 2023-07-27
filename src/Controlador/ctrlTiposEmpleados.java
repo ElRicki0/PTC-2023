@@ -6,12 +6,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
-public class ctrlTEmpleados implements ActionListener{
+public class ctrlTiposEmpleados implements ActionListener{
 
     private VNEmpleados vistaTEmpleados;
     private TiposEmpleados modeloTEmpleados;
     
-    public ctrlTEmpleados(VNEmpleados vistaTEmpleados, TiposEmpleados modeloTEmpleados){
+    public ctrlTiposEmpleados(VNEmpleados vistaTEmpleados, TiposEmpleados modeloTEmpleados){
         this.vistaTEmpleados=vistaTEmpleados;
         this.modeloTEmpleados=modeloTEmpleados;
         this.vistaTEmpleados.btnAgregar.addActionListener(this);

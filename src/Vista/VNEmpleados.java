@@ -4,8 +4,8 @@
  */
 package Vista;
 
-import Controlador.ctrlEmpleadoM;
-import Controlador.ctrlTEmpleados;
+import Controlador.ctrlEmpleado;
+import Controlador.ctrlTiposEmpleados;
 import Modelo.CConexion;
 import Modelo.EmpleadosM;
 import Modelo.TiposEmpleados;
@@ -1035,28 +1035,12 @@ public class VNEmpleados extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    
-    public boolean AgregarEmpleado(){        
-        try {
-            
-        String sql="insert into tbEmpleados(emp_nombre,emp_fecha, emp_direccion, emp_telefono, emp_correo, idGenero, idTipoEmpleado) values(?, ?, ?, ?, ?, ?, ?)";
-
         
-        PreparedStatement AEmpleado= CConexion.getConexion().prepareStatement(sql);
-        AEmpleado.setString(1, txtNombre_TE.getText());
-        AEmpleado.execute();
-        JOptionPane.showMessageDialog(null, "El Empleado  se agrego correctamente");            
-        } catch (Exception e) {
-                        JOptionPane.showMessageDialog(null, "Error en cmd genero "+ e.toString()); 
-        }
-        return true;
-    }
-    
     public void INIT(){
         VNEmpleados vistaempleados = new VNEmpleados();
         TiposEmpleados ModeloTEmpleados= new TiposEmpleados();
         ModeloTEmpleados.MostrarTEmpleados(vistaempleados);
-        ctrlTEmpleados control= new ctrlTEmpleados(vistaempleados, ModeloTEmpleados);
+        ctrlTiposEmpleados control= new ctrlTiposEmpleados(vistaempleados, ModeloTEmpleados);
         vistaempleados.setVisible(true);
     }
     public static void main(String args[]) {

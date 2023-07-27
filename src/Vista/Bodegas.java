@@ -416,8 +416,8 @@ public class Bodegas extends javax.swing.JFrame {
 
     private void btnProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseClicked
         Producto producto = new Producto();
-        producto.setVisible(true);
-        this.setVisible(false);
+        producto.NIT();
+        this.dispose();
     }//GEN-LAST:event_btnProductoMouseClicked
 
     private void btnProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseEntered

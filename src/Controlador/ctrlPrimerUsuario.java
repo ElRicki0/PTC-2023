@@ -8,14 +8,14 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 
-public class ctrlUsuario implements ActionListener{
+public class ctrlPrimerUsuario implements ActionListener{
 
     
     private PrimerUsuario vistaPUsuario; 
     private usuarios modeloUsuario;
     private LoginPTC login;
     
-    public ctrlUsuario (PrimerUsuario vistaPUsuario, usuarios modeloUsuario, LoginPTC login){
+    public ctrlPrimerUsuario (PrimerUsuario vistaPUsuario, usuarios modeloUsuario, LoginPTC login){
         this.modeloUsuario=modeloUsuario;
         this.vistaPUsuario=vistaPUsuario;
         this.login=login;

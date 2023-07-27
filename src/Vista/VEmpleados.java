@@ -4,7 +4,7 @@
  */
 package Vista;
 
-import Controlador.ctrlEmpleadoM;
+import Controlador.ctrlEmpleado;
 import Modelo.CConexion;
 import Modelo.EmpleadosM;
 import java.awt.Color;
@@ -626,7 +626,7 @@ public class VEmpleados extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setText("Empleados");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 260, 41));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 111, 260, 70));
 
         panelCurvas1.setBackground(new java.awt.Color(172, 147, 110));
         panelCurvas1.setRoundBottomLeft(35);
@@ -949,8 +949,8 @@ public class VEmpleados extends javax.swing.JFrame {
 
     private void btnProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseClicked
         Producto producto = new Producto();
-        producto.setVisible(true);
-        this.setVisible(false);
+        producto.NIT();
+        this.dispose();
     }//GEN-LAST:event_btnProductoMouseClicked
 
     private void btnProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseEntered
@@ -1165,14 +1165,14 @@ public class VEmpleados extends javax.swing.JFrame {
         AEmpleado.execute();
         JOptionPane.showMessageDialog(null, "El Empleado  se agrego correctamente");            
         } catch (Exception e) {
-                        JOptionPane.showMessageDialog(null, "Error en cmd genero "+ e.toString()); 
+                        JOptionPane.showMessageDialog(null, "error 1 "+ e.toString()); 
         }
         return true;
     }
     
     public void INIT(){
         VEmpleados vistaempleados = new VEmpleados();
-        ctrlEmpleadoM control= new ctrlEmpleadoM(vistaempleados, modeloEmpleados);
+        ctrlEmpleado control= new ctrlEmpleado(vistaempleados, modeloEmpleados);
         modeloEmpleados.MostrarEmpleados(vistaempleados);
         vistaempleados.setVisible(true);
     }

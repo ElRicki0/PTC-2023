@@ -985,7 +985,7 @@ public class VUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombre_USRActionPerformed
 
     private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
-        AgregarEmpleado();
+        
     }//GEN-LAST:event_btnAgregarMouseClicked
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
@@ -1030,24 +1030,6 @@ public class VUsuarios extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    
-    public boolean AgregarEmpleado(){        
-        try {
-            
-        String sql="insert into tbEmpleados(emp_nombre,emp_fecha, emp_direccion, emp_telefono, emp_correo, idGenero, idTipoEmpleado) values(?, ?, ?, ?, ?, ?, ?)";
-
-        
-        PreparedStatement AEmpleado= CConexion.getConexion().prepareStatement(sql);
-        AEmpleado.setString(1, txtNombre_USR.getText());
-        AEmpleado.setString(2, txtContra_USR.getText());
-        AEmpleado.setInt(7, Integer.parseInt(jcbEmpleado.getSelectedItem().toString()));
-        AEmpleado.execute();
-        JOptionPane.showMessageDialog(null, "El Empleado  se agrego correctamente");            
-        } catch (Exception e) {
-                        JOptionPane.showMessageDialog(null, "Error en cmd genero "+ e.toString()); 
-        }
-        return true;
-    }
     
     public void INIT(){
         VUsuarios vistaUsuarios = new VUsuarios();

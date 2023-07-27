@@ -198,6 +198,8 @@ public class MarcaProductos {
         return false;
         }
            
+    
+    
         
         
           //obtenemos que fila seleccionó el usuario

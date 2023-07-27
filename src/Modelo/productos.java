@@ -71,6 +71,22 @@ public class productos {
         this.idBodega = idBodega;
     }
     
+    public void llenarBuscador(JComboBox combo){
+        String sql="select MP_Nombre from tbMarcaProductos";
+        Statement st;
+    CConexion con = new CConexion();
+    Connection conexion=con.getConexion();
+        try {
+            st= conexion.createStatement();
+            ResultSet rs= st.executeQuery(sql) ;
+            while(rs.next()){
+                combo.addItem(rs.getString("MP_Nombre"));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error en marca buscador  "+ e.toString());
+        }
+    }
+    
     public void RellenarMarcaCBX( JComboBox combo1){
     String SQL="select id_MP, MP_Nombre from tbMarcaProductos ";
     Statement st;
@@ -172,7 +188,7 @@ public class productos {
                                 String nuevoValorIngresadoMarca = vistaProducto.jcbMarca_pdt.getSelectedItem().toString();
                                 String nuevoValorIngresadounidades = vistaProducto.txtUnidades_pdt.getText();
                                 String nuevoValorIngresadoprecio = vistaProducto.txtPrecioUnitario_pdt.getText();   
-                                String nuevoValorIngresadoBodega = vistaProducto.jcbBodega.getSelectedItem().toString();   
+                                String nuevoValorIngresadoBodega = vistaProducto.jcbBuscador.getSelectedItem().toString();   
 
                                 try {
 

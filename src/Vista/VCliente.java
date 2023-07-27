@@ -852,7 +852,7 @@ public class VCliente extends javax.swing.JFrame {
     private void btnCasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseClicked
         Main main = new Main();
         main.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_btnCasaMouseClicked
 
     private void btnCasaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseEntered
@@ -867,8 +867,8 @@ public class VCliente extends javax.swing.JFrame {
 
     private void btnProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseClicked
         Producto producto = new Producto();
-        producto.setVisible(true);
-        this.setVisible(false);
+        producto.NIT();
+        this.dispose();
     }//GEN-LAST:event_btnProductoMouseClicked
 
     private void btnProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseEntered
@@ -948,7 +948,8 @@ public class VCliente extends javax.swing.JFrame {
 
     private void btnTrabajadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadorMouseClicked
         VEmpleados empleados = new VEmpleados();
-        this.setVisible(false);
+        empleados.INIT();
+        this.dispose();
     }//GEN-LAST:event_btnTrabajadorMouseClicked
 
     private void btnRutaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseClicked

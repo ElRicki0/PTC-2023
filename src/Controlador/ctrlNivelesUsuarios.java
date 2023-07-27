@@ -12,12 +12,12 @@ import javax.swing.JOptionPane;
  *
  * @author rnmel
  */
-public class ctrlNUsuarios implements ActionListener{
+public class ctrlNivelesUsuarios implements ActionListener{
 
     private VNUsuarios vistaNUsuarios;
     private NivelesUsuarios modeloNUsuarios;
     
-    public ctrlNUsuarios(VNUsuarios vistaNUsuarios, NivelesUsuarios modeloNUsuarios){
+    public ctrlNivelesUsuarios(VNUsuarios vistaNUsuarios, NivelesUsuarios modeloNUsuarios){
         this.vistaNUsuarios=vistaNUsuarios;
         this.modeloNUsuarios=modeloNUsuarios;
         this.vistaNUsuarios.btnAgregar.addActionListener(this);
@@ -28,6 +28,7 @@ public class ctrlNUsuarios implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==vistaNUsuarios.btnAgregar){
+            
             try {
                 modeloNUsuarios.setUsr_Nivel(vistaNUsuarios.txtNombre_NU.getText());
             modeloNUsuarios.setUsr_Descripcion(vistaNUsuarios.txtDescripcion_NU.getText());

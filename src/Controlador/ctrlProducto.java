@@ -39,7 +39,7 @@ public class ctrlProducto implements  ActionListener{
                             modeloProductos.setIdMarca( vistaProducto.jcbMarca_pdt.getSelectedItem().toString());
                             modeloProductos.setProd_unidades(Integer.parseInt(vistaProducto.txtUnidades_pdt.getText()));
                             modeloProductos.setProd_preciounitario(vistaProducto.txtPrecioUnitario_pdt.getText());
-                            modeloProductos.setIdBodega(vistaProducto.jcbBodega.getSelectedItem().toString());
+                            modeloProductos.setIdBodega(vistaProducto.jcbBodega1.getSelectedItem().toString());
                             modeloProductos.AgregarProducto(modeloProductos);
                             modeloProductos.MostrarProductos(vistaProducto);
                         }

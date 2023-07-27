@@ -417,8 +417,8 @@ public class Bitacora extends javax.swing.JFrame {
 
     private void btnProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseClicked
         Producto producto = new Producto();
-        producto.setVisible(true);
-        this.setVisible(false);
+        producto.NIT();
+        this.dispose();
     }//GEN-LAST:event_btnProductoMouseClicked
 
     private void btnProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseEntered
@@ -502,13 +502,14 @@ public class Bitacora extends javax.swing.JFrame {
 
     private void btnTrabajadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadorMouseClicked
         VEmpleados empleado = new VEmpleados();
-        this.setVisible(false);
+        empleado.INIT();
+        this.dispose();
     }//GEN-LAST:event_btnTrabajadorMouseClicked
 
     private void btnRutaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseClicked
         Rutas rutas = new Rutas();
         rutas.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_btnRutaMouseClicked
 
     private void btnBodegaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseClicked
