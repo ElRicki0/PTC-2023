@@ -13,6 +13,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -28,6 +30,7 @@ public class Producto extends javax.swing.JFrame {
     Desface desplace;
     public Producto() {
         initComponents();
+        
         setIconImage(new ImageIcon(getClass().getResource("/Vista/Iconos/CASA.png")).getImage());
 
         rsscalelabel.RSScaleLabel.setScaleLabel(txtLogo, "src/Vista/Iconos/logo.png");
@@ -48,11 +51,15 @@ public class Producto extends javax.swing.JFrame {
         
         this.setLocationRelativeTo(null);        
         transpareciaBoton();
-        
-        ModeloProductos.RellenarMarcaCBX( jcbMarca_pdt);
+            
+       
+        ModeloProductos.RellenarMarcaCBX(jcbMarca_pdt);
         ModeloProductos.RellenarBodegaCBX(jcbBodega1);
         ModeloProductos.llenarBuscador(jcbBuscador);
+
     }
+    
+    
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -990,8 +997,8 @@ public class Producto extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPrecioUnitario_pdtActionPerformed
 
     private void btnSubProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubProductosMouseClicked
-        ModeloProductos.RellenarMarcaCBX(jcbBuscador);
-        ModeloProductos.RellenarBodegaCBX(jcbBuscador);
+//        ModeloProductos.RellenarMarcaCBX(jcbBuscador);
+//        ModeloProductos.RellenarBodegaCBX(jcbBuscador);
     }//GEN-LAST:event_btnSubProductosMouseClicked
 
     private void btnSubProductosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubProductosMouseEntered
@@ -1208,5 +1215,4 @@ public class Producto extends javax.swing.JFrame {
     public javax.swing.JTextField txtUnidades_pdt;
     private javax.swing.JLabel txtproducto;
     // End of variables declaration//GEN-END:variables
-
 }

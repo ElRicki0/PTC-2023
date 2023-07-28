@@ -7,9 +7,13 @@ package Modelo;
 
 import java.sql.*;
 import Vista.*;
+import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class productos {
     
@@ -87,22 +91,48 @@ public class productos {
         }
     }
     
-    public void RellenarMarcaCBX( JComboBox combo1){
-    String SQL="select id_MP, MP_Nombre from tbMarcaProductos ";
-    Statement st;
-    CConexion con = new CConexion();
-    Connection conexion=con.getConexion();
-        try {
-            st= conexion.createStatement();
-            ResultSet rs= st.executeQuery(SQL) ;
-            while(rs.next()){
-                combo1.addItem(rs.getString("id_MP"));
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error en marca "+ e.toString());
-        }
-    }          
+//    
+    public void RellenarMarcaCBX(JComboBox combo) {
+    Connection conectar = null;
+    PreparedStatement pst = null;
+    ResultSet result = null;
+
+    String SSQL = "SELECT id_MP, MP_Nombre FROM tbMarcaProductos";
+    combo.removeAllItems();
     
+    // Usamos un Map para almacenar pares de ID y nombre
+    Map<Integer, String> idNombreMar = new HashMap<>();
+
+    try {
+        conectar = CConexion.getConexion();
+        pst = conectar.prepareStatement(SSQL);
+        result = pst.executeQuery();
+
+        while (result.next()) {
+            int id = result.getInt("id_MP");
+            String nombre = result.getString("MP_Nombre");
+            idNombreMar.put(id, nombre); // Almacenamos el ID y el nombre en el Map
+            combo.addItem(nombre);
+        }
+
+        // Almacenamos el Map en las propiedades del combo box
+        combo.putClientProperty("idNombreMar", idNombreMar);
+
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, e);
+    } finally {
+        if (conectar != null) {
+            try {
+                conectar.close();
+                result.close();
+                conectar = null;
+                result = null;
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+        }
+    }
+}
     public void MostrarProductos(Producto vistaProducto){        
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(new Object[]{"ID", "Nombre","Marca","Unidades","Precio C/U", "Bodega"});
@@ -141,26 +171,56 @@ public class productos {
         }
 }
     
-    public boolean AgregarProducto(productos productomodelo){
-                        
-        String SQL = "insert into tbProductos (Prod_Nombre, id_MP, Prod_Unidades, Prod_PrecioUnitario, idBodega) values(?,?,?,?,?)";
-        try {
-            PreparedStatement AProducto = CConexion.getConexion().prepareStatement(SQL);
-            AProducto.setString (1, productomodelo.getProd_nombre());
-            AProducto.setInt(2, Integer.parseInt(productomodelo.getIdMarca()));
-            AProducto.setInt    (3, productomodelo.getProd_unidades());
-            AProducto.setString (4, productomodelo.getProd_preciounitario());
-            AProducto.setInt(5, Integer.parseInt(productomodelo.getIdBodega()));
-            AProducto.execute();
-            JOptionPane.showMessageDialog(null, "El producto  se agrego correctamente");
-            
-            return true;                    
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "ERROR EN EL METODO DEL MODELO"+ e.toString());  
+//    public boolean AgregarProducto(productos productomodelo){                
+//        String SQL = "insert into tbProductos (Prod_Nombre, id_MP, Prod_Unidades, Prod_PrecioUnitario, idBodega) values(?,?,?,?,?)";
+//        try {
+//            PreparedStatement AProducto = CConexion.getConexion().prepareStatement(SQL);
+//            AProducto.setString (1, productomodelo.getProd_nombre());
+//            AProducto.setInt(2, Integer.parseInt(productomodelo.getIdMarca()));
+//            AProducto.setInt    (3, productomodelo.getProd_unidades());
+//            AProducto.setString (4, productomodelo.getProd_preciounitario());
+//            AProducto.setInt(5, Integer.parseInt(productomodelo.getIdBodega()));
+//            AProducto.execute();
+//            JOptionPane.showMessageDialog(null, "El producto  se agrego correctamente");
+//            
+//            return true;                    
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, "ERROR EN EL METODO DEL MODELO"+ e.toString());  
+//            return false;
+//        }
+//        
+//    }
+    
+    public boolean AgregarProducto(productos productomodelo, JComboBox comboMarca) {
+    String SQL = "INSERT INTO tbProductos (Prod_Nombre, id_MP, Prod_Unidades, Prod_PrecioUnitario, idBodega) VALUES (?, ?, ?, ?, ?)";
+    try {
+        PreparedStatement AProducto = CConexion.getConexion().prepareStatement(SQL);
+        AProducto.setString(1, productomodelo.getProd_nombre());
+
+        // Obtener el ID del ComboBox seleccionado
+        int selectedIndex = comboMarca.getSelectedIndex();
+        if (selectedIndex != -1) {
+            Map<Integer, String> idNombreMar = (Map<Integer, String>) comboMarca.getClientProperty("idNombreMar");
+            int selectedID = (int) idNombreMar.keySet().toArray()[selectedIndex];
+            AProducto.setInt(2, selectedID); // Usar el ID seleccionado
+        } else {
+            // Si no hay elemento seleccionado, muestra un mensaje o toma una acción adecuada
+            JOptionPane.showMessageDialog(null, "Seleccione una marca válida del ComboBox.");
             return false;
         }
-        
+
+        AProducto.setInt(3, productomodelo.getProd_unidades());
+        AProducto.setString(4, productomodelo.getProd_preciounitario());
+        AProducto.setInt(5, Integer.parseInt(productomodelo.getIdBodega()));
+        AProducto.execute();
+        JOptionPane.showMessageDialog(null, "El producto se agregó correctamente");
+
+        return true;
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "ERROR EN EL METODO DEL MODELO: " + e.toString());
+        return false;
     }
+}
               
     public void EliminarProducto (Producto vistaProducto){
         int filaSeleccionada = vistaProducto.tbProductos.getSelectedRow();
