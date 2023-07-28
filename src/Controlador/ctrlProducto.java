@@ -38,7 +38,7 @@ public class ctrlProducto implements  ActionListener{
             modeloProductos.setProd_unidades(Integer.parseInt(vistaProducto.txtUnidades_pdt.getText()));
             modeloProductos.setProd_preciounitario(vistaProducto.txtPrecioUnitario_pdt.getText());
             modeloProductos.setIdBodega(vistaProducto.jcbBodega1.getSelectedItem().toString());
-            modeloProductos.AgregarProducto(modeloProductos, vistaProducto.jcbMarca_pdt);
+            modeloProductos.AgregarProducto(modeloProductos, vistaProducto.jcbMarca_pdt, vistaProducto.jcbBodega1);
             modeloProductos.MostrarProductos(vistaProducto);
         }
     } catch (Exception epa) {

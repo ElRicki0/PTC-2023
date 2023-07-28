@@ -155,21 +155,28 @@ public class productos {
     }
     
     
-    public void RellenarBodegaCBX( JComboBox combo2){
-    String SQL="select idBodega, bdg_nombre from tbBodegas ";
+    public void RellenarBodegaCBX(JComboBox comboBDG) {
+    String SQL = "select idBodega, bdg_nombre from tbBodegas ";
     Statement st;
     CConexion con = new CConexion();
-    Connection conexion=con.getConexion();
-        try {
-            st= conexion.createStatement();
-            ResultSet rs= st.executeQuery(SQL) ;
-            while(rs.next()){
-                combo2.addItem(rs.getString("idBodega"));
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error en Bodega     "+ e.toString());
+    Connection conexion = con.getConexion();
+    Map<Integer, String> bodegasMap = new HashMap<>();
+
+    try {
+        st = conexion.createStatement();
+        ResultSet rs = st.executeQuery(SQL);
+        while (rs.next()) {
+            int idBodega = rs.getInt("idBodega");
+            String nombreBodega = rs.getString("bdg_nombre");
+            bodegasMap.put(idBodega, nombreBodega);
+            comboBDG.addItem(nombreBodega);
         }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error en Bodega     " + e.toString());
+    }
+    comboBDG.putClientProperty("bodegasMap", bodegasMap);
 }
+        
     
 //    public boolean AgregarProducto(productos productomodelo){                
 //        String SQL = "insert into tbProductos (Prod_Nombre, id_MP, Prod_Unidades, Prod_PrecioUnitario, idBodega) values(?,?,?,?,?)";
@@ -191,27 +198,37 @@ public class productos {
 //        
 //    }
     
-    public boolean AgregarProducto(productos productomodelo, JComboBox comboMarca) {
+public boolean AgregarProducto(productos productomodelo, JComboBox comboMarca, JComboBox comboBDG) {
     String SQL = "INSERT INTO tbProductos (Prod_Nombre, id_MP, Prod_Unidades, Prod_PrecioUnitario, idBodega) VALUES (?, ?, ?, ?, ?)";
     try {
         PreparedStatement AProducto = CConexion.getConexion().prepareStatement(SQL);
         AProducto.setString(1, productomodelo.getProd_nombre());
 
-        // Obtener el ID del ComboBox seleccionado
-        int selectedIndex = comboMarca.getSelectedIndex();
-        if (selectedIndex != -1) {
+        // Obtener el ID de la marca seleccionada desde el JComboBox de marcas
+        int selectedMarcaIndex = comboMarca.getSelectedIndex();
+        if (selectedMarcaIndex != -1) {
             Map<Integer, String> idNombreMar = (Map<Integer, String>) comboMarca.getClientProperty("idNombreMar");
-            int selectedID = (int) idNombreMar.keySet().toArray()[selectedIndex];
-            AProducto.setInt(2, selectedID); // Usar el ID seleccionado
+            int selectedMarcaID = (int) idNombreMar.keySet().toArray()[selectedMarcaIndex];
+            AProducto.setInt(2, selectedMarcaID); // Usar el ID de la marca seleccionada
         } else {
-            // Si no hay elemento seleccionado, muestra un mensaje o toma una acción adecuada
-            JOptionPane.showMessageDialog(null, "Seleccione una marca válida del ComboBox.");
+            JOptionPane.showMessageDialog(null, "Seleccione una marca válida del ComboBox de marcas.");
             return false;
         }
 
         AProducto.setInt(3, productomodelo.getProd_unidades());
         AProducto.setString(4, productomodelo.getProd_preciounitario());
-        AProducto.setInt(5, Integer.parseInt(productomodelo.getIdBodega()));
+
+        // Obtener el ID de la bodega seleccionada desde el JComboBox de bodegas
+        int selectedBodegaIndex = comboBDG.getSelectedIndex();
+        if (selectedBodegaIndex != -1) {
+            Map<Integer, String> idNombreBodega = (Map<Integer, String>) comboBDG.getClientProperty("bodegasMap");
+            int selectedBodegaID = (int) idNombreBodega.keySet().toArray()[selectedBodegaIndex];
+            AProducto.setInt(5, selectedBodegaID); // Usar el ID de la bodega seleccionada
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione una bodega válida del ComboBox de bodegas.");
+            return false;
+        }
+
         AProducto.execute();
         JOptionPane.showMessageDialog(null, "El producto se agregó correctamente");
 
