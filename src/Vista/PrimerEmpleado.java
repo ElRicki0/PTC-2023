@@ -21,10 +21,11 @@ public class PrimerEmpleado extends javax.swing.JFrame {
     
     public PrimerEmpleado() {
         initComponents();
-//        TextPrompt texto1 = new TextPrompt("Ingrese su nombre...", txtNombre);
-//        TextPrompt texto3 = new TextPrompt("Ingrese su correo...", txtCorreo);
-//        TextPrompt texto4 = new TextPrompt("Ingrese su direccion...", txtDireccion);
-//        TextPrompt texto2 = new TextPrompt("Ingrese su Telefono...", txtTelefono);
+        TextPrompt texto1 = new TextPrompt("Nombre", txtNombre);
+        TextPrompt texto3 = new TextPrompt("Correo Electronico", txtCorreo);
+        TextPrompt texto4 = new TextPrompt("Dirección", txtDireccion);
+        TextPrompt texto2 = new TextPrompt("Numero de Telefono", txtTelefono);
+        TextPrompt texto5 = new TextPrompt("Año/Mes/Dia", txtFecha);
         
         this.setLocationRelativeTo(null);
         transparenciaBotin();

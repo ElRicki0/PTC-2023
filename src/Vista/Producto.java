@@ -42,9 +42,9 @@ public class Producto extends javax.swing.JFrame {
         
         desplace = new Desface();
         
-        TextPrompt nombre_pdt       = new TextPrompt("Nombre...", txtNombre_pdt);        
-        TextPrompt unidades_pdt     = new TextPrompt("Unidades...", txtUnidades_pdt);
-        TextPrompt PrecioCU         = new TextPrompt("Precio...", txtPrecioUnitario_pdt);
+        TextPrompt nombre_pdt       = new TextPrompt("Nombre", txtNombre_pdt);        
+        TextPrompt unidades_pdt     = new TextPrompt("Unidades", txtUnidades_pdt);
+        TextPrompt PrecioCU         = new TextPrompt("Precio", txtPrecioUnitario_pdt);
         
         this.setLocationRelativeTo(null);        
         transpareciaBoton();

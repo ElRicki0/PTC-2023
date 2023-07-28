@@ -40,9 +40,9 @@ public class Producto_Marca extends javax.swing.JFrame {
         desplace = new Desface();
         
         
-        TextPrompt nombre_MC       = new TextPrompt("Nombre...", txtNombreMC);        
-        TextPrompt Numero_MC     = new TextPrompt("Numero de telefono...", txtNumeroMC);
-        TextPrompt Correo_MC         = new TextPrompt("Correo...", txtCorreosMC);
+        TextPrompt nombre_MC       = new TextPrompt("Nombre", txtNombreMC);        
+        TextPrompt Numero_MC     = new TextPrompt("Numero de telefono", txtNumeroMC);
+        TextPrompt Correo_MC         = new TextPrompt("Correo Electronico", txtCorreosMC);
         
         this.setLocationRelativeTo(null);        
         transpareciaBoton();

@@ -29,6 +29,10 @@ public class VUsuarios extends javax.swing.JFrame {
         rsscalelabel.RSScaleLabel.setScaleLabel(txtBarras, "src/Vista/Iconos/lista.png");
         modeloUsuario.jcbEmpleado(jcbEmpleado);
         modeloUsuario.jcbNivelesU(jcbUsuario);
+        
+        TextPrompt nombre       = new TextPrompt("Nombre", txtNombre_USR);        
+        TextPrompt contra     = new TextPrompt("Contraseña", txtContra_USR);  
+        
         this.setLocationRelativeTo(null);
     }
 

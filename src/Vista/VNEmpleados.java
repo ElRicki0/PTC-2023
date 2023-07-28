@@ -32,6 +32,10 @@ public class VNEmpleados extends javax.swing.JFrame {
         rsscalelabel.RSScaleLabel.setScaleLabel(Rutaicon, "src/Vista/Iconos/entrega.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(Bodegaicon, "src/Vista/Iconos/almacenamiento.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(txtBarras, "src/Vista/Iconos/lista.png");
+        
+        TextPrompt nombre       = new TextPrompt("Nombre", txtNombre_TE);        
+        TextPrompt descripcion     = new TextPrompt("Descripción", txtDescripcion_TE);  
+        
         this.setLocationRelativeTo(null);
     }
 

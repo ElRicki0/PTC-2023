@@ -25,6 +25,11 @@ public class VCliente extends javax.swing.JFrame {
         
         desplace = new Desface();
         
+        TextPrompt nombre       = new TextPrompt("Nombre", txtNombre_CL);        
+        TextPrompt edad     = new TextPrompt("Edad", txtEdad_CL);
+        TextPrompt telefono         = new TextPrompt("Numero de Telefono", txtTelefono_CL);
+        TextPrompt correo       = new TextPrompt("Correo Electronico", txtCorreo_CL);        
+        
         this.setLocationRelativeTo(null);
     }
 

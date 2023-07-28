@@ -13,10 +13,10 @@ public class CConexion { // <- Editar por el nombre del archivo de la clase
         try {
             try {
              //Cadena de conexión
-        String conexionUrl  = "jdbc:sqlserver://localhost:54855;" // <- Editar por su puerto de SQL
+        String conexionUrl  = "jdbc:sqlserver://localhost:50021;" // <- Editar por su puerto de SQL
                             + "databaseName=EXPOdb;" // <- Editar por su base de datos
-                            + "user=admin1;"
-                            + "password=pass123;" 
+                            + "user=sa;"
+                            + "password=fireproof;" 
                             + "encrypt=true;trustServerCertificate=true";
         
         //Retornamos la conexion
