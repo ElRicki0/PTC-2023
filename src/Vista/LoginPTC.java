@@ -215,7 +215,35 @@ public class LoginPTC extends javax.swing.JFrame {
     }//GEN-LAST:event_bntSesionMouseClicked
 
     private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
-        
+    String user = txtUsuario.getText();
+    String pass = txtContraseña.getText();
+    
+    String sql ="select *from tbUsuarios where usr_nombre='"+user+"'";
+        try {
+            PreparedStatement ps = CConexion.getConexion().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                String u = rs.getString("usr_nombre");
+                String p = rs.getString("usr_contrasenia");
+                String l = rs.getString("idNivelUser");
+                if (pass.equals(p)) {
+                    if (l.equals("1")) {
+                        Main main = new Main();
+                        main.setVisible(true);
+                        this.dispose();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "otra entidad");
+                    }
+                } else {
+                JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "El usuario no existe");
+            }   
+        } catch (SQLException ex) {
+            
+        }
+    
     }//GEN-LAST:event_btnLoginMouseClicked
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
@@ -239,6 +267,8 @@ public class LoginPTC extends javax.swing.JFrame {
         ctrlLogin controlador = new ctrlLogin(modeloUsuario, vistaLogin, main);
         vistaLogin.setVisible(true);
     }
+    
+    
     public static void main(String args[]) {
         
         

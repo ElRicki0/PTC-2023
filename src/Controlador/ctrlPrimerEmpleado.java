@@ -51,7 +51,7 @@ public class ctrlPrimerEmpleado implements ActionListener{
                                 modeloEmpleado.setEmp_fecha(vistaPrimero.txtFecha.getText());
                                 modeloEmpleado.setEmp_telefono(vistaPrimero.txtNombre.getText());
                                 modeloEmpleado.setIdGenero(vistaPrimero.jcbGenero.getSelectedItem().toString());
-                                modeloEmpleado.AgregarEmpleado(modeloEmpleado, vistaPrimero);
+                                modeloEmpleado.AgregarEmpleado(modeloEmpleado, vistaPrimero.jcbGenero);
                                 vistaPrimero.dispose();                                
                                 vistaUsuarioPM.INIT();
                             }

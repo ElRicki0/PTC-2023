@@ -29,7 +29,7 @@ public class PrimerEmpleado extends javax.swing.JFrame {
         
         this.setLocationRelativeTo(null);
         transparenciaBotin();
-        modeloEmpelados.llenarCMB(jcbGenero);
+        modeloEmpelados.llenarCBXGenero(jcbGenero);;
     }
 
     public void INIT(){

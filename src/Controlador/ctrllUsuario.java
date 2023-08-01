@@ -25,7 +25,7 @@ public class ctrllUsuario implements ActionListener{
             modeloUsuario.setUsr_contra(vistaUsuario.txtContra_USR.getText());
             modeloUsuario.setIdEmpleado(vistaUsuario.jcbEmpleado.getSelectedItem().toString());
             modeloUsuario.setIdnivelUser(vistaUsuario.jcbUsuario.getSelectedItem().toString());
-            modeloUsuario.AUsuarios(modeloUsuario);
+            modeloUsuario.AUsuarios(modeloUsuario, vistaUsuario.jcbEmpleado, vistaUsuario.jcbUsuario);
             modeloUsuario.mostrarUsuarios(vistaUsuario);
         }
 //        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

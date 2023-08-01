@@ -79,10 +79,6 @@ public class VNUsuarios extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbNUsuarios = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
-        agregar = new Vista.PanelCurvas();
-        btnAgregar = new javax.swing.JButton();
-        eliminar = new Vista.PanelCurvas();
-        btnEliminar = new javax.swing.JButton();
         modificar = new Vista.PanelCurvas();
         btnModificarMP = new javax.swing.JButton();
         panelCurvas1 = new Vista.PanelCurvas();
@@ -611,73 +607,6 @@ public class VNUsuarios extends javax.swing.JFrame {
         jLabel2.setText("Niveles usuarios");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 380, 41));
 
-        agregar.setBackground(new java.awt.Color(172, 147, 110));
-        agregar.setRoundBottomLeft(25);
-        agregar.setRoundBottomRight(25);
-        agregar.setRoundTopLeft(25);
-        agregar.setRoundTopRight(25);
-
-        btnAgregar.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
-        btnAgregar.setText("Agregar");
-        btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAgregarMouseClicked(evt);
-            }
-        });
-        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout agregarLayout = new javax.swing.GroupLayout(agregar);
-        agregar.setLayout(agregarLayout);
-        agregarLayout.setHorizontalGroup(
-            agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, agregarLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        agregarLayout.setVerticalGroup(
-            agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, agregarLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jPanel1.add(agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 680, -1, 60));
-
-        eliminar.setBackground(new java.awt.Color(172, 147, 110));
-        eliminar.setRoundBottomLeft(25);
-        eliminar.setRoundBottomRight(25);
-        eliminar.setRoundTopLeft(25);
-        eliminar.setRoundTopRight(25);
-
-        btnEliminar.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
-        btnEliminar.setText("Eliminar");
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout eliminarLayout = new javax.swing.GroupLayout(eliminar);
-        eliminar.setLayout(eliminarLayout);
-        eliminarLayout.setHorizontalGroup(
-            eliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
-        );
-        eliminarLayout.setVerticalGroup(
-            eliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eliminarLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jPanel1.add(eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 680, -1, -1));
-
         modificar.setBackground(new java.awt.Color(172, 147, 110));
         modificar.setRoundBottomLeft(25);
         modificar.setRoundBottomRight(25);
@@ -706,7 +635,7 @@ public class VNUsuarios extends javax.swing.JFrame {
                 .addComponent(btnModificarMP, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 680, 160, 60));
+        jPanel1.add(modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 680, 160, 60));
 
         panelCurvas1.setBackground(new java.awt.Color(172, 147, 110));
         panelCurvas1.setRoundBottomLeft(35);
@@ -796,17 +725,17 @@ public class VNUsuarios extends javax.swing.JFrame {
         );
         panelCurvas3Layout.setVerticalGroup(
             panelCurvas3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
+            .addGap(0, 180, Short.MAX_VALUE)
             .addGroup(panelCurvas3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelCurvas3Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(txtDescripcion_NU, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(txtDescripcion_NU, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
 
-        panelCurvas1.add(panelCurvas3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 240, 130));
+        panelCurvas1.add(panelCurvas3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 240, 180));
 
-        jPanel1.add(panelCurvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 250, 410, 330));
+        jPanel1.add(panelCurvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 200, 410, 380));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -980,18 +909,6 @@ public class VNUsuarios extends javax.swing.JFrame {
         txtDescripcion_NU.setText(Descripcion);
     }//GEN-LAST:event_tbNUsuariosMouseClicked
 
-    private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
-//        AgregarEmpleado();
-    }//GEN-LAST:event_btnAgregarMouseClicked
-
-    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarActionPerformed
-
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEliminarActionPerformed
-
     private void btnModificarMPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMPMouseClicked
 //        modeloEmpleados.actualizar(this);
 //        modeloEmpleados.MostrarEmpleados(this);
@@ -1089,13 +1006,10 @@ public class VNUsuarios extends javax.swing.JFrame {
     private javax.swing.JLabel Productoicon;
     private javax.swing.JLabel Rutaicon;
     private javax.swing.JLabel Trabajadoricon;
-    private Vista.PanelCurvas agregar;
-    public javax.swing.JButton btnAgregar;
     private Vista.PanelCurvas btnBitacora;
     private Vista.PanelCurvas btnBodega;
     private Vista.PanelCurvas btnCasa;
     private Vista.PanelCurvas btnCliente;
-    public javax.swing.JButton btnEliminar;
     private Vista.PanelCurvas btnEmpleados;
     private Vista.PanelCurvas btnEmpleados1;
     public javax.swing.JButton btnModificarMP;
@@ -1104,7 +1018,6 @@ public class VNUsuarios extends javax.swing.JFrame {
     private Vista.PanelCurvas btnTrabajador;
     private Vista.PanelCurvas btnUsuarios;
     private Vista.PanelCurvas btnUsuarios1;
-    private Vista.PanelCurvas eliminar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

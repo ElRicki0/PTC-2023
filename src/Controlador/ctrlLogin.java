@@ -25,9 +25,7 @@ public class ctrlLogin implements ActionListener{
         if(e.getSource()==vistaLogin.btnLogin){
             modeloUsuario.setUsr_nombre(vistaLogin.txtUsuario.getText());
             modeloUsuario.setUsr_contra(vistaLogin.txtContraseña.getText());
-            modeloUsuario.ValidarUsuario(modeloUsuario);
-            vistaLogin.dispose();
-            
+//            modeloUsuario.ValidarUsuario(modeloUsuario);            
         }
 //        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }

@@ -11,6 +11,8 @@ import Vista.PrimerUsuario;
 import Vista.VEmpleados;
 import javax.swing.JComboBox;
 import java.sql.*;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -97,28 +99,64 @@ public class EmpleadosM {
     public void setEmp_correo(String Emp_correo) {
         this.Emp_correo = Emp_correo;
     }
-    
-    public void llenarCMB(JComboBox combo1){
-        String sql="select idGenero from tbGeneros";
-        Statement st;
-        CConexion con = new CConexion();
-        Connection conexion = con.getConexion();
-        try {
-            st= conexion.createStatement();
-            ResultSet rs=st.executeQuery(sql);
-            while(rs.next()){
-                combo1.addItem(rs.getString("idGenero"));
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error en cbx genero "+ e.toString());
-        }
-    }
-    
+        
     private PrimerEmpleado PMEmpleado;
     
     
+    public void llenarCBXGenero(JComboBox combox){
+        Connection conectar = null;
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+
+    String sql = "select idGenero, Genero from tbGeneros";
+    combox.removeAllItems();
+    Map<Integer, String> idGenero = new HashMap<>();
     
-    public boolean AgregarEmpleado(EmpleadosM modeloEmpleados, PrimerEmpleado vistaEmpleado){        
+        try {
+            conectar=CConexion.getConexion();
+            ps=conectar.prepareStatement(sql);
+            rs=ps.executeQuery();
+            
+            while (rs.next()) {                
+                int id = rs.getInt("idGenero");
+                String genero = rs.getString("Genero");
+                idGenero.put(id, genero);
+                combox.addItem(genero);
+            }
+            combox.putClientProperty("idGenero", idGenero);
+            
+        } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "error cbx genero "+e.toString());
+        }finally{
+            if (conectar!=null) {
+                try {
+                    conectar.close();
+                    rs.close();
+                    conectar=null;
+                    rs=null;
+                    
+                } catch (Exception e) {
+                }
+            }
+        }
+        
+//        String sql="select idGenero from tbGeneros";
+//        Statement st;
+//    CConexion con = new CConexion();
+//    Connection conexion=con.getConexion();
+//        try {
+//            st= conexion.createStatement();
+//            ResultSet rs= st.executeQuery(sql) ;
+//            while(rs.next()){
+//                combox.addItem(rs.getString("idGenero"));
+//            }
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, "Error en idgenero cbx "+ e.toString());
+//        }
+    }
+    
+    
+    public boolean AgregarEmpleado(EmpleadosM modeloEmpleados, JComboBox jcbGenero){        
         try {
             
             String sql="insert into tbEmpleados(emp_nombre,emp_fecha, emp_direccion, emp_telefono, emp_correo, idGenero, idTipoEmpleado) values(?, ?, ?, ?, ?, ?, 1)";
@@ -130,7 +168,15 @@ public class EmpleadosM {
         AEmpleado.setString(3, modeloEmpleados.getEmp_direccion());
         AEmpleado.setString(4, modeloEmpleados.getEmp_telefono());
         AEmpleado.setString(5, modeloEmpleados.getEmp_correo());
-        AEmpleado.setInt(6, Integer.parseInt(modeloEmpleados.getIdGenero()));
+        
+        int SelectGenero= jcbGenero.getSelectedIndex();
+            if (SelectGenero!=-1) {
+                Map<Integer, String> idGenero = (Map<Integer, String>)jcbGenero.getClientProperty("idGenero");
+                int selID=(int) idGenero.keySet().toArray()[SelectGenero];
+                AEmpleado.setInt(6, selID);
+            } else {
+            }
+        
         AEmpleado.execute();
         JOptionPane.showMessageDialog(null, "El Empleado  se agrego correctamente");            
         } catch (Exception e) {
@@ -139,39 +185,60 @@ public class EmpleadosM {
         return true;
     }
     
-    public void llenarCBXGenero(JComboBox combox){
-        String sql="select idGenero from tbGeneros";
-        Statement st;
-    CConexion con = new CConexion();
-    Connection conexion=con.getConexion();
-        try {
-            st= conexion.createStatement();
-            ResultSet rs= st.executeQuery(sql) ;
-            while(rs.next()){
-                combox.addItem(rs.getString("idGenero"));
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error en idgenero cbx "+ e.toString());
-        }
-    }
-    
     public void llenarCBXTipo(JComboBox combox){
-        String sql="select idTipoEmpleado from tbTiposEmpleados";
-        Statement st;
-    CConexion con = new CConexion();
-    Connection conexion=con.getConexion();
+        
+        Connection conectar = null;
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+
+    String sql = "select idTipoEmpleado, Tipo_Emp from tbTiposEmpleados";
+    combox.removeAllItems();
+    Map<Integer, String> idTipoEmpleado = new HashMap<>();
+    
         try {
-            st= conexion.createStatement();
-            ResultSet rs= st.executeQuery(sql) ;
-            while(rs.next()){
-                combox.addItem(rs.getString("idTipoEmpleado"));
+            conectar=CConexion.getConexion();
+            ps=conectar.prepareStatement(sql);
+            rs=ps.executeQuery();
+            
+            while (rs.next()) {                
+                int id = rs.getInt("idTipoEmpleado");
+                String TEmpleado = rs.getString("Tipo_Emp");
+                idTipoEmpleado.put(id, TEmpleado);
+                combox.addItem(TEmpleado);
             }
+            combox.putClientProperty("idTipoEmpleado", idTipoEmpleado);
+            
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error en tipo empleado cbx "+ e.toString());
+                    JOptionPane.showMessageDialog(null, "error cbx T. Empleado "+e.toString());
+        }finally{
+            if (conectar!=null) {
+                try {
+                    conectar.close();
+                    rs.close();
+                    conectar=null;
+                    rs=null;
+                    
+                } catch (Exception e) {
+                }
+            }
         }
+        
+//        String sql="select idTipoEmpleado from tbTiposEmpleados";
+//        Statement st;
+//    CConexion con = new CConexion();
+//    Connection conexion=con.getConexion();
+//        try {
+//            st= conexion.createStatement();
+//            ResultSet rs= st.executeQuery(sql) ;
+//            while(rs.next()){
+//                combox.addItem(rs.getString("idTipoEmpleado"));
+//            }
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, "Error en tipo empleado cbx "+ e.toString());
+//        }
     }
     
-    public boolean MAgregarEmpleado(EmpleadosM modeloEmpleados){
+    public boolean MAgregarEmpleado(EmpleadosM modeloEmpleados, JComboBox jcbGenero, JComboBox jcbTipo ){
         try {
             
             String sql="insert into tbEmpleados(emp_nombre,emp_fecha, emp_direccion, emp_telefono, emp_correo, idGenero, idTipoEmpleado) "
@@ -183,21 +250,26 @@ public class EmpleadosM {
         ANEmpleado.setString(3, modeloEmpleados.getEmp_direccion());
         ANEmpleado.setString(4, modeloEmpleados.getEmp_telefono());
         ANEmpleado.setString(5, modeloEmpleados.getEmp_correo());
-        ANEmpleado.setInt(6, Integer.parseInt(modeloEmpleados.getIdGenero()));
-        ANEmpleado.setInt(7, Integer.parseInt(modeloEmpleados.getIdTipoEmpleado()));
+        
+        int SelectGenero= jcbGenero.getSelectedIndex();
+            if (SelectGenero!=-1) {
+                Map<Integer, String> idGenero = (Map<Integer, String>)jcbGenero.getClientProperty("idGenero");
+                int selID=(int) idGenero.keySet().toArray()[SelectGenero];
+                ANEmpleado.setInt(6, selID);
+            } else {
+            }  
+            
+        int SelectTEmpl= jcbTipo.getSelectedIndex();
+            if (SelectTEmpl!=-1) {
+                Map<Integer, String> idTipoEmpleado = (Map<Integer, String>)jcbTipo.getClientProperty("idTipoEmpleado");
+                int selTEP=(int) idTipoEmpleado.keySet().toArray()[SelectTEmpl];
+                ANEmpleado.setInt(7, selTEP);
+            } else {
+            }     
         ANEmpleado.execute();
         JOptionPane.showMessageDialog(null, "El Empleado  se agrego correctamente");
         } catch (Exception e) {
             System.out.println(e);        
-            
-        
-        System.out.println("ESTE ES EL correo//"+           getEmp_correo().toString());
-            System.out.println("ESTE ES EL direccion //"+   getEmp_direccion().toString());
-            System.out.println("ESTE ES EL tipo  empleado///"+getIdTipoEmpleado().toString());
-            System.out.println("ESTE ES EL fecha//"+        getEmp_fecha().toString());
-            System.out.println("ESTE ES EL nombre//"+       getEmp_nombre().toString());
-            System.out.println("ESTE ES EL telefono//"+     getEmp_telefono().toString());
-            System.out.println("ESTE ES EL genero//"+       getIdGenero().toString());
         }
         return true;
     }
@@ -254,13 +326,13 @@ public class EmpleadosM {
     
     public void MostrarEmpleados(VEmpleados vistaEmpleados){
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.setColumnIdentifiers(new Object[]{"IDEmpleado","Nombre", "Fecha Nacimiento", "Direccion", "Telefono","Correo", "Genero", "Tipo Empleado"});
+        modelo.setColumnIdentifiers(new Object[]{"ID","Nombre", "Fecha Nacimiento", "Direccion", "Telefono","Correo", "Genero", "Tipo Empleado"});
         try {
             Statement st = CConexion.getConexion().createStatement();
-            String sql ="select idEmpleado, emp_nombre, emp_fecha, emp_direccion, emp_telefono, emp_correo, tbGeneros.Genero from tbEmpleados inner join tbGeneros on tbEmpleados.idGenero=tbGeneros.idGenero";
+            String sql ="select idEmpleado, emp_nombre, emp_fecha, emp_direccion, emp_telefono, emp_correo, tbGeneros.Genero,  tbTiposEmpleados.Tipo_Emp from tbEmpleados inner join tbGeneros on tbEmpleados.idGenero=tbGeneros.idGenero inner join tbTiposEmpleados on tbEmpleados.idTipoEmpleado=tbTiposEmpleados.idTipoEmpleado";
             ResultSet rs = st.executeQuery(sql);
             while(rs.next()){
-                modelo.addRow(new Object[]{rs.getInt("idEmpleado"), rs.getString("emp_nombre"), rs.getString("emp_fecha"), rs.getString("emp_direccion"), rs.getString("emp_telefono"), rs.getString("emp_correo"),rs.getString("Genero")});
+                modelo.addRow(new Object[]{rs.getInt("idEmpleado"), rs.getString("emp_nombre"), rs.getString("emp_fecha"), rs.getString("emp_direccion"), rs.getString("emp_telefono"), rs.getString("emp_correo"),rs.getString("Genero"), rs.getString("Tipo_Emp")});
             }
             vistaEmpleados.tbTEmpleados.setModel(modelo);
         } catch (Exception e) {

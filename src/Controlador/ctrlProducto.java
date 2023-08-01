@@ -27,7 +27,7 @@ public class ctrlProducto implements  ActionListener{
     String texto3 = vistaProducto.txtUnidades_pdt.getText();
 
     try {
-        if (!texto2.matches("\\d+")) {
+        if (!texto2.matches("[0-9.0-9]+")) {
             JOptionPane.showMessageDialog(null, "El precio solo puede tener números");
         } else if (!texto3.matches("\\d+")) {
             JOptionPane.showMessageDialog(null, "Las unidades solo pueden tener números");

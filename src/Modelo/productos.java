@@ -205,6 +205,7 @@ public boolean AgregarProducto(productos productomodelo, JComboBox comboMarca, J
         AProducto.setString(1, productomodelo.getProd_nombre());
 
         // Obtener el ID de la marca seleccionada desde el JComboBox de marcas
+        
         int selectedMarcaIndex = comboMarca.getSelectedIndex();
         if (selectedMarcaIndex != -1) {
             Map<Integer, String> idNombreMar = (Map<Integer, String>) comboMarca.getClientProperty("idNombreMar");

@@ -10,7 +10,12 @@ import Modelo.EmpleadosM;
 import java.awt.Color;
 import desplazable.Desface;
 import java.beans.beancontext.BeanContextChildSupport;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 /**
@@ -1155,6 +1160,61 @@ public class VEmpleados extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     
+    
+    public void llenarCBXTipo(JComboBox combox){
+        
+        Connection conectar = null;
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+
+    String sql = "select idTipoEmpleado, Tipo_Emp from tbTiposEmpleados";
+    combox.removeAllItems();
+    Map<Integer, String> idTipoEmpleado = new HashMap<>();
+    
+        try {
+            conectar=CConexion.getConexion();
+            ps=conectar.prepareStatement(sql);
+            rs=ps.executeQuery();
+            
+            while (rs.next()) {                
+                int id = rs.getInt("idTipoEmpleado");
+                String TEmpleado = rs.getString("Tipo_Emp");
+                idTipoEmpleado.put(id, TEmpleado);
+                combox.addItem(TEmpleado);
+            }
+            combox.putClientProperty("idTipoEmpleado", idTipoEmpleado);
+            
+        } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "error cbx T. Empleado "+e.toString());
+        }finally{
+            if (conectar!=null) {
+                try {
+                    conectar.close();
+                    rs.close();
+                    conectar=null;
+                    rs=null;
+                    
+                } catch (Exception e) {
+                }
+            }
+        }
+        
+//        String sql="select idTipoEmpleado from tbTiposEmpleados";
+//        Statement st;
+//    CConexion con = new CConexion();
+//    Connection conexion=con.getConexion();
+//        try {
+//            st= conexion.createStatement();
+//            ResultSet rs= st.executeQuery(sql) ;
+//            while(rs.next()){
+//                combox.addItem(rs.getString("idTipoEmpleado"));
+//            }
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, "Error en tipo empleado cbx "+ e.toString());
+//        }
+    }
+    
+    
     public boolean AgregarEmpleado(){        
         try {
             
@@ -1167,9 +1227,24 @@ public class VEmpleados extends javax.swing.JFrame {
         AEmpleado.setString(3, txtDireccion_emp.getText());
         AEmpleado.setString(4, txtTelefono_emp.getText());
         AEmpleado.setString(5, txtCorreo_emp.getText());
-        AEmpleado.setInt(6, Integer.parseInt(jcbGenero.getSelectedItem().toString()));
-        AEmpleado.setInt(7, Integer.parseInt(jcbTipo.getSelectedItem().toString()));
-        AEmpleado.execute();
+        
+        int SelectGenero= jcbGenero.getSelectedIndex();
+            if (SelectGenero!=-1) {
+                Map<Integer, String> idGenero = (Map<Integer, String>)jcbGenero.getClientProperty("idGenero");
+                int selID=(int) idGenero.keySet().toArray()[SelectGenero];
+                AEmpleado.setInt(6, selID);
+            } else {
+            }
+        
+        int SelectTEmpl= jcbTipo.getSelectedIndex();
+            if (SelectTEmpl!=-1) {
+                Map<Integer, String> idTipoEmpleado = (Map<Integer, String>)jcbTipo.getClientProperty("idTipoEmpleado");
+                int selTEP=(int) idTipoEmpleado.keySet().toArray()[SelectTEmpl];
+                AEmpleado.setInt(7, selTEP);
+            } else {
+            }     
+        
+            AEmpleado.execute();
         JOptionPane.showMessageDialog(null, "El Empleado  se agrego correctamente");            
         } catch (Exception e) {
                         JOptionPane.showMessageDialog(null, "error 1 "+ e.toString()); 
