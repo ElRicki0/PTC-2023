@@ -11,7 +11,7 @@ Descripcion_Emp	varchar(500)
 );
 go
 select*from tbTiposEmpleados
-insert into tbTiposEmpleados(Tipo_Emp) values('Administrador'); 
+insert into tbTiposEmpleados(Tipo_Emp, Descripcion_Emp) values('Administrador','Administrador'); 
 go
 select*from tbTiposEmpleados;
 go
@@ -41,9 +41,9 @@ idTipoEmpleado		int
 foreign key references [dbo].[tbTiposEmpleados] ([idTipoEmpleado])
 );
 go
+
 /*
 insert into tbEmpleados(emp_nombre,emp_fecha, emp_direccion, emp_telefono, emp_correo, idGenero, idTipoEmpleado) values('nombre1','2/2/2','calle1','tel1','correo1',1,1)*/
-select emp_nombre, emp_fecha, emp_direccion, emp_telefono, emp_correo, tbGeneros.Genero from tbEmpleados inner join tbGeneros on tbEmpleados.idGenero=tbGeneros.idGenero
 /*
 insert into tbEmpleados(emp_nombre, emp_direccion,		emp_telefono, emp_correo,			idGenero, idTipoEmpleado) 
 values                 ('Ricardo Melara',  'AV. Los Proceres', '7229-1462', 'Ricdo06melara@gmail.com', 1, 1);
@@ -55,8 +55,12 @@ usr_Nivel		varchar(50) not null,
 usr_Descripcion varchar(500)
 );
 go
+
 select idNivelUser, usr_Nivel, usr_Descripcion from tbNivelesUsuarios
-insert into tbNivelesUsuarios(usr_Nivel, usr_Descripcion) values('Administrador', 'Controlador del sistema');
+insert into tbNivelesUsuarios(usr_Nivel, usr_Descripcion) values('Administrador', 'Controlador total del sistema');
+insert into tbNivelesUsuarios(usr_Nivel, usr_Descripcion) values('Controlador', 'Manejo de datos');
+insert into tbNivelesUsuarios(usr_Nivel, usr_Descripcion) values('Repartidor', 'Distribucion de producto a clientes');
+insert into tbNivelesUsuarios(usr_Nivel, usr_Descripcion) values('Usuario', 'Vista de los pproductos, bopdegas y de sus datos personales ');
 go
 
 
@@ -99,9 +103,11 @@ idNivelUser			int
 foreign key references [dbo].[tbNivelesUsuarios]([idNivelUser])
 );
 go
-select idUsuario from tbUsuarios
-select tbUsuarios.idUsuario, tbUsuarios.usr_nombre, tbUsuarios.usr_contrasenia, tbEmpleados.idEmpleado, tbNivelesUsuarios.idNivelUser from tbUsuarios inner join tbEmpleados on tbUsuarios.idEmpleado=tbEmpleados.idEmpleado INNER JOIN tbNivelesUsuarios on tbUsuarios.idNivelUser=tbNivelesUsuarios.idNivelUser
-/*insert into tbUsuarios(usr_nombre, usr_contrasenia, idEmpleado, idNivelUser)values('admin', 'pass123', 1, 1);
+select * from tbUsuarios
+select tbUsuarios.idUsuario, tbUsuarios.usr_nombre, tbUsuarios.usr_contrasenia, tbEmpleados.emp_nombre, tbNivelesUsuarios.usr_Nivel from tbUsuarios inner join tbEmpleados on tbUsuarios.idEmpleado=tbEmpleados.idEmpleado INNER JOIN tbNivelesUsuarios on tbUsuarios.idNivelUser=tbNivelesUsuarios.idNivelUser
+select tbUsuarios.idUsuario, tbUsuarios.usr_nombre, tbUsuarios.usr_contrasenia, tbEmpleados.emp_nombre, tbNivelesUsuarios.usr_Nivel from tbUsuarios inner join tbEmpleados on tbUsuarios.idEmpleado=tbEmpleados.idEmpleado INNER JOIN tbNivelesUsuarios on tbUsuarios.idNivelUser=tbNivelesUsuarios.idNivelUser
+/*
+insert into tbUsuarios(usr_nombre, usr_contrasenia, idEmpleado, idNivelUser)values('123', '123', 2, 2);
 insert into tbUsuarios(usr_nombre, usr_contrasenia, idEmpleado, idNivelUser, idBodega)values('admin2', 'pass1234', 1, 1, 1);*/
 select*from tbUsuarios
 go
@@ -118,6 +124,7 @@ foreign key references [dbo].[tbBodegas]
 ([idBodega])
 );
 go
+
 select*from tbProductos
 select tbProductos.idProducto, tbProductos.Prod_Nombre, tbMarcaProductos.MP_Nombre, tbProductos.Prod_Unidades, tbProductos.Prod_PrecioUnitario, tbBodegas.bdg_nombre
 from tbProductos inner join tbMarcaProductos  on tbProductos.id_MP = tbMarcaProductos.id_MP inner join tbBodegas on tbProductos.idBodega = tbBodegas.idBodega
