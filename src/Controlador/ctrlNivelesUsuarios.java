@@ -51,9 +51,8 @@ if(e.getSource()==vistaNUsuarios.btnModificarMP){
             modeloNUsuarios.actualizar(vistaNUsuarios);
             modeloNUsuarios.MostrarNusuarios(vistaNUsuarios);
         } catch (Exception ie) {
-        }
-                  JOptionPane.showMessageDialog(null, "seleccione un dato de la tabla para editar");  
-            
+                  JOptionPane.showMessageDialog(null, ie.toString());  
+        }            
         }
             
             

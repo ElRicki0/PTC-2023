@@ -152,9 +152,7 @@ public class productos {
             JOptionPane.showMessageDialog(null, "Error 3"+e.getMessage());                
         }
     
-    }
-    
-    
+    }   
     public void RellenarBodegaCBX(JComboBox comboBDG) {
     String SQL = "select idBodega, bdg_nombre from tbBodegas ";
     Statement st;

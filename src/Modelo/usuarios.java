@@ -333,16 +333,15 @@ public class usuarios {
 //                
 //            } else {
 //            }
-            PreparedStatement AUsuario = CConexion.getConexion().prepareStatement("insert into tbUsuarios(usr_nombre, usr_contrasenia, idEmpleado, idNivelUser) values(?,?,?,?)");
+            PreparedStatement AUsuario = CConexion.getConexion().prepareStatement("insert into tbUsuarios(usr_nombre, usr_contrasenia, idEmpleado, idNivelUser) values(?,'pass123',?,?)");
 
             AUsuario.setString(1, modeloUsuario.getUsr_nombre());
-            AUsuario.setString(2, modeloUsuario.getUsr_contra());
             
             int SelectEmpelado= jcbEmpleado.getSelectedIndex();
             if (SelectEmpelado!=-1) {
                 Map<Integer, String> idEmpleado = (Map<Integer, String>)jcbEmpleado.getClientProperty("idEmpleado");
                 int selID=(int) idEmpleado.keySet().toArray()[SelectEmpelado];
-                AUsuario.setInt(3, selID);
+                AUsuario.setInt(2, selID);
             } else {
             }
             
@@ -350,7 +349,7 @@ public class usuarios {
             if (SelectTUsuario!=-1) {
                 Map<Integer, String> idNivelUser = (Map<Integer, String>)jcbUsuario.getClientProperty("idNivelUser");
                 int selID=(int) idNivelUser.keySet().toArray()[SelectTUsuario];
-                AUsuario.setInt(4, selID);
+                AUsuario.setInt(3, selID);
             } else {
             }
             
@@ -360,4 +359,24 @@ public class usuarios {
         }
     }
     
+     public void EliminarUsuario (VUsuarios vistaUsuario){
+         try {
+             int filaSeleccionada = vistaUsuario.tbEmpleados.getSelectedRow();
+        
+        //Obtenemos el id de la fila seleccionada
+        String miId = vistaUsuario.tbEmpleados.getValueAt(filaSeleccionada, 0).toString();
+        //borramos 
+        try {
+            PreparedStatement deleteUser = CConexion.getConexion().prepareStatement("delete from tbUsuarios where idUsuario = '" + miId + "'");
+            deleteUser.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Se elimino correctamente el usuario");                           
+        } catch (Exception e) {
+         System.out.println(e.toString());
+          JOptionPane.showMessageDialog(null, "Error al intentar eliminar el usuario");                           
+        }
+         } catch (Exception e) {
+          JOptionPane.showMessageDialog(null, "seleccione un usuario");                           
+         }
+        
+    }
 }

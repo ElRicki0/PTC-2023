@@ -94,7 +94,8 @@ public class TiposEmpleados {
     }
     
     public void actualizar(VNEmpleados vistaTEmpleados){
-        //obtenemos que fila seleccionó el usuario
+        try {
+            //obtenemos que fila seleccionó el usuario
         int filaSeleccionada = vistaTEmpleados.tbNiveles.getSelectedRow();
 
         //Obtenemos el id de la fila seleccionada
@@ -113,6 +114,11 @@ public class TiposEmpleados {
             JOptionPane.showMessageDialog(null, "error en modelo TEmpleado "+e.toString());
         }
 
+        } catch (Exception ae) {
+                        JOptionPane.showMessageDialog(null, "no se detecto algun cambio");
+
+        }
+        
     }
 }
     

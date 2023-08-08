@@ -231,9 +231,19 @@ public class LoginPTC extends javax.swing.JFrame {
                         Main main = new Main();
                         main.setVisible(true);
                         this.dispose();
-                    } else {
-                        JOptionPane.showMessageDialog(null, "otra entidad");
-                    }
+                    }if (l.equals("2")) {
+                        Vista.Controlador.CMain main = new Vista.Controlador.CMain();
+                        main.setVisible(true);
+                        this.setVisible(false);
+                    } if (l.equals("3")) {
+                        Vista.Repartidor.RMain main = new Vista.Repartidor.RMain();
+                        main.setVisible(true);
+                        this.setVisible(false);
+                    }if (l.equals("4")) {
+                        Vista.Usuario.UMain main = new Vista.Usuario.UMain();
+                        main.setVisible(true);
+                        this.setVisible(false);
+                    }  
                 } else {
                 JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
                 }

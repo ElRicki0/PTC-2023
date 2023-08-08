@@ -30,8 +30,7 @@ public class VUsuarios extends javax.swing.JFrame {
         modeloUsuario.jcbEmpleado(jcbEmpleado);
         modeloUsuario.jcbNivelesU(jcbUsuario);
         
-        TextPrompt nombre       = new TextPrompt("Nombre", txtNombre_USR);        
-        TextPrompt contra     = new TextPrompt("Contraseña", txtContra_USR);  
+        TextPrompt nombre       = new TextPrompt("Nombre", txtNombre_USR);       
         
         this.setLocationRelativeTo(null);
     }
@@ -87,11 +86,8 @@ public class VUsuarios extends javax.swing.JFrame {
         panelCurvas2 = new Vista.PanelCurvas();
         txtNombre_USR = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        panelCurvas6 = new Vista.PanelCurvas();
-        txtContra_USR = new javax.swing.JTextField();
         jcbEmpleado = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jcbUsuario = new javax.swing.JComboBox<>();
         agregar = new Vista.PanelCurvas();
@@ -532,16 +528,16 @@ public class VUsuarios extends javax.swing.JFrame {
         btnUsuarios1Layout.setHorizontalGroup(
             btnUsuarios1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnUsuarios1Layout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
+                .addContainerGap(37, Short.MAX_VALUE)
                 .addComponent(txtSub3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                .addGap(33, 33, 33))
         );
         btnUsuarios1Layout.setVerticalGroup(
             btnUsuarios1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnUsuarios1Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnUsuarios1Layout.createSequentialGroup()
+                .addContainerGap(20, Short.MAX_VALUE)
                 .addComponent(txtSub3)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGap(15, 15, 15))
         );
 
         jpSubMenu.add(btnUsuarios1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 30, 150, 60));
@@ -580,7 +576,7 @@ public class VUsuarios extends javax.swing.JFrame {
             btnEmpleados1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnEmpleados1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtSub2, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                .addComponent(txtSub2)
                 .addContainerGap())
         );
 
@@ -628,7 +624,7 @@ public class VUsuarios extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("<html>Nombre Empleado:</html>");
-        panelCurvas1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 140, 60));
+        panelCurvas1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 140, 60));
 
         panelCurvas2.setBackground(new java.awt.Color(246, 234, 204));
         panelCurvas2.setRoundBottomLeft(25);
@@ -673,38 +669,24 @@ public class VUsuarios extends javax.swing.JFrame {
         jLabel7.setText("Informacion");
         panelCurvas1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 167, 41));
 
-        panelCurvas6.setBackground(new java.awt.Color(246, 234, 204));
-        panelCurvas6.setRoundBottomLeft(25);
-        panelCurvas6.setRoundBottomRight(25);
-        panelCurvas6.setRoundTopLeft(25);
-        panelCurvas6.setRoundTopRight(25);
-        panelCurvas6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        txtContra_USR.setBackground(new java.awt.Color(246, 234, 204));
-        txtContra_USR.setForeground(new java.awt.Color(51, 51, 51));
-        txtContra_USR.setBorder(null);
-        panelCurvas6.add(txtContra_USR, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 8, 219, 30));
-
-        panelCurvas1.add(panelCurvas6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 240, 50));
-
-        panelCurvas1.add(jcbEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 240, 50));
+        jcbEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbEmpleadoActionPerformed(evt);
+            }
+        });
+        panelCurvas1.add(jcbEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 240, 50));
 
         jLabel10.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(51, 51, 51));
         jLabel10.setText("<html>Nombre Usuario:</html>");
         panelCurvas1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 140, 60));
 
-        jLabel11.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel11.setText("Contraseña:");
-        panelCurvas1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 140, 41));
-
         jLabel3.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("<html>Nivel Usuario:</html>");
-        panelCurvas1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 140, 60));
+        panelCurvas1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 140, 60));
 
-        panelCurvas1.add(jcbUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 240, 50));
+        panelCurvas1.add(jcbUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 240, 50));
 
         jPanel1.add(panelCurvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 200, 410, 390));
 
@@ -1031,6 +1013,10 @@ public class VUsuarios extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnUsuarios1MouseExited
 
+    private void jcbEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbEmpleadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbEmpleadoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1100,7 +1086,6 @@ public class VUsuarios extends javax.swing.JFrame {
     private Vista.PanelCurvas eliminar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
@@ -1112,14 +1097,12 @@ public class VUsuarios extends javax.swing.JFrame {
     private Vista.PanelCurvas modificar;
     private Vista.PanelCurvas panelCurvas1;
     private Vista.PanelCurvas panelCurvas2;
-    private Vista.PanelCurvas panelCurvas6;
     public javax.swing.JTable tbEmpleados;
     private javax.swing.JLabel txtBarras;
     private javax.swing.JLabel txtBitacora;
     private javax.swing.JLabel txtBodega;
     private javax.swing.JLabel txtCasa;
     private javax.swing.JLabel txtCliente;
-    public javax.swing.JTextField txtContra_USR;
     private javax.swing.JLabel txtEmpleado;
     private javax.swing.JLabel txtLogo;
     public javax.swing.JTextField txtNombre_USR;

@@ -1129,8 +1129,8 @@ public class VEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUsuariosMouseExited
 
     private void btnEmpleados1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmpleados1MouseClicked
-        VNEmpleados NEmpleads = new VNEmpleados();
-        NEmpleads.INIT();
+        VNUsuarios usuarios=new VNUsuarios();
+        usuarios.INIT();
         this.dispose();
     }//GEN-LAST:event_btnEmpleados1MouseClicked
 
