@@ -91,7 +91,6 @@ public class productos {
         }
     }
     
-//    
     public void RellenarMarcaCBX(JComboBox combo) {
     Connection conectar = null;
     PreparedStatement pst = null;
@@ -133,6 +132,7 @@ public class productos {
         }
     }
 }
+    
     public void MostrarProductos(Producto vistaProducto){        
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(new Object[]{"ID", "Nombre","Marca","Unidades","Precio C/U", "Bodega"});
@@ -149,7 +149,7 @@ public class productos {
         } 
         catch (Exception e) 
         {
-            JOptionPane.showMessageDialog(null, "Error 3"+e.getMessage());                
+            JOptionPane.showMessageDialog(null, "Error tabla producto "+e.getMessage());                
         }
     
     }   

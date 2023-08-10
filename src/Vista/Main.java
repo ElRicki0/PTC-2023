@@ -502,8 +502,8 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProductoMouseClicked
 
     private void btnClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseClicked
-        VCliente cl= new VCliente();
-        cl.INIT();
+        VCliente vista= new VCliente();
+        vista.INIT();
         this.dispose();
     }//GEN-LAST:event_btnClienteMouseClicked
 
@@ -526,9 +526,9 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRutaMouseClicked
 
     private void btnBodegaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseClicked
-        Bodegas bodegas = new Bodegas();
-        bodegas.setVisible(true);
-        this.setVisible(false);
+        Bodega bodegas = new Bodega();
+        bodegas.INIT();
+        this.dispose();
     }//GEN-LAST:event_btnBodegaMouseClicked
 
     /**

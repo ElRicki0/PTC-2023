@@ -532,7 +532,7 @@ public class UMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRutaMouseClicked
 
     private void btnBodegaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseClicked
-        Bodegas bodegas = new Bodegas();
+        Bodega bodegas = new Bodega();
         bodegas.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnBodegaMouseClicked

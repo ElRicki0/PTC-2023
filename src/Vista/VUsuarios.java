@@ -896,7 +896,7 @@ public class VUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBitacoraMouseExited
 
     private void btnBodegaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseClicked
-        Bodegas bodegas = new Bodegas();
+        Bodega bodegas = new Bodega();
         bodegas.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnBodegaMouseClicked
