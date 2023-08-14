@@ -4,6 +4,7 @@
  */
 package Vista;
 
+import Controlador.ctrlEncriptacion;
 import Controlador.ctrlPrimerUsuario;
 import Modelo.usuarios;
 
@@ -97,6 +98,11 @@ public class PrimerUsuario extends javax.swing.JFrame {
         txtContrasenia.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         txtContrasenia.setForeground(new java.awt.Color(51, 51, 51));
         txtContrasenia.setBorder(null);
+        txtContrasenia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtContraseniaActionPerformed(evt);
+            }
+        });
         panelCurvas4.add(txtContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 270, 40));
 
         jPanel1.add(panelCurvas4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 380, 290, 60));
@@ -110,6 +116,16 @@ public class PrimerUsuario extends javax.swing.JFrame {
         btnAgregar.setFont(new java.awt.Font("Leelawadee UI", 0, 36)); // NOI18N
         btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregar.setText("Agregar");
+        btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgregarMouseClicked(evt);
+            }
+        });
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelCurvas7Layout = new javax.swing.GroupLayout(panelCurvas7);
         panelCurvas7.setLayout(panelCurvas7Layout);
@@ -144,6 +160,18 @@ public class PrimerUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtContraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseniaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtContraseniaActionPerformed
+
+    private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarMouseClicked
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
     public void transparenciaBotin(){
         btnAgregar.setOpaque(false);        
         btnAgregar.setContentAreaFilled(false);
@@ -158,8 +186,9 @@ public class PrimerUsuario extends javax.swing.JFrame {
             PrimerUsuario vistaPUsuario = new PrimerUsuario();
             usuarios modeloUsuario= new usuarios();
             LoginPTC login=new LoginPTC();
+            ctrlEncriptacion encript= new ctrlEncriptacion();
 
-            ctrlPrimerUsuario cotrl = new ctrlPrimerUsuario(vistaPUsuario, modeloUsuario, login);
+            ctrlPrimerUsuario cotrl = new ctrlPrimerUsuario(vistaPUsuario, modeloUsuario, login, encript);
             vistaPUsuario.setVisible(true);
         }   
     

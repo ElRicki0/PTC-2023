@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Controlador.ctrlEncriptacion;
 import Controlador.ctrlLogin;
 import Modelo.CConexion;
 import com.sun.jdi.connect.spi.Connection;
@@ -274,7 +275,8 @@ public class LoginPTC extends javax.swing.JFrame {
         usuarios modeloUsuario = new usuarios();
         LoginPTC vistaLogin = new LoginPTC(); 
         Main main = new Main();
-        ctrlLogin controlador = new ctrlLogin(modeloUsuario, vistaLogin, main);
+        ctrlEncriptacion encript = new ctrlEncriptacion();
+        ctrlLogin controlador = new ctrlLogin(modeloUsuario, vistaLogin, main, encript);
         vistaLogin.setVisible(true);
     }
     
