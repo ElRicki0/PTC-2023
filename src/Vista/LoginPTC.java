@@ -14,6 +14,7 @@ import java.sql.*;
 import javax.swing.JOptionPane;
 import Modelo.usuarios;
 import Controlador.ctrlPrimerUsuario;
+import java.awt.event.MouseEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -45,8 +46,12 @@ public class LoginPTC extends javax.swing.JFrame {
         txtUsuario = new javax.swing.JTextField();
         panelCurvas3 = new Vista.PanelCurvas();
         txtContraseña = new javax.swing.JTextField();
+        bntSesion1 = new Vista.PanelCurvas();
+        btnRecContrasenia = new javax.swing.JButton();
         bntSesion = new Vista.PanelCurvas();
         btnLogin = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         txtImagen = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -67,10 +72,10 @@ public class LoginPTC extends javax.swing.JFrame {
         panelCurvas1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Inicio Sesión");
-        panelCurvas1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 14, -1, -1));
+        jLabel1.setText("Contraseña:");
+        panelCurvas1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
 
         panelCurvas2.setBackground(new java.awt.Color(255, 255, 255));
         panelCurvas2.setRoundBottomLeft(25);
@@ -104,7 +109,7 @@ public class LoginPTC extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panelCurvas1.add(panelCurvas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 58, -1, -1));
+        panelCurvas1.add(panelCurvas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
         panelCurvas3.setBackground(new java.awt.Color(255, 255, 255));
         panelCurvas3.setRoundBottomLeft(25);
@@ -138,7 +143,35 @@ public class LoginPTC extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        panelCurvas1.add(panelCurvas3, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 172, -1, -1));
+        panelCurvas1.add(panelCurvas3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
+
+        bntSesion1.setBackground(new java.awt.Color(255, 255, 255));
+        bntSesion1.setRoundBottomLeft(25);
+        bntSesion1.setRoundBottomRight(25);
+        bntSesion1.setRoundTopLeft(25);
+        bntSesion1.setRoundTopRight(25);
+        bntSesion1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bntSesion1MouseClicked(evt);
+            }
+        });
+        bntSesion1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnRecContrasenia.setFont(new java.awt.Font("MS PGothic", 1, 18)); // NOI18N
+        btnRecContrasenia.setText("<html>Olvide mi contraseña</html>");
+        btnRecContrasenia.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRecContraseniaMouseClicked(evt);
+            }
+        });
+        btnRecContrasenia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecContraseniaActionPerformed(evt);
+            }
+        });
+        bntSesion1.add(btnRecContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 80));
+
+        panelCurvas1.add(bntSesion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 220, 140, 80));
 
         bntSesion.setBackground(new java.awt.Color(255, 255, 255));
         bntSesion.setRoundBottomLeft(25);
@@ -166,7 +199,19 @@ public class LoginPTC extends javax.swing.JFrame {
         });
         bntSesion.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 80));
 
-        panelCurvas1.add(bntSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 274, 140, 80));
+        panelCurvas1.add(bntSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 140, 80));
+
+        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Inicio Sesión");
+        panelCurvas1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+
+        jLabel4.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Usuario:");
+        panelCurvas1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -174,18 +219,18 @@ public class LoginPTC extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelCurvas1, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
+                .addComponent(panelCurvas1, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(panelCurvas1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(32, 32, 32)
+                .addComponent(panelCurvas1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 310, 410));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 460, 440));
         jPanel1.add(txtImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 290, 290));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -261,10 +306,27 @@ public class LoginPTC extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLoginActionPerformed
 
+    private void btnRecContraseniaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRecContraseniaMouseClicked
+        RecContrasenia vista = new RecContrasenia();
+        vista.INIT();
+        this.dispose();
+    }//GEN-LAST:event_btnRecContraseniaMouseClicked
+
+    private void btnRecContraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecContraseniaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRecContraseniaActionPerformed
+
+    private void bntSesion1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bntSesion1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bntSesion1MouseClicked
+
     public void transpareciaBoton(){
         btnLogin.setOpaque(false);        
         btnLogin.setContentAreaFilled(false);
         btnLogin.setBorderPainted(false);
+        btnRecContrasenia.setOpaque(false);        
+        btnRecContrasenia.setContentAreaFilled(false);
+        btnRecContrasenia.setBorderPainted(false);
     }
     
     /**
@@ -293,8 +355,12 @@ public class LoginPTC extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Vista.PanelCurvas bntSesion;
+    private Vista.PanelCurvas bntSesion1;
     public javax.swing.JButton btnLogin;
+    public javax.swing.JButton btnRecContrasenia;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private Vista.PanelCurvas panelCurvas1;

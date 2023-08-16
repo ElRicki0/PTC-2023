@@ -292,7 +292,7 @@ public class EmpleadosM {
         }
     }
     
-     public void actualizar(VEmpleados vistaEmpleados){  
+    public void actualizar(VEmpleados vistaEmpleados){  
 
         //obtenemos que fila seleccionó el usuario
 
@@ -321,9 +321,9 @@ public class EmpleadosM {
 
         }
      }
-
-
     
+    
+         
     public void MostrarEmpleados(VEmpleados vistaEmpleados){
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(new Object[]{"ID","Nombre", "Fecha Nacimiento", "Direccion", "Telefono","Correo", "Genero", "Tipo Empleado"});
