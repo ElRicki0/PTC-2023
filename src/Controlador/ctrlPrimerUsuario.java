@@ -30,8 +30,8 @@ public class ctrlPrimerUsuario implements ActionListener{
         if(e.getSource()==vistaPUsuario.btnAgregar){
             System.out.println("se da clic en ctrl usuario");
             modeloUsuario.setUsr_nombre(vistaPUsuario.txtUsuario.getText());
-            modeloUsuario.setUsr_contra(vistaPUsuario.txtContrasenia.getText());
-//            modeloUsuario.setUsr_contra(encript.ecnode(vistaPUsuario.txtContrasenia.getText()));
+//            modeloUsuario.setUsr_contra(vistaPUsuario.txtContrasenia.getText());
+            modeloUsuario.setUsr_contra(encript.convertirSHA256(vistaPUsuario.txtContrasenia.getText()));
             modeloUsuario.PMUsuario(modeloUsuario);
             vistaPUsuario.dispose();
             login.INIT();
