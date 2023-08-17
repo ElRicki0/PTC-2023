@@ -291,7 +291,7 @@ public class LoginPTC extends javax.swing.JFrame {
                         this.setVisible(false);
                     }  
                 } else {
-                JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
+                    this.dispose();
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "El usuario no existe");

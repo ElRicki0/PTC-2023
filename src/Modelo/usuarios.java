@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -93,7 +93,7 @@ public class usuarios {
             JOptionPane.showMessageDialog(null, "Usuario agregado correctamente");
             AUsuario.execute();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al agregar Usuario " + e.toString());
+            System.out.println(e.toString());
         }
 
     }
@@ -181,29 +181,6 @@ public class usuarios {
             JOptionPane.showMessageDialog(null, "Error en la validación: " + e.toString());
         }
 
-//        int resultado=0;
-//        String SQL="select*from tbUsuarios where usr_nombre='"+usr_nombre+"' and usr_contrasenia='"+usr_contra+"';";
-//
-//        try {            
-//            Statement sta = CConexion.getConexion().createStatement();
-//            ResultSet rs= sta.executeQuery(SQL);
-//            if (rs.next()) 
-//            {
-//                
-//                resultado=1;
-//                if (resultado==1) 
-//                {
-//                    Main main = new Main();
-//                    main.INIT();                         
-//                }
-//            }
-//            else 
-//            {
-//                JOptionPane.showMessageDialog(null, "error de acceso de usuario");
-//            }
-//        } catch (Exception e) {
-//                JOptionPane.showMessageDialog(null, "Error en modelo usuario"+e.getMessage());
-//        }
     }
 
     public void mostrarUsuarios(VUsuarios vistaUsuarios) {
@@ -224,22 +201,6 @@ public class usuarios {
         }
     }
 
-//    public void mostrarUsuarios(VUsuarios vistaUsuarios){
-//        DefaultTableModel modelo = new DefaultTableModel();
-//        modelo.setColumnIdentifiers(new Object[]{"ID","Usuario", "Contraseña", "Nombre Empleado", "Nivel Usuario"});
-//        try {
-//            Statement st = CConexion.getConexion().createStatement();
-//          String sql ="select tbUsuarios.idUsuario, tbUsuarios.usr_nombre, tbUsuarios.usr_contrasenia, tbEmpleados.emp_nombre, tbNivelesUsuarios.usr_Nivel from tbUsuarios inner join tbEmpleados on tbUsuarios.idEmpleado=tbEmpleados.idEmpleado INNER JOIN tbNivelesUsuarios on tbUsuarios.idNivelUser=tbNivelesUsuarios.idNivelUser";
-//            
-//            ResultSet rs = st.executeQuery(sql);
-//            while(rs.next()){
-//                modelo.addRow(new Object[]{rs.getInt("idUsuario"), rs.getString("usr_nombre"), rs.getString("usr_contrasenia"), rs.getInt("tbEmpleados.emp_nombre"), rs.getInt("tbNivelesUsuarios.usr_Nivel")});
-//            }
-//            vistaUsuarios.tbEmpleados.setModel(modelo);
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, "Error tabla empleados "+e.getMessage());                
-//        }
-//    }
     String NombreE = getIdEmpleado();
 
     public void jcbEmpleado(JComboBox combox) {
@@ -278,19 +239,6 @@ public class usuarios {
                 }
             }
 
-//        String sql="select idEmpleado from tbEmpleados";
-//        Statement st;
-//    CConexion con = new CConexion();
-//    Connection conexion=con.getConexion();
-//        try {
-//            st= conexion.createStatement();
-//            ResultSet rs= st.executeQuery(sql) ;
-//            while(rs.next()){
-//                combox.addItem(rs.getString("idEmpleado"));
-//            }
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, "Error en modelo empleado cbx "+ e.toString());
-//        }
         }
     }
 
@@ -331,29 +279,12 @@ public class usuarios {
                 }
             }
 
-//        String sql="select idNivelUser from tbNivelesUsuarios";
-//        Statement st;
-//    CConexion con = new CConexion();
-//    Connection conexion=con.getConexion();
-//        try {
-//            st= conexion.createStatement();
-//            ResultSet rs= st.executeQuery(sql) ;
-//            while(rs.next()){
-//                combox.addItem(rs.getString("idNivelUser"));
-//            }
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, "Error en niveles usuariocbx "+ e.toString());
-//        }
         }
     }
 
     public void AUsuarios(usuarios modeloUsuario, JComboBox jcbEmpleado, JComboBox jcbUsuario) {
         try {
-//             String texto1 = vistaUsuarios.jcbEmpleado.getSelectedItem().toString();
-//            if (texto1==) {
-//                
-//            } else {
-//            }
+
             PreparedStatement AUsuario = CConexion.getConexion().prepareStatement("insert into tbUsuarios(usr_nombre, usr_contrasenia, idEmpleado, idNivelUser) values(?,'pass123',?,?)");
 
             AUsuario.setString(1, modeloUsuario.getUsr_nombre());
@@ -399,6 +330,27 @@ public class usuarios {
             JOptionPane.showMessageDialog(null, "seleccione un usuario");
         }
 
+    }
+    
+    public void ActualizarContra(usuarios modeloUsuario){
+        try {
+            String sql = "update tbUsuarios set usr_contrasenia=? where usr_nombre=?";
+        try {
+            PreparedStatement AUsuario = CConexion.getConexion().prepareStatement(sql);
+            AUsuario.setString(1, modeloUsuario.getUsr_contra());
+            AUsuario.setString(2, modeloUsuario.getUsr_nombre());
+            JOptionPane.showMessageDialog(null, "Contraseña actualizada correctamente");
+            AUsuario.execute();
+            LoginPTC vistaLogin = new LoginPTC();
+            vistaLogin.INIT();
+            NuevoContra vistaN= new NuevoContra();
+            vistaN.dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "error actualizar contrasenia"+e.toString());
+            System.out.println(e.toString());
+        }
+        } catch (Exception e) {
+        }
     }
 
 }

@@ -38,7 +38,8 @@ public class ctrlLogin implements ActionListener {
 
                     Main main = new Main();
                     main.setVisible(true);
-
+                    LoginPTC loginvista= new LoginPTC();
+                    loginvista.dispose();
                 } else {
                     JOptionPane.showMessageDialog(null, "Credenciales inválidas");
                 }
