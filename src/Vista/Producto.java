@@ -809,7 +809,7 @@ public class Producto extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
         jLabel7.setText("Buscar:");
-        jpProductos.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 10, 80, 41));
+        jpProductos.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 10, 100, 41));
 
         jcbBuscador.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
         jpProductos.add(jcbBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, 240, 40));
@@ -1009,7 +1009,8 @@ public class Producto extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSubProductosMouseEntered
 
     private void btnSubProductosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubProductosMouseExited
-        btnSubProductos.setBackground(new Color(64,81,152));
+        btnSubProductos.setBackground(new Color(172,147,110));
+        txtSub.setForeground(Color.black);
     }//GEN-LAST:event_btnSubProductosMouseExited
 
     private void btnSubMarcasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubMarcasMouseClicked
