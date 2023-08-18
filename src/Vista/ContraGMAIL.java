@@ -21,6 +21,7 @@ public class ContraGMAIL extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);        
         TextPrompt textPrompta =new TextPrompt("Ingrese su Correo", this.txtCorreo);        
+        TextPrompt textPrompta1 =new TextPrompt("Correo", this.txtCodigo);        
         transparenciaBotin();
     }
     
@@ -301,15 +302,19 @@ public class ContraGMAIL extends javax.swing.JFrame {
     }
     
     public void VerificarCodigo() {
-        int texto2= Integer.parseInt(txtCodigo.getText());
+        try {
+            int texto2= Integer.parseInt(txtCodigo.getText());
         if (aleatorio==texto2) {
             NuevoContra vista = new NuevoContra();
             vista.INIT();
             this.dispose();
         } else {
-                        JOptionPane.showMessageDialog(null, "Error "    );
-
+            JOptionPane.showMessageDialog(null, "Error"    );
         }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ingrese un codigo valido"    );
+        }
+        
     }
     
     public static void main(String args[]) {
