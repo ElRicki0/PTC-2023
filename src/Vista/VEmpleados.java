@@ -7,9 +7,8 @@ package Vista;
 import Controlador.ctrlEmpleado;
 import Modelo.CConexion;
 import Modelo.EmpleadosM;
-import java.awt.Color;
 import desplazable.Desface;
-import java.beans.beancontext.BeanContextChildSupport;
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,7 +24,7 @@ import javax.swing.JOptionPane;
 public class VEmpleados extends javax.swing.JFrame {
         
     EmpleadosM modeloEmpleados= new EmpleadosM();
-        
+        Desface desplace;
     public VEmpleados() {        
         initComponents();
         rsscalelabel.RSScaleLabel.setScaleLabel(txtLogo, "src/Vista/Iconos/logo.png");
@@ -1054,10 +1053,10 @@ public class VEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBodegaMouseExited
 
     private void txtBarrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtBarrasMouseClicked
-        if (MenuPlegable.getX()==0) {
-//            desplace.desplazarIzquierda(MenuPlegable, MenuPlegable.getX(), -150, 15, 10);
-        } else if(MenuPlegable.getX() == -150) {
-//            desplace.desplazarDerecha(MenuPlegable, MenuPlegable.getX(), 0, 15, 10);
+        if (MenuPlegable.getX()==-150) {
+            desplace.desplazarDerecha(MenuPlegable, MenuPlegable.getX(), 0, 15, 10);
+        } else if(MenuPlegable.getX() == 0) {
+            desplace.desplazarIzquierda(MenuPlegable, MenuPlegable.getX(), -150, 15, 10);
         }
     }//GEN-LAST:event_txtBarrasMouseClicked
 

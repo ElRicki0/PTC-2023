@@ -15,7 +15,7 @@ public class VUsuarios extends javax.swing.JFrame {
         
     EmpleadosM modeloEmpleados= new EmpleadosM();
     usuarios modeloUsuario =new usuarios();
-        
+        Desface desplace;
     public VUsuarios() {        
         initComponents();
         rsscalelabel.RSScaleLabel.setScaleLabel(txtLogo, "src/Vista/Iconos/logo.png");
@@ -913,10 +913,10 @@ public class VUsuarios extends javax.swing.JFrame {
 
     private void txtBarrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtBarrasMouseClicked
         if (MenuPlegable.getX()==0) {
-//            desplace.desplazarIzquierda(MenuPlegable, MenuPlegable.getX(), -150, 15, 10);
+            desplace.desplazarIzquierda(MenuPlegable, MenuPlegable.getX(), -150, 15, 10);
         } else if(MenuPlegable.getX() == -150) {
             
-//            desplace.desplazarDerecha(MenuPlegable, MenuPlegable.getX(), 0, 15, 10);
+            desplace.desplazarDerecha(MenuPlegable, MenuPlegable.getX(), 0, 15, 10);
         }
     }//GEN-LAST:event_txtBarrasMouseClicked
 

@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
  */
 public class VNEmpleados extends javax.swing.JFrame {
         
-        
+        Desface desplace;
     public VNEmpleados() {        
         initComponents();
         rsscalelabel.RSScaleLabel.setScaleLabel(txtLogo, "src/Vista/Iconos/logo.png");
@@ -939,9 +939,9 @@ public class VNEmpleados extends javax.swing.JFrame {
 
     private void txtBarrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtBarrasMouseClicked
         if (MenuPlegable.getX()==0) {
-//            desplace.desplazarIzquierda(MenuPlegable, MenuPlegable.getX(), -150, 15, 10);
+            desplace.desplazarIzquierda(MenuPlegable, MenuPlegable.getX(), -150, 15, 10);
         } else if(MenuPlegable.getX() == -150) {
-//            desplace.desplazarDerecha(MenuPlegable, MenuPlegable.getX(), 0, 15, 10);
+            desplace.desplazarDerecha(MenuPlegable, MenuPlegable.getX(), 0, 15, 10);
         }
     }//GEN-LAST:event_txtBarrasMouseClicked
 
