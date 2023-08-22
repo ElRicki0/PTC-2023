@@ -52,6 +52,7 @@ public class LoginPTC extends javax.swing.JFrame {
         btnLogin = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         txtImagen = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -213,6 +214,9 @@ public class LoginPTC extends javax.swing.JFrame {
         jLabel4.setText("Usuario:");
         panelCurvas1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
+        jButton1.setText("jButton1");
+        panelCurvas1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, -1, -1));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -358,6 +362,7 @@ public class LoginPTC extends javax.swing.JFrame {
     private Vista.PanelCurvas bntSesion1;
     public javax.swing.JButton btnLogin;
     public javax.swing.JButton btnRecContrasenia;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
