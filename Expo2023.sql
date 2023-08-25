@@ -133,13 +133,14 @@ select tbProductos.idProducto, tbProductos.Prod_Nombre, tbMarcaProductos.MP_Nomb
 from tbProductos inner join tbMarcaProductos  on tbProductos.idProducto = tbMarcaProductos.id_MP inner join tbBodegas on tbProductos.idBodega = tbBodegas.idBodega
 /*
 insert into tbProductos (Prod_Nombre, id_MP, Prod_Unidades, Prod_PrecioUnitario, idBodega) values ('Papass miles', 1, 10, 3, 1);
-insert into tbProductos (Prod_Nombre, id_MP, Prod_Unidades, Prod_PrecioUnitario, idBodega) values ('Alfajor miles', 2, 10, 2, 2);
-insert into tbProductos (Prod_Nombre, id_MP, Prod_Unidades, Prod_PrecioUnitario, idBodega) values ('Torta miles', 3, 10, 3, 3);
+insert into tbProductos (Prod_Nombre, id_MP, Prod_Unidades, Prod_PrecioUnitario, idBodega) values ('Alfajor miles777', 2, 2, 2, 2);
+insert into tbProductos (Prod_Nombre, id_MP, Prod_Unidades, Prod_PrecioUnitario, idBodega) values ('Torta miles777', 3, 3, 3, 3);
 delete from tbProductos where idProducto =1*/
 	go
 	select id_MP, MP_Nombre from tbMarcaProductos
 	select idBodega, bdg_nombre from tbBodegas
 	select*from tbProductos
+	select idProducto, Prod_Unidades from tbProductos where idProducto=1
 	/*
 	select*from tbProductos inner join tbMarcaProductos on tbProductos.Prod_idMarca = tbMarcaProductos.id_MP    *//*comparar tablas */
 go
@@ -148,32 +149,34 @@ select Prod_Nombre , id_MP, Prod_Unidades, Prod_PrecioUnitario, idBodega from tb
 
 create table tbDatosDistribucion(
 idDatoDistribucion	int identity (1,1) primary key,
-DaDis_CantidadProducto	int,
+DaDis_Nombre		varchar(50),
 idProducto			int
-foreign key references [dbo].[tbProductos]([idProducto])
+foreign key references [dbo].[tbProductos]([idProducto]),
+DaDis_CantidadProducto	int,
+idEmpleado			int
+foreign key references [dbo].[tbEmpleados]([idEmpleado])
 );
 go
 
+select*from tbDatosDistribucion
+
+select idDatoDistribucion, tbProductos.Prod_Nombre, DaDis_CantidadProducto, tbEmpleados.emp_nombre  from tbDatosDistribucion 
+inner join tbProductos on tbDatosDistribucion.idProducto= tbProductos.idProducto inner join tbEmpleados on tbDatosDistribucion.idEmpleado=tbEmpleados.idEmpleado
+
+go
 create table tbPaqueteria(
 idPaqueteria		int identity(1,1) primary key,
-idUsuario			int
-foreign key references [dbo].[tbUsuarios]([idUsuario]),
+idEmpleado			int
+foreign key references [dbo].[tbEmpleados] ([idEmpleado]),
 idDatoDistribucion			int
-foreign key references [dbo].[tbDatosDistribucion]([idDatoDistribucion])
+foreign key references [dbo].[tbDatosDistribucion]([idDatoDistribucion]),
+Paq_Ubicacion		varchar(5000)
 );
 go
 
+select*from tbPaqueteria
+delete from tbPaqueteria where idPaqueteria =2
 /*Proximos contendores de productos nuevo */
-create table tbContenedortes (
-idContenedor		INT identity (1,1) primary key,
-ctd_Nombre			varchar(100),
-ctd_Empresa	varchar(200),
-ctd_Correo      varchar(300) not null,
-idProducto		int
-foreign key references  [dbo].[tbProductos]([idProducto]),
-idPaqueteria		int
-);
-go
 
 
 /*Apartado clientes*/
@@ -188,7 +191,7 @@ foreign key references  [dbo].[tbGeneros]([idGenero])
 );
 go
 insert into tbClientes(clie_Nombre, clie_Edad, clie_Telefono, clie_Correo, idGenero) values ('luis', 45, '12345678', 'correo1@gmail.com', 1)
-select idCliente, clie_Nombre, clie_Edad, clie_Telefono, clie_Correo, tbGeneros.idGenero from tbClientes inner join tbGeneros on tbClientes.idGenero=tbGeneros.idGenero
+select idCliente, clie_Nombre, clie_Edad, clie_Telefono, clie_Correo, tbGeneros.Genero from tbClientes inner join tbGeneros on tbClientes.idGenero=tbGeneros.idGenero
 
 create table tbTiendas(
 idTienda			int identity(1,1) primary key,
