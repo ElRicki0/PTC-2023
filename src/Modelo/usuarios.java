@@ -284,7 +284,7 @@ public class usuarios {
 
     public void AUsuarios(usuarios modeloUsuario, JComboBox jcbEmpleado, JComboBox jcbUsuario) {
         try {
-
+            
             PreparedStatement AUsuario = CConexion.getConexion().prepareStatement("insert into tbUsuarios(usr_nombre, usr_contrasenia, idEmpleado, idNivelUser) values(?,'pass123',?,?)");
 
             AUsuario.setString(1, modeloUsuario.getUsr_nombre());

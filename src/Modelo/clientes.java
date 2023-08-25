@@ -8,6 +8,8 @@ package Modelo;
 import java.beans.Statement;
 import java.sql.*;
 import Vista.*;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -68,38 +70,80 @@ public class clientes {
         this.idGenero = idGenero;
     }
     
-//    public void MostrarClientes(Cliente vistaClientes){
-//        DefaultTableModel modelo= new DefaultTableModel();
-//        modelo.setColumnIdentifiers(new Object[]{"ID Cliente", "Nombre", "Edad", "Telefono", "Correo", "Genero"});
-//        try {
-//            
-//            java.sql.Statement st= CConexion.getConexion().createStatement();
-//            String SQL ="select idCliente, clie_Nombre, clie_Edad, clie_Telefono, clie_Correo, tbGeneros.idGenero from tbClientes inner join tbGeneros on tbClientes.idGenero=tbGeneros.idGenero ";
-//            ResultSet rs = st.executeQuery(SQL);
-//            
-//            while (rs.next()) {
-//                modelo.addRow(new Object[]{rs.getInt("idCliente"), rs.getString("clie_Nombre"), rs.getInt("clie_Edad"), rs.getString("clie_Telefono"), rs.getString("clie_Correo"), rs.getInt("tbGeneros.idGenero")});
-//            }
-//            vistaClientes.tbClientes.setModel(modelo);
-////            vistaClientes..setModel(modelo);
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, " error en en tb cliente "+e.getMessage());                
-//        }
-//    }
-    public void AgregarCliente(clientes modeloCliente){
+    public void llenarCBXGenero(JComboBox combox){
+    Connection conectar = null;
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+
+    String sql = "select idGenero, Genero from tbGeneros";
+    combox.removeAllItems();
+    Map<Integer, String> idGenero = new HashMap<>();
+    
+        try {
+            conectar=CConexion.getConexion();
+            ps=conectar.prepareStatement(sql);
+            rs=ps.executeQuery();
+            
+            while (rs.next()) {                
+                int id = rs.getInt("idGenero");
+                String genero = rs.getString("Genero");
+                idGenero.put(id, genero);
+                combox.addItem(genero);
+            }
+            combox.putClientProperty("idGenero", idGenero);
+            
+        } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "error cbx genero "+e.toString());
+        }finally{
+            if (conectar!=null) {
+                try {
+                    conectar.close();
+                    rs.close();
+                    conectar=null;
+                    rs=null;
+                    
+                } catch (Exception e) {
+                }
+            }
+        }
+    }
+    
+    public void AgregarCliente(clientes modeloCliente, JComboBox jcbGenero){
         String SQL = "insert into tbClientes(clie_Nombre, clie_Edad, clie_Telefono, clie_Correo, idGenero) values(?,?,?,?,?)";
         try {
-            PreparedStatement AProducto = CConexion.getConexion().prepareStatement(SQL);
-            AProducto.setString (1, modeloCliente.getClie_Nombre());
-            AProducto.setInt(2, modeloCliente.getClie_Edad());
-            AProducto.setString(3, modeloCliente.getClie_telefono());
-            AProducto.setString (4, modeloCliente.getClie_correo());
-            AProducto.setInt(5, Integer.parseInt(modeloCliente.getIdGenero()));
-            AProducto.executeUpdate();
+            PreparedStatement ACliente = CConexion.getConexion().prepareStatement(SQL);
+            ACliente.setString (1, modeloCliente.getClie_Nombre());
+            ACliente.setInt(2, modeloCliente.getClie_Edad());
+            ACliente.setString(3, modeloCliente.getClie_telefono());
+            ACliente.setString (4, modeloCliente.getClie_correo());
+            int SelectGenero= jcbGenero.getSelectedIndex();
+            if (SelectGenero!=-1) {
+                Map<Integer, String> idGenero = (Map<Integer, String>)jcbGenero.getClientProperty("idGenero");
+                int selID=(int) idGenero.keySet().toArray()[SelectGenero];
+                ACliente.setInt(5, selID);
+            } else {
+            }
+            ACliente.executeUpdate();
             JOptionPane.showMessageDialog(null, "El cliente  se agrego correctamente");
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "error en el modelo del cliente"+ e.toString());   
+        }
+    }
+    
+    public void MostrarTabla(VCliente vista){
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(new Object[]{"ID","Nombre", "Edad", "Telefono", "Correo","Genero"});
+        try {
+            java.sql.Statement st = CConexion.getConexion().createStatement();
+            String sql ="select idCliente, clie_Nombre, clie_Edad, clie_Telefono, clie_Correo, tbGeneros.Genero from tbClientes inner join tbGeneros on tbClientes.idGenero=tbGeneros.idGenero";
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+                modelo.addRow(new Object[]{rs.getInt("idCliente"), rs.getString("clie_Nombre"), rs.getInt("clie_Edad"), rs.getString("clie_Telefono"), rs.getString("clie_Correo"), rs.getString("Genero")});
+            }
+            vista.tbClientes.setModel(modelo);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error tabla clientes "+e.getMessage());                
         }
     }
 }

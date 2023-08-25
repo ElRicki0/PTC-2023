@@ -526,7 +526,7 @@ public class UMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTrabajadorMouseClicked
 
     private void btnRutaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseClicked
-        Rutas rutas = new Rutas();
+        VDatosDis rutas = new VDatosDis();
         rutas.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnRutaMouseClicked

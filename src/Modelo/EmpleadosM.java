@@ -104,7 +104,7 @@ public class EmpleadosM {
     
     
     public void llenarCBXGenero(JComboBox combox){
-        Connection conectar = null;
+    Connection conectar = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
 
@@ -222,20 +222,6 @@ public class EmpleadosM {
                 }
             }
         }
-        
-//        String sql="select idTipoEmpleado from tbTiposEmpleados";
-//        Statement st;
-//    CConexion con = new CConexion();
-//    Connection conexion=con.getConexion();
-//        try {
-//            st= conexion.createStatement();
-//            ResultSet rs= st.executeQuery(sql) ;
-//            while(rs.next()){
-//                combox.addItem(rs.getString("idTipoEmpleado"));
-//            }
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, "Error en tipo empleado cbx "+ e.toString());
-//        }
     }
     
     public boolean MAgregarEmpleado(EmpleadosM modeloEmpleados, JComboBox jcbGenero, JComboBox jcbTipo ){

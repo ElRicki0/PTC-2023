@@ -19,7 +19,7 @@ public class productos {
     
     Producto vistaProducto;
     
-    private int idProducto;
+    private String idProducto;
     private String prod_nombre;
     private String idMarca;
     private int prod_unidades;
@@ -27,11 +27,11 @@ public class productos {
     private String idBodega;
       
 
-    public int getIdProducto() {
+    public String getIdProducto() {
         return idProducto;
     }
 
-    public void setIdProducto(int idProducto) {
+    public void setIdProducto(String idProducto) {
         this.idProducto = idProducto;
     }
 
@@ -258,31 +258,31 @@ public boolean AgregarProducto(productos productomodelo, JComboBox comboMarca, J
         
             int filaSeleccionada = vistaProducto.tbProductos.getSelectedRow();      
 
-                            //Obtenemos el id de la fila seleccionada
-                              String miId = vistaProducto.tbProductos.getValueAt(filaSeleccionada, 0).toString();
-                                String nuevoValorIngresadoNombre = vistaProducto.txtNombre_pdt.getText();
-                                String nuevoValorIngresadoMarca = vistaProducto.jcbMarca_pdt.getSelectedItem().toString();
-                                String nuevoValorIngresadounidades = vistaProducto.txtUnidades_pdt.getText();
-                                String nuevoValorIngresadoprecio = vistaProducto.txtPrecioUnitario_pdt.getText();   
-                                String nuevoValorIngresadoBodega = vistaProducto.jcbBuscador.getSelectedItem().toString();   
+        //Obtenemos el id de la fila seleccionada
+          String miId = vistaProducto.tbProductos.getValueAt(filaSeleccionada, 0).toString();
+            String nuevoValorIngresadoNombre = vistaProducto.txtNombre_pdt.getText();
+            String nuevoValorIngresadoMarca = vistaProducto.jcbMarca_pdt.getSelectedItem().toString();
+            String nuevoValorIngresadounidades = vistaProducto.txtUnidades_pdt.getText();
+            String nuevoValorIngresadoprecio = vistaProducto.txtPrecioUnitario_pdt.getText();   
+            String nuevoValorIngresadoBodega = vistaProducto.jcbBuscador.getSelectedItem().toString();   
 
-                                try {
+            try {
 
-                                 PreparedStatement updateUser = CConexion.getConexion().prepareStatement("update tbProductos set Prod_Nombre = ?, id_MP=?, Prod_Unidades = ?, Prod_PrecioUnitario = ?, idBodega = ? where idProducto = ?");
-                                    updateUser.setString(1, nuevoValorIngresadoNombre);
-                                    updateUser.setInt(2, Integer.parseInt( nuevoValorIngresadoMarca));
-                                    updateUser.setInt(3, Integer.parseInt( nuevoValorIngresadounidades));
-                                    updateUser.setString(4, nuevoValorIngresadoprecio);
-                                    updateUser.setInt(5, Integer.parseInt( nuevoValorIngresadoBodega));
-                                    updateUser.setString(6, miId);
-                                    JOptionPane.showMessageDialog(null, "El producto se actualizo correctamente");                           
-                                    updateUser.executeUpdate();
-                                    return true;
-                                    } catch (Exception e) {
-                                    System.out.println(e.toString());
-                                    JOptionPane.showMessageDialog(null, "Error en actualizar producto");  
-                                    return false;
-                                         }
+             PreparedStatement updateUser = CConexion.getConexion().prepareStatement("update tbProductos set Prod_Nombre = ?, id_MP=?, Prod_Unidades = ?, Prod_PrecioUnitario = ?, idBodega = ? where idProducto = ?");
+                updateUser.setString(1, nuevoValorIngresadoNombre);
+                updateUser.setInt(2, Integer.parseInt( nuevoValorIngresadoMarca));
+                updateUser.setInt(3, Integer.parseInt( nuevoValorIngresadounidades));
+                updateUser.setString(4, nuevoValorIngresadoprecio);
+                updateUser.setInt(5, Integer.parseInt( nuevoValorIngresadoBodega));
+                updateUser.setString(6, miId);
+                JOptionPane.showMessageDialog(null, "El producto se actualizo correctamente");                           
+                updateUser.executeUpdate();
+                return true;
+                } catch (Exception e) {
+                System.out.println(e.toString());
+                JOptionPane.showMessageDialog(null, "Error en actualizar producto");  
+                return false;
+                     }
         
     }
 

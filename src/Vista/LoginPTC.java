@@ -280,24 +280,26 @@ public class LoginPTC extends javax.swing.JFrame {
                     }if (l.equals("2")) {
                         Vista.Controlador.CMain main = new Vista.Controlador.CMain();
                         main.setVisible(true);
-                        this.setVisible(false);
+                        this.dispose();
                     } if (l.equals("3")) {
                         Vista.Repartidor.RMain main = new Vista.Repartidor.RMain();
                         main.setVisible(true);
-                        this.setVisible(false);
+                        this.dispose();
                     }if (l.equals("4")) {
                         Vista.Usuario.UMain main = new Vista.Usuario.UMain();
                         main.setVisible(true);
-                        this.setVisible(false);
+                        this.dispose();
                     }  
                 } else {
+                    this.dispose();
                 }
                     this.dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "El usuario no existe");
-            }   
+            } 
+            this.dispose();
         } catch (SQLException ex) {
-            
+            this.dispose();
         }
     
     }//GEN-LAST:event_btnLoginMouseClicked

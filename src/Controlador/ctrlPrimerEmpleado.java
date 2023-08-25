@@ -27,7 +27,7 @@ public class ctrlPrimerEmpleado implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-         String texto1 =vistaPrimero.txtCorreo.getText();
+        String texto1 =vistaPrimero.txtCorreo.getText();
         String texto2 =vistaPrimero.txtDireccion.getText();
         String texto3 =vistaPrimero.txtNombre.getText();
         String texto4 =vistaPrimero.txtTelefono.getText();
@@ -42,7 +42,7 @@ public class ctrlPrimerEmpleado implements ActionListener{
                         JOptionPane.showMessageDialog(null, "El Numero de telefono solo puede tener numeros");                        
                     } else {
                         if (texto4.length()==8) {  
-                            if (texto1.length()<6) {
+                            if (!texto1.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
                                 JOptionPane.showMessageDialog(null, "El correo electronico tiene que ser valido");                        
                             } else {
                                 modeloEmpleado.setEmp_nombre(vistaPrimero.txtNombre.getText());
@@ -60,7 +60,7 @@ public class ctrlPrimerEmpleado implements ActionListener{
                             JOptionPane.showMessageDialog(null, "El numero de telefono tiene que ser valido");    
                         }
                     }
-                }                
+                }
             } catch (Exception en) {
                                 System.out.println("erro en control empleado" +en.toString());
             }

@@ -520,9 +520,9 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTrabajadorMouseClicked
 
     private void btnRutaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseClicked
-        Rutas rutas = new Rutas();
-        rutas.setVisible(true);
-        this.setVisible(false);
+        VDatosDis rutas = new VDatosDis();
+        rutas.INIT();
+        this.dispose();
     }//GEN-LAST:event_btnRutaMouseClicked
 
     private void btnBodegaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseClicked
