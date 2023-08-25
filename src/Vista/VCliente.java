@@ -1063,9 +1063,9 @@ public class VCliente extends javax.swing.JFrame {
 
     public void INIT(){
         VCliente vistaCliente =new VCliente();
-        modeloCliente.MostrarTabla(this);
-        vistaCliente.setVisible(true);
         ctrlCliente control= new ctrlCliente(modeloCliente, vistaCliente);
+        modeloCliente.MostrarTabla(vistaCliente);
+        vistaCliente.setVisible(true);
     }
     
     /**
