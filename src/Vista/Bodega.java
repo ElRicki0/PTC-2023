@@ -113,7 +113,7 @@ public class Bodega extends javax.swing.JFrame {
         });
 
         txtCasa.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        txtCasa.setForeground(new java.awt.Color(45, 40, 37));
+        txtCasa.setForeground(new java.awt.Color(255, 255, 255));
         txtCasa.setText("Inicio");
 
         javax.swing.GroupLayout btnCasaLayout = new javax.swing.GroupLayout(btnCasa);
@@ -121,7 +121,7 @@ public class Bodega extends javax.swing.JFrame {
         btnCasaLayout.setHorizontalGroup(
             btnCasaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnCasaLayout.createSequentialGroup()
-                .addContainerGap(98, Short.MAX_VALUE)
+                .addContainerGap(97, Short.MAX_VALUE)
                 .addComponent(txtCasa)
                 .addGap(18, 18, 18)
                 .addComponent(Casaicon, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -164,7 +164,7 @@ public class Bodega extends javax.swing.JFrame {
         });
 
         txtproducto.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        txtproducto.setForeground(new java.awt.Color(45, 40, 37));
+        txtproducto.setForeground(new java.awt.Color(255, 255, 255));
         txtproducto.setText("Productos");
 
         javax.swing.GroupLayout btnProductoLayout = new javax.swing.GroupLayout(btnProducto);
@@ -207,7 +207,7 @@ public class Bodega extends javax.swing.JFrame {
         });
 
         txtEmpleado.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        txtEmpleado.setForeground(new java.awt.Color(45, 40, 37));
+        txtEmpleado.setForeground(new java.awt.Color(255, 255, 255));
         txtEmpleado.setText("Empleados");
 
         javax.swing.GroupLayout btnTrabajadorLayout = new javax.swing.GroupLayout(btnTrabajador);
@@ -250,7 +250,7 @@ public class Bodega extends javax.swing.JFrame {
         });
 
         txtBodega.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        txtBodega.setForeground(new java.awt.Color(45, 40, 37));
+        txtBodega.setForeground(new java.awt.Color(255, 255, 255));
         txtBodega.setText("Bodegas");
 
         javax.swing.GroupLayout btnBodegaLayout = new javax.swing.GroupLayout(btnBodega);
@@ -293,7 +293,7 @@ public class Bodega extends javax.swing.JFrame {
         });
 
         txtBitacora.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        txtBitacora.setForeground(new java.awt.Color(45, 40, 37));
+        txtBitacora.setForeground(new java.awt.Color(255, 255, 255));
         txtBitacora.setText("Bitacora");
 
         javax.swing.GroupLayout btnBitacoraLayout = new javax.swing.GroupLayout(btnBitacora);
@@ -336,7 +336,7 @@ public class Bodega extends javax.swing.JFrame {
         });
 
         txtCliente.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        txtCliente.setForeground(new java.awt.Color(45, 40, 37));
+        txtCliente.setForeground(new java.awt.Color(255, 255, 255));
         txtCliente.setText("Cliente");
 
         javax.swing.GroupLayout btnClienteLayout = new javax.swing.GroupLayout(btnCliente);
@@ -344,7 +344,7 @@ public class Bodega extends javax.swing.JFrame {
         btnClienteLayout.setHorizontalGroup(
             btnClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnClienteLayout.createSequentialGroup()
-                .addGap(0, 81, Short.MAX_VALUE)
+                .addGap(0, 86, Short.MAX_VALUE)
                 .addComponent(txtCliente)
                 .addGap(25, 25, 25)
                 .addComponent(Clienteicon, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -379,7 +379,7 @@ public class Bodega extends javax.swing.JFrame {
         });
 
         txtRuta.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        txtRuta.setForeground(new java.awt.Color(45, 40, 37));
+        txtRuta.setForeground(new java.awt.Color(255, 255, 255));
         txtRuta.setText("Rutas");
 
         javax.swing.GroupLayout btnRutaLayout = new javax.swing.GroupLayout(btnRuta);
@@ -713,17 +713,17 @@ public class Bodega extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnCasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseClicked
-
+        Main vista = new Main();
+        vista.INIT();
+        this.dispose();
     }//GEN-LAST:event_btnCasaMouseClicked
 
     private void btnCasaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseEntered
         btnCasa.setBackground(new Color(45,40,37));
-        txtCasa.setForeground(Color.white);
     }//GEN-LAST:event_btnCasaMouseEntered
 
     private void btnCasaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseExited
         btnCasa.setBackground(new Color(64,81,115));
-        txtCasa.setForeground(new Color(45,40,37));
     }//GEN-LAST:event_btnCasaMouseExited
 
     private void txtBarrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtBarrasMouseClicked
@@ -737,34 +737,27 @@ public class Bodega extends javax.swing.JFrame {
     private void btnProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseClicked
         Producto producto = new Producto();
         producto.NIT();
-        //  producto.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnProductoMouseClicked
 
     private void btnProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseEntered
         btnProducto.setBackground(new Color(45,40,37));
-        txtproducto.setForeground(Color.white);
     }//GEN-LAST:event_btnProductoMouseEntered
 
     private void btnProductoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseExited
         btnProducto.setBackground(new Color(64,81,115));
-        txtproducto.setForeground(new Color(45,40,37));
     }//GEN-LAST:event_btnProductoMouseExited
 
     private void btnTrabajadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadorMouseClicked
-        VEmpleados empleados = new VEmpleados();
-        empleados.INIT();
-        this.dispose();
+
     }//GEN-LAST:event_btnTrabajadorMouseClicked
 
     private void btnTrabajadorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadorMouseEntered
         btnTrabajador.setBackground(new Color(45,40,37));
-        txtEmpleado.setForeground(Color.white);
     }//GEN-LAST:event_btnTrabajadorMouseEntered
 
     private void btnTrabajadorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadorMouseExited
         btnTrabajador.setBackground(new Color(64,81,115));
-        txtEmpleado.setForeground(new Color(45,40,37));
     }//GEN-LAST:event_btnTrabajadorMouseExited
 
     private void btnBodegaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseClicked
@@ -775,12 +768,10 @@ public class Bodega extends javax.swing.JFrame {
 
     private void btnBodegaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseEntered
         btnBodega.setBackground(new Color(45,40,37));
-        txtBodega.setForeground(Color.white);
     }//GEN-LAST:event_btnBodegaMouseEntered
 
     private void btnBodegaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseExited
         btnBodega.setBackground(new Color(64,81,115));
-        txtBodega.setForeground(new Color(45,40,37));
     }//GEN-LAST:event_btnBodegaMouseExited
 
     private void btnBitacoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitacoraMouseClicked
@@ -791,12 +782,10 @@ public class Bodega extends javax.swing.JFrame {
 
     private void btnBitacoraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitacoraMouseEntered
         btnBitacora.setBackground(new Color(45,40,37));
-        txtBitacora.setForeground(Color.white);
     }//GEN-LAST:event_btnBitacoraMouseEntered
 
     private void btnBitacoraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitacoraMouseExited
         btnBitacora.setBackground(new Color(64,81,115));
-        txtBitacora.setForeground(new Color(45,40,37));
     }//GEN-LAST:event_btnBitacoraMouseExited
 
     private void btnClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseClicked
@@ -807,12 +796,10 @@ public class Bodega extends javax.swing.JFrame {
 
     private void btnClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseEntered
         btnCliente.setBackground(new Color(45,40,37));
-        txtCliente.setForeground(Color.white);
     }//GEN-LAST:event_btnClienteMouseEntered
 
     private void btnClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseExited
         btnCliente.setBackground(new Color(64,81,115));
-        txtCliente.setForeground(new Color(45,40,37));
     }//GEN-LAST:event_btnClienteMouseExited
 
     private void btnRutaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseClicked
@@ -823,12 +810,10 @@ public class Bodega extends javax.swing.JFrame {
 
     private void btnRutaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseEntered
         btnRuta.setBackground(new Color(45,40,37));
-        txtRuta.setForeground(Color.white);
     }//GEN-LAST:event_btnRutaMouseEntered
 
     private void btnRutaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseExited
         btnRuta.setBackground(new Color(64,81,115));
-        txtRuta.setForeground(new Color(45,40,37));
     }//GEN-LAST:event_btnRutaMouseExited
 
     /**
