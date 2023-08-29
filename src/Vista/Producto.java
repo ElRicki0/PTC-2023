@@ -1106,6 +1106,7 @@ public class Producto extends javax.swing.JFrame {
         btnCXBuscar.setOpaque(false);
         btnCXBuscar.setContentAreaFilled(false);
         btnCXBuscar.setBorderPainted(false);
+        
     }
     
     public static void main(String args[]) {
