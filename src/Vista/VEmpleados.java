@@ -47,6 +47,7 @@ public class VEmpleados extends javax.swing.JFrame {
         
         desplace = new Desface();
         this.setLocationRelativeTo(null);
+         transpareciaBoton();
     }
 
     /**
@@ -1100,6 +1101,18 @@ public class VEmpleados extends javax.swing.JFrame {
         btnRuta.setBackground(new Color(64,81,115));
     }//GEN-LAST:event_btnRutaMouseExited
 
+        public void transpareciaBoton(){
+        btnAgregar.setOpaque(false);        
+        btnAgregar.setContentAreaFilled(false);
+        btnAgregar.setBorderPainted(false);
+        btnEliminar.setOpaque(false);        
+        btnEliminar.setContentAreaFilled(false);
+        btnEliminar.setBorderPainted(false);
+        btnModificarMP.setOpaque(false);        
+        btnModificarMP.setContentAreaFilled(false);
+        btnModificarMP.setBorderPainted(false);
+    }
+    
     /**
      * @param args the command line arguments
      */

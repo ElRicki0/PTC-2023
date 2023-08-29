@@ -40,6 +40,7 @@ public class VPaqueteria extends javax.swing.JFrame {
         modelo.LlenarCbxDistru(jcbDistribucion);
         
         this.setLocationRelativeTo(null);
+        transpareciaBoton();
     }
 
     /**
@@ -1008,6 +1009,18 @@ public class VPaqueteria extends javax.swing.JFrame {
             public void run() {
             }
         });
+    }
+        
+            public void transpareciaBoton(){
+        btnAgregar.setOpaque(false);        
+        btnAgregar.setContentAreaFilled(false);
+        btnAgregar.setBorderPainted(false);
+        btnEliminar.setOpaque(false);        
+        btnEliminar.setContentAreaFilled(false);
+        btnEliminar.setBorderPainted(false);
+        btnModificarMP.setOpaque(false);        
+        btnModificarMP.setContentAreaFilled(false);
+        btnModificarMP.setBorderPainted(false);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

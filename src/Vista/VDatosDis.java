@@ -35,6 +35,7 @@ public class VDatosDis extends javax.swing.JFrame {
         desplace = new Desface();
         
         this.setLocationRelativeTo(null);
+        transpareciaBoton();
     }
 
     /**
@@ -1149,6 +1150,18 @@ public class VDatosDis extends javax.swing.JFrame {
             public void run() {
             }
         });
+    }
+        
+            public void transpareciaBoton(){
+        btnAgregar1.setOpaque(false);        
+        btnAgregar1.setContentAreaFilled(false);
+        btnAgregar1.setBorderPainted(false);
+        btnEliminar1.setOpaque(false);        
+        btnEliminar1.setContentAreaFilled(false);
+        btnEliminar1.setBorderPainted(false);
+        btnModificarMP1.setOpaque(false);        
+        btnModificarMP1.setContentAreaFilled(false);
+        btnModificarMP1.setBorderPainted(false);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

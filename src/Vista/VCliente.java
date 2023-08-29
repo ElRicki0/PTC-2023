@@ -35,6 +35,7 @@ public class VCliente extends javax.swing.JFrame {
         TextPrompt correo       = new TextPrompt("Correo Electronico", txtCorreo_CL);        
         
         this.setLocationRelativeTo(null);
+        transpareciaBoton();
     }
 
     /**
@@ -1102,6 +1103,18 @@ public class VCliente extends javax.swing.JFrame {
 //                new Cliente().setVisible(true);
             }
         });
+    }
+    
+        public void transpareciaBoton(){
+        btnAgregar_CL.setOpaque(false);        
+        btnAgregar_CL.setContentAreaFilled(false);
+        btnAgregar_CL.setBorderPainted(false);
+        btnEliminar_CL.setOpaque(false);        
+        btnEliminar_CL.setContentAreaFilled(false);
+        btnEliminar_CL.setBorderPainted(false);
+        btnModificar_CL.setOpaque(false);        
+        btnModificar_CL.setContentAreaFilled(false);
+        btnModificar_CL.setBorderPainted(false);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

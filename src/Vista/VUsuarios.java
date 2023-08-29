@@ -34,6 +34,7 @@ public class VUsuarios extends javax.swing.JFrame {
         
         desplace = new Desface();
         this.setLocationRelativeTo(null);
+        transpareciaBoton();
     }
 
     /**
@@ -996,6 +997,19 @@ public class VUsuarios extends javax.swing.JFrame {
         });
     }
 
+        public void transpareciaBoton(){
+        btnAgregar.setOpaque(false);        
+        btnAgregar.setContentAreaFilled(false);
+        btnAgregar.setBorderPainted(false);
+        btnEliminar.setOpaque(false);        
+        btnEliminar.setContentAreaFilled(false);
+        btnEliminar.setBorderPainted(false);
+        btnModificarMP.setOpaque(false);        
+        btnModificarMP.setContentAreaFilled(false);
+        btnModificarMP.setBorderPainted(false);
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Bitacoraicon;
     private javax.swing.JLabel Bodegaicon;

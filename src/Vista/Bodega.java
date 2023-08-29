@@ -26,6 +26,7 @@ public class Bodega extends javax.swing.JFrame {
         desplace = new Desface();
         
         this.setLocationRelativeTo(null);
+        transpareciaBoton();
     }
 
     /**
@@ -862,6 +863,18 @@ public class Bodega extends javax.swing.JFrame {
                 
             }
         });
+    }
+    
+        public void transpareciaBoton(){
+        btnAgregar.setOpaque(false);        
+        btnAgregar.setContentAreaFilled(false);
+        btnAgregar.setBorderPainted(false);
+        btnEliminar.setOpaque(false);        
+        btnEliminar.setContentAreaFilled(false);
+        btnEliminar.setBorderPainted(false);
+        btnModificar.setOpaque(false);        
+        btnModificar.setContentAreaFilled(false);
+        btnModificar.setBorderPainted(false);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
