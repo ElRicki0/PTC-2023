@@ -153,6 +153,7 @@ public class productos {
         }
     
     }   
+    
     public void RellenarBodegaCBX(JComboBox comboBDG) {
     String SQL = "select idBodega, bdg_nombre from tbBodegas ";
     Statement st;

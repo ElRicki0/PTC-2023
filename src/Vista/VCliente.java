@@ -73,10 +73,10 @@ public class VCliente extends javax.swing.JFrame {
         Rutaicon = new javax.swing.JLabel();
         txtRuta = new javax.swing.JLabel();
         jpSubMenu = new javax.swing.JPanel();
-        btnSubProductos = new Vista.PanelCurvas();
-        txtSub = new javax.swing.JLabel();
         btnSubMarcas = new Vista.PanelCurvas();
         txtSub1 = new javax.swing.JLabel();
+        btnSubProductos = new Vista.PanelCurvas();
+        txtSub = new javax.swing.JLabel();
         btnDatos = new Vista.PanelCurvas();
         datos = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -430,6 +430,47 @@ public class VCliente extends javax.swing.JFrame {
         jpSubMenu.setBackground(new java.awt.Color(64, 81, 115));
         jpSubMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnSubMarcas.setBackground(new java.awt.Color(172, 147, 110));
+        btnSubMarcas.setPreferredSize(new java.awt.Dimension(151, 53));
+        btnSubMarcas.setRoundBottomLeft(25);
+        btnSubMarcas.setRoundBottomRight(25);
+        btnSubMarcas.setRoundTopLeft(25);
+        btnSubMarcas.setRoundTopRight(25);
+        btnSubMarcas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSubMarcasMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSubMarcasMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSubMarcasMouseExited(evt);
+            }
+        });
+
+        txtSub1.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        txtSub1.setForeground(new java.awt.Color(51, 51, 51));
+        txtSub1.setText("Tiendas");
+
+        javax.swing.GroupLayout btnSubMarcasLayout = new javax.swing.GroupLayout(btnSubMarcas);
+        btnSubMarcas.setLayout(btnSubMarcasLayout);
+        btnSubMarcasLayout.setHorizontalGroup(
+            btnSubMarcasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnSubMarcasLayout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(txtSub1)
+                .addContainerGap(44, Short.MAX_VALUE))
+        );
+        btnSubMarcasLayout.setVerticalGroup(
+            btnSubMarcasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnSubMarcasLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(txtSub1)
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+
+        jpSubMenu.add(btnSubMarcas, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 30, -1, -1));
+
         btnSubProductos.setBackground(new java.awt.Color(172, 147, 110));
         btnSubProductos.setRoundBottomLeft(25);
         btnSubProductos.setRoundBottomRight(25);
@@ -470,47 +511,8 @@ public class VCliente extends javax.swing.JFrame {
 
         jpSubMenu.add(btnSubProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 150, -1));
 
-        btnSubMarcas.setBackground(new java.awt.Color(172, 147, 110));
-        btnSubMarcas.setRoundBottomLeft(25);
-        btnSubMarcas.setRoundBottomRight(25);
-        btnSubMarcas.setRoundTopLeft(25);
-        btnSubMarcas.setRoundTopRight(25);
-        btnSubMarcas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSubMarcasMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnSubMarcasMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnSubMarcasMouseExited(evt);
-            }
-        });
-
-        txtSub1.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        txtSub1.setForeground(new java.awt.Color(51, 51, 51));
-        txtSub1.setText("Tiendas");
-
-        javax.swing.GroupLayout btnSubMarcasLayout = new javax.swing.GroupLayout(btnSubMarcas);
-        btnSubMarcas.setLayout(btnSubMarcasLayout);
-        btnSubMarcasLayout.setHorizontalGroup(
-            btnSubMarcasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnSubMarcasLayout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(txtSub1)
-                .addContainerGap(53, Short.MAX_VALUE))
-        );
-        btnSubMarcasLayout.setVerticalGroup(
-            btnSubMarcasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnSubMarcasLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(txtSub1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jpSubMenu.add(btnSubMarcas, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 30, -1, -1));
-
         btnDatos.setBackground(new java.awt.Color(172, 147, 110));
+        btnDatos.setPreferredSize(new java.awt.Dimension(151, 53));
         btnDatos.setRoundBottomLeft(25);
         btnDatos.setRoundBottomRight(25);
         btnDatos.setRoundTopLeft(25);
@@ -529,26 +531,25 @@ public class VCliente extends javax.swing.JFrame {
 
         datos.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
         datos.setForeground(new java.awt.Color(51, 51, 51));
-        datos.setText("Datos");
+        datos.setText("<html>Datos generales </html>");
 
         javax.swing.GroupLayout btnDatosLayout = new javax.swing.GroupLayout(btnDatos);
         btnDatos.setLayout(btnDatosLayout);
         btnDatosLayout.setHorizontalGroup(
             btnDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnDatosLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(datos)
-                .addContainerGap(51, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnDatosLayout.createSequentialGroup()
+                .addContainerGap(26, Short.MAX_VALUE)
+                .addComponent(datos, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         btnDatosLayout.setVerticalGroup(
             btnDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnDatosLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(datos, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(btnDatosLayout.createSequentialGroup()
+                .addComponent(datos, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jpSubMenu.add(btnDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 30, -1, -1));
+        jpSubMenu.add(btnDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 30, 140, -1));
 
         jPanel1.add(jpSubMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 1040, 110));
 
@@ -862,47 +863,6 @@ public class VCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSubProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubProductosMouseClicked
-        
-    }//GEN-LAST:event_btnSubProductosMouseClicked
-
-    private void btnSubProductosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubProductosMouseEntered
-        btnSubProductos.setBackground(new Color(45,40,37));
-        txtSub.setForeground(Color.white);
-
-    }//GEN-LAST:event_btnSubProductosMouseEntered
-
-    private void btnSubProductosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubProductosMouseExited
-        btnSubProductos.setBackground(new Color(172,147,110));
-        txtSub.setForeground(new Color(45,40,37));
-    }//GEN-LAST:event_btnSubProductosMouseExited
-
-    private void btnSubMarcasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubMarcasMouseClicked
-        
-    }//GEN-LAST:event_btnSubMarcasMouseClicked
-
-    private void btnSubMarcasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubMarcasMouseEntered
-        btnSubMarcas.setBackground(new Color(45,40,37));
-        txtSub1.setForeground(Color.white);
-    }//GEN-LAST:event_btnSubMarcasMouseEntered
-
-    private void btnSubMarcasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubMarcasMouseExited
-        btnSubMarcas.setBackground(new Color(172,147,110));
-        txtSub1.setForeground(new Color(45,40,37));
-    }//GEN-LAST:event_btnSubMarcasMouseExited
-
-    private void btnDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDatosMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDatosMouseClicked
-
-    private void btnDatosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDatosMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDatosMouseEntered
-
-    private void btnDatosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDatosMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDatosMouseExited
-
     private void txtEdad_CLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEdad_CLActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEdad_CLActionPerformed
@@ -927,14 +887,14 @@ public class VCliente extends javax.swing.JFrame {
         int filaSeleccionada = tbClientes.getSelectedRow();
 
         String nombre = tbClientes.getValueAt(filaSeleccionada, 1).toString();
-        String marca = tbClientes.getValueAt(filaSeleccionada, 2).toString();
-        String unidades = tbClientes.getValueAt(filaSeleccionada, 3).toString();
-        String Precio   = tbClientes.getValueAt(filaSeleccionada, 4).toString();
-        String bodega = tbClientes.getValueAt(filaSeleccionada, 5).toString();
+        String edad = tbClientes.getValueAt(filaSeleccionada, 2).toString();
+        String telefono = tbClientes.getValueAt(filaSeleccionada, 3).toString();
+        String correo   = tbClientes.getValueAt(filaSeleccionada, 4).toString();
 
         txtNombre_CL.setText(nombre);
-        txtTelefono_CL.setText(unidades);
-        txtCorreo_CL.setText(Precio);
+        txtEdad_CL.setText(edad);
+        txtTelefono_CL.setText(telefono);
+        txtCorreo_CL.setText(correo);
     }//GEN-LAST:event_tbClientesMouseClicked
 
     private void btnAgregar_CLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregar_CLActionPerformed
@@ -1061,6 +1021,50 @@ public class VCliente extends javax.swing.JFrame {
     private void btnRutaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseExited
         btnRuta.setBackground(new Color(64,81,115));
     }//GEN-LAST:event_btnRutaMouseExited
+
+    private void btnSubMarcasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubMarcasMouseClicked
+        VTiendas vista = new VTiendas();
+        vista.INIT();
+        this.dispose();
+    }//GEN-LAST:event_btnSubMarcasMouseClicked
+
+    private void btnSubMarcasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubMarcasMouseEntered
+        btnSubMarcas.setBackground(new Color(45,40,37));
+        txtSub1.setForeground(Color.white);
+    }//GEN-LAST:event_btnSubMarcasMouseEntered
+
+    private void btnSubMarcasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubMarcasMouseExited
+        btnSubMarcas.setBackground(new Color(172,147,110));
+        txtSub1.setForeground(new Color(45,40,37));
+    }//GEN-LAST:event_btnSubMarcasMouseExited
+
+    private void btnSubProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubProductosMouseClicked
+        
+    }//GEN-LAST:event_btnSubProductosMouseClicked
+
+    private void btnSubProductosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubProductosMouseEntered
+        btnSubProductos.setBackground(new Color(45,40,37));
+        txtSub.setForeground(Color.white);
+    }//GEN-LAST:event_btnSubProductosMouseEntered
+
+    private void btnSubProductosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubProductosMouseExited
+        btnSubProductos.setBackground(new Color(172,147,110));
+        txtSub.setForeground(new Color(45,40,37));
+    }//GEN-LAST:event_btnSubProductosMouseExited
+
+    private void btnDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDatosMouseClicked
+        VDatosTiendas vista = new VDatosTiendas();
+        vista.INIT();
+        this.dispose();
+    }//GEN-LAST:event_btnDatosMouseClicked
+
+    private void btnDatosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDatosMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDatosMouseEntered
+
+    private void btnDatosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDatosMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDatosMouseExited
 
     public void INIT(){
         VCliente vistaCliente =new VCliente();

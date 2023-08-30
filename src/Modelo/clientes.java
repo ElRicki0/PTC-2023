@@ -146,4 +146,58 @@ public class clientes {
             JOptionPane.showMessageDialog(null, "Error tabla clientes "+e.getMessage());                
         }
     }
+    
+    public void eliminar(VCliente vistaCliente){
+        try {
+            //obtenemos que fila seleccionó el usuario
+            int filaSeleccionada = vistaCliente.tbClientes.getSelectedRow();
+
+            //Obtenemos el id de la fila seleccionada
+            String miId = vistaCliente.tbClientes.getValueAt(filaSeleccionada, 0).toString();
+            //borramos 
+            try {
+                PreparedStatement deleteUser = CConexion.getConexion().prepareStatement("delete from tbClientes where idCliente = '" + miId + "'");
+                JOptionPane.showMessageDialog(null, "El cliente se elimino correctamente ");
+                deleteUser.executeUpdate();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "el cliente esta en uso , elimine el usuario antes del empleado wichi wzchi wa");
+            }
+        } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Seleccione un cliente para elmiminar");
+        }        
+    }
+    
+    public void Editar(VCliente vistaCliente, clientes modeloCliente, JComboBox jcbGenero){
+        
+        
+        
+        String SQL = "update tbClientes set clie_Nombre = ?, clie_Edad = ?, clie_Telefono=?, clie_Correo=?, idGenero=? where idCliente = ?";
+        try {
+            PreparedStatement UpCliente = CConexion.getConexion().prepareStatement(SQL);
+            UpCliente.setString (1, modeloCliente.getClie_Nombre());
+            UpCliente.setInt(2, modeloCliente.getClie_Edad());
+            UpCliente.setString(3, modeloCliente.getClie_telefono());
+            UpCliente.setString (4, modeloCliente.getClie_correo());
+            
+            int SelectGenero= jcbGenero.getSelectedIndex();
+            if (SelectGenero!=-1) {
+                Map<Integer, String> idGenero = (Map<Integer, String>)jcbGenero.getClientProperty("idGenero");
+                int selID=(int) idGenero.keySet().toArray()[SelectGenero];
+                UpCliente.setInt(5, selID);
+            } else {
+            }
+            
+            int filaSeleccionada = vistaCliente.tbClientes.getSelectedRow();  
+            //Obtenemos el id de la fila seleccionada
+            String miId = vistaCliente.tbClientes.getValueAt(filaSeleccionada, 0).toString();
+            
+            UpCliente.setString(6, miId);
+            
+            UpCliente.executeUpdate();
+            JOptionPane.showMessageDialog(null, "El cliente  se actualizo correctamente");
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "error en el modelo del cliente ACT"+ e.toString());   
+        }
+    }
 }
