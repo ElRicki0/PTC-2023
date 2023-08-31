@@ -4,6 +4,7 @@ import Vista.VTiendas;
 import Modelo.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 public class ctrlTiendas implements ActionListener {
         private VTiendas  vistaTiendas;
@@ -19,19 +20,44 @@ public class ctrlTiendas implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource()==vistaTiendas.btnAgregar_CL) {
-            modeloTiendas.setTien_nombre(vistaTiendas.txtNombre_CL.getText());
-            modeloTiendas.setTien_direccion(vistaTiendas.txtDireccion.getText());
-            modeloTiendas.setTien_ReferenciasLDireccion(vistaTiendas.txtReferencia.getText());
-            modeloTiendas.setTien_Correo(vistaTiendas.txtCorreo_CL.getText());
-            modeloTiendas.agregar(modeloTiendas);
-            modeloTiendas.MostrarTabla(vistaTiendas);
+            String texto1 = vistaTiendas.txtNombre_CL.getText();
+            String texto2 = vistaTiendas.txtDireccion.getText();
+            String texto3 = vistaTiendas.txtReferencia.getText();
+            String texto4 = vistaTiendas.txtCorreo_CL.getText();
+            if (texto1.isEmpty()||texto2.isEmpty()||texto3.isEmpty()||texto4.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Llene todos los campos");
+            } else {
+                if (!texto4.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+                    JOptionPane.showMessageDialog(null, "El correo electronico tiene que ser valido");                        
+                } else {
+                    modeloTiendas.setTien_Nombre(vistaTiendas.txtNombre_CL.getText());
+                    modeloTiendas.setTien_Direccion(vistaTiendas.txtDireccion.getText());
+                    modeloTiendas.setTien_ReferenciasLDireccion(vistaTiendas.txtReferencia.getText());
+                    modeloTiendas.setTien_Correo(vistaTiendas.txtCorreo_CL.getText());
+                    modeloTiendas.agregar(modeloTiendas);
+                    modeloTiendas.MostrarTabla(vistaTiendas);
+                }
+            }
         }if (e.getSource()==vistaTiendas.btnEliminar_TN) {
             System.out.println("clic eliminar");
             modeloTiendas.eliminar(vistaTiendas);
             modeloTiendas.MostrarTabla(vistaTiendas);
         }if (e.getSource()==vistaTiendas.btnModificar_CL) {
-            modeloTiendas.actualizar(vistaTiendas);
-            modeloTiendas.MostrarTabla(vistaTiendas);
+            String texto1 = vistaTiendas.txtNombre_CL.getText();
+            String texto2 = vistaTiendas.txtDireccion.getText();
+            String texto3 = vistaTiendas.txtReferencia.getText();
+            String texto4 = vistaTiendas.txtCorreo_CL.getText();
+            if (texto1.isEmpty()||texto2.isEmpty()||texto3.isEmpty()||texto4.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Llene todos los campos");
+            } else {
+                if (!texto4.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+                    JOptionPane.showMessageDialog(null, "El correo electronico tiene que ser valido");                        
+                } else {
+                    modeloTiendas.actualizar(vistaTiendas);
+                    modeloTiendas.MostrarTabla(vistaTiendas);
+                }
+            }
+            
         }
 //        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }

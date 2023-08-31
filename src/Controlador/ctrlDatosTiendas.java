@@ -33,8 +33,8 @@ public class ctrlDatosTiendas implements ActionListener{
         }if (e.getSource()==vistaDatos.btnModificar_CL) {
             modeloDatos.setDT_NumeroTelefono(vistaDatos.txtTelefono.getText());
             modeloDatos.setDT_PersonaDestinatario(vistaDatos.txtEncargado.getText());
-//            modeloDatos.setIdCliente(vistaDatos.jcbCliente.getSelectedItem().toString());
-//            modeloDatos.setIdTienda(vistaDatos.jcbTienda.getSelectedItem().toString());
+            modeloDatos.setIdCliente(vistaDatos.jcbCliente.getSelectedItem().toString());
+            modeloDatos.setIdTienda(vistaDatos.jcbTienda.getSelectedItem().toString());
             modeloDatos.modificar(vistaDatos, modeloDatos, vistaDatos.jcbCliente, vistaDatos.jcbTienda);
             modeloDatos.MostrarTabla(vistaDatos);
         }
