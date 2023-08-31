@@ -68,6 +68,7 @@ public class Bodegas {
             JOptionPane.showMessageDialog(null, "Error tabla bodegas "+e.getMessage());                
         }
     }
+    
     public void AgregarBodega(Bodegas modeloBodegas){
         String SQL="insert into tbBodegas(bdg_nombre, bdg_ubicacion, bdg_correo) VALUES(?,?,?)";
         try {
@@ -81,6 +82,7 @@ public class Bodegas {
             JOptionPane.showMessageDialog(null, "Error al agregar bodega "+e.toString());
         }
     }
+        
     public void EliminarBodega (Bodega vistaBodega){
         int filaSeleccionada = vistaBodega.tbBodegas.getSelectedRow();
         
@@ -96,6 +98,7 @@ public class Bodegas {
           JOptionPane.showMessageDialog(null, "La bodega esta en uso por un producto, edite el producto para continuar");                           
         }
     }
+    
     public boolean ActualizarBodega(Bodega vistaBodega){
         
         int filaSeleccionada = vistaBodega.tbBodegas.getSelectedRow();      

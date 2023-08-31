@@ -8,9 +8,9 @@ import javax.swing.JOptionPane;
 
 public class ctrlTiendas implements ActionListener {
         private VTiendas  vistaTiendas;
-        private Tiendas modeloTiendas;
+        private Tiendas1 modeloTiendas;
 
-        public ctrlTiendas (VTiendas  vistaTiendas, Tiendas modeloTiendas){
+        public ctrlTiendas (VTiendas  vistaTiendas, Tiendas1 modeloTiendas){
             this.modeloTiendas=modeloTiendas;
             this.vistaTiendas=vistaTiendas;
             this.vistaTiendas.btnAgregar_CL.addActionListener(this);

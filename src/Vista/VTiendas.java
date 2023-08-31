@@ -1037,7 +1037,7 @@ public class VTiendas extends javax.swing.JFrame {
 
     public void INIT(){
         VTiendas vistaCliente =new VTiendas();
-        Tiendas modeloTiendas= new Tiendas();
+        Tiendas1 modeloTiendas= new Tiendas1();
         ctrlTiendas control = new ctrlTiendas(vistaCliente, modeloTiendas);
         modeloTiendas.MostrarTabla(vistaCliente);
         vistaCliente.setVisible(true);
