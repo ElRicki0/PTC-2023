@@ -4,6 +4,7 @@ package Vista;
 
 import Vista.*;
 import Controlador.ctrlDatosDistribucion;
+import Controlador.ctrlMantenimiento;
 import Controlador.ctrlPaqueteria;
 import Controlador.ctrlTalleres;
 import Modelo.*;
@@ -13,11 +14,12 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 
-public class VTaller extends javax.swing.JFrame {
+public class VModelos extends javax.swing.JFrame {
 
     Desface desplace;
+    Mantenimiento modelo = new Mantenimiento();
     
-    public VTaller() {
+    public VModelos() {
         
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/Vista/Iconos/CASA.png")).getImage());
@@ -33,7 +35,7 @@ public class VTaller extends javax.swing.JFrame {
         rsscalelabel.RSScaleLabel.setScaleLabel(txtBarras, "src/Vista/Iconos/lista.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(icoCarro, "src/Vista/Iconos/vehiculo.png");
         
-        
+        modelo.RellenarTallerCBX(jcbTaller);
         desplace = new Desface();
         
         this.setLocationRelativeTo(null);
@@ -88,21 +90,17 @@ public class VTaller extends javax.swing.JFrame {
         txtSub4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         panelCurvas1 = new Vista.PanelCurvas();
-        jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        panelCurvas2 = new Vista.PanelCurvas();
-        txtCorreo = new javax.swing.JTextField();
         panelCurvas3 = new Vista.PanelCurvas();
-        txtNombre = new javax.swing.JTextField();
+        txtmecanico = new javax.swing.JTextField();
         panelCurvas4 = new Vista.PanelCurvas();
         txtTelefono = new javax.swing.JTextField();
-        panelCurvas5 = new Vista.PanelCurvas();
-        txtDuenio = new javax.swing.JTextField();
+        jcbTaller = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbTaller = new javax.swing.JTable();
+        tbMantenimiento = new javax.swing.JTable();
         agregar1 = new Vista.PanelCurvas();
         btnAgregar = new javax.swing.JButton();
         eliminar1 = new Vista.PanelCurvas();
@@ -636,8 +634,8 @@ public class VTaller extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel2.setText("Taller");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 300, 70));
+        jLabel2.setText("Mantenimeinto");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 360, 70));
 
         panelCurvas1.setBackground(new java.awt.Color(172, 147, 110));
         panelCurvas1.setRoundBottomLeft(35);
@@ -646,11 +644,6 @@ public class VTaller extends javax.swing.JFrame {
         panelCurvas1.setRoundTopRight(35);
         panelCurvas1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel3.setText("Correo:");
-        panelCurvas1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 150, 60));
-
         jLabel7.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
         jLabel7.setText("Informacion");
@@ -658,47 +651,18 @@ public class VTaller extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel4.setText("Nombre:");
+        jLabel4.setText("Mecanico:");
         panelCurvas1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 140, 60));
 
         jLabel5.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel5.setText("Telefono:");
+        jLabel5.setText("<html>Telefono mecanico:</html>");
         panelCurvas1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 150, 60));
 
         jLabel6.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel6.setText("<html>Dueño o responsable:</html>");
-        panelCurvas1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 150, 60));
-
-        panelCurvas2.setBackground(new java.awt.Color(246, 234, 204));
-        panelCurvas2.setRoundBottomLeft(25);
-        panelCurvas2.setRoundBottomRight(25);
-        panelCurvas2.setRoundTopLeft(25);
-        panelCurvas2.setRoundTopRight(25);
-
-        txtCorreo.setBackground(new java.awt.Color(246, 234, 204));
-        txtCorreo.setForeground(new java.awt.Color(51, 51, 51));
-        txtCorreo.setBorder(null);
-
-        javax.swing.GroupLayout panelCurvas2Layout = new javax.swing.GroupLayout(panelCurvas2);
-        panelCurvas2.setLayout(panelCurvas2Layout);
-        panelCurvas2Layout.setHorizontalGroup(
-            panelCurvas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCurvas2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        panelCurvas2Layout.setVerticalGroup(
-            panelCurvas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCurvas2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        panelCurvas1.add(panelCurvas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 240, 50));
+        jLabel6.setText("Taller:");
+        panelCurvas1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 150, 60));
 
         panelCurvas3.setBackground(new java.awt.Color(246, 234, 204));
         panelCurvas3.setRoundBottomLeft(25);
@@ -706,9 +670,9 @@ public class VTaller extends javax.swing.JFrame {
         panelCurvas3.setRoundTopLeft(25);
         panelCurvas3.setRoundTopRight(25);
 
-        txtNombre.setBackground(new java.awt.Color(246, 234, 204));
-        txtNombre.setForeground(new java.awt.Color(51, 51, 51));
-        txtNombre.setBorder(null);
+        txtmecanico.setBackground(new java.awt.Color(246, 234, 204));
+        txtmecanico.setForeground(new java.awt.Color(51, 51, 51));
+        txtmecanico.setBorder(null);
 
         javax.swing.GroupLayout panelCurvas3Layout = new javax.swing.GroupLayout(panelCurvas3);
         panelCurvas3.setLayout(panelCurvas3Layout);
@@ -716,14 +680,14 @@ public class VTaller extends javax.swing.JFrame {
             panelCurvas3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCurvas3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                .addComponent(txtmecanico, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelCurvas3Layout.setVerticalGroup(
             panelCurvas3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCurvas3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addComponent(txtmecanico, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -758,38 +722,12 @@ public class VTaller extends javax.swing.JFrame {
 
         panelCurvas1.add(panelCurvas4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, -1, -1));
 
-        panelCurvas5.setBackground(new java.awt.Color(246, 234, 204));
-        panelCurvas5.setRoundBottomLeft(25);
-        panelCurvas5.setRoundBottomRight(25);
-        panelCurvas5.setRoundTopLeft(25);
-        panelCurvas5.setRoundTopRight(25);
+        jcbTaller.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        panelCurvas1.add(jcbTaller, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 240, 50));
 
-        txtDuenio.setBackground(new java.awt.Color(246, 234, 204));
-        txtDuenio.setForeground(new java.awt.Color(51, 51, 51));
-        txtDuenio.setBorder(null);
+        jPanel1.add(panelCurvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 210, 420, 310));
 
-        javax.swing.GroupLayout panelCurvas5Layout = new javax.swing.GroupLayout(panelCurvas5);
-        panelCurvas5.setLayout(panelCurvas5Layout);
-        panelCurvas5Layout.setHorizontalGroup(
-            panelCurvas5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCurvas5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtDuenio, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        panelCurvas5Layout.setVerticalGroup(
-            panelCurvas5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCurvas5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtDuenio, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        panelCurvas1.add(panelCurvas5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 290, 240, 50));
-
-        jPanel1.add(panelCurvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 210, 420, 400));
-
-        tbTaller.setModel(new javax.swing.table.DefaultTableModel(
+        tbMantenimiento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -800,12 +738,12 @@ public class VTaller extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tbTaller.addMouseListener(new java.awt.event.MouseAdapter() {
+        tbMantenimiento.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbTallerMouseClicked(evt);
+                tbMantenimientoMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tbTaller);
+        jScrollPane1.setViewportView(tbMantenimiento);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 210, 550, -1));
 
@@ -936,59 +874,17 @@ public class VTaller extends javax.swing.JFrame {
             
     }//GEN-LAST:event_btnModificarMPMouseClicked
 
-    private void tbTallerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbTallerMouseClicked
-         int filaSeleccionada = tbTaller.getSelectedRow();
+    private void tbMantenimientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbMantenimientoMouseClicked
+         int filaSeleccionada = tbMantenimiento.getSelectedRow();
 
-        String Nombre = tbTaller.getValueAt(filaSeleccionada, 1).toString();
-        String Telefono = tbTaller.getValueAt(filaSeleccionada, 2).toString();
-        String Correo = tbTaller.getValueAt(filaSeleccionada, 3).toString();
-        String Duenio = tbTaller.getValueAt(filaSeleccionada, 4).toString();
+        String Nombre = tbMantenimiento.getValueAt(filaSeleccionada, 1).toString();
+        String Telefono = tbMantenimiento.getValueAt(filaSeleccionada, 2).toString();
+        String Correo = tbMantenimiento.getValueAt(filaSeleccionada, 3).toString();
+        String Duenio = tbMantenimiento.getValueAt(filaSeleccionada, 4).toString();
         
-        txtNombre.setText(Nombre);
+        txtmecanico.setText(Nombre);
         txtTelefono.setText(Telefono);
-        txtCorreo.setText(Correo);
-        txtDuenio.setText(Duenio);
-    }//GEN-LAST:event_tbTallerMouseClicked
-
-    private void btnDistribucionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDistribucionMouseClicked
-        
-    }//GEN-LAST:event_btnDistribucionMouseClicked
-
-    private void btnDistribucionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDistribucionMouseEntered
-        btnDistribucion.setBackground(new Color(45,40,37));
-        
-    }//GEN-LAST:event_btnDistribucionMouseEntered
-
-    private void btnDistribucionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDistribucionMouseExited
-        btnDistribucion.setBackground(new Color(64,81,152));
-    }//GEN-LAST:event_btnDistribucionMouseExited
-
-    private void btnUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMouseClicked
-        VMantenimiento vista = new VMantenimiento();
-        vista.INIT();
-        this.dispose();
-    }//GEN-LAST:event_btnUsuariosMouseClicked
-
-    private void btnUsuariosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMouseEntered
-        btnUsuarios.setBackground(new Color(45,40,37));
-        txtSub1.setForeground(Color.white);
-    }//GEN-LAST:event_btnUsuariosMouseEntered
-
-    private void btnUsuariosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMouseExited
-        btnUsuarios.setBackground(new Color(64,81,152));
-    }//GEN-LAST:event_btnUsuariosMouseExited
-
-    private void btnUsuarios1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuarios1MouseClicked
-        ;
-    }//GEN-LAST:event_btnUsuarios1MouseClicked
-
-    private void btnUsuarios1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuarios1MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnUsuarios1MouseEntered
-
-    private void btnUsuarios1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuarios1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnUsuarios1MouseExited
+    }//GEN-LAST:event_tbMantenimientoMouseClicked
 
     private void btnCasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseClicked
         Main vista = new Main();
@@ -1108,6 +1004,46 @@ public class VTaller extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVehiculosMouseExited
 
+    private void btnDistribucionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDistribucionMouseClicked
+
+    }//GEN-LAST:event_btnDistribucionMouseClicked
+
+    private void btnDistribucionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDistribucionMouseEntered
+        btnDistribucion.setBackground(new Color(45,40,37));
+
+    }//GEN-LAST:event_btnDistribucionMouseEntered
+
+    private void btnDistribucionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDistribucionMouseExited
+        btnDistribucion.setBackground(new Color(64,81,152));
+    }//GEN-LAST:event_btnDistribucionMouseExited
+
+    private void btnUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMouseClicked
+        VModelos vista = new VModelos();
+        vista.INIT();
+        this.dispose();
+    }//GEN-LAST:event_btnUsuariosMouseClicked
+
+    private void btnUsuariosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMouseEntered
+        btnUsuarios.setBackground(new Color(45,40,37));
+        txtSub1.setForeground(Color.white);
+    }//GEN-LAST:event_btnUsuariosMouseEntered
+
+    private void btnUsuariosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMouseExited
+        btnUsuarios.setBackground(new Color(64,81,152));
+    }//GEN-LAST:event_btnUsuariosMouseExited
+
+    private void btnUsuarios1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuarios1MouseClicked
+        ;
+    }//GEN-LAST:event_btnUsuarios1MouseClicked
+
+    private void btnUsuarios1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuarios1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUsuarios1MouseEntered
+
+    private void btnUsuarios1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuarios1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUsuarios1MouseExited
+
     private void btnUsuarios2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuarios2MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_btnUsuarios2MouseClicked
@@ -1122,10 +1058,7 @@ public class VTaller extends javax.swing.JFrame {
 
     
     public void INIT(){
-        VTaller vista = new VTaller();
-        talleres modelo =new talleres();
-        ctrlTalleres control= new ctrlTalleres(vista, modelo);
-        modelo.MostratTabla(vista);
+        VModelos vista = new VModelos();
         vista.setVisible(true);
     }
     
@@ -1143,14 +1076,26 @@ public class VTaller extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VTaller.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VModelos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VTaller.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VModelos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VTaller.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VModelos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VTaller.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VModelos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -1203,38 +1148,34 @@ public class VTaller extends javax.swing.JFrame {
     private Vista.PanelCurvas eliminar1;
     private javax.swing.JLabel icoCarro;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JComboBox<String> jcbTaller;
     private javax.swing.JPanel jpSubMenu;
     private Vista.PanelCurvas modificar1;
     private Vista.PanelCurvas panelCurvas1;
-    private Vista.PanelCurvas panelCurvas2;
     private Vista.PanelCurvas panelCurvas3;
     private Vista.PanelCurvas panelCurvas4;
-    private Vista.PanelCurvas panelCurvas5;
-    public javax.swing.JTable tbTaller;
+    public javax.swing.JTable tbMantenimiento;
     private javax.swing.JLabel txtBarras;
     private javax.swing.JLabel txtBitacora;
     private javax.swing.JLabel txtBodega;
     private javax.swing.JLabel txtCasa;
     private javax.swing.JLabel txtCliente;
     private javax.swing.JLabel txtCliente2;
-    public javax.swing.JTextField txtCorreo;
-    public javax.swing.JTextField txtDuenio;
     private javax.swing.JLabel txtEmpleado;
     private javax.swing.JLabel txtLogo;
-    public javax.swing.JTextField txtNombre;
     private javax.swing.JLabel txtRuta;
     private javax.swing.JLabel txtSub1;
     private javax.swing.JLabel txtSub2;
     private javax.swing.JLabel txtSub3;
     private javax.swing.JLabel txtSub4;
     public javax.swing.JTextField txtTelefono;
+    public javax.swing.JTextField txtmecanico;
     private javax.swing.JLabel txtproducto;
     // End of variables declaration//GEN-END:variables
 }

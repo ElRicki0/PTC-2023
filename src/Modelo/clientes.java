@@ -163,7 +163,7 @@ public class clientes {
                 JOptionPane.showMessageDialog(null, "el cliente esta en uso , elimine el usuario antes del empleado wichi wzchi wa");
             }
         } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Seleccione un cliente para elmiminar");
+                JOptionPane.showMessageDialog(null, "Seleccione un cliente para elminar");
         }        
     }
     
