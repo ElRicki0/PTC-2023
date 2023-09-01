@@ -211,8 +211,10 @@ foreign key references [dbo].[tbClientes] ([idCliente]),
 idTienda			int
 foreign key references [dbo].[tbTiendas]([idTienda])
 );
-go
+go	
 
+select idDatosTienda, DT_NumeroTelefono, DT_PersonaDestinatario, tbClientes.clie_Nombre, tbTiendas.Tien_Nombre, tbTiendas.Tien_Direccion  from tbDatosTiendas 
+inner join tbClientes on tbDatosTiendas.idCliente=tbClientes.idCliente inner join tbTiendas on tbDatosTiendas.idTienda = tbTiendas.idTienda 
 /*apartado distribucion de producto*/
 create table tbTalleres(
 idTaller			int identity(1,1) primary key,
@@ -223,28 +225,21 @@ Tall_Duenio			varchar(50)
 );
 go
 
-create table tbMarcasvehiculos(
-idMarcavehiculo		int identity (1,1) primary key,
-Marca				varchar(150) not null
-);
-go
-
 create table tbMantenimiento(
 idMantenimiento		int identity (1,1) primary key,
-Taller				varchar(8000) not null,
 Mecanico			varchar(50) not null,
 TFTaller			varchar(10),
 idTaller			int
 foreign key references [dbo].[tbTalleres]([idTaller])
 );
 go
+select idMantenimiento, Mecanico, TFTaller, tbTalleres.Tall_Nombre from tbMantenimiento inner join tbTalleres on tbMantenimiento.idTaller=tbTalleres.idTaller
 
 create table tbModelos(
 idModelo			int identity (1,1) primary key,
 Modelo				varchar(150)not null,
 Mo_anio					int, 
-idMarcavehiculo		int
-foreign key references tbMarcasvehiculos(idMarcavehiculo)
+Mo_marca			varchar(50)not null
 );
 go
 
