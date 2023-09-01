@@ -37,11 +37,17 @@ public class ctrlPaqueteria implements ActionListener{
             modeloPaqueteria.Mostrartabla(vistaPaqueteria);
             
         }if (e.getSource()==vistaPaqueteria.btnModificarMP) {
-            modeloPaqueteria.setIdEmpleado(vistaPaqueteria.jcbEmpleado.getSelectedItem().toString());
-            modeloPaqueteria.setIdDatosDistribucion(vistaPaqueteria.jcbDistribucion.getSelectedItem().toString());
-            modeloPaqueteria.setPaq_Ubicacion(vistaPaqueteria.txtDireccion.getText());
-            modeloPaqueteria.actualizar(modeloPaqueteria, vistaPaqueteria.jcbEmpleado, vistaPaqueteria.jcbDistribucion, vistaPaqueteria);
-            modeloPaqueteria.Mostrartabla(vistaPaqueteria);
+            String texto1 = vistaPaqueteria.txtDireccion.getText();
+            if (texto1.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Llenen todos los campos ");
+            } else{
+                modeloPaqueteria.setIdEmpleado(vistaPaqueteria.jcbEmpleado.getSelectedItem().toString());
+                modeloPaqueteria.setIdDatosDistribucion(vistaPaqueteria.jcbDistribucion.getSelectedItem().toString());
+                modeloPaqueteria.setPaq_Ubicacion(vistaPaqueteria.txtDireccion.getText());
+                modeloPaqueteria.actualizar(modeloPaqueteria, vistaPaqueteria.jcbEmpleado, vistaPaqueteria.jcbDistribucion, vistaPaqueteria);
+                modeloPaqueteria.Mostrartabla(vistaPaqueteria);
+            }
+            
         }
 //        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }

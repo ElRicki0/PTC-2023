@@ -43,13 +43,17 @@ public class ctrlCliente implements ActionListener{
                             if (!texto4.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
                                 JOptionPane.showMessageDialog(null, "El correo electronico tiene que ser valido");                        
                             } else {
-                                modeloClientes.setClie_Nombre(vistaCliente.txtNombre_CL.getText());
-                                modeloClientes.setClie_Edad(Integer.parseInt(vistaCliente.txtEdad_CL.getText()));
-                                modeloClientes.setClie_telefono(vistaCliente.txtTelefono_CL.getText());
-                                modeloClientes.setClie_correo(vistaCliente.txtCorreo_CL.getText());
-                                modeloClientes.setIdGenero( vistaCliente.jcbGenero_CL.getSelectedItem().toString());
-                                modeloClientes.AgregarCliente(modeloClientes, vistaCliente.jcbGenero_CL);
-                                modeloClientes.MostrarTabla(vistaCliente);
+                                if (!texto1.matches("[a-z A-Z]+")) {
+                                    JOptionPane.showMessageDialog(null, "El nombre solo pueden ir letras");                                 
+                                } else {
+                                    modeloClientes.setClie_Nombre(vistaCliente.txtNombre_CL.getText());
+                                    modeloClientes.setClie_Edad(Integer.parseInt(vistaCliente.txtEdad_CL.getText()));
+                                    modeloClientes.setClie_telefono(vistaCliente.txtTelefono_CL.getText());
+                                    modeloClientes.setClie_correo(vistaCliente.txtCorreo_CL.getText());
+                                    modeloClientes.setIdGenero( vistaCliente.jcbGenero_CL.getSelectedItem().toString());
+                                    modeloClientes.AgregarCliente(modeloClientes, vistaCliente.jcbGenero_CL);
+                                    modeloClientes.MostrarTabla(vistaCliente);
+                                }                                
                             }
                         } else {
                             JOptionPane.showMessageDialog(null, "El numero de telefono tiene que ser valido");    

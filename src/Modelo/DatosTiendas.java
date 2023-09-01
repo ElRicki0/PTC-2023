@@ -158,7 +158,7 @@ public class DatosTiendas {
         try {
             java.sql.Statement st = CConexion.getConexion().createStatement();
             String sql ="select idDatosTienda, DT_NumeroTelefono, DT_PersonaDestinatario, tbClientes.clie_Nombre, tbTiendas.Tien_Nombre, tbTiendas.Tien_Direccion  from tbDatosTiendas \n" +
-                        "inner join tbClientes on tbDatosTiendas.idCliente=tbClientes.idCliente inner join tbTiendas on tbDatosTiendas.idDatosTienda = tbTiendas.idTienda";
+            "inner join tbClientes on tbDatosTiendas.idCliente=tbClientes.idCliente inner join tbTiendas on tbDatosTiendas.idTienda = tbTiendas.idTienda ";
             ResultSet rs = st.executeQuery(sql);
             while(rs.next()){
                 modelo.addRow(new Object[]{rs.getInt("idDatosTienda"), rs.getString("DT_NumeroTelefono"), rs.getString("DT_PersonaDestinatario"), rs.getString("clie_Nombre"), rs.getString("Tien_Nombre"), rs.getString("Tien_Direccion")});
@@ -228,6 +228,7 @@ public class DatosTiendas {
                 JOptionPane.showMessageDialog(null, "Seleccione un dato para elminar");
         }        
     }
+     
      public boolean modificar(VDatosTiendas vista, DatosTiendas modelo, JComboBox comboCliente, JComboBox comboTienda){
          String SQL = "update tbDatosTiendas set DT_NumeroTelefono = ?, DT_PersonaDestinatario=?, idCliente = ?, idTienda=? where idDatosTienda = ?";
     try {

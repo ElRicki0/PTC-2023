@@ -33,6 +33,7 @@ public class VPaqueteria extends javax.swing.JFrame {
         rsscalelabel.RSScaleLabel.setScaleLabel(Rutaicon, "src/Vista/Iconos/entrega.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(Bodegaicon, "src/Vista/Iconos/almacenamiento.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(txtBarras, "src/Vista/Iconos/lista.png");
+        rsscalelabel.RSScaleLabel.setScaleLabel(icoCarro, "src/Vista/Iconos/vehiculo.png");
         
         
         desplace = new Desface();
@@ -77,13 +78,14 @@ public class VPaqueteria extends javax.swing.JFrame {
         btnRuta = new Vista.PanelCurvas();
         Rutaicon = new javax.swing.JLabel();
         txtRuta = new javax.swing.JLabel();
+        btnVehiculos = new Vista.PanelCurvas();
+        icoCarro = new javax.swing.JLabel();
+        txtCliente2 = new javax.swing.JLabel();
         jpSubMenu = new javax.swing.JPanel();
         btnDistribucion = new Vista.PanelCurvas();
         txtSub = new javax.swing.JLabel();
         btnUsuarios = new Vista.PanelCurvas();
         txtSub1 = new javax.swing.JLabel();
-        btnEmpleados1 = new Vista.PanelCurvas();
-        txtSub2 = new javax.swing.JLabel();
         btnUsuarios1 = new Vista.PanelCurvas();
         txtSub3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -337,7 +339,7 @@ public class VPaqueteria extends javax.swing.JFrame {
                     .addComponent(Bitacoraicon, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        MenuPlegable.add(btnBitacora, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, -1, -1));
+        MenuPlegable.add(btnBitacora, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 630, -1, -1));
 
         btnCliente.setBackground(new java.awt.Color(64, 81, 115));
         btnCliente.setRoundBottomLeft(25);
@@ -423,7 +425,53 @@ public class VPaqueteria extends javax.swing.JFrame {
                     .addComponent(Rutaicon, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        MenuPlegable.add(btnRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, -1, -1));
+        MenuPlegable.add(btnRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, -1, -1));
+
+        btnVehiculos.setBackground(new java.awt.Color(64, 81, 115));
+        btnVehiculos.setRoundBottomLeft(25);
+        btnVehiculos.setRoundBottomRight(25);
+        btnVehiculos.setRoundTopLeft(25);
+        btnVehiculos.setRoundTopRight(25);
+        btnVehiculos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnVehiculosMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnVehiculosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnVehiculosMouseExited(evt);
+            }
+        });
+
+        icoCarro.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        icoCarro.setForeground(new java.awt.Color(255, 255, 255));
+
+        txtCliente2.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        txtCliente2.setForeground(new java.awt.Color(255, 255, 255));
+        txtCliente2.setText("Vehiculos");
+
+        javax.swing.GroupLayout btnVehiculosLayout = new javax.swing.GroupLayout(btnVehiculos);
+        btnVehiculos.setLayout(btnVehiculosLayout);
+        btnVehiculosLayout.setHorizontalGroup(
+            btnVehiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnVehiculosLayout.createSequentialGroup()
+                .addContainerGap(67, Short.MAX_VALUE)
+                .addComponent(txtCliente2)
+                .addGap(18, 18, 18)
+                .addComponent(icoCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        btnVehiculosLayout.setVerticalGroup(
+            btnVehiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(icoCarro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnVehiculosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtCliente2, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        MenuPlegable.add(btnVehiculos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 230, 53));
 
         jPanel1.add(MenuPlegable, new org.netbeans.lib.awtextra.AbsoluteConstraints(-150, 0, 230, 760));
 
@@ -468,7 +516,7 @@ public class VPaqueteria extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jpSubMenu.add(btnDistribucion, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 150, 60));
+        jpSubMenu.add(btnDistribucion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 150, 60));
 
         btnUsuarios.setBackground(new java.awt.Color(172, 147, 110));
         btnUsuarios.setRoundBottomLeft(25);
@@ -508,47 +556,7 @@ public class VPaqueteria extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jpSubMenu.add(btnUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, 150, 60));
-
-        btnEmpleados1.setBackground(new java.awt.Color(172, 147, 110));
-        btnEmpleados1.setRoundBottomLeft(25);
-        btnEmpleados1.setRoundBottomRight(25);
-        btnEmpleados1.setRoundTopLeft(25);
-        btnEmpleados1.setRoundTopRight(25);
-        btnEmpleados1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnEmpleados1MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnEmpleados1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnEmpleados1MouseExited(evt);
-            }
-        });
-
-        txtSub2.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        txtSub2.setForeground(new java.awt.Color(51, 51, 51));
-        txtSub2.setText("Contenedores");
-
-        javax.swing.GroupLayout btnEmpleados1Layout = new javax.swing.GroupLayout(btnEmpleados1);
-        btnEmpleados1.setLayout(btnEmpleados1Layout);
-        btnEmpleados1Layout.setHorizontalGroup(
-            btnEmpleados1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnEmpleados1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(txtSub2)
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-        btnEmpleados1Layout.setVerticalGroup(
-            btnEmpleados1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnEmpleados1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtSub2, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jpSubMenu.add(btnEmpleados1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 30, -1, 60));
+        jpSubMenu.add(btnUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 30, 150, 60));
 
         btnUsuarios1.setBackground(new java.awt.Color(172, 147, 110));
         btnUsuarios1.setRoundBottomLeft(25);
@@ -569,23 +577,23 @@ public class VPaqueteria extends javax.swing.JFrame {
 
         txtSub3.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
         txtSub3.setForeground(new java.awt.Color(51, 51, 51));
-        txtSub3.setText("Usuarios");
+        txtSub3.setText("<html>Envios Productos</html>");
 
         javax.swing.GroupLayout btnUsuarios1Layout = new javax.swing.GroupLayout(btnUsuarios1);
         btnUsuarios1.setLayout(btnUsuarios1Layout);
         btnUsuarios1Layout.setHorizontalGroup(
             btnUsuarios1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnUsuarios1Layout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
-                .addComponent(txtSub3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE)
+                .addComponent(txtSub3, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
         );
         btnUsuarios1Layout.setVerticalGroup(
             btnUsuarios1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnUsuarios1Layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
-                .addComponent(txtSub3)
-                .addGap(15, 15, 15))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtSub3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4))
         );
 
         jpSubMenu.add(btnUsuarios1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 30, 150, 60));
@@ -790,8 +798,32 @@ public class VPaqueteria extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
+        
+    }//GEN-LAST:event_btnAgregarMouseClicked
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnModificarMPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMPMouseClicked
+            
+    }//GEN-LAST:event_btnModificarMPMouseClicked
+
+    private void tbPaqueteriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbPaqueteriaMouseClicked
+         int filaSeleccionada = tbPaqueteria.getSelectedRow();
+
+        String Direccion = tbPaqueteria.getValueAt(filaSeleccionada, 3).toString();
+        
+        txtDireccion.setText(Direccion);
+    }//GEN-LAST:event_tbPaqueteriaMouseClicked
+
     private void btnDistribucionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDistribucionMouseClicked
-        VDatosDis vista = new VDatosDis();
+        VDatosDis vista =new VDatosDis();
         vista.INIT();
         this.dispose();
     }//GEN-LAST:event_btnDistribucionMouseClicked
@@ -818,20 +850,8 @@ public class VPaqueteria extends javax.swing.JFrame {
         btnUsuarios.setBackground(new Color(64,81,152));
     }//GEN-LAST:event_btnUsuariosMouseExited
 
-    private void btnEmpleados1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmpleados1MouseClicked
-        
-    }//GEN-LAST:event_btnEmpleados1MouseClicked
-
-    private void btnEmpleados1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmpleados1MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEmpleados1MouseEntered
-
-    private void btnEmpleados1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmpleados1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEmpleados1MouseExited
-
     private void btnUsuarios1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuarios1MouseClicked
-        ;
+        
     }//GEN-LAST:event_btnUsuarios1MouseClicked
 
     private void btnUsuarios1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuarios1MouseEntered
@@ -841,30 +861,6 @@ public class VPaqueteria extends javax.swing.JFrame {
     private void btnUsuarios1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuarios1MouseExited
         // TODO add your handling code here:
     }//GEN-LAST:event_btnUsuarios1MouseExited
-
-    private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
-        
-    }//GEN-LAST:event_btnAgregarMouseClicked
-
-    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarActionPerformed
-
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEliminarActionPerformed
-
-    private void btnModificarMPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMPMouseClicked
-            
-    }//GEN-LAST:event_btnModificarMPMouseClicked
-
-    private void tbPaqueteriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbPaqueteriaMouseClicked
-         int filaSeleccionada = tbPaqueteria.getSelectedRow();
-
-        String Direccion = tbPaqueteria.getValueAt(filaSeleccionada, 3).toString();
-        
-        txtDireccion.setText(Direccion);
-    }//GEN-LAST:event_tbPaqueteriaMouseClicked
 
     private void btnCasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseClicked
         Main vista = new Main();
@@ -903,7 +899,9 @@ public class VPaqueteria extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProductoMouseExited
 
     private void btnTrabajadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadorMouseClicked
-
+        VEmpleados empleados = new VEmpleados();
+        empleados.INIT();
+        this.dispose();
     }//GEN-LAST:event_btnTrabajadorMouseClicked
 
     private void btnTrabajadorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadorMouseEntered
@@ -957,9 +955,7 @@ public class VPaqueteria extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClienteMouseExited
 
     private void btnRutaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseClicked
-        VDatosDis rutas = new VDatosDis();
-        rutas.INIT();
-        this.dispose();
+
     }//GEN-LAST:event_btnRutaMouseClicked
 
     private void btnRutaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseEntered
@@ -969,6 +965,20 @@ public class VPaqueteria extends javax.swing.JFrame {
     private void btnRutaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseExited
         btnRuta.setBackground(new Color(64,81,115));
     }//GEN-LAST:event_btnRutaMouseExited
+
+    private void btnVehiculosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculosMouseClicked
+        VTaller vista =new VTaller();
+        vista.INIT();
+        this.dispose();
+    }//GEN-LAST:event_btnVehiculosMouseClicked
+
+    private void btnVehiculosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculosMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVehiculosMouseEntered
+
+    private void btnVehiculosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculosMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVehiculosMouseExited
 
     
     public void INIT(){
@@ -1040,14 +1050,15 @@ public class VPaqueteria extends javax.swing.JFrame {
     private Vista.PanelCurvas btnCliente;
     private Vista.PanelCurvas btnDistribucion;
     public javax.swing.JButton btnEliminar;
-    private Vista.PanelCurvas btnEmpleados1;
     public javax.swing.JButton btnModificarMP;
     private Vista.PanelCurvas btnProducto;
     private Vista.PanelCurvas btnRuta;
     private Vista.PanelCurvas btnTrabajador;
     private Vista.PanelCurvas btnUsuarios;
     private Vista.PanelCurvas btnUsuarios1;
+    private Vista.PanelCurvas btnVehiculos;
     private Vista.PanelCurvas eliminar1;
+    private javax.swing.JLabel icoCarro;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1067,13 +1078,13 @@ public class VPaqueteria extends javax.swing.JFrame {
     private javax.swing.JLabel txtBodega;
     private javax.swing.JLabel txtCasa;
     private javax.swing.JLabel txtCliente;
+    private javax.swing.JLabel txtCliente2;
     public javax.swing.JTextField txtDireccion;
     private javax.swing.JLabel txtEmpleado;
     private javax.swing.JLabel txtLogo;
     private javax.swing.JLabel txtRuta;
     private javax.swing.JLabel txtSub;
     private javax.swing.JLabel txtSub1;
-    private javax.swing.JLabel txtSub2;
     private javax.swing.JLabel txtSub3;
     private javax.swing.JLabel txtproducto;
     // End of variables declaration//GEN-END:variables
