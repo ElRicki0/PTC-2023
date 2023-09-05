@@ -7,6 +7,7 @@ package Modelo;
 
 import java.sql.*;
 import Vista.*;
+import Vista.Usuario.UProducto;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -132,6 +133,27 @@ public class productos {
         }
     }
 }
+    
+    public void MostrarProductosU(UProducto vistaProducto){        
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(new Object[]{"ID", "Nombre","Marca","Unidades","Precio C/U", "Bodega"});
+        try {
+            Statement st= CConexion.getConexion().createStatement();
+                String SQL ="select tbProductos.idProducto, tbProductos.Prod_Nombre, tbMarcaProductos.MP_Nombre, tbProductos.Prod_Unidades, tbProductos.Prod_PrecioUnitario, tbBodegas.bdg_nombre"+
+                    " from tbProductos inner join tbMarcaProductos  on tbProductos.id_MP = tbMarcaProductos.id_MP inner join tbBodegas on tbProductos.idBodega = tbBodegas.idBodega";
+            ResultSet rs = st.executeQuery(SQL);
+            
+            while (rs.next()) {
+                modelo.addRow(new Object[]{rs.getInt("idProducto"), rs.getString("Prod_Nombre"), rs.getString("MP_Nombre"), rs.getInt("Prod_Unidades"), rs.getFloat("Prod_PrecioUnitario"), rs.getString("bdg_nombre")});
+            }
+            vistaProducto.tbProductos.setModel(modelo);            
+        } 
+        catch (Exception e) 
+        {
+            JOptionPane.showMessageDialog(null, "Error tabla producto "+e.getMessage());                
+        }
+    
+    }   
     
     public void MostrarProductos(Producto vistaProducto){        
         DefaultTableModel modelo = new DefaultTableModel();

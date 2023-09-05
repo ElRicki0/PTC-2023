@@ -36,12 +36,15 @@ public class ctrlLogin implements ActionListener {
 
                 if (contraseñaAlmacenada != null && contraseñaAlmacenada.equals(contraseñaIngresadaEncriptada)) {
 
-                    Main main = new Main();
-                    main.setVisible(true);
+                    modeloUsuario.setUsr_nombre(vistaLogin.txtUsuario.getText());
+                    modeloUsuario.setUsr_contra(encript.convertirSHA256(vistaLogin.txtContraseña.getText()));
+//                    Main main = new Main();
+//                    main.setVisible(true);
+                    modeloUsuario.ValidarUsuario(modeloUsuario);
                     LoginPTC loginvista= new LoginPTC();
                     loginvista.dispose();
                 } else {
-                    JOptionPane.showMessageDialog(null, "Credenciales inválidas");
+                    JOptionPane.showMessageDialog(null, "Credenciales inválidas1");
                 }
             } else {
                 // Manejo de caso en que encript o modeloUsuario es null

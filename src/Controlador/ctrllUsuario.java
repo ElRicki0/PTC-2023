@@ -13,9 +13,10 @@ public class ctrllUsuario implements ActionListener {
     private usuarios modeloUsuario;
     private ctrlEncriptacion encript;
 
-    public ctrllUsuario(VUsuarios vistaUsuario, usuarios modeloUsuario) {
+    public ctrllUsuario(VUsuarios vistaUsuario, usuarios modeloUsuario, ctrlEncriptacion encript) {
         this.modeloUsuario = modeloUsuario;
         this.vistaUsuario = vistaUsuario;
+        this.encript=encript;
         this.vistaUsuario.btnAgregar.addActionListener(this);
         this.vistaUsuario.btnEliminar.addActionListener(this);
     }
@@ -26,7 +27,7 @@ public class ctrllUsuario implements ActionListener {
         if (e.getSource() == vistaUsuario.btnAgregar) {
             try {
                 modeloUsuario.setUsr_nombre(vistaUsuario.txtNombre_USR.getText());
-                modeloUsuario.setUsr_contra(encript.convertirSHA256(vistaUsuario.pass123()));
+                modeloUsuario.setUsr_contra(encript.convertirSHA256(vistaUsuario.txtContra.getText()));
                 modeloUsuario.setIdEmpleado(vistaUsuario.jcbEmpleado.getSelectedItem().toString());
                 modeloUsuario.setIdnivelUser(vistaUsuario.jcbUsuario.getSelectedItem().toString());
                 modeloUsuario.AUsuarios(modeloUsuario, vistaUsuario.jcbEmpleado, vistaUsuario.jcbUsuario);

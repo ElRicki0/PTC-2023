@@ -671,31 +671,22 @@ public class VEmpleados extends javax.swing.JFrame {
         txtNombre_emp.setBackground(new java.awt.Color(246, 234, 204));
         txtNombre_emp.setForeground(new java.awt.Color(51, 51, 51));
         txtNombre_emp.setBorder(null);
-        txtNombre_emp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombre_empActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout panelCurvas2Layout = new javax.swing.GroupLayout(panelCurvas2);
         panelCurvas2.setLayout(panelCurvas2Layout);
         panelCurvas2Layout.setHorizontalGroup(
             panelCurvas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 240, Short.MAX_VALUE)
-            .addGroup(panelCurvas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCurvas2Layout.createSequentialGroup()
-                    .addContainerGap(16, Short.MAX_VALUE)
-                    .addComponent(txtNombre_emp, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(5, 5, 5)))
+            .addGroup(panelCurvas2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtNombre_emp, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                .addContainerGap())
         );
         panelCurvas2Layout.setVerticalGroup(
             panelCurvas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
-            .addGroup(panelCurvas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelCurvas2Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(txtNombre_emp, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                    .addContainerGap()))
+            .addGroup(panelCurvas2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtNombre_emp, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         panelCurvas1.add(panelCurvas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 240, 50));
@@ -968,10 +959,6 @@ public class VEmpleados extends javax.swing.JFrame {
         txtTelefono_emp.setText(telefono);
         txtCorreo_emp.setText(correo);
     }//GEN-LAST:event_tbTEmpleadosMouseClicked
-
-    private void txtNombre_empActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombre_empActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombre_empActionPerformed
 
     private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
 //        AgregarEmpleado();

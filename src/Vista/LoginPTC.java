@@ -261,49 +261,49 @@ public class LoginPTC extends javax.swing.JFrame {
     }//GEN-LAST:event_bntSesionMouseClicked
 
     private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
-        String user = txtUsuario.getText();
-        String pass = txtContraseña.getText();
-
-        String sql = "select *from tbUsuarios where usr_nombre='" + user + "'";
-        try {
-            PreparedStatement ps = CConexion.getConexion().prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                String u = rs.getString("usr_nombre");
-                String p = rs.getString("usr_contrasenia");
-                String l = rs.getString("idNivelUser");
-                if (pass.equals(p)) {
-                    if (l.equals("1")) {
-                        Main main = new Main();
-                        main.setVisible(true);
-                        this.dispose();
-                    }
-                    if (l.equals("2")) {
-                        Vista.Controlador.CMain main = new Vista.Controlador.CMain();
-                        main.setVisible(true);
-                        this.dispose();
-                    }
-                    if (l.equals("3")) {
-                        Vista.Repartidor.RMain main = new Vista.Repartidor.RMain();
-                        main.setVisible(true);
-                        this.dispose();
-                    }
-                    if (l.equals("4")) {
-                        Vista.Usuario.UMain main = new Vista.Usuario.UMain();
-                        main.setVisible(true);
-                        this.dispose();
-                    }
-                } else {
-                    this.dispose();
-                }
-                this.dispose();
-            } else {
-                JOptionPane.showMessageDialog(null, "El usuario no existe");
-            }
-            this.dispose();
-        } catch (SQLException ex) {
-            this.dispose();
-        }
+//        String user = txtUsuario.getText();
+//        String pass = txtContraseña.getText();
+//
+//        String sql = "select *from tbUsuarios where usr_nombre='" + user + "'";
+//        try {
+//            PreparedStatement ps = CConexion.getConexion().prepareStatement(sql);
+//            ResultSet rs = ps.executeQuery();
+//            if (rs.next()) {
+//                String u = rs.getString("usr_nombre");
+//                String p = rs.getString("usr_contrasenia");
+//                String l = rs.getString("idNivelUser");
+//                if (pass.equals(p)) {
+//                    if (l.equals("1")) {
+//                        Main main = new Main();
+//                        main.setVisible(true);
+//                        this.dispose();
+//                    }
+//                    if (l.equals("2")) {
+//                        Vista.Controlador.CMain main = new Vista.Controlador.CMain();
+//                        main.setVisible(true);
+//                        this.dispose();
+//                    }
+//                    if (l.equals("3")) {
+//                        Vista.Repartidor.RMain main = new Vista.Repartidor.RMain();
+//                        main.setVisible(true);
+//                        this.dispose();
+//                    }
+//                    if (l.equals("4")) {
+//                        Vista.Usuario.UMain main = new Vista.Usuario.UMain();
+//                        main.setVisible(true);
+//                        this.dispose();
+//                    }
+//                } else {
+//                    this.dispose();
+//                }
+//                this.dispose();
+//            } else {
+//                JOptionPane.showMessageDialog(null, "El usuario no existe");
+//            }
+//            this.dispose();
+//        } catch (SQLException ex) {
+//            this.dispose();
+//        }
 
     }//GEN-LAST:event_btnLoginMouseClicked
 

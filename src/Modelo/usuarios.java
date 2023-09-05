@@ -8,6 +8,8 @@ package Modelo;
 import Controlador.ctrlEncriptacion;
 import Vista.*;
 import Controlador.ctrlLogin;
+import Vista.Controlador.CMain;
+import Vista.Repartidor.RMain;
 import Vista.Usuario.UMain;
 import java.sql.*;
 import java.util.HashMap;
@@ -161,26 +163,25 @@ public class usuarios {
                 String contraseñaAlmacenada = rs.getString("usr_contrasenia");
                 String nivelU = rs.getString("idNivelUser");
 
-                String contraseñaIngresadaEncriptada = encript.convertirSHA256(modeloUsuario.getUsr_contra());
 
-                if (contraseñaIngresadaEncriptada.equals(contraseñaAlmacenada)) {
-                    if (modeloUsuario.getIdnivelUser().equals(1)) {
+                if (getUsr_contra().equals(contraseñaAlmacenada)) {
+                    if (nivelU.equals("1")) {
                         Main main = new Main();
                         main.setVisible(true);
                     }
-                    if (modeloUsuario.getIdnivelUser().equals(2)) {
-                        Main main = new Main();
+                    if (nivelU.equals("2")) {
+                        CMain main = new CMain();
                         main.setVisible(true);
                     }
-                    if (modeloUsuario.getIdnivelUser().equals(3)) {
-                        Main main = new Main();
+                    if (nivelU.equals("3")) {
+                        RMain main = new RMain();
                         main.setVisible(true);
                     }
-                    if (modeloUsuario.getIdnivelUser().equals(4)) {
+                    if (nivelU.equals("4")) {
                         UMain main = new UMain();
                         main.setVisible(true);
                     } else {
-                        JOptionPane.showMessageDialog(null, "Eres otra entidad");
+                        JOptionPane.showMessageDialog(null, "entidad tipo "+nivelU.toString());
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "Credenciales inválidas");

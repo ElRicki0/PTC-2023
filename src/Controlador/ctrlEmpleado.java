@@ -50,7 +50,6 @@ public class ctrlEmpleado implements ActionListener{
                                     modeloEmpleado.setEmp_telefono(vistaEmpleado.txtTelefono_emp.getText());
                                     modeloEmpleado.setEmp_correo(vistaEmpleado.txtCorreo_emp.getText());
                                     modeloEmpleado.setIdGenero(vistaEmpleado.jcbGenero.getSelectedItem().toString());
-                                    modeloEmpleado.setEmp_nombre(vistaEmpleado.jcbTipo.getSelectedItem().toString());
                                     modeloEmpleado.MAgregarEmpleado(modeloEmpleado, vistaEmpleado.jcbGenero, vistaEmpleado.jcbTipo);
                                     modeloEmpleado.MostrarEmpleados(vistaEmpleado);
                             }

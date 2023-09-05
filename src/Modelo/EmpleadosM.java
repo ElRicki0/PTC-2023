@@ -253,7 +253,7 @@ public class EmpleadosM {
             } else {
             }     
         ANEmpleado.execute();
-        JOptionPane.showMessageDialog(null, "El Empleado  se agrego correctamente");
+        JOptionPane.showMessageDialog(null, "El Empleado  se agrego correctamente123");
         } catch (Exception e) {
             System.out.println(e);        
         }

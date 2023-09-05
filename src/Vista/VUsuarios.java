@@ -1,6 +1,7 @@
 
 package Vista;
 
+import Controlador.ctrlEncriptacion;
 import Controlador.ctrllUsuario;
 import Modelo.CConexion;
 import Modelo.EmpleadosM;
@@ -100,6 +101,9 @@ public class VUsuarios extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jcbUsuario = new javax.swing.JComboBox<>();
+        jLabel11 = new javax.swing.JLabel();
+        panelCurvas3 = new Vista.PanelCurvas();
+        txtContra = new javax.swing.JTextField();
         agregar = new Vista.PanelCurvas();
         btnAgregar = new javax.swing.JButton();
         eliminar = new Vista.PanelCurvas();
@@ -645,7 +649,7 @@ public class VUsuarios extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("<html>Nombre Empleado:</html>");
-        panelCurvas1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 140, 60));
+        panelCurvas1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 140, 60));
 
         panelCurvas2.setBackground(new java.awt.Color(246, 234, 204));
         panelCurvas2.setRoundBottomLeft(25);
@@ -695,7 +699,7 @@ public class VUsuarios extends javax.swing.JFrame {
                 jcbEmpleadoActionPerformed(evt);
             }
         });
-        panelCurvas1.add(jcbEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 240, 50));
+        panelCurvas1.add(jcbEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 240, 50));
 
         jLabel10.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(51, 51, 51));
@@ -705,11 +709,54 @@ public class VUsuarios extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("<html>Nivel Usuario:</html>");
-        panelCurvas1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 140, 60));
+        panelCurvas1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 140, 60));
 
-        panelCurvas1.add(jcbUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 240, 50));
+        panelCurvas1.add(jcbUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 390, 240, 50));
 
-        jPanel1.add(panelCurvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 200, 410, 390));
+        jLabel11.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel11.setText("Contrasenia:");
+        panelCurvas1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 140, 60));
+
+        panelCurvas3.setBackground(new java.awt.Color(246, 234, 204));
+        panelCurvas3.setRoundBottomLeft(25);
+        panelCurvas3.setRoundBottomRight(25);
+        panelCurvas3.setRoundTopLeft(25);
+        panelCurvas3.setRoundTopRight(25);
+
+        txtContra.setBackground(new java.awt.Color(246, 234, 204));
+        txtContra.setForeground(new java.awt.Color(51, 51, 51));
+        txtContra.setBorder(null);
+        txtContra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtContraActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelCurvas3Layout = new javax.swing.GroupLayout(panelCurvas3);
+        panelCurvas3.setLayout(panelCurvas3Layout);
+        panelCurvas3Layout.setHorizontalGroup(
+            panelCurvas3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 240, Short.MAX_VALUE)
+            .addGroup(panelCurvas3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCurvas3Layout.createSequentialGroup()
+                    .addContainerGap(16, Short.MAX_VALUE)
+                    .addComponent(txtContra, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(5, 5, 5)))
+        );
+        panelCurvas3Layout.setVerticalGroup(
+            panelCurvas3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+            .addGroup(panelCurvas3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelCurvas3Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(txtContra, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+
+        panelCurvas1.add(panelCurvas3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 240, 50));
+
+        jPanel1.add(panelCurvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 200, 410, 470));
 
         agregar.setBackground(new java.awt.Color(172, 147, 110));
         agregar.setRoundBottomLeft(25);
@@ -1025,6 +1072,10 @@ public class VUsuarios extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVehiculosMouseExited
 
+    private void txtContraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtContraActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1032,7 +1083,8 @@ public class VUsuarios extends javax.swing.JFrame {
     public void INIT(){
         VUsuarios vistaUsuarios = new VUsuarios();
         modeloUsuario.mostrarUsuarios(vistaUsuarios);
-        ctrllUsuario control = new ctrllUsuario(vistaUsuarios, modeloUsuario);
+        ctrlEncriptacion encript = new ctrlEncriptacion();
+        ctrllUsuario control = new ctrllUsuario(vistaUsuarios, modeloUsuario, encript);
         vistaUsuarios.setVisible(true);
     }
     public static void main(String args[]) {
@@ -1108,6 +1160,7 @@ public class VUsuarios extends javax.swing.JFrame {
     private javax.swing.JLabel icoCarro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
@@ -1119,6 +1172,7 @@ public class VUsuarios extends javax.swing.JFrame {
     private Vista.PanelCurvas modificar;
     private Vista.PanelCurvas panelCurvas1;
     private Vista.PanelCurvas panelCurvas2;
+    private Vista.PanelCurvas panelCurvas3;
     public javax.swing.JTable tbEmpleados;
     private javax.swing.JLabel txtBarras;
     private javax.swing.JLabel txtBitacora;
@@ -1126,6 +1180,7 @@ public class VUsuarios extends javax.swing.JFrame {
     private javax.swing.JLabel txtCasa;
     private javax.swing.JLabel txtCliente;
     private javax.swing.JLabel txtCliente2;
+    public javax.swing.JTextField txtContra;
     private javax.swing.JLabel txtEmpleado;
     private javax.swing.JLabel txtLogo;
     public javax.swing.JTextField txtNombre_USR;
