@@ -2,6 +2,7 @@ package Controlador;
 
 import Modelo.usuarios;
 import Vista.VUsuarios;
+import Controlador.ctrlEncriptacion;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -10,6 +11,7 @@ public class ctrllUsuario implements ActionListener {
 
     private VUsuarios vistaUsuario;
     private usuarios modeloUsuario;
+    private ctrlEncriptacion encript;
 
     public ctrllUsuario(VUsuarios vistaUsuario, usuarios modeloUsuario) {
         this.modeloUsuario = modeloUsuario;
@@ -18,11 +20,13 @@ public class ctrllUsuario implements ActionListener {
         this.vistaUsuario.btnEliminar.addActionListener(this);
     }
 
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == vistaUsuario.btnAgregar) {
             try {
                 modeloUsuario.setUsr_nombre(vistaUsuario.txtNombre_USR.getText());
+                modeloUsuario.setUsr_contra(encript.convertirSHA256(vistaUsuario.pass123()));
                 modeloUsuario.setIdEmpleado(vistaUsuario.jcbEmpleado.getSelectedItem().toString());
                 modeloUsuario.setIdnivelUser(vistaUsuario.jcbUsuario.getSelectedItem().toString());
                 modeloUsuario.AUsuarios(modeloUsuario, vistaUsuario.jcbEmpleado, vistaUsuario.jcbUsuario);

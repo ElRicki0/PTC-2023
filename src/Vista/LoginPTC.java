@@ -261,10 +261,10 @@ public class LoginPTC extends javax.swing.JFrame {
     }//GEN-LAST:event_bntSesionMouseClicked
 
     private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
-    String user = txtUsuario.getText();
-    String pass = txtContraseña.getText();
-    
-    String sql ="select *from tbUsuarios where usr_nombre='"+user+"'";
+        String user = txtUsuario.getText();
+        String pass = txtContraseña.getText();
+
+        String sql = "select *from tbUsuarios where usr_nombre='" + user + "'";
         try {
             PreparedStatement ps = CConexion.getConexion().prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -277,31 +277,34 @@ public class LoginPTC extends javax.swing.JFrame {
                         Main main = new Main();
                         main.setVisible(true);
                         this.dispose();
-                    }if (l.equals("2")) {
+                    }
+                    if (l.equals("2")) {
                         Vista.Controlador.CMain main = new Vista.Controlador.CMain();
                         main.setVisible(true);
                         this.dispose();
-                    } if (l.equals("3")) {
+                    }
+                    if (l.equals("3")) {
                         Vista.Repartidor.RMain main = new Vista.Repartidor.RMain();
                         main.setVisible(true);
                         this.dispose();
-                    }if (l.equals("4")) {
+                    }
+                    if (l.equals("4")) {
                         Vista.Usuario.UMain main = new Vista.Usuario.UMain();
                         main.setVisible(true);
                         this.dispose();
-                    }  
+                    }
                 } else {
                     this.dispose();
                 }
-                    this.dispose();
+                this.dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "El usuario no existe");
-            } 
+            }
             this.dispose();
         } catch (SQLException ex) {
             this.dispose();
         }
-    
+
     }//GEN-LAST:event_btnLoginMouseClicked
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed

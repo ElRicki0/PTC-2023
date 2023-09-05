@@ -8,6 +8,7 @@ package Modelo;
 import Controlador.ctrlEncriptacion;
 import Vista.*;
 import Controlador.ctrlLogin;
+import Vista.Usuario.UMain;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -158,12 +159,25 @@ public class usuarios {
             if (rs.next()) {
                 String u = rs.getString("usr_nombre");
                 String contraseñaAlmacenada = rs.getString("usr_contrasenia");
+                String nivelU = rs.getString("idNivelUser");
 
                 String contraseñaIngresadaEncriptada = encript.convertirSHA256(modeloUsuario.getUsr_contra());
 
                 if (contraseñaIngresadaEncriptada.equals(contraseñaAlmacenada)) {
                     if (modeloUsuario.getIdnivelUser().equals(1)) {
                         Main main = new Main();
+                        main.setVisible(true);
+                    }
+                    if (modeloUsuario.getIdnivelUser().equals(2)) {
+                        Main main = new Main();
+                        main.setVisible(true);
+                    }
+                    if (modeloUsuario.getIdnivelUser().equals(3)) {
+                        Main main = new Main();
+                        main.setVisible(true);
+                    }
+                    if (modeloUsuario.getIdnivelUser().equals(4)) {
+                        UMain main = new UMain();
                         main.setVisible(true);
                     } else {
                         JOptionPane.showMessageDialog(null, "Eres otra entidad");
@@ -285,15 +299,16 @@ public class usuarios {
     public void AUsuarios(usuarios modeloUsuario, JComboBox jcbEmpleado, JComboBox jcbUsuario) {
         try {
             
-            PreparedStatement AUsuario = CConexion.getConexion().prepareStatement("insert into tbUsuarios(usr_nombre, usr_contrasenia, idEmpleado, idNivelUser) values(?,'pass123',?,?)");
+            PreparedStatement AUsuario = CConexion.getConexion().prepareStatement("insert into tbUsuarios(usr_nombre, usr_contrasenia, idEmpleado, idNivelUser) values(?,?,?,?)");
 
             AUsuario.setString(1, modeloUsuario.getUsr_nombre());
+            AUsuario.setString(2, modeloUsuario.getUsr_contra());
 
             int SelectEmpelado = jcbEmpleado.getSelectedIndex();
             if (SelectEmpelado != -1) {
                 Map<Integer, String> idEmpleado = (Map<Integer, String>) jcbEmpleado.getClientProperty("idEmpleado");
                 int selID = (int) idEmpleado.keySet().toArray()[SelectEmpelado];
-                AUsuario.setInt(2, selID);
+                AUsuario.setInt(3, selID);
             } else {
             }
 
@@ -301,11 +316,11 @@ public class usuarios {
             if (SelectTUsuario != -1) {
                 Map<Integer, String> idNivelUser = (Map<Integer, String>) jcbUsuario.getClientProperty("idNivelUser");
                 int selID = (int) idNivelUser.keySet().toArray()[SelectTUsuario];
-                AUsuario.setInt(3, selID);
+                AUsuario.setInt(4, selID);
             } else {
             }
 
-            AUsuario.executeUpdate();
+            AUsuario.execute();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "el empleado ya esta en uso ");
         }

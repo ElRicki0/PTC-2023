@@ -46,6 +46,7 @@ public class ContraGMAIL extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(590, 470));
         setMinimumSize(new java.awt.Dimension(590, 470));
+        setResizable(false);
         setSize(new java.awt.Dimension(590, 470));
 
         jPanel1.setBackground(new java.awt.Color(246, 234, 204));
@@ -265,7 +266,7 @@ public class ContraGMAIL extends javax.swing.JFrame {
             String contraseñaEmisor = "urjqvpuobtjciwwk";     
             String CorreoReceptor = txtCorreo.getText();
             String asunto = "Recuperación de contraseña";
-            String mensaje = "Este es tu código de recuperación "+aleatorio;
+            String mensaje = "Este es tu código de recuperación " + aleatorio;
             
             //Configurar SMTP
             Properties props = new Properties();
@@ -292,12 +293,12 @@ public class ContraGMAIL extends javax.swing.JFrame {
             t.close();
 
             JOptionPane.showMessageDialog(null, "Correo enviado");
-            System.out.println(aleatorio);
+
 
         }catch(Exception e){
             System.out.println(e.toString());
             JOptionPane.showMessageDialog(null, "Error al enviar correo");
-            System.out.println(aleatorio);
+
         }
     }
     

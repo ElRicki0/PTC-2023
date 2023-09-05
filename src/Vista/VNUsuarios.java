@@ -1,22 +1,21 @@
 
 package Vista;
 
-import Controlador.ctrllUsuario;
+import Controlador.ctrlEmpleado;
+import Controlador.ctrlNivelesUsuarios;
 import Modelo.CConexion;
 import Modelo.EmpleadosM;
-import Modelo.usuarios;
+import Modelo.NivelesUsuarios;
 import java.awt.Color;
 import desplazable.Desface;
-import desplazable.*;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
 
-public class VUsuarios extends javax.swing.JFrame {
+public class VNUsuarios extends javax.swing.JFrame {
         
     EmpleadosM modeloEmpleados= new EmpleadosM();
-    usuarios modeloUsuario =new usuarios();
         Desface desplace;
-    public VUsuarios() {        
+    public VNUsuarios() {        
         initComponents();
         rsscalelabel.RSScaleLabel.setScaleLabel(txtLogo, "src/Vista/Iconos/logo.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(Casaicon, "src/Vista/Iconos/hogar.png");
@@ -27,22 +26,12 @@ public class VUsuarios extends javax.swing.JFrame {
         rsscalelabel.RSScaleLabel.setScaleLabel(Rutaicon, "src/Vista/Iconos/entrega.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(Bodegaicon, "src/Vista/Iconos/almacenamiento.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(txtBarras, "src/Vista/Iconos/lista.png");
-        rsscalelabel.RSScaleLabel.setScaleLabel(icoCarro, "src/Vista/Iconos/vehiculo.png");
-        modeloUsuario.jcbEmpleado(jcbEmpleado);
-        modeloUsuario.jcbNivelesU(jcbUsuario);
         
-        TextPrompt nombre       = new TextPrompt("Nombre", txtNombre_USR);       
+        TextPrompt nombre       = new TextPrompt("Nombre", txtNombre_NU);        
+        TextPrompt descripcion     = new TextPrompt("Descripción", txtDescripcion_NU);  
         
-        desplace = new Desface();
         this.setLocationRelativeTo(null);
-        transpareciaBoton();
     }
-    
-    
-    public static void pass123(){
-            String pass123 = "pass123";
-
-    } 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -63,6 +52,9 @@ public class VUsuarios extends javax.swing.JFrame {
         btnProducto = new Vista.PanelCurvas();
         Productoicon = new javax.swing.JLabel();
         txtproducto = new javax.swing.JLabel();
+        btnRuta = new Vista.PanelCurvas();
+        Rutaicon = new javax.swing.JLabel();
+        txtRuta = new javax.swing.JLabel();
         btnTrabajador = new Vista.PanelCurvas();
         Trabajadoricon = new javax.swing.JLabel();
         txtEmpleado = new javax.swing.JLabel();
@@ -75,12 +67,6 @@ public class VUsuarios extends javax.swing.JFrame {
         btnCliente = new Vista.PanelCurvas();
         Clienteicon = new javax.swing.JLabel();
         txtCliente = new javax.swing.JLabel();
-        btnRuta = new Vista.PanelCurvas();
-        Rutaicon = new javax.swing.JLabel();
-        txtRuta = new javax.swing.JLabel();
-        btnVehiculos = new Vista.PanelCurvas();
-        icoCarro = new javax.swing.JLabel();
-        txtCliente2 = new javax.swing.JLabel();
         jpSubMenu = new javax.swing.JPanel();
         btnEmpleados = new Vista.PanelCurvas();
         txtSub = new javax.swing.JLabel();
@@ -88,24 +74,21 @@ public class VUsuarios extends javax.swing.JFrame {
         txtSub1 = new javax.swing.JLabel();
         btnUsuarios1 = new Vista.PanelCurvas();
         txtSub3 = new javax.swing.JLabel();
+        btnEmpleados1 = new Vista.PanelCurvas();
+        txtSub2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbEmpleados = new javax.swing.JTable();
+        tbNUsuarios = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
+        modificar = new Vista.PanelCurvas();
+        btnModificarMP = new javax.swing.JButton();
         panelCurvas1 = new Vista.PanelCurvas();
         jLabel1 = new javax.swing.JLabel();
         panelCurvas2 = new Vista.PanelCurvas();
-        txtNombre_USR = new javax.swing.JTextField();
+        txtNombre_NU = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jcbEmpleado = new javax.swing.JComboBox<>();
-        jLabel10 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jcbUsuario = new javax.swing.JComboBox<>();
-        agregar = new Vista.PanelCurvas();
-        btnAgregar = new javax.swing.JButton();
-        eliminar = new Vista.PanelCurvas();
-        btnEliminar = new javax.swing.JButton();
-        modificar = new Vista.PanelCurvas();
-        btnModificarMP = new javax.swing.JButton();
+        panelCurvas3 = new Vista.PanelCurvas();
+        txtDescripcion_NU = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1080, 760));
@@ -136,7 +119,7 @@ public class VUsuarios extends javax.swing.JFrame {
         });
 
         txtCasa.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        txtCasa.setForeground(new java.awt.Color(255, 255, 255));
+        txtCasa.setForeground(new java.awt.Color(45, 40, 37));
         txtCasa.setText("Inicio");
 
         javax.swing.GroupLayout btnCasaLayout = new javax.swing.GroupLayout(btnCasa);
@@ -187,7 +170,7 @@ public class VUsuarios extends javax.swing.JFrame {
         });
 
         txtproducto.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        txtproducto.setForeground(new java.awt.Color(255, 255, 255));
+        txtproducto.setForeground(new java.awt.Color(45, 40, 37));
         txtproducto.setText("Productos");
 
         javax.swing.GroupLayout btnProductoLayout = new javax.swing.GroupLayout(btnProducto);
@@ -212,6 +195,49 @@ public class VUsuarios extends javax.swing.JFrame {
 
         MenuPlegable.add(btnProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, -1, 50));
 
+        btnRuta.setBackground(new java.awt.Color(64, 81, 115));
+        btnRuta.setRoundBottomLeft(25);
+        btnRuta.setRoundBottomRight(25);
+        btnRuta.setRoundTopLeft(25);
+        btnRuta.setRoundTopRight(25);
+        btnRuta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRutaMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnRutaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnRutaMouseExited(evt);
+            }
+        });
+
+        txtRuta.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        txtRuta.setForeground(new java.awt.Color(45, 40, 37));
+        txtRuta.setText("Rutas");
+
+        javax.swing.GroupLayout btnRutaLayout = new javax.swing.GroupLayout(btnRuta);
+        btnRuta.setLayout(btnRutaLayout);
+        btnRutaLayout.setHorizontalGroup(
+            btnRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnRutaLayout.createSequentialGroup()
+                .addGap(0, 101, Short.MAX_VALUE)
+                .addComponent(txtRuta)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Rutaicon, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
+        );
+        btnRutaLayout.setVerticalGroup(
+            btnRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnRutaLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(btnRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtRuta, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Rutaicon, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
+        MenuPlegable.add(btnRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, -1, 53));
+
         btnTrabajador.setBackground(new java.awt.Color(64, 81, 115));
         btnTrabajador.setRoundBottomLeft(25);
         btnTrabajador.setRoundBottomRight(25);
@@ -230,7 +256,7 @@ public class VUsuarios extends javax.swing.JFrame {
         });
 
         txtEmpleado.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        txtEmpleado.setForeground(new java.awt.Color(255, 255, 255));
+        txtEmpleado.setForeground(new java.awt.Color(45, 40, 37));
         txtEmpleado.setText("Empleados");
 
         javax.swing.GroupLayout btnTrabajadorLayout = new javax.swing.GroupLayout(btnTrabajador);
@@ -273,7 +299,7 @@ public class VUsuarios extends javax.swing.JFrame {
         });
 
         txtBodega.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        txtBodega.setForeground(new java.awt.Color(255, 255, 255));
+        txtBodega.setForeground(new java.awt.Color(45, 40, 37));
         txtBodega.setText("Bodegas");
 
         javax.swing.GroupLayout btnBodegaLayout = new javax.swing.GroupLayout(btnBodega);
@@ -316,7 +342,7 @@ public class VUsuarios extends javax.swing.JFrame {
         });
 
         txtBitacora.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        txtBitacora.setForeground(new java.awt.Color(255, 255, 255));
+        txtBitacora.setForeground(new java.awt.Color(45, 40, 37));
         txtBitacora.setText("Bitacora");
 
         javax.swing.GroupLayout btnBitacoraLayout = new javax.swing.GroupLayout(btnBitacora);
@@ -339,7 +365,7 @@ public class VUsuarios extends javax.swing.JFrame {
                     .addComponent(Bitacoraicon, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        MenuPlegable.add(btnBitacora, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 630, -1, -1));
+        MenuPlegable.add(btnBitacora, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, -1, -1));
 
         btnCliente.setBackground(new java.awt.Color(64, 81, 115));
         btnCliente.setRoundBottomLeft(25);
@@ -359,7 +385,7 @@ public class VUsuarios extends javax.swing.JFrame {
         });
 
         txtCliente.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        txtCliente.setForeground(new java.awt.Color(255, 255, 255));
+        txtCliente.setForeground(new java.awt.Color(45, 40, 37));
         txtCliente.setText("Cliente");
 
         javax.swing.GroupLayout btnClienteLayout = new javax.swing.GroupLayout(btnCliente);
@@ -382,96 +408,7 @@ public class VUsuarios extends javax.swing.JFrame {
                     .addComponent(Clienteicon, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        MenuPlegable.add(btnCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 230, -1));
-
-        btnRuta.setBackground(new java.awt.Color(64, 81, 115));
-        btnRuta.setRoundBottomLeft(25);
-        btnRuta.setRoundBottomRight(25);
-        btnRuta.setRoundTopLeft(25);
-        btnRuta.setRoundTopRight(25);
-        btnRuta.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnRutaMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnRutaMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnRutaMouseExited(evt);
-            }
-        });
-
-        txtRuta.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        txtRuta.setForeground(new java.awt.Color(255, 255, 255));
-        txtRuta.setText("Rutas");
-
-        javax.swing.GroupLayout btnRutaLayout = new javax.swing.GroupLayout(btnRuta);
-        btnRuta.setLayout(btnRutaLayout);
-        btnRutaLayout.setHorizontalGroup(
-            btnRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnRutaLayout.createSequentialGroup()
-                .addGap(0, 101, Short.MAX_VALUE)
-                .addComponent(txtRuta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Rutaicon, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
-        );
-        btnRutaLayout.setVerticalGroup(
-            btnRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnRutaLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(btnRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtRuta, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Rutaicon, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
-
-        MenuPlegable.add(btnRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, -1, -1));
-
-        btnVehiculos.setBackground(new java.awt.Color(64, 81, 115));
-        btnVehiculos.setRoundBottomLeft(25);
-        btnVehiculos.setRoundBottomRight(25);
-        btnVehiculos.setRoundTopLeft(25);
-        btnVehiculos.setRoundTopRight(25);
-        btnVehiculos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnVehiculosMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnVehiculosMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnVehiculosMouseExited(evt);
-            }
-        });
-
-        icoCarro.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        icoCarro.setForeground(new java.awt.Color(255, 255, 255));
-
-        txtCliente2.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        txtCliente2.setForeground(new java.awt.Color(255, 255, 255));
-        txtCliente2.setText("Vehiculos");
-
-        javax.swing.GroupLayout btnVehiculosLayout = new javax.swing.GroupLayout(btnVehiculos);
-        btnVehiculos.setLayout(btnVehiculosLayout);
-        btnVehiculosLayout.setHorizontalGroup(
-            btnVehiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnVehiculosLayout.createSequentialGroup()
-                .addContainerGap(67, Short.MAX_VALUE)
-                .addComponent(txtCliente2)
-                .addGap(18, 18, 18)
-                .addComponent(icoCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        btnVehiculosLayout.setVerticalGroup(
-            btnVehiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(icoCarro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnVehiculosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtCliente2, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        MenuPlegable.add(btnVehiculos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 230, 53));
+        MenuPlegable.add(btnCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, -1, -1));
 
         jPanel1.add(MenuPlegable, new org.netbeans.lib.awtextra.AbsoluteConstraints(-150, 0, 230, 760));
 
@@ -516,7 +453,7 @@ public class VUsuarios extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jpSubMenu.add(btnEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 150, 60));
+        jpSubMenu.add(btnEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 150, 60));
 
         btnUsuarios.setBackground(new java.awt.Color(172, 147, 110));
         btnUsuarios.setRoundBottomLeft(25);
@@ -538,11 +475,6 @@ public class VUsuarios extends javax.swing.JFrame {
         txtSub1.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
         txtSub1.setForeground(new java.awt.Color(51, 51, 51));
         txtSub1.setText("<HTML>Tipos Empleados</html>");
-        txtSub1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtSub1MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout btnUsuariosLayout = new javax.swing.GroupLayout(btnUsuarios);
         btnUsuarios.setLayout(btnUsuariosLayout);
@@ -561,7 +493,7 @@ public class VUsuarios extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jpSubMenu.add(btnUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 30, 150, -1));
+        jpSubMenu.add(btnUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, 150, -1));
 
         btnUsuarios1.setBackground(new java.awt.Color(172, 147, 110));
         btnUsuarios1.setRoundBottomLeft(25);
@@ -589,26 +521,66 @@ public class VUsuarios extends javax.swing.JFrame {
         btnUsuarios1Layout.setHorizontalGroup(
             btnUsuarios1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnUsuarios1Layout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
+                .addContainerGap(42, Short.MAX_VALUE)
                 .addComponent(txtSub3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                .addGap(28, 28, 28))
         );
         btnUsuarios1Layout.setVerticalGroup(
             btnUsuarios1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnUsuarios1Layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+            .addGroup(btnUsuarios1Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
                 .addComponent(txtSub3)
-                .addGap(15, 15, 15))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        jpSubMenu.add(btnUsuarios1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 30, 150, 60));
+        jpSubMenu.add(btnUsuarios1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 30, 150, 60));
+
+        btnEmpleados1.setBackground(new java.awt.Color(172, 147, 110));
+        btnEmpleados1.setRoundBottomLeft(25);
+        btnEmpleados1.setRoundBottomRight(25);
+        btnEmpleados1.setRoundTopLeft(25);
+        btnEmpleados1.setRoundTopRight(25);
+        btnEmpleados1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEmpleados1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEmpleados1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEmpleados1MouseExited(evt);
+            }
+        });
+
+        txtSub2.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        txtSub2.setForeground(new java.awt.Color(51, 51, 51));
+        txtSub2.setText("<html>Niveles Usuarios</html>");
+
+        javax.swing.GroupLayout btnEmpleados1Layout = new javax.swing.GroupLayout(btnEmpleados1);
+        btnEmpleados1.setLayout(btnEmpleados1Layout);
+        btnEmpleados1Layout.setHorizontalGroup(
+            btnEmpleados1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnEmpleados1Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(txtSub2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+        btnEmpleados1Layout.setVerticalGroup(
+            btnEmpleados1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnEmpleados1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtSub2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jpSubMenu.add(btnEmpleados1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 30, -1, 60));
 
         jPanel1.add(jpSubMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 1040, 110));
 
         jScrollPane1.setBackground(new java.awt.Color(172, 147, 110));
 
-        tbEmpleados.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
-        tbEmpleados.setModel(new javax.swing.table.DefaultTableModel(
+        tbNUsuarios.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
+        tbNUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -619,164 +591,21 @@ public class VUsuarios extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tbEmpleados.setFocusable(false);
-        tbEmpleados.setRowHeight(30);
-        tbEmpleados.addMouseListener(new java.awt.event.MouseAdapter() {
+        tbNUsuarios.setFocusable(false);
+        tbNUsuarios.setRowHeight(30);
+        tbNUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbEmpleadosMouseClicked(evt);
+                tbNUsuariosMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tbEmpleados);
+        jScrollPane1.setViewportView(tbNUsuarios);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, 560, 460));
 
         jLabel2.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel2.setText("Usuarios");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 260, 41));
-
-        panelCurvas1.setBackground(new java.awt.Color(172, 147, 110));
-        panelCurvas1.setRoundBottomLeft(35);
-        panelCurvas1.setRoundBottomRight(35);
-        panelCurvas1.setRoundTopLeft(35);
-        panelCurvas1.setRoundTopRight(35);
-        panelCurvas1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel1.setText("<html>Nombre Empleado:</html>");
-        panelCurvas1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 140, 60));
-
-        panelCurvas2.setBackground(new java.awt.Color(246, 234, 204));
-        panelCurvas2.setRoundBottomLeft(25);
-        panelCurvas2.setRoundBottomRight(25);
-        panelCurvas2.setRoundTopLeft(25);
-        panelCurvas2.setRoundTopRight(25);
-
-        txtNombre_USR.setBackground(new java.awt.Color(246, 234, 204));
-        txtNombre_USR.setForeground(new java.awt.Color(51, 51, 51));
-        txtNombre_USR.setBorder(null);
-        txtNombre_USR.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombre_USRActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelCurvas2Layout = new javax.swing.GroupLayout(panelCurvas2);
-        panelCurvas2.setLayout(panelCurvas2Layout);
-        panelCurvas2Layout.setHorizontalGroup(
-            panelCurvas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 240, Short.MAX_VALUE)
-            .addGroup(panelCurvas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCurvas2Layout.createSequentialGroup()
-                    .addContainerGap(16, Short.MAX_VALUE)
-                    .addComponent(txtNombre_USR, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(5, 5, 5)))
-        );
-        panelCurvas2Layout.setVerticalGroup(
-            panelCurvas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
-            .addGroup(panelCurvas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelCurvas2Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(txtNombre_USR, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                    .addContainerGap()))
-        );
-
-        panelCurvas1.add(panelCurvas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 240, 50));
-
-        jLabel7.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel7.setText("Informacion");
-        panelCurvas1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 167, 41));
-
-        jcbEmpleado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbEmpleadoActionPerformed(evt);
-            }
-        });
-        panelCurvas1.add(jcbEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 240, 50));
-
-        jLabel10.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel10.setText("<html>Nombre Usuario:</html>");
-        panelCurvas1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 140, 60));
-
-        jLabel3.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel3.setText("<html>Nivel Usuario:</html>");
-        panelCurvas1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 140, 60));
-
-        panelCurvas1.add(jcbUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 240, 50));
-
-        jPanel1.add(panelCurvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 200, 410, 390));
-
-        agregar.setBackground(new java.awt.Color(172, 147, 110));
-        agregar.setRoundBottomLeft(25);
-        agregar.setRoundBottomRight(25);
-        agregar.setRoundTopLeft(25);
-        agregar.setRoundTopRight(25);
-
-        btnAgregar.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
-        btnAgregar.setText("Agregar");
-        btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAgregarMouseClicked(evt);
-            }
-        });
-        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout agregarLayout = new javax.swing.GroupLayout(agregar);
-        agregar.setLayout(agregarLayout);
-        agregarLayout.setHorizontalGroup(
-            agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, agregarLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        agregarLayout.setVerticalGroup(
-            agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, agregarLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jPanel1.add(agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 680, -1, 60));
-
-        eliminar.setBackground(new java.awt.Color(172, 147, 110));
-        eliminar.setRoundBottomLeft(25);
-        eliminar.setRoundBottomRight(25);
-        eliminar.setRoundTopLeft(25);
-        eliminar.setRoundTopRight(25);
-
-        btnEliminar.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
-        btnEliminar.setText("Eliminar");
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout eliminarLayout = new javax.swing.GroupLayout(eliminar);
-        eliminar.setLayout(eliminarLayout);
-        eliminarLayout.setHorizontalGroup(
-            eliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
-        );
-        eliminarLayout.setVerticalGroup(
-            eliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eliminarLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jPanel1.add(eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 680, -1, -1));
+        jLabel2.setText("Niveles usuarios");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 380, 41));
 
         modificar.setBackground(new java.awt.Color(172, 147, 110));
         modificar.setRoundBottomLeft(25);
@@ -806,7 +635,107 @@ public class VUsuarios extends javax.swing.JFrame {
                 .addComponent(btnModificarMP, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 680, 160, 60));
+        jPanel1.add(modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 680, 160, 60));
+
+        panelCurvas1.setBackground(new java.awt.Color(172, 147, 110));
+        panelCurvas1.setRoundBottomLeft(35);
+        panelCurvas1.setRoundBottomRight(35);
+        panelCurvas1.setRoundTopLeft(35);
+        panelCurvas1.setRoundTopRight(35);
+        panelCurvas1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel1.setText("Nombre:");
+        panelCurvas1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 140, 41));
+
+        panelCurvas2.setBackground(new java.awt.Color(246, 234, 204));
+        panelCurvas2.setRoundBottomLeft(25);
+        panelCurvas2.setRoundBottomRight(25);
+        panelCurvas2.setRoundTopLeft(25);
+        panelCurvas2.setRoundTopRight(25);
+
+        txtNombre_NU.setBackground(new java.awt.Color(246, 234, 204));
+        txtNombre_NU.setForeground(new java.awt.Color(51, 51, 51));
+        txtNombre_NU.setBorder(null);
+        txtNombre_NU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombre_NUActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelCurvas2Layout = new javax.swing.GroupLayout(panelCurvas2);
+        panelCurvas2.setLayout(panelCurvas2Layout);
+        panelCurvas2Layout.setHorizontalGroup(
+            panelCurvas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 240, Short.MAX_VALUE)
+            .addGroup(panelCurvas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCurvas2Layout.createSequentialGroup()
+                    .addContainerGap(16, Short.MAX_VALUE)
+                    .addComponent(txtNombre_NU, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(5, 5, 5)))
+        );
+        panelCurvas2Layout.setVerticalGroup(
+            panelCurvas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+            .addGroup(panelCurvas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelCurvas2Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(txtNombre_NU, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+
+        panelCurvas1.add(panelCurvas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 240, 50));
+
+        jLabel7.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel7.setText("Informacion");
+        panelCurvas1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 167, 41));
+
+        jLabel3.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel3.setText("Descripcion:");
+        panelCurvas1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 140, 41));
+
+        panelCurvas3.setBackground(new java.awt.Color(246, 234, 204));
+        panelCurvas3.setRoundBottomLeft(25);
+        panelCurvas3.setRoundBottomRight(25);
+        panelCurvas3.setRoundTopLeft(25);
+        panelCurvas3.setRoundTopRight(25);
+
+        txtDescripcion_NU.setBackground(new java.awt.Color(246, 234, 204));
+        txtDescripcion_NU.setForeground(new java.awt.Color(51, 51, 51));
+        txtDescripcion_NU.setBorder(null);
+        txtDescripcion_NU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDescripcion_NUActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelCurvas3Layout = new javax.swing.GroupLayout(panelCurvas3);
+        panelCurvas3.setLayout(panelCurvas3Layout);
+        panelCurvas3Layout.setHorizontalGroup(
+            panelCurvas3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 240, Short.MAX_VALUE)
+            .addGroup(panelCurvas3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCurvas3Layout.createSequentialGroup()
+                    .addContainerGap(16, Short.MAX_VALUE)
+                    .addComponent(txtDescripcion_NU, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(5, 5, 5)))
+        );
+        panelCurvas3Layout.setVerticalGroup(
+            panelCurvas3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 180, Short.MAX_VALUE)
+            .addGroup(panelCurvas3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelCurvas3Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(txtDescripcion_NU, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+
+        panelCurvas1.add(panelCurvas3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 240, 180));
+
+        jPanel1.add(panelCurvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 200, 410, 380));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -822,50 +751,9 @@ public class VUsuarios extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tbEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbEmpleadosMouseClicked
-//        int filaSeleccionada = tbEmpleados.getSelectedRow();
-//
-//        String nombre = tbEmpleados.getValueAt(filaSeleccionada, 1).toString();
-//        String fecha = tbEmpleados.getValueAt(filaSeleccionada, 2).toString();
-//        String direccion   = tbEmpleados.getValueAt(filaSeleccionada, 3).toString();
-//        String telefono = tbEmpleados.getValueAt(filaSeleccionada, 4).toString();
-//        String correo = tbEmpleados.getValueAt(filaSeleccionada, 5).toString();
-//
-//        txtNombre_emp.setText(nombre);
-//        txtFN_emp.setText(fecha);
-//        txtDireccion_emp.setText(direccion);
-//        txtTelefono_emp.setText(telefono);
-//        txtCorreo_emp.setText(correo);
-    }//GEN-LAST:event_tbEmpleadosMouseClicked
-
-    private void txtNombre_USRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombre_USRActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombre_USRActionPerformed
-
-    private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
-        
-    }//GEN-LAST:event_btnAgregarMouseClicked
-
-    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarActionPerformed
-
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEliminarActionPerformed
-
-    private void btnModificarMPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMPMouseClicked
-//        modeloEmpleados.actualizar(this);
-//        modeloEmpleados.MostrarEmpleados(this);
-    }//GEN-LAST:event_btnModificarMPMouseClicked
-
-    private void jcbEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbEmpleadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcbEmpleadoActionPerformed
-
     private void btnEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmpleadosMouseClicked
-        VEmpleados vista = new VEmpleados();
-        vista.INIT();
+        VEmpleados empleados= new VEmpleados();
+        empleados.INIT();
         this.dispose();
     }//GEN-LAST:event_btnEmpleadosMouseClicked
 
@@ -875,15 +763,12 @@ public class VUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEmpleadosMouseEntered
 
     private void btnEmpleadosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmpleadosMouseExited
+        btnEmpleados.setBackground(new Color(64,81,152));
     }//GEN-LAST:event_btnEmpleadosMouseExited
 
-    private void txtSub1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtSub1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSub1MouseClicked
-
     private void btnUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMouseClicked
-        VNEmpleados tipos = new VNEmpleados();
-        tipos.INIT();
+        VNEmpleados nempleados = new VNEmpleados();
+        nempleados.INIT();
         this.dispose();
     }//GEN-LAST:event_btnUsuariosMouseClicked
 
@@ -893,10 +778,40 @@ public class VUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUsuariosMouseEntered
 
     private void btnUsuariosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMouseExited
+        btnUsuarios.setBackground(new Color(64,81,152));
     }//GEN-LAST:event_btnUsuariosMouseExited
 
-    private void btnUsuarios1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuarios1MouseClicked
+    private void tbNUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbNUsuariosMouseClicked
+          int filaSeleccionada = tbNUsuarios.getSelectedRow();
+
+        String Nombre = tbNUsuarios.getValueAt(filaSeleccionada, 1).toString();
+        String Descripcion = tbNUsuarios.getValueAt(filaSeleccionada, 2).toString();
         
+        txtNombre_NU.setText(Nombre);
+        txtDescripcion_NU.setText(Descripcion);
+    }//GEN-LAST:event_tbNUsuariosMouseClicked
+
+    private void btnModificarMPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMPMouseClicked
+//        modeloEmpleados.actualizar(this);
+//        modeloEmpleados.MostrarEmpleados(this);
+    }//GEN-LAST:event_btnModificarMPMouseClicked
+
+    private void btnEmpleados1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmpleados1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEmpleados1MouseClicked
+
+    private void btnEmpleados1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmpleados1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEmpleados1MouseEntered
+
+    private void btnEmpleados1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmpleados1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEmpleados1MouseExited
+
+    private void btnUsuarios1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuarios1MouseClicked
+        VUsuarios usuario =new VUsuarios();
+        usuario.INIT();
+        this.dispose();
     }//GEN-LAST:event_btnUsuarios1MouseClicked
 
     private void btnUsuarios1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuarios1MouseEntered
@@ -907,6 +822,14 @@ public class VUsuarios extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnUsuarios1MouseExited
 
+    private void txtNombre_NUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombre_NUActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombre_NUActionPerformed
+
+    private void txtDescripcion_NUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcion_NUActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDescripcion_NUActionPerformed
+
     private void btnCasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseClicked
         Main vista = new Main();
         vista.INIT();
@@ -915,44 +838,67 @@ public class VUsuarios extends javax.swing.JFrame {
 
     private void btnCasaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseEntered
         btnCasa.setBackground(new Color(45,40,37));
+        txtCasa.setForeground(Color.white);
     }//GEN-LAST:event_btnCasaMouseEntered
 
     private void btnCasaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseExited
         btnCasa.setBackground(new Color(64,81,115));
+        txtCasa.setForeground(new Color(45,40,37));
     }//GEN-LAST:event_btnCasaMouseExited
 
     private void txtBarrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtBarrasMouseClicked
-        if (MenuPlegable.getX()==-150) {
-            desplace.desplazarDerecha(MenuPlegable, MenuPlegable.getX(), 0, 15, 10);
-        } else if(MenuPlegable.getX() == 0) {
-            desplace.desplazarIzquierda(MenuPlegable, MenuPlegable.getX(), -150, 15, 10);
-        }
+//        if (MenuPlegable.getX()==-150) {
+//            desplace.desplazarDerecha(MenuPlegable, MenuPlegable.getX(), 0, 15, 10);
+//        } else if(MenuPlegable.getX() == 0) {
+//            desplace.desplazarIzquierda(MenuPlegable, MenuPlegable.getX(), -150, 15, 10);
+//        }
     }//GEN-LAST:event_txtBarrasMouseClicked
 
     private void btnProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseClicked
         Producto producto = new Producto();
         producto.NIT();
+        //  producto.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnProductoMouseClicked
 
     private void btnProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseEntered
         btnProducto.setBackground(new Color(45,40,37));
+        txtproducto.setForeground(Color.white);
     }//GEN-LAST:event_btnProductoMouseEntered
 
     private void btnProductoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseExited
         btnProducto.setBackground(new Color(64,81,115));
+        txtproducto.setForeground(new Color(45,40,37));
     }//GEN-LAST:event_btnProductoMouseExited
 
-    private void btnTrabajadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadorMouseClicked
+    private void btnRutaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseClicked
+        Rutas rutas = new Rutas();
+        rutas.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnRutaMouseClicked
 
+    private void btnRutaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseEntered
+        btnRuta.setBackground(new Color(45,40,37));
+        txtRuta.setForeground(Color.white);
+    }//GEN-LAST:event_btnRutaMouseEntered
+
+    private void btnRutaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseExited
+        btnRuta.setBackground(new Color(64,81,115));
+        txtRuta.setForeground(new Color(45,40,37));
+    }//GEN-LAST:event_btnRutaMouseExited
+
+    private void btnTrabajadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadorMouseClicked
+        
     }//GEN-LAST:event_btnTrabajadorMouseClicked
 
     private void btnTrabajadorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadorMouseEntered
         btnTrabajador.setBackground(new Color(45,40,37));
+        txtEmpleado.setForeground(Color.white);
     }//GEN-LAST:event_btnTrabajadorMouseEntered
 
     private void btnTrabajadorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadorMouseExited
         btnTrabajador.setBackground(new Color(64,81,115));
+        txtEmpleado.setForeground(new Color(45,40,37));
     }//GEN-LAST:event_btnTrabajadorMouseExited
 
     private void btnBodegaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseClicked
@@ -963,10 +909,12 @@ public class VUsuarios extends javax.swing.JFrame {
 
     private void btnBodegaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseEntered
         btnBodega.setBackground(new Color(45,40,37));
+        txtBodega.setForeground(Color.white);
     }//GEN-LAST:event_btnBodegaMouseEntered
 
     private void btnBodegaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseExited
         btnBodega.setBackground(new Color(64,81,115));
+        txtBodega.setForeground(new Color(45,40,37));
     }//GEN-LAST:event_btnBodegaMouseExited
 
     private void btnBitacoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitacoraMouseClicked
@@ -977,10 +925,12 @@ public class VUsuarios extends javax.swing.JFrame {
 
     private void btnBitacoraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitacoraMouseEntered
         btnBitacora.setBackground(new Color(45,40,37));
+        txtBitacora.setForeground(Color.white);
     }//GEN-LAST:event_btnBitacoraMouseEntered
 
     private void btnBitacoraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitacoraMouseExited
         btnBitacora.setBackground(new Color(64,81,115));
+        txtBitacora.setForeground(new Color(45,40,37));
     }//GEN-LAST:event_btnBitacoraMouseExited
 
     private void btnClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseClicked
@@ -991,49 +941,24 @@ public class VUsuarios extends javax.swing.JFrame {
 
     private void btnClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseEntered
         btnCliente.setBackground(new Color(45,40,37));
+        txtCliente.setForeground(Color.white);
     }//GEN-LAST:event_btnClienteMouseEntered
 
     private void btnClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseExited
         btnCliente.setBackground(new Color(64,81,115));
+        txtCliente.setForeground(new Color(45,40,37));
     }//GEN-LAST:event_btnClienteMouseExited
-
-    private void btnRutaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseClicked
-        VDatosDis rutas = new VDatosDis();
-        rutas.INIT();
-        this.dispose();
-    }//GEN-LAST:event_btnRutaMouseClicked
-
-    private void btnRutaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseEntered
-        btnRuta.setBackground(new Color(45,40,37));
-    }//GEN-LAST:event_btnRutaMouseEntered
-
-    private void btnRutaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseExited
-        btnRuta.setBackground(new Color(64,81,115));
-    }//GEN-LAST:event_btnRutaMouseExited
-
-    private void btnVehiculosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculosMouseClicked
-        VTaller vista =new VTaller();
-        vista.INIT();
-        this.dispose();
-    }//GEN-LAST:event_btnVehiculosMouseClicked
-
-    private void btnVehiculosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculosMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnVehiculosMouseEntered
-
-    private void btnVehiculosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculosMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnVehiculosMouseExited
 
     /**
      * @param args the command line arguments
      */
-    
+        
     public void INIT(){
-        VUsuarios vistaUsuarios = new VUsuarios();
-        modeloUsuario.mostrarUsuarios(vistaUsuarios);
-        ctrllUsuario control = new ctrllUsuario(vistaUsuarios, modeloUsuario);
-        vistaUsuarios.setVisible(true);
+        VNUsuarios vistaNUsuarios = new VNUsuarios();
+        NivelesUsuarios modelo = new NivelesUsuarios();
+        modelo.MostrarNusuarios(vistaNUsuarios);
+        ctrlNivelesUsuarios control = new ctrlNivelesUsuarios(vistaNUsuarios, modelo);
+        vistaNUsuarios.setVisible(true);
     }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -1049,14 +974,20 @@ public class VUsuarios extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VNUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VNUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VNUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VNUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -1067,19 +998,6 @@ public class VUsuarios extends javax.swing.JFrame {
         });
     }
 
-        public void transpareciaBoton(){
-        btnAgregar.setOpaque(false);        
-        btnAgregar.setContentAreaFilled(false);
-        btnAgregar.setBorderPainted(false);
-        btnEliminar.setOpaque(false);        
-        btnEliminar.setContentAreaFilled(false);
-        btnEliminar.setBorderPainted(false);
-        btnModificarMP.setOpaque(false);        
-        btnModificarMP.setContentAreaFilled(false);
-        btnModificarMP.setBorderPainted(false);
-    }
-    
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Bitacoraicon;
     private javax.swing.JLabel Bodegaicon;
@@ -1089,49 +1007,43 @@ public class VUsuarios extends javax.swing.JFrame {
     private javax.swing.JLabel Productoicon;
     private javax.swing.JLabel Rutaicon;
     private javax.swing.JLabel Trabajadoricon;
-    private Vista.PanelCurvas agregar;
-    public javax.swing.JButton btnAgregar;
     private Vista.PanelCurvas btnBitacora;
     private Vista.PanelCurvas btnBodega;
     private Vista.PanelCurvas btnCasa;
     private Vista.PanelCurvas btnCliente;
-    public javax.swing.JButton btnEliminar;
     private Vista.PanelCurvas btnEmpleados;
+    private Vista.PanelCurvas btnEmpleados1;
     public javax.swing.JButton btnModificarMP;
     private Vista.PanelCurvas btnProducto;
     private Vista.PanelCurvas btnRuta;
     private Vista.PanelCurvas btnTrabajador;
     private Vista.PanelCurvas btnUsuarios;
     private Vista.PanelCurvas btnUsuarios1;
-    private Vista.PanelCurvas btnVehiculos;
-    private Vista.PanelCurvas eliminar;
-    private javax.swing.JLabel icoCarro;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JComboBox<String> jcbEmpleado;
-    public javax.swing.JComboBox<String> jcbUsuario;
     private javax.swing.JPanel jpSubMenu;
     private Vista.PanelCurvas modificar;
     private Vista.PanelCurvas panelCurvas1;
     private Vista.PanelCurvas panelCurvas2;
-    public javax.swing.JTable tbEmpleados;
+    private Vista.PanelCurvas panelCurvas3;
+    public javax.swing.JTable tbNUsuarios;
     private javax.swing.JLabel txtBarras;
     private javax.swing.JLabel txtBitacora;
     private javax.swing.JLabel txtBodega;
     private javax.swing.JLabel txtCasa;
     private javax.swing.JLabel txtCliente;
-    private javax.swing.JLabel txtCliente2;
+    public javax.swing.JTextField txtDescripcion_NU;
     private javax.swing.JLabel txtEmpleado;
     private javax.swing.JLabel txtLogo;
-    public javax.swing.JTextField txtNombre_USR;
+    public javax.swing.JTextField txtNombre_NU;
     private javax.swing.JLabel txtRuta;
     private javax.swing.JLabel txtSub;
     private javax.swing.JLabel txtSub1;
+    private javax.swing.JLabel txtSub2;
     private javax.swing.JLabel txtSub3;
     private javax.swing.JLabel txtproducto;
     // End of variables declaration//GEN-END:variables

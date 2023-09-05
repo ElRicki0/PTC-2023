@@ -42,6 +42,7 @@ public class RecContrasenia extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(750, 473));
         setMinimumSize(new java.awt.Dimension(750, 473));
+        setResizable(false);
         setSize(new java.awt.Dimension(750, 473));
 
         jPanel1.setBackground(new java.awt.Color(246, 234, 204));
@@ -81,6 +82,11 @@ public class RecContrasenia extends javax.swing.JFrame {
         btnSMS.setRoundBottomRight(25);
         btnSMS.setRoundTopLeft(25);
         btnSMS.setRoundTopRight(25);
+        btnSMS.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSMSMouseClicked(evt);
+            }
+        });
         btnSMS.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/SMS.png"))); // NOI18N
@@ -173,6 +179,13 @@ public class RecContrasenia extends javax.swing.JFrame {
         vista.INIT();
         this.dispose();
     }//GEN-LAST:event_btnCorreoMouseClicked
+
+    private void btnSMSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSMSMouseClicked
+
+        ContraSMS vista = new ContraSMS();
+        vista.show();
+        this.dispose();
+    }//GEN-LAST:event_btnSMSMouseClicked
 
     public void transparenciaBotin(){
     }
