@@ -125,7 +125,7 @@ foreign key references [dbo].[tbBodegas]
 );
 go
 
-select*from tbProductos
+	select*from tbProductos
 select tbProductos.idProducto, tbProductos.Prod_Nombre, tbMarcaProductos.MP_Nombre, tbProductos.Prod_Unidades, tbProductos.Prod_PrecioUnitario, tbBodegas.bdg_nombre
 from tbProductos inner join tbMarcaProductos  on tbProductos.id_MP = tbMarcaProductos.id_MP inner join tbBodegas on tbProductos.idBodega = tbBodegas.idBodega
 
@@ -166,6 +166,7 @@ inner join tbProductos on tbDatosDistribucion.idProducto= tbProductos.idProducto
 go
 create table tbPaqueteria(
 idPaqueteria		int identity(1,1) primary key,
+pqt_Nombre			varchar(50),
 idEmpleado			int
 foreign key references [dbo].[tbEmpleados] ([idEmpleado]),
 idDatoDistribucion			int
@@ -246,7 +247,7 @@ go
 
 create table tbVehiculos(
 idVehiculo			int identity (1,1) primary key,
-vehi_Matricula			varchar(10) not null,
+vehi_Matricula		varchar(10) not null,
 idModelo			int 
 foreign key references [dbo].[tbModelos]([idModelo]),
 idMantenimeinto		int
@@ -254,16 +255,41 @@ foreign key references [dbo].[tbMantenimiento](idMantenimiento)
 );
 go
 
+select*from tbVehiculos
+select idVehiculo, vehi_Matricula, tbModelos.Modelo, tbMantenimiento.Mecanico, tbTalleres.Tall_Nombre from tbVehiculos 
+inner join tbModelos on tbVehiculos.idModelo=tbModelos.idModelo inner join tbMantenimiento on tbVehiculos.idMantenimeinto=tbMantenimiento.idMantenimiento inner join tbTalleres on tbMantenimiento.idTaller=tbTalleres.idTaller
+go
+
+create table tbEstadoEntrega(
+idEstado	int identity(1,1) primary key,
+Estado		varchar(10)not null
+);
+go
+
+insert into tbEstadoEntrega(Estado)values('En proceso');
+insert into tbEstadoEntrega(Estado)values('En Ruta');
+insert into tbEstadoEntrega(Estado)values('Entregado');
+
 create table tbBitacoraDistribuciones(
 idBitacoraDistribucion	int identity(1,1) primary key,
 FechaEntrega			date,
-idDatosTienda			int
-foreign key references[dbo].[tbDatosTiendas]([idDatosTienda]),
+idEmpleado			int
+foreign key references [dbo].[tbEmpleados]([idEmpleado]),
 idUsuario				int
 foreign key	references[dbo].[tbUsuarios]([idUsuario]),
 idVehiculo				int
 foreign key references[dbo].[tbVehiculos]([idVehiculo]),
 idPaqueteria			int
-foreign key references[dbo].[tbPaqueteria](idPaqueteria)
+foreign key references[dbo].[tbPaqueteria](idPaqueteria),
+idEstado				int
+foreign key references[dbo].[tbEstadoEntrega]([idEstado])
 );
 go
+
+select idBitacoraDistribucion, FechaEntrega, tbEmpleados.emp_nombre, tbUsuarios.usr_nombre, tbVehiculos.vehi_Matricula, tbPaqueteria.pqt_Nombre, tbEstadoEntrega.Estado from tbBitacoraDistribuciones 
+inner join tbEmpleados		on tbBitacoraDistribuciones.idEmpleado=tbEmpleados.idEmpleado
+inner join tbUsuarios		on tbBitacoraDistribuciones.idUsuario=tbUsuarios.idUsuario
+inner join tbVehiculos		on tbBitacoraDistribuciones.idVehiculo= tbVehiculos.idVehiculo
+inner join tbPaqueteria		on tbBitacoraDistribuciones.idPaqueteria=tbPaqueteria.idPaqueteria
+inner join tbEstadoEntrega	on tbBitacoraDistribuciones.idEstado=tbEstadoEntrega.idEstado
+
