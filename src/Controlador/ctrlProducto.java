@@ -2,6 +2,7 @@ package Controlador;
 
 import Modelo.productos;
 import Vista.Producto;
+import Vista.Usuario.UProducto;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -10,13 +11,17 @@ public class ctrlProducto implements  ActionListener{
 
     private productos modeloProductos;
     private Producto vistaProducto;
+    private UProducto UvistaProducto;
     
-    public ctrlProducto(productos modeloProducto, Producto vistaProducto) {
+    public ctrlProducto(productos modeloProducto, Producto vistaProducto, UProducto UvistaProducto) {
         this.modeloProductos=modeloProducto;
         this.vistaProducto=vistaProducto;
+        this.UvistaProducto=UvistaProducto;
         this.vistaProducto.btnAgregar.addActionListener(this);
         this.vistaProducto.btnEliminar.addActionListener(this);
         this.vistaProducto.btnModificar.addActionListener(this);
+        this.UvistaProducto.btnActualizar.addActionListener(this);
+        this.UvistaProducto.btnCXBuscar.addActionListener(this);
     }
     
     @Override
@@ -60,7 +65,10 @@ public class ctrlProducto implements  ActionListener{
             JOptionPane.showMessageDialog(null, "seleccione un producto a editar");                       
 
         }
-        }        
+        }if (e.getSource()==UvistaProducto.btnActualizar) {
+            modeloProductos.MostrarProductosU(UvistaProducto);
+        }
+        
 //        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     

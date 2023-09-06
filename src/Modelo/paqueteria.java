@@ -24,10 +24,19 @@ import javax.swing.table.DefaultTableModel;
  */
 public class paqueteria {
     private int idPqueteria;
+    private String pqt_Nombre;
     private String idEmpleado;
     private String idDatosDistribucion;
     private String Paq_Ubicacion;
 
+    public String getPqt_Nombre() {
+        return pqt_Nombre;
+    }
+
+    public void setPqt_Nombre(String pqt_Nombre) {
+        this.pqt_Nombre = pqt_Nombre;
+    }
+    
     public String getPaq_Ubicacion() {
         return Paq_Ubicacion;
     }
@@ -138,14 +147,16 @@ public class paqueteria {
     
     public void Agregar(paqueteria modelo, JComboBox Empleado, JComboBox Datos){
         try {
-            String sql="insert into tbPaqueteria(idEmpleado, idDatoDistribucion, Paq_Ubicacion) values(?, ?, ?)";
+            String sql="insert into tbPaqueteria(pqt_Nombre, idEmpleado, idDatoDistribucion, Paq_Ubicacion) values(?, ?, ?, ?)";
             PreparedStatement ADatosDis = CConexion.getConexion().prepareStatement(sql);
 
+            ADatosDis.setString(1, modelo.getPqt_Nombre());
+            
             int SelectEmpleado= Empleado.getSelectedIndex();
             if (SelectEmpleado!=-1) {
             Map<Integer, String> IDEmpleado = (Map<Integer, String>)Empleado.getClientProperty("idEmpleado");
             int selID=(int) IDEmpleado.keySet().toArray()[SelectEmpleado];
-            ADatosDis.setInt(1, selID);                
+            ADatosDis.setInt(2, selID);                
             }else{
             }
 
@@ -153,10 +164,10 @@ public class paqueteria {
             if (SelectDato!=-1) {
             Map<Integer, String> IDDistribucion = (Map<Integer, String>)Datos.getClientProperty("idDatoDistribucion");
             int selID=(int) IDDistribucion.keySet().toArray()[SelectDato];
-            ADatosDis.setInt(2, selID);                
+            ADatosDis.setInt(3, selID);                
             }else{
             }     
-            ADatosDis.setString(3, getPaq_Ubicacion());
+            ADatosDis.setString(4, getPaq_Ubicacion());
             JOptionPane.showMessageDialog(null, "Datos agregados exitosamente ");
             ADatosDis.executeUpdate();
         } catch (Exception e) {
@@ -167,14 +178,14 @@ public class paqueteria {
     
     public void Mostrartabla(VPaqueteria vista){
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.setColumnIdentifiers(new Object[]{"ID","Nombre Empleado", "Datos Distribucion", "Ubicacion"});
+        modelo.setColumnIdentifiers(new Object[]{"ID","Nombre", "Nombre Empleado", "Datos Distribucion", "Ubicacion"});
         try {
-            Statement st = CConexion.getConexion().createStatement();
-            String sql = "select idPaqueteria, tbEmpleados.emp_nombre, tbDatosDistribucion.DaDis_Nombre, Paq_Ubicacion from tbPaqueteria inner join tbEmpleados on tbPaqueteria.idEmpleado=tbEmpleados.idEmpleado inner join tbDatosDistribucion on tbPaqueteria.idDatoDistribucion=tbDatosDistribucion.idDatoDistribucion"; 
+            Statement st = CConexion.getConexion(). createStatement();
+            String sql = "select idPaqueteria, pqt_Nombre, tbEmpleados.emp_nombre, tbDatosDistribucion.DaDis_Nombre, Paq_Ubicacion from tbPaqueteria inner join tbEmpleados on tbPaqueteria.idEmpleado=tbEmpleados.idEmpleado inner join tbDatosDistribucion on tbPaqueteria.idDatoDistribucion=tbDatosDistribucion.idDatoDistribucion"; 
             ResultSet rs = st.executeQuery(sql);
 
             while (rs.next()) {
-                modelo.addRow(new Object[]{rs.getInt("idPaqueteria"),rs.getString("emp_nombre"), rs.getString("DaDis_Nombre"), rs.getString("Paq_Ubicacion")});
+                modelo.addRow(new Object[]{rs.getInt("idPaqueteria"),rs.getString("pqt_Nombre"),rs.getString("emp_nombre"), rs.getString("DaDis_Nombre"), rs.getString("Paq_Ubicacion")});
             }
             
             vista.tbPaqueteria.setModel(modelo); // Corregir el nombre de la tabla
@@ -203,6 +214,7 @@ public class paqueteria {
         }
         
     }
+    
     public void actualizar(paqueteria modelo, JComboBox Empleado, JComboBox Datos, VPaqueteria vista){
         try {
             //obtenemos que fila seleccionó el usuario

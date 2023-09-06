@@ -5,6 +5,7 @@ import Controlador.ctrlProducto;
 import Modelo.productos;
 import Modelo.CConexion;
 import Modelo.MarcaProductos;
+import Vista.Usuario.UProducto;
 import javax.swing.ImageIcon;
 import desplazable.Desface;
 import java.awt.Color;
@@ -1187,9 +1188,10 @@ public class Producto extends javax.swing.JFrame {
             
     public void NIT(){
         Producto vista= new Producto();
+        UProducto Uvista= new UProducto();
         vista.setVisible(true);
         productos modeloProductos= new productos();
-        ctrlProducto control = new ctrlProducto(modeloProductos,vista);
+        ctrlProducto control = new ctrlProducto(modeloProductos, vista, Uvista);
         modeloProductos.MostrarProductos(vista);        
     }
     

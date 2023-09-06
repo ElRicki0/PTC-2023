@@ -2,6 +2,7 @@ package Controlador;
 
 import Vista.VDatosTiendas;
 import Modelo.*;
+import Vista.Usuario.UTiendas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -9,11 +10,13 @@ import javax.swing.JOptionPane;
 public class ctrlDatosTiendas implements ActionListener{
 
     private VDatosTiendas vistaDatos;
+    private UTiendas vistaDatosU;
     private DatosTiendas modeloDatos;
     
-    public ctrlDatosTiendas(VDatosTiendas vistaDatos, DatosTiendas modeloDatos){
+    public ctrlDatosTiendas(VDatosTiendas vistaDatos, DatosTiendas modeloDatos, UTiendas vistaDatosU){
         this.modeloDatos=modeloDatos;
         this.vistaDatos=vistaDatos;
+        this.vistaDatosU=vistaDatosU;
         this.vistaDatos.btnAgregar_CL.addActionListener(this);
         this.vistaDatos.btnEliminar_TN.addActionListener(this);
         this.vistaDatos.btnModificar_CL.addActionListener(this);

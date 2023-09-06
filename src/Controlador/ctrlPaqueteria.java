@@ -26,6 +26,7 @@ public class ctrlPaqueteria implements ActionListener{
             if (texto1.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Llenen todos los campos ");
             } else {
+                modeloPaqueteria.setPqt_Nombre(vistaPaqueteria.txtNombre.getText());
                 modeloPaqueteria.setIdEmpleado(vistaPaqueteria.jcbEmpleado.getSelectedItem().toString());
                 modeloPaqueteria.setIdDatosDistribucion(vistaPaqueteria.jcbDistribucion.getSelectedItem().toString());
                 modeloPaqueteria.setPaq_Ubicacion(vistaPaqueteria.txtDireccion.getText());

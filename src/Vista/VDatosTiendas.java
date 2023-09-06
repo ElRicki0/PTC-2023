@@ -5,6 +5,7 @@ import desplazable.Desface;
 import java.awt.Color;
 import Modelo.*;
 import Controlador.*;
+import Vista.Usuario.UTiendas;
 
 public class VDatosTiendas extends javax.swing.JFrame {
 
@@ -1035,10 +1036,11 @@ public class VDatosTiendas extends javax.swing.JFrame {
 
     public void INIT(){
         VDatosTiendas vista =new VDatosTiendas();
+        UTiendas vistaU =new UTiendas();
         
         vista.setVisible(true);
         modelo.MostrarTabla(vista);
-        ctrlDatosTiendas control=new ctrlDatosTiendas(vista, modelo);
+        ctrlDatosTiendas control=new ctrlDatosTiendas(vista, modelo, vistaU);
     }
     
     /**

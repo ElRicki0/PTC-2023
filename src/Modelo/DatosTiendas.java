@@ -5,6 +5,7 @@
  */
 package Modelo;
 
+import Vista.Usuario.UTiendas;
 import Vista.VDatosTiendas;
 import Vista.VTiendas;
 import java.sql.Connection;
@@ -150,6 +151,23 @@ public class DatosTiendas {
             }
         }
     }
+    }
+    
+    public void MostrarTablaU(UTiendas vista){
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(new Object[]{"ID","Telefono", "Encargado", "Cliente", "Tienda","Direccion"});
+        try {
+            java.sql.Statement st = CConexion.getConexion().createStatement();
+            String sql ="select idDatosTienda, DT_NumeroTelefono, DT_PersonaDestinatario, tbClientes.clie_Nombre, tbTiendas.Tien_Nombre, tbTiendas.Tien_Direccion  from tbDatosTiendas \n" +
+            "inner join tbClientes on tbDatosTiendas.idCliente=tbClientes.idCliente inner join tbTiendas on tbDatosTiendas.idTienda = tbTiendas.idTienda ";
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+                modelo.addRow(new Object[]{rs.getInt("idDatosTienda"), rs.getString("DT_NumeroTelefono"), rs.getString("DT_PersonaDestinatario"), rs.getString("clie_Nombre"), rs.getString("Tien_Nombre"), rs.getString("Tien_Direccion")});
+            }
+            vista.tbTienda.setModel(modelo);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error tabla datos tiendas "+e.getMessage());                
+        }
     }
     
     public void MostrarTabla(VDatosTiendas vista){
