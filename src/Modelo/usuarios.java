@@ -168,6 +168,8 @@ public class usuarios {
                     if (nivelU.equals("1")) {
                         Main main = new Main();
                         main.setVisible(true);
+                        LoginPTC vista = new LoginPTC();
+                        vista.dispose();
                     }
                     if (nivelU.equals("2")) {
                         CMain main = new CMain();
@@ -181,7 +183,7 @@ public class usuarios {
                         UMain main = new UMain();
                         main.setVisible(true);
                     } else {
-                        JOptionPane.showMessageDialog(null, "entidad tipo "+nivelU.toString());
+//                        JOptionPane.showMessageDialog(null, "entidad tipo "+nivelU.toString());
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "Credenciales inválidas");

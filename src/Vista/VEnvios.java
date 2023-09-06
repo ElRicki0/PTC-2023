@@ -4,6 +4,7 @@ package Vista;
 
 import Vista.*;
 import Controlador.ctrlDatosDistribucion;
+import Controlador.ctrlEnvios;
 import Controlador.ctrlPaqueteria;
 import Modelo.*;
 import javax.swing.ImageIcon;
@@ -40,7 +41,8 @@ public class VEnvios extends javax.swing.JFrame {
         modelo.LlenarcbxEmpleado(jcbEmpleado);
         modelo.LlenarcbxUsuario(jcbUsuario);
         modelo.LlenarcbxVehiculo(jcbVehiculo);
-        modelo.LlenarcbxPaqueteria(jcbPaqueteria);
+        modelo.LlenarcbxPaqueteria(jcbPaquete);
+        modelo.LlenarcbxEstado(jcbEstado);
         
         this.setLocationRelativeTo(null);
         transpareciaBoton();
@@ -94,7 +96,7 @@ public class VEnvios extends javax.swing.JFrame {
         panelCurvas1 = new Vista.PanelCurvas();
         jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jcbPaqueteria = new javax.swing.JComboBox<>();
+        jcbPaquete = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jcbVehiculo = new javax.swing.JComboBox<>();
         panelCurvas2 = new Vista.PanelCurvas();
@@ -104,6 +106,8 @@ public class VEnvios extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jcbUsuario = new javax.swing.JComboBox<>();
         jcbEmpleado = new javax.swing.JComboBox<>();
+        jLabel9 = new javax.swing.JLabel();
+        jcbEstado = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbEnvios = new javax.swing.JTable();
         agregar1 = new Vista.PanelCurvas();
@@ -628,7 +632,7 @@ public class VEnvios extends javax.swing.JFrame {
         jLabel7.setText("Informacion");
         panelCurvas1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 167, 41));
 
-        panelCurvas1.add(jcbPaqueteria, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, 240, 50));
+        panelCurvas1.add(jcbPaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, 240, 50));
 
         jLabel4.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
@@ -685,7 +689,14 @@ public class VEnvios extends javax.swing.JFrame {
 
         panelCurvas1.add(jcbEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 240, 50));
 
-        jPanel1.add(panelCurvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 210, 420, 420));
+        jLabel9.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel9.setText("<html>Estado entrega:</html>");
+        panelCurvas1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 150, 60));
+
+        panelCurvas1.add(jcbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 410, 240, 50));
+
+        jPanel1.add(panelCurvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 160, 420, 480));
 
         tbEnvios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1006,6 +1017,8 @@ public class VEnvios extends javax.swing.JFrame {
     public void INIT(){
         VEnvios vista = new VEnvios();
         vista.setVisible(true);
+        modelo.MostrarTabla(vista);
+        ctrlEnvios ctrl = new ctrlEnvios(vista, modelo);
     }
     
         public static void main(String args[]) {
@@ -1087,10 +1100,12 @@ public class VEnvios extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JComboBox<String> jcbEmpleado;
-    public javax.swing.JComboBox<String> jcbPaqueteria;
+    public javax.swing.JComboBox<String> jcbEstado;
+    public javax.swing.JComboBox<String> jcbPaquete;
     public javax.swing.JComboBox<String> jcbUsuario;
     public javax.swing.JComboBox<String> jcbVehiculo;
     private javax.swing.JPanel jpSubMenu;
