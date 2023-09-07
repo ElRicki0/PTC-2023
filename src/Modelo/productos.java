@@ -92,6 +92,38 @@ public class productos {
         }
     }
     
+    public void llenarReporte_Marca(JComboBox combo){
+        String sql="select MP_Nombre from tbMarcaProductos";
+        Statement st;
+    CConexion con = new CConexion();
+    Connection conexion=con.getConexion();
+        try {
+            st= conexion.createStatement();
+            ResultSet rs= st.executeQuery(sql) ;
+            while(rs.next()){
+                combo.addItem(rs.getString("MP_Nombre"));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error en marca buscador  "+ e.toString());
+        }
+    }
+    
+    public void llenarReporte_Producto(JComboBox combo){
+        String sql="select Prod_Nombre from tbProductos";
+        Statement st;
+    CConexion con = new CConexion();
+    Connection conexion=con.getConexion();
+        try {
+            st= conexion.createStatement();
+            ResultSet rs= st.executeQuery(sql) ;
+            while(rs.next()){
+                combo.addItem(rs.getString("Prod_Nombre"));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error en producto buscador  "+ e.toString());
+        }
+    }
+    
     public void RellenarMarcaCBX(JComboBox combo) {
     Connection conectar = null;
     PreparedStatement pst = null;
