@@ -82,7 +82,7 @@ public class VCliente extends javax.swing.JFrame {
         btnSubProductos = new Vista.PanelCurvas();
         txtSub = new javax.swing.JLabel();
         btnDatos = new Vista.PanelCurvas();
-        datos = new javax.swing.JLabel();
+        txtDatos = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         agregar = new Vista.PanelCurvas();
         btnAgregar_CL = new javax.swing.JButton();
@@ -579,9 +579,9 @@ public class VCliente extends javax.swing.JFrame {
             }
         });
 
-        datos.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        datos.setForeground(new java.awt.Color(51, 51, 51));
-        datos.setText("<html>Datos generales </html>");
+        txtDatos.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        txtDatos.setForeground(new java.awt.Color(51, 51, 51));
+        txtDatos.setText("<html>Datos generales </html>");
 
         javax.swing.GroupLayout btnDatosLayout = new javax.swing.GroupLayout(btnDatos);
         btnDatos.setLayout(btnDatosLayout);
@@ -589,13 +589,13 @@ public class VCliente extends javax.swing.JFrame {
             btnDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnDatosLayout.createSequentialGroup()
                 .addContainerGap(26, Short.MAX_VALUE)
-                .addComponent(datos, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         btnDatosLayout.setVerticalGroup(
             btnDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnDatosLayout.createSequentialGroup()
-                .addComponent(datos, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -1005,11 +1005,13 @@ public class VCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDatosMouseClicked
 
     private void btnDatosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDatosMouseEntered
-        // TODO add your handling code here:
+        btnDatos.setBackground(new Color (45,40,37));
+        txtDatos.setForeground(Color.white);
     }//GEN-LAST:event_btnDatosMouseEntered
 
     private void btnDatosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDatosMouseExited
-        // TODO add your handling code here:
+        btnDatos.setBackground(new Color (172,147,110));
+        txtDatos.setForeground(Color.BLACK);
     }//GEN-LAST:event_btnDatosMouseExited
 
     private void btnCasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseClicked
@@ -1209,7 +1211,6 @@ public class VCliente extends javax.swing.JFrame {
     private Vista.PanelCurvas btnSubProductos;
     private Vista.PanelCurvas btnTrabajador;
     private Vista.PanelCurvas btnVehiculos;
-    private javax.swing.JLabel datos;
     private Vista.PanelCurvas eliminar;
     private javax.swing.JLabel icoCarro;
     private javax.swing.JLabel jLabel1;
@@ -1237,6 +1238,7 @@ public class VCliente extends javax.swing.JFrame {
     private javax.swing.JLabel txtCliente;
     private javax.swing.JLabel txtCliente2;
     public javax.swing.JTextField txtCorreo_CL;
+    private javax.swing.JLabel txtDatos;
     public javax.swing.JTextField txtEdad_CL;
     private javax.swing.JLabel txtEmpleado;
     private javax.swing.JLabel txtLogo;

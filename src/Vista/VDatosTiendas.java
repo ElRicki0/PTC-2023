@@ -82,7 +82,7 @@ public class VDatosTiendas extends javax.swing.JFrame {
         btnSubMarcas = new Vista.PanelCurvas();
         txtSub1 = new javax.swing.JLabel();
         btnDatos = new Vista.PanelCurvas();
-        datos = new javax.swing.JLabel();
+        txtDatos = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         agregar = new Vista.PanelCurvas();
         btnAgregar_CL = new javax.swing.JButton();
@@ -574,9 +574,9 @@ public class VDatosTiendas extends javax.swing.JFrame {
             }
         });
 
-        datos.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        datos.setForeground(new java.awt.Color(51, 51, 51));
-        datos.setText("Datos");
+        txtDatos.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        txtDatos.setForeground(new java.awt.Color(51, 51, 51));
+        txtDatos.setText("Datos");
 
         javax.swing.GroupLayout btnDatosLayout = new javax.swing.GroupLayout(btnDatos);
         btnDatos.setLayout(btnDatosLayout);
@@ -584,14 +584,14 @@ public class VDatosTiendas extends javax.swing.JFrame {
             btnDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnDatosLayout.createSequentialGroup()
                 .addGap(51, 51, 51)
-                .addComponent(datos)
+                .addComponent(txtDatos)
                 .addContainerGap(51, Short.MAX_VALUE))
         );
         btnDatosLayout.setVerticalGroup(
             btnDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnDatosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(datos, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                .addComponent(txtDatos, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -879,11 +879,13 @@ public class VDatosTiendas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDatosMouseClicked
 
     private void btnDatosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDatosMouseEntered
-        // TODO add your handling code here:
+        btnDatos.setBackground(new Color(45,40,37));
+        txtDatos.setForeground(Color.WHITE);
     }//GEN-LAST:event_btnDatosMouseEntered
 
     private void btnDatosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDatosMouseExited
-        // TODO add your handling code here:
+        btnDatos.setBackground(new Color (172,147,110));
+        txtDatos.setForeground(Color.BLACK);
     }//GEN-LAST:event_btnDatosMouseExited
 
     private void txtEncargadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEncargadoActionPerformed
@@ -1109,7 +1111,6 @@ public class VDatosTiendas extends javax.swing.JFrame {
     private Vista.PanelCurvas btnSubProductos;
     private Vista.PanelCurvas btnTrabajador;
     private Vista.PanelCurvas btnVehiculos;
-    private javax.swing.JLabel datos;
     private Vista.PanelCurvas eliminar;
     private javax.swing.JLabel icoCarro;
     private javax.swing.JLabel jLabel1;
@@ -1134,6 +1135,7 @@ public class VDatosTiendas extends javax.swing.JFrame {
     private javax.swing.JLabel txtCasa;
     private javax.swing.JLabel txtCliente;
     private javax.swing.JLabel txtCliente2;
+    private javax.swing.JLabel txtDatos;
     private javax.swing.JLabel txtEmpleado;
     public javax.swing.JTextField txtEncargado;
     private javax.swing.JLabel txtLogo;

@@ -974,8 +974,7 @@ public class VDatosDis extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUsuariosMouseEntered
 
     private void btnUsuariosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMouseExited
-        btnUsuarios.setBackground(new Color(172,147,110));
-        txtSub1.setForeground(Color.black);
+        btnUsuarios.setBackground(new Color(64,81,152));
     }//GEN-LAST:event_btnUsuariosMouseExited
 
     private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
@@ -1055,9 +1054,7 @@ public class VDatosDis extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUsuarios1MouseEntered
 
     private void btnUsuarios1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuarios1MouseClicked
-        VEnvios vista = new VEnvios();
-        vista.INIT();
-        this.dispose();
+        
     }//GEN-LAST:event_btnUsuarios1MouseClicked
 
     private void btnCasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseClicked

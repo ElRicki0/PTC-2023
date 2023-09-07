@@ -116,16 +116,16 @@ public class talleres {
     }
     
     public void Editar(VTaller vista){
-        try {
-            int filaSeleccionada = vista.tbTaller.getSelectedRow();      
+        
+        int filaSeleccionada = vista.tbTaller.getSelectedRow();      
 
-            //Obtenemos el id de la fila seleccionada
-            String miId = vista.tbTaller.getValueAt(filaSeleccionada, 0).toString();
-            String nuevoValorIngresadoNombre = vista.txtNombre.getText();
-            String nuevoValorIngresadoTelefono = vista.txtTelefono.getText();
-            String nuevoValorIngresadoCorreo = vista.txtCorreo.getText();
-            String nuevoValorIngresadoDuenio = vista.txtDuenio.getText();
-            try {
+        //Obtenemos el id de la fila seleccionada
+        String miId = vista.tbTaller.getValueAt(filaSeleccionada, 0).toString();
+        String nuevoValorIngresadoNombre = vista.txtNombre.getText();
+        String nuevoValorIngresadoTelefono = vista.txtTelefono.getText();
+        String nuevoValorIngresadoCorreo = vista.txtCorreo.getText();
+        String nuevoValorIngresadoDuenio = vista.txtDuenio.getText();
+        try {
 
             PreparedStatement updateUser = CConexion.getConexion().prepareStatement("update tbTalleres set Tall_Nombre= ?, Tall_Telefono=?, Tall_Correo= ?, Tall_Duenio=? where idTaller = ?");
             updateUser.setString(1, nuevoValorIngresadoNombre);
@@ -133,14 +133,11 @@ public class talleres {
             updateUser.setString(3, nuevoValorIngresadoCorreo);
             updateUser.setString(4, nuevoValorIngresadoDuenio);
             updateUser.setString(5, miId);
-            JOptionPane.showMessageDialog(null, "El taller se modifico correctamente");                           
+            JOptionPane.showMessageDialog(null, "El taller se actualizo correctamente");                           
             updateUser.executeUpdate();
             } catch (Exception e) {
-                System.out.println("error modificar usuario"+e.toString());
-            }
-        } catch (Exception ae) {
-            JOptionPane.showMessageDialog(null, "Seleccione un taller a modificar");                           
-        }
-        
+            System.out.println(e.toString());
+            JOptionPane.showMessageDialog(null, "Error en actualizar taller");  
+                 }
     }
 }

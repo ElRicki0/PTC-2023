@@ -15,8 +15,6 @@ import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 
 public class UEnvios extends javax.swing.JFrame {
-
-        
     
     BitacoraDistribuciones modelo = new BitacoraDistribuciones();
     Desface desplace;

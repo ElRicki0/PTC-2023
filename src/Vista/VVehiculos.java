@@ -717,9 +717,6 @@ public class VVehiculos extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbVehiculosMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                tbVehiculosMouseEntered(evt);
-            }
         });
         jScrollPane1.setViewportView(tbVehiculos);
 
@@ -853,11 +850,13 @@ public class VVehiculos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnModificarMPMouseClicked
 
     private void tbVehiculosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbVehiculosMouseClicked
-         int filaSeleccionada = tbVehiculos.getSelectedRow();
-
-        String Matricula = tbVehiculos.getValueAt(filaSeleccionada, 1).toString();
-        
-        txtMatricula.setText(Matricula);
+//         int filaSeleccionada = tbMantenimiento.getSelectedRow();
+//
+//        String mecanico = tbMantenimiento.getValueAt(filaSeleccionada, 1).toString();
+//        String Telefono = tbMantenimiento.getValueAt(filaSeleccionada, 2).toString();
+//        
+//        txtmecanico.setText(mecanico);
+//        txtTelefono.setText(Telefono);
     }//GEN-LAST:event_tbVehiculosMouseClicked
 
     private void btnCasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseClicked
@@ -986,11 +985,13 @@ public class VVehiculos extends javax.swing.JFrame {
 
     private void btnTalleresMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTalleresMouseEntered
         btnTalleres.setBackground(new Color(45,40,37));
+        txtSub1.setForeground(Color.WHITE);
 
     }//GEN-LAST:event_btnTalleresMouseEntered
 
     private void btnTalleresMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTalleresMouseExited
-        btnTalleres.setBackground(new Color(64,81,152));
+        btnTalleres.setBackground(new Color (172,147,110));
+        txtSub1.setForeground(Color.BLACK);
     }//GEN-LAST:event_btnTalleresMouseExited
 
     private void btnMantenimientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMantenimientoMouseClicked
@@ -1001,11 +1002,12 @@ public class VVehiculos extends javax.swing.JFrame {
 
     private void btnMantenimientoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMantenimientoMouseEntered
         btnMantenimiento.setBackground(new Color(45,40,37));
-        txtSub1.setForeground(Color.white);
+        txtSub2.setForeground(Color.WHITE);
     }//GEN-LAST:event_btnMantenimientoMouseEntered
 
     private void btnMantenimientoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMantenimientoMouseExited
-        btnMantenimiento.setBackground(new Color(64,81,152));
+        btnMantenimiento.setBackground(new Color (172,147,110));
+        txtSub2.setForeground(Color.BLACK);
     }//GEN-LAST:event_btnMantenimientoMouseExited
 
     private void btnModeloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModeloMouseClicked
@@ -1015,11 +1017,13 @@ public class VVehiculos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnModeloMouseClicked
 
     private void btnModeloMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModeloMouseEntered
-        // TODO add your handling code here:
+        btnModelo.setBackground(new Color(45,40,37));
+        txtSub3.setForeground(Color.WHITE);
     }//GEN-LAST:event_btnModeloMouseEntered
 
     private void btnModeloMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModeloMouseExited
-        // TODO add your handling code here:
+        btnModelo.setBackground(new Color (172,147,110));
+        txtSub3.setForeground(Color.BLACK);
     }//GEN-LAST:event_btnModeloMouseExited
 
     private void btnVehiculoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculoMouseClicked
@@ -1027,16 +1031,14 @@ public class VVehiculos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVehiculoMouseClicked
 
     private void btnVehiculoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculoMouseEntered
-        // TODO add your handling code here:
+        btnVehiculo.setBackground(new Color(45,40,37));
+        txtSub4.setForeground(Color.WHITE);
     }//GEN-LAST:event_btnVehiculoMouseEntered
 
     private void btnVehiculoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculoMouseExited
-        // TODO add your handling code here:
+        btnVehiculo.setBackground(new Color (172,147,110));
+        txtSub4.setForeground(Color.BLACK);
     }//GEN-LAST:event_btnVehiculoMouseExited
-
-    private void tbVehiculosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbVehiculosMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tbVehiculosMouseEntered
 
     
     public void INIT(){

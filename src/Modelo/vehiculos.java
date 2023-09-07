@@ -216,69 +216,7 @@ public class vehiculos {
         
     }
         catch (Exception e) {
-            System.out.println(e.toString());
         JOptionPane.showMessageDialog(null, "ERROR EN EL METODO DEL vehiculo: " + e.toString());
-    }
-    }
-    
-    public void Eliminar(VVehiculos vistaVehiculos){
-        try {
-            //obtenemos que fila seleccionó el usuario
-            int filaSeleccionada = vistaVehiculos.tbVehiculos.getSelectedRow();
-
-            //Obtenemos el id de la fila seleccionada
-            String miId = vistaVehiculos.tbVehiculos.getValueAt(filaSeleccionada, 0).toString();
-            //borramos 
-            try {
-                PreparedStatement deleteUser = CConexion.getConexion().prepareStatement("delete from tbVehiculos where idVehiculo = '" + miId + "'");
-                JOptionPane.showMessageDialog(null, "El taller se elimino correctamente ");
-                deleteUser.executeUpdate();
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "error en eliminar modelo vehiculo");
-            }
-        } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Seleccione un vehiculo para eliminar");
-        }     
-    }
-    
-    public void Modificar(vehiculos modelo, JComboBox comboModelo, JComboBox comboMantenimiento, VVehiculos vistaVehiculos){
-        String SQL = "update tbVehiculos set vehi_Matricula=?, idModelo=?, idMantenimeinto=? where idVehiculo=?";
-    try {
-        PreparedStatement MVehiculo = CConexion.getConexion().prepareStatement(SQL);
-        MVehiculo.setString(1, modelo.getVehi_Matricula());
-
-        // Obtener el ID de la marca seleccionada desde el JComboBox de marcas
-        
-        int selectedMarcaIndex = comboModelo.getSelectedIndex();
-        if (selectedMarcaIndex != -1) {
-            Map<Integer, String> idModelo = (Map<Integer, String>) comboModelo.getClientProperty("idModelo");
-            int selectedModeloID = (int) idModelo.keySet().toArray()[selectedMarcaIndex];
-            MVehiculo.setInt(2, selectedModeloID); // Usar el ID de la marca seleccionada
-        } else {        
-            JOptionPane.showMessageDialog(null, "Seleccione una marca válida del ComboBox de modelo.");
-        }
-
-        // Obtener el ID de la bodega seleccionada desde el JComboBox de bodegas
-        int selectedBodegaIndex = comboMantenimiento.getSelectedIndex();
-        if (selectedBodegaIndex != -1) {
-            Map<Integer, String> idMecanico = (Map<Integer, String>) comboMantenimiento.getClientProperty("idMantenimiento");
-            int selectedMecanico = (int) idMecanico.keySet().toArray()[selectedBodegaIndex];
-            MVehiculo.setInt(3, selectedMecanico); // Usar el ID de la bodega seleccionada
-        } else {
-            JOptionPane.showMessageDialog(null, "Seleccione un mecanico válida del ComboBox de bodegas.");
-        }
-        
-        int filaSeleccionada = vistaVehiculos.tbVehiculos.getSelectedRow();
-        //Obtenemos el id de la fila seleccionada
-        String miId = vistaVehiculos.tbVehiculos.getValueAt(filaSeleccionada, 0).toString();
-        MVehiculo.setString(4, miId);
-
-        MVehiculo.execute();
-        JOptionPane.showMessageDialog(null, "El vehiculo se modifico correctamente");
-        
-    }
-        catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Seleccione un valor a modificar");
     }
     }
 }

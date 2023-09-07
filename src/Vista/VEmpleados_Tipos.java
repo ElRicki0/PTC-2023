@@ -877,11 +877,12 @@ public class VEmpleados_Tipos extends javax.swing.JFrame {
 
     private void btnEmpleadosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmpleadosMouseEntered
         btnEmpleados.setBackground(new Color(45,40,37));
-        txtSub.setForeground(Color.white);
+        txtSub.setForeground(Color.WHITE);
     }//GEN-LAST:event_btnEmpleadosMouseEntered
 
     private void btnEmpleadosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmpleadosMouseExited
-
+        btnEmpleados.setBackground(new Color(172, 147, 110));
+        txtSub.setForeground(Color.BLACK);
     }//GEN-LAST:event_btnEmpleadosMouseExited
 
     private void btnUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMouseClicked
@@ -890,10 +891,12 @@ public class VEmpleados_Tipos extends javax.swing.JFrame {
 
     private void btnUsuariosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMouseEntered
         btnUsuarios.setBackground(new Color(45,40,37));
-        txtSub1.setForeground(Color.white);
+        txtSub1.setForeground(Color.WHITE);
     }//GEN-LAST:event_btnUsuariosMouseEntered
 
     private void btnUsuariosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMouseExited
+        btnUsuarios.setBackground(new Color(172, 147, 110));
+        txtSub1.setForeground(Color.BLACK);
     }//GEN-LAST:event_btnUsuariosMouseExited
 
     private void btnUsuarios1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuarios1MouseClicked
@@ -903,11 +906,13 @@ public class VEmpleados_Tipos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUsuarios1MouseClicked
 
     private void btnUsuarios1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuarios1MouseEntered
-        // TODO add your handling code here:
+        btnUsuarios1.setBackground(new Color(45,40,37));
+        txtSub3.setForeground(Color.WHITE);
     }//GEN-LAST:event_btnUsuarios1MouseEntered
 
     private void btnUsuarios1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuarios1MouseExited
-        // TODO add your handling code here:
+        btnUsuarios1.setBackground(new Color(172, 147, 110));
+        txtSub3.setForeground(Color.BLACK);
     }//GEN-LAST:event_btnUsuarios1MouseExited
 
     private void txtDescripcion_TEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcion_TEActionPerformed

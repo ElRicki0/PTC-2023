@@ -866,7 +866,7 @@ public class VProducto extends javax.swing.JFrame {
         });
 
         txtSub.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        txtSub.setForeground(new java.awt.Color(255, 255, 255));
+        txtSub.setForeground(new java.awt.Color(51, 51, 51));
         txtSub.setText("Productos");
 
         javax.swing.GroupLayout btnSubProductosLayout = new javax.swing.GroupLayout(btnSubProductos);
@@ -906,7 +906,7 @@ public class VProducto extends javax.swing.JFrame {
         });
 
         txtSub1.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        txtSub1.setForeground(new java.awt.Color(255, 255, 255));
+        txtSub1.setForeground(new java.awt.Color(51, 51, 51));
         txtSub1.setText("Marca");
 
         javax.swing.GroupLayout btnSubMarcasLayout = new javax.swing.GroupLayout(btnSubMarcas);
@@ -1156,12 +1156,13 @@ public class VProducto extends javax.swing.JFrame {
 
     private void btnSubProductosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubProductosMouseEntered
         btnSubProductos.setBackground(new Color(45,40,37));
-        txtSub.setForeground(Color.white);
+        txtSub.setForeground(Color.WHITE);
 
     }//GEN-LAST:event_btnSubProductosMouseEntered
 
     private void btnSubProductosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubProductosMouseExited
-        btnSubProductos.setBackground(new Color(64,81,152));
+        btnSubProductos.setBackground(new Color(172, 147, 110));
+        txtSub.setForeground(Color.BLACK);
     }//GEN-LAST:event_btnSubProductosMouseExited
 
     private void btnSubMarcasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubMarcasMouseClicked
@@ -1172,11 +1173,12 @@ public class VProducto extends javax.swing.JFrame {
 
     private void btnSubMarcasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubMarcasMouseEntered
         btnSubMarcas.setBackground(new Color(45,40,37));
-        txtSub1.setForeground(Color.white);
+        txtSub1.setForeground(Color.WHITE);
     }//GEN-LAST:event_btnSubMarcasMouseEntered
 
     private void btnSubMarcasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubMarcasMouseExited
-        btnSubMarcas.setBackground(new Color(64,81,152));
+        btnSubMarcas.setBackground(new Color(172, 147, 110));
+        txtSub1.setForeground(Color.BLACK);
     }//GEN-LAST:event_btnSubMarcasMouseExited
 
     /**

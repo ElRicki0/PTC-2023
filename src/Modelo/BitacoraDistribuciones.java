@@ -283,14 +283,14 @@ public class BitacoraDistribuciones {
         }
     }
     
-    public void UMostrarTabla(UEnvios vista){
+    public void MostrarTabla(VEnvios vista){
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(new Object[]{"ID", "Fecha entrega", "Empleado ENC", "usuario ENC", "matricula vehiculo", "Paqueteria","Estado entrega"});
         try {
             Statement st = CConexion.getConexion().createStatement();
             String sql = "select idBitacoraDistribucion, FechaEntrega, tbEmpleados.emp_nombre, tbUsuarios.usr_nombre, tbVehiculos.vehi_Matricula, tbPaqueteria.pqt_Nombre, tbEstadoEntrega.Estado from tbBitacoraDistribuciones \n" +
                          "inner join tbEmpleados		on tbBitacoraDistribuciones.idEmpleado=tbEmpleados.idEmpleado\n" +
-                         "inner join tbUsuarios                 on tbBitacoraDistribuciones.idUsuario=tbUsuarios.idUsuario\n" +
+                         "inner join tbUsuarios		on tbBitacoraDistribuciones.idUsuario=tbUsuarios.idUsuario\n" +
                          "inner join tbVehiculos		on tbBitacoraDistribuciones.idVehiculo= tbVehiculos.idVehiculo\n" +
                          "inner join tbPaqueteria		on tbBitacoraDistribuciones.idPaqueteria=tbPaqueteria.idPaqueteria\n" +
                          "inner join tbEstadoEntrega            on tbBitacoraDistribuciones.idEstado=tbEstadoEntrega.idEstado";
@@ -305,7 +305,7 @@ public class BitacoraDistribuciones {
         }
     } 
     
-    public void MostrarTabla(VEnvios vista){
+    public void UMostrarTabla(UEnvios vista){
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(new Object[]{"ID", "Fecha entrega", "Empleado ENC", "usuario ENC", "matricula vehiculo", "Paqueteria","Estado entrega"});
         try {
