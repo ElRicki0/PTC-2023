@@ -7,11 +7,13 @@ package Vista;
 
 import com.twilio.Twilio;
 import com.twilio.converter.Promoter;
+import com.twilio.exception.TwilioException;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
 
 import java.net.URI;
 import java.math.BigDecimal;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,16 +21,17 @@ import java.math.BigDecimal;
  */
 public class ContraSMS extends javax.swing.JFrame {
 
-    
-        public static final String ACCOUNT_SID = "AC9a823f30cf1502be6bf3cbef4b77e9a7";
-        public static final String AUTH_TOKEN = "6a4bf4ea04458fe75f8df6fdb04b069d";
     /**
      * Creates new form ContraSMS
      */
     public ContraSMS() {
         initComponents();
+        TextPrompt textPrompta = new TextPrompt("Ingrese su Numero de teléfono", this.txtNumero);
+        TextPrompt textPrompta1 = new TextPrompt("Codigo", this.txtCodigo);
+        transparenciaBoton();
     }
-
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,17 +44,16 @@ public class ContraSMS extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         panelCurvas1 = new Vista.PanelCurvas();
         jLabel14 = new javax.swing.JLabel();
-        txtCodigo = new javax.swing.JTextField();
         panelCurvas3 = new Vista.PanelCurvas();
         txtNumero = new javax.swing.JTextField();
         panelCurvas5 = new Vista.PanelCurvas();
-        btnCodigo = new javax.swing.JButton();
+        btnCodigoVerificar = new javax.swing.JButton();
         panelCurvas7 = new Vista.PanelCurvas();
         jLabel1 = new javax.swing.JLabel();
         panelCurvas4 = new Vista.PanelCurvas();
         btnEnviar = new javax.swing.JButton();
         panelCurvas2 = new Vista.PanelCurvas();
-        txtCodigo1 = new javax.swing.JTextField();
+        txtCodigo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -67,17 +69,10 @@ public class ContraSMS extends javax.swing.JFrame {
 
         jLabel14.setFont(new java.awt.Font("Leelawadee UI", 1, 36)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("Recuperacion por SMS");
-        panelCurvas1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, 60));
+        jLabel14.setText("Recuperación por SMS");
+        panelCurvas1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, -1, 60));
 
         jPanel1.add(panelCurvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 100));
-
-        txtCodigo.setBackground(new java.awt.Color(255, 255, 255));
-        txtCodigo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtCodigo.setForeground(new java.awt.Color(51, 51, 51));
-        txtCodigo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtCodigo.setBorder(null);
-        jPanel1.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         panelCurvas3.setBackground(new java.awt.Color(255, 255, 255));
         panelCurvas3.setRoundBottomLeft(25);
@@ -94,9 +89,9 @@ public class ContraSMS extends javax.swing.JFrame {
         panelCurvas3.setLayout(panelCurvas3Layout);
         panelCurvas3Layout.setHorizontalGroup(
             panelCurvas3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCurvas3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtNumero, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCurvas3Layout.createSequentialGroup()
+                .addContainerGap(8, Short.MAX_VALUE)
+                .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         panelCurvas3Layout.setVerticalGroup(
@@ -107,7 +102,7 @@ public class ContraSMS extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel1.add(panelCurvas3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 400, 50));
+        jPanel1.add(panelCurvas3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 300, 50));
 
         panelCurvas5.setBackground(new java.awt.Color(255, 255, 255));
         panelCurvas5.setRoundBottomLeft(25);
@@ -115,11 +110,11 @@ public class ContraSMS extends javax.swing.JFrame {
         panelCurvas5.setRoundTopLeft(25);
         panelCurvas5.setRoundTopRight(25);
 
-        btnCodigo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnCodigo.setText("verificar");
-        btnCodigo.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnCodigoVerificar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnCodigoVerificar.setText("verificar");
+        btnCodigoVerificar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCodigoMouseClicked(evt);
+                btnCodigoVerificarMouseClicked(evt);
             }
         });
 
@@ -127,14 +122,14 @@ public class ContraSMS extends javax.swing.JFrame {
         panelCurvas5.setLayout(panelCurvas5Layout);
         panelCurvas5Layout.setHorizontalGroup(
             panelCurvas5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnCodigoVerificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panelCurvas5Layout.setVerticalGroup(
             panelCurvas5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addComponent(btnCodigoVerificar, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        jPanel1.add(panelCurvas5, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 250, -1, 50));
+        jPanel1.add(panelCurvas5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 260, -1, 50));
 
         panelCurvas7.setBackground(new java.awt.Color(255, 255, 255));
         panelCurvas7.setPreferredSize(new java.awt.Dimension(100, 100));
@@ -194,7 +189,7 @@ public class ContraSMS extends javax.swing.JFrame {
             .addComponent(btnEnviar, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        jPanel1.add(panelCurvas4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 150, -1, 50));
+        jPanel1.add(panelCurvas4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 170, -1, 50));
 
         panelCurvas2.setBackground(new java.awt.Color(255, 255, 255));
         panelCurvas2.setRoundBottomLeft(25);
@@ -202,11 +197,11 @@ public class ContraSMS extends javax.swing.JFrame {
         panelCurvas2.setRoundTopLeft(25);
         panelCurvas2.setRoundTopRight(25);
 
-        txtCodigo1.setBackground(new java.awt.Color(255, 255, 255));
-        txtCodigo1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtCodigo1.setForeground(new java.awt.Color(51, 51, 51));
-        txtCodigo1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtCodigo1.setBorder(null);
+        txtCodigo.setBackground(new java.awt.Color(255, 255, 255));
+        txtCodigo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtCodigo.setForeground(new java.awt.Color(51, 51, 51));
+        txtCodigo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtCodigo.setBorder(null);
 
         javax.swing.GroupLayout panelCurvas2Layout = new javax.swing.GroupLayout(panelCurvas2);
         panelCurvas2.setLayout(panelCurvas2Layout);
@@ -214,18 +209,18 @@ public class ContraSMS extends javax.swing.JFrame {
             panelCurvas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCurvas2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtCodigo1, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                .addComponent(txtCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelCurvas2Layout.setVerticalGroup(
             panelCurvas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCurvas2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtCodigo1, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addComponent(txtCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jPanel1.add(panelCurvas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, 160, 50));
+        jPanel1.add(panelCurvas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, 160, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -242,9 +237,9 @@ public class ContraSMS extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCodigoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCodigoMouseClicked
-//        VerificarCodigo();
-    }//GEN-LAST:event_btnCodigoMouseClicked
+    private void btnCodigoVerificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCodigoVerificarMouseClicked
+        VerificarCodigo();
+    }//GEN-LAST:event_btnCodigoVerificarMouseClicked
 
     private void panelCurvas7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelCurvas7MouseClicked
         RecContrasenia vista = new RecContrasenia();
@@ -253,25 +248,64 @@ public class ContraSMS extends javax.swing.JFrame {
     }//GEN-LAST:event_panelCurvas7MouseClicked
 
     private void btnEnviarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnviarMouseClicked
-
+        mandarSMS();
     }//GEN-LAST:event_btnEnviarMouseClicked
 
+    int aleatorio = 0;
+    public static final String ACCOUNT_SID = "AC4afb361fef3f52feb1a840bac7d177f7";
+    public static final String AUTH_TOKEN = "718ba461f566da69154a6279ed43caf7";
+    private String Numero = "+19289107991";
 
+    public void mandarSMS() {
+
+        aleatorio = (int) (Math.random() * 1000000);
+        try {
+            Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+            Message message = Message.creator(
+                    new com.twilio.type.PhoneNumber("+503" + txtNumero.getText().trim()),
+                    new com.twilio.type.PhoneNumber(Numero),
+                    "Este es tu código de recuperación:" + aleatorio)
+                    .create();
+//            System.out.println(message.getSid());
+            JOptionPane.showMessageDialog(null, "Enviado" + message.getSid());
+        } catch (TwilioException e) {
+
+            JOptionPane.showMessageDialog(null, e.toString());
+        }
+
+    }
     
+    public void VerificarCodigo() {
+        try {
+            int verificacion = Integer.parseInt(txtCodigo.getText());
+            if (aleatorio == verificacion) {
+                NuevoContra vista = new NuevoContra();
+                vista.INIT();
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Codigo Invalido");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ingrese un codigo valido");
+        }
+
+    }
+
+    public void transparenciaBoton() {
+        btnEnviar.setOpaque(false);
+        btnEnviar.setContentAreaFilled(false);
+        btnEnviar.setBorderPainted(false);
+        btnCodigoVerificar.setOpaque(false);
+        btnCodigoVerificar.setContentAreaFilled(false);
+        btnCodigoVerificar.setBorderPainted(false);
+    }
+
     /**
      * 
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
-        Message message = Message.creator(
-                new com.twilio.type.PhoneNumber("+50372212777"),
-                new com.twilio.type.PhoneNumber("+14259038961"),
-                "Este es tu código de recuperación")
-                .create();
-
-        System.out.println(message.getSid());
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -300,7 +334,7 @@ public class ContraSMS extends javax.swing.JFrame {
 //    }
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnCodigo;
+    public javax.swing.JButton btnCodigoVerificar;
     public javax.swing.JButton btnEnviar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
@@ -312,7 +346,6 @@ public class ContraSMS extends javax.swing.JFrame {
     private Vista.PanelCurvas panelCurvas5;
     private Vista.PanelCurvas panelCurvas7;
     public javax.swing.JTextField txtCodigo;
-    public javax.swing.JTextField txtCodigo1;
     public javax.swing.JTextField txtNumero;
     // End of variables declaration//GEN-END:variables
 }

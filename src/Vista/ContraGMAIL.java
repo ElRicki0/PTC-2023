@@ -15,16 +15,16 @@ import javax.mail.internet.MimeMessage;
 import javax.swing.JOptionPane;
 
 public class ContraGMAIL extends javax.swing.JFrame {
-       int aleatorio=0;
-    
+    int aleatorio = 0;
+
     public ContraGMAIL() {
         initComponents();
-        this.setLocationRelativeTo(null);        
-        TextPrompt textPrompta =new TextPrompt("Ingrese su Correo", this.txtCorreo);        
-        TextPrompt textPrompta1 =new TextPrompt("Correo", this.txtCodigo);        
+        this.setLocationRelativeTo(null);
+        TextPrompt textPrompta = new TextPrompt("Ingrese su Correo", this.txtCorreo);
+        TextPrompt textPrompta1 = new TextPrompt("Correo", this.txtCodigo);
         transparenciaBotin();
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -59,7 +59,7 @@ public class ContraGMAIL extends javax.swing.JFrame {
 
         jLabel14.setFont(new java.awt.Font("Leelawadee UI", 1, 36)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("Recuperacion por Gmail");
+        jLabel14.setText("Recuperación por Gmail");
         panelCurvas1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, 60));
 
         jPanel1.add(panelCurvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 100));
@@ -240,11 +240,11 @@ public class ContraGMAIL extends javax.swing.JFrame {
         VerificarCodigo();
     }//GEN-LAST:event_btnCodigoMouseClicked
 
-    public void transparenciaBotin(){
-        btnEnviar.setOpaque(false);        
+    public void transparenciaBotin() {
+        btnEnviar.setOpaque(false);
         btnEnviar.setContentAreaFilled(false);
         btnEnviar.setBorderPainted(false);
-        btnCodigo.setOpaque(false);        
+        btnCodigo.setOpaque(false);
         btnCodigo.setContentAreaFilled(false);
         btnCodigo.setBorderPainted(false);
     }
@@ -252,22 +252,21 @@ public class ContraGMAIL extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    
-    public void INIT(){
-            ContraGMAIL vistaPUsuario = new ContraGMAIL();
-            vistaPUsuario.setVisible(true);
-        }   
-    
-    public void mandarCorreo(){
-            aleatorio = (int)(Math.random()*100000000);
-        try{
+    public void INIT() {
+        ContraGMAIL vistaPUsuario = new ContraGMAIL();
+        vistaPUsuario.setVisible(true);
+    }
+
+    public void mandarCorreo() {
+        aleatorio = (int) (Math.random() * 100000000);
+        try {
             //Preparar las cosas
             String correoEmisor = "GoldenManagerStudio@gmail.com";
-            String contraseñaEmisor = "urjqvpuobtjciwwk";     
+            String contraseñaEmisor = "urjqvpuobtjciwwk";
             String CorreoReceptor = txtCorreo.getText();
             String asunto = "Recuperación de contraseña";
             String mensaje = "Este es tu código de recuperación " + aleatorio;
-            
+
             //Configurar SMTP
             Properties props = new Properties();
             props.setProperty("mail.smtp.host", "smtp.gmail.com");
@@ -277,7 +276,6 @@ public class ContraGMAIL extends javax.swing.JFrame {
             props.setProperty("mail.smtp.socketFactory.port", "465");
             props.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 
-          
             //Configurar el envio
             Session session = Session.getDefaultInstance(props);
             MimeMessage message = new MimeMessage(session);
@@ -288,34 +286,33 @@ public class ContraGMAIL extends javax.swing.JFrame {
 
             //Envío del mensaje
             Transport t = session.getTransport("smtp");
-            t.connect(correoEmisor, contraseñaEmisor);    
+            t.connect(correoEmisor, contraseñaEmisor);
             t.sendMessage(message, message.getRecipients(Message.RecipientType.TO));
             t.close();
 
             JOptionPane.showMessageDialog(null, "Correo enviado");
 
-
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e.toString());
             JOptionPane.showMessageDialog(null, "Error al enviar correo");
 
         }
     }
-    
+
     public void VerificarCodigo() {
         try {
-            int texto2= Integer.parseInt(txtCodigo.getText());
-        if (aleatorio==texto2) {
-            NuevoContra vista = new NuevoContra();
-            vista.INIT();
-            this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(null, "Error"    );
-        }
+            int texto2 = Integer.parseInt(txtCodigo.getText());
+            if (aleatorio == texto2) {
+                NuevoContra vista = new NuevoContra();
+                vista.INIT();
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Codigo Invalido");
+            }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Ingrese un codigo valido"    );
+            JOptionPane.showMessageDialog(null, "Ingrese un codigo valido");
         }
-        
+
     }
     
     public static void main(String args[]) {

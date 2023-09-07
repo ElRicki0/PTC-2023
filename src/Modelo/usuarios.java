@@ -1,4 +1,4 @@
-    /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -163,7 +163,6 @@ public class usuarios {
                 String contraseñaAlmacenada = rs.getString("usr_contrasenia");
                 String nivelU = rs.getString("idNivelUser");
 
-
                 if (getUsr_contra().equals(contraseñaAlmacenada)) {
                     if (nivelU.equals("1")) {
                         LoginPTC vista = new LoginPTC();
@@ -302,7 +301,7 @@ public class usuarios {
 
     public void AUsuarios(usuarios modeloUsuario, JComboBox jcbEmpleado, JComboBox jcbUsuario) {
         try {
-            
+
             PreparedStatement AUsuario = CConexion.getConexion().prepareStatement("insert into tbUsuarios(usr_nombre, usr_contrasenia, idEmpleado, idNivelUser) values(?,?,?,?)");
 
             AUsuario.setString(1, modeloUsuario.getUsr_nombre());
@@ -326,7 +325,7 @@ public class usuarios {
             JOptionPane.showMessageDialog(null, "Llene todos los campos");
             AUsuario.execute();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "error "+e);
+            JOptionPane.showMessageDialog(null, "error " + e);
         }
     }
 
@@ -350,10 +349,10 @@ public class usuarios {
         }
 
     }
-    
-    public void ActualizarUsuario(usuarios modeloUsuario, JComboBox jcbEmpleado, JComboBox jcbUsuario, VEmpleados_Usuarios vistaUsuarios){
+
+    public void ActualizarUsuario(usuarios modeloUsuario, JComboBox jcbEmpleado, JComboBox jcbUsuario, VEmpleados_Usuarios vistaUsuarios) {
         try {
-            
+
             PreparedStatement ACUsuario = CConexion.getConexion().prepareStatement("update tbUsuarios set usr_nombre=?, idEmpleado=?, idNivelUser=? where idUsuario=? ");
 
             ACUsuario.setString(1, modeloUsuario.getUsr_nombre());
@@ -373,34 +372,34 @@ public class usuarios {
                 ACUsuario.setInt(3, selID);
             } else {
             }
-            int filaSeleccionada = vistaUsuarios.tbEmpleados.getSelectedRow();  
-            String miId = vistaUsuarios.tbEmpleados.getValueAt(filaSeleccionada, 0).toString();    
-            ACUsuario.setString(4, miId);   
-            
+            int filaSeleccionada = vistaUsuarios.tbEmpleados.getSelectedRow();
+            String miId = vistaUsuarios.tbEmpleados.getValueAt(filaSeleccionada, 0).toString();
+            ACUsuario.setString(4, miId);
+
             JOptionPane.showMessageDialog(null, "Usuario Modificado con exito");
             ACUsuario.execute();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Seleccione un valor a modificar "+e.toString());
+            JOptionPane.showMessageDialog(null, "Seleccione un valor a modificar " + e.toString());
         }
     }
-    
-    public void ActualizarContra(usuarios modeloUsuario){
+
+    public void ActualizarContra(usuarios modeloUsuario) {
         try {
             String sql = "update tbUsuarios set usr_contrasenia=? where usr_nombre=?";
-        try {
-            PreparedStatement AUsuario = CConexion.getConexion().prepareStatement(sql);
-            AUsuario.setString(1, modeloUsuario.getUsr_contra());
-            AUsuario.setString(2, modeloUsuario.getUsr_nombre());
-            JOptionPane.showMessageDialog(null, "Contraseña actualizada correctamente");
-            AUsuario.execute();
-            LoginPTC vistaLogin = new LoginPTC();
-            vistaLogin.INIT();
-            NuevoContra vistaN= new NuevoContra();
-            vistaN.dispose();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "error actualizar contrasenia"+e.toString());
-            System.out.println(e.toString());
-        }
+            try {
+                PreparedStatement AUsuario = CConexion.getConexion().prepareStatement(sql);
+                AUsuario.setString(1, modeloUsuario.getUsr_contra());
+                AUsuario.setString(2, modeloUsuario.getUsr_nombre());
+                JOptionPane.showMessageDialog(null, "Contraseña actualizada correctamente");
+                AUsuario.execute();
+                LoginPTC vistaLogin = new LoginPTC();
+                vistaLogin.INIT();
+                NuevoContra vistaN = new NuevoContra();
+                vistaN.dispose();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "error actualizar contrasenia" + e.toString());
+                System.out.println(e.toString());
+            }
         } catch (Exception e) {
         }
     }

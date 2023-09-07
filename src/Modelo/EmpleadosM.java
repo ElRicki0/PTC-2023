@@ -178,7 +178,7 @@ public class EmpleadosM {
             }
         
         AEmpleado.execute();
-        JOptionPane.showMessageDialog(null, "El Empleado  se agrego correctamente");            
+        JOptionPane.showMessageDialog(null, "El Empleado se agrego correctamente");            
         } catch (Exception e) {
                         JOptionPane.showMessageDialog(null, "Error en agregar empleado "+ e.toString()); 
         }

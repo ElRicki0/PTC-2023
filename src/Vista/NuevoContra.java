@@ -1,22 +1,19 @@
-
 package Vista;
 
 import Controlador.ctrlActualizarContra;
 import Modelo.usuarios;
 
-
-
 public class NuevoContra extends javax.swing.JFrame {
-           
+
     public NuevoContra() {
         initComponents();
-        this.setLocationRelativeTo(null);        
-        TextPrompt textPrompta  =new TextPrompt("Ingrese su usuario", this.txtUsuario);        
-        TextPrompt textPrompta2  =new TextPrompt("ingrese nueva contraseña", this.txtContrasenia);        
-        TextPrompt textPrompta1 =new TextPrompt("Repita la contraseña", this.txtRepetir);        
+        this.setLocationRelativeTo(null);
+        TextPrompt textPrompta = new TextPrompt("Ingrese su usuario", this.txtUsuario);
+        TextPrompt textPrompta2 = new TextPrompt("ingrese nueva contraseña", this.txtContrasenia);
+        TextPrompt textPrompta1 = new TextPrompt("Repita la contraseña", this.txtRepetir);
         transparenciaBotin();
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -49,8 +46,8 @@ public class NuevoContra extends javax.swing.JFrame {
 
         jLabel14.setFont(new java.awt.Font("Leelawadee UI", 1, 36)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("Recuperacion por Gmail");
-        panelCurvas1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, 60));
+        jLabel14.setText("Recuperación de contraseña");
+        panelCurvas1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, 60));
 
         jPanel1.add(panelCurvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 100));
 
@@ -225,27 +222,25 @@ public class NuevoContra extends javax.swing.JFrame {
     }//GEN-LAST:event_panelCurvas7MouseClicked
 
     private void btnEnviarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnviarMouseClicked
-        
+
     }//GEN-LAST:event_btnEnviarMouseClicked
 
-    public void transparenciaBotin(){
-        btnEnviar.setOpaque(false);        
+    public void transparenciaBotin() {
+        btnEnviar.setOpaque(false);
         btnEnviar.setContentAreaFilled(false);
         btnEnviar.setBorderPainted(false);
     }
-    
+
     /**
      * @param args the command line arguments
      */
-    
-    public void INIT(){
-            NuevoContra vistaPUsuario = new NuevoContra();
-            usuarios modelo=new usuarios();
-            ctrlActualizarContra control = new ctrlActualizarContra(modelo, vistaPUsuario);
-            vistaPUsuario.setVisible(true);
-        }   
-    
-    
+    public void INIT() {
+        NuevoContra vistaPUsuario = new NuevoContra();
+        usuarios modelo = new usuarios();
+        ctrlActualizarContra control = new ctrlActualizarContra(modelo, vistaPUsuario);
+        vistaPUsuario.setVisible(true);
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -300,12 +295,10 @@ public class NuevoContra extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-                 
-        
-        
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+
             }
         });
     }
@@ -326,5 +319,4 @@ public class NuevoContra extends javax.swing.JFrame {
     public javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 
-    
 }

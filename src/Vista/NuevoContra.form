@@ -76,11 +76,11 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Recuperacion por Gmail"/>
+                <Property name="text" type="java.lang.String" value="Recuperaci&#xf3;n de contrase&#xf1;a"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="80" y="20" width="-1" height="60"/>
+                  <AbsoluteConstraints x="60" y="20" width="-1" height="60"/>
                 </Constraint>
               </Constraints>
             </Component>
