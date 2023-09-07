@@ -26,8 +26,6 @@ public class RMain extends javax.swing.JFrame {
         rsscalelabel.RSScaleLabel.setScaleLabel(Casaicon, "src/Vista/Iconos/hogar.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(Productoicon, "src/Vista/Iconos/bolso.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(Clienteicon, "src/Vista/Iconos/usuario.png");
-        rsscalelabel.RSScaleLabel.setScaleLabel(Bitacoraicon, "src/Vista/Iconos/libreta.png");
-        rsscalelabel.RSScaleLabel.setScaleLabel(Trabajadoricon, "src/Vista/Iconos/obrero.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(Rutaicon, "src/Vista/Iconos/entrega.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(Bodegaicon, "src/Vista/Iconos/almacenamiento.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(txtBarras, "src/Vista/Iconos/lista.png");
