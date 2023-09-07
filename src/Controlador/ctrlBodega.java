@@ -17,6 +17,7 @@ public class ctrlBodega implements ActionListener{
         this.vistaBodega=vistaBodega;
         this.vistaBodega.btnAgregar.addActionListener(this);
         this.vistaBodega.btnEliminar.addActionListener(this);
+        this.vistaBodega.btnModificar.addActionListener(this);
     }
     
     @Override
@@ -26,27 +27,32 @@ public class ctrlBodega implements ActionListener{
             String texto2 = vistaBodega.txtDireccion_bdg.getText();
             String texto3 = vistaBodega.txtCorreo_bdg.getText();
             
-            if (!texto1.isEmpty()){
-                if (!texto2.isEmpty()) {
-                    if (!texto3.isEmpty()) {
-                        modeloBodegas.setBdg_nombre(vistaBodega.txtNombre_bdg.getText()); 
-                        modeloBodegas.setBdg_ubicacion(vistaBodega.txtDireccion_bdg.getText());
-                        modeloBodegas.setBdg_correo(vistaBodega.txtCorreo_bdg.getText());
-                        modeloBodegas.AgregarBodega(modeloBodegas);
-                        modeloBodegas.MostrarBodega(vistaBodega);                        
-                    } else {
-                        JOptionPane.showMessageDialog(null, "El correo no puede estar vacio ");
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "la direccion no puede estar vacia ");
-                }
-                }else {
-                JOptionPane.showMessageDialog(null, "El nombre no puede estar vacio ");
-            }
-            }if(e.getSource()==vistaBodega.btnEliminar){
-                modeloBodegas.EliminarBodega(vistaBodega);
+            if (!texto1.isEmpty()||!texto2.isEmpty()||!texto3.isEmpty()){
+                
+                modeloBodegas.setBdg_nombre(vistaBodega.txtNombre_bdg.getText()); 
+                modeloBodegas.setBdg_ubicacion(vistaBodega.txtDireccion_bdg.getText());
+                modeloBodegas.setBdg_correo(vistaBodega.txtCorreo_bdg.getText());
+                modeloBodegas.AgregarBodega(modeloBodegas);
                 modeloBodegas.MostrarBodega(vistaBodega);
+            }else{
+                JOptionPane.showMessageDialog(null, "Llene todos los campos");
             }
+        }if(e.getSource()==vistaBodega.btnEliminar){
+            modeloBodegas.EliminarBodega(vistaBodega);
+            modeloBodegas.MostrarBodega(vistaBodega);
+        }if (e.getSource()==vistaBodega.btnModificar) {
+            String texto1 = vistaBodega.txtNombre_bdg.getText();
+            String texto2 = vistaBodega.txtDireccion_bdg.getText();
+            String texto3 = vistaBodega.txtCorreo_bdg.getText();
+            
+            if (!texto1.isEmpty()||!texto2.isEmpty()||!texto3.isEmpty()){
+                modeloBodegas.ActualizarBodega(vistaBodega);
+                modeloBodegas.MostrarBodega(vistaBodega);
+            }else{
+                JOptionPane.showMessageDialog(null, "Llene todos los campos");
+            }
+            
+        }
     }        
 //        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }

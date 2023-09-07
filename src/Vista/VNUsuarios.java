@@ -767,7 +767,7 @@ public class VNUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEmpleadosMouseExited
 
     private void btnUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMouseClicked
-        VNEmpleados nempleados = new VNEmpleados();
+        VEmpleados_Tipos nempleados = new VEmpleados_Tipos();
         nempleados.INIT();
         this.dispose();
     }//GEN-LAST:event_btnUsuariosMouseClicked
@@ -809,7 +809,7 @@ public class VNUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEmpleados1MouseExited
 
     private void btnUsuarios1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuarios1MouseClicked
-        VUsuarios usuario =new VUsuarios();
+        VEmpleados_Usuarios usuario =new VEmpleados_Usuarios();
         usuario.INIT();
         this.dispose();
     }//GEN-LAST:event_btnUsuarios1MouseClicked
@@ -855,7 +855,7 @@ public class VNUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_txtBarrasMouseClicked
 
     private void btnProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseClicked
-        Producto producto = new Producto();
+        VProducto producto = new VProducto();
         producto.NIT();
         //  producto.setVisible(true);
         this.dispose();

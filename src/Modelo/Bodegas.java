@@ -80,45 +80,54 @@ public class Bodegas {
     }
         
     public void EliminarBodega (Bodega vistaBodega){
-        int filaSeleccionada = vistaBodega.tbBodegas.getSelectedRow();
-        
-        //Obtenemos el id de la fila seleccionada
-        String miId = vistaBodega.tbBodegas.getValueAt(filaSeleccionada, 0).toString();
-        //borramos 
         try {
-            PreparedStatement deleteUser = CConexion.getConexion().prepareStatement("delete from tbBodegas where idBodega = '" + miId + "'");
-            deleteUser.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Se elimino correctamente la Bodega");                           
-        } catch (Exception e) {
-         System.out.println(e.toString());
-          JOptionPane.showMessageDialog(null, "La bodega esta en uso por un producto, edite el producto para continuar");                           
+            int filaSeleccionada = vistaBodega.tbBodegas.getSelectedRow();
+        
+            //Obtenemos el id de la fila seleccionada
+            String miId = vistaBodega.tbBodegas.getValueAt(filaSeleccionada, 0).toString();
+            //borramos 
+            try {
+                PreparedStatement deleteUser = CConexion.getConexion().prepareStatement("delete from tbBodegas where idBodega = '" + miId + "'");
+                deleteUser.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Se elimino correctamente la Bodega");                           
+            } catch (Exception e) {
+             System.out.println(e.toString());
+              JOptionPane.showMessageDialog(null, "La bodega esta en uso por un producto, edite el producto para continuar");                           
+            }  
+        } catch (Exception ae) {
+            JOptionPane.showMessageDialog(null, "Seleccione una bodega a eliminar");                           
         }
+        
     }
     
     public boolean ActualizarBodega(Bodega vistaBodega){
-        
-        int filaSeleccionada = vistaBodega.tbBodegas.getSelectedRow();      
-
-        //Obtenemos el id de la fila seleccionada
-        String miId = vistaBodega.tbBodegas.getValueAt(filaSeleccionada, 0).toString();
-        String nuevoValorIngresadoNombre = vistaBodega.txtNombre_bdg.getText();
-        String nuevoValorIngresadoDirecccion = vistaBodega.txtDireccion_bdg.getText();
-        String nuevoValorIngresadoCorreo = vistaBodega.txtCorreo_bdg.getText();
         try {
+            int filaSeleccionada = vistaBodega.tbBodegas.getSelectedRow();      
+            String miId = vistaBodega.tbBodegas.getValueAt(filaSeleccionada, 0).toString();
+            String nuevoValorIngresadoNombre = vistaBodega.txtNombre_bdg.getText();
+            String nuevoValorIngresadoDirecccion = vistaBodega.txtDireccion_bdg.getText();
+            String nuevoValorIngresadoCorreo = vistaBodega.txtCorreo_bdg.getText();
+            try {
 
-            PreparedStatement updateUser = CConexion.getConexion().prepareStatement("update tbBodegas set bdg_nombre = ?, bdg_ubicacion=?, bdg_correo = ? where idBodega = ?");
-            updateUser.setString(1, nuevoValorIngresadoNombre);
-            updateUser.setString(2, nuevoValorIngresadoDirecccion);
-            updateUser.setString(3, nuevoValorIngresadoCorreo);
-            updateUser.setString(4, miId);
-            JOptionPane.showMessageDialog(null, "La bodega se actualizo correctamente");                           
-            updateUser.executeUpdate();
-            return true;
-            } catch (Exception e) {
-            System.out.println(e.toString());
-            JOptionPane.showMessageDialog(null, "Error en actualizar producto");  
+                PreparedStatement updateUser = CConexion.getConexion().prepareStatement("update tbBodegas set bdg_nombre = ?, bdg_ubicacion=?, bdg_correo = ? where idBodega = ?");
+                updateUser.setString(1, nuevoValorIngresadoNombre);
+                updateUser.setString(2, nuevoValorIngresadoDirecccion);
+                updateUser.setString(3, nuevoValorIngresadoCorreo);
+                updateUser.setString(4, miId);
+                JOptionPane.showMessageDialog(null, "La bodega se actualizo correctamente");                           
+                updateUser.executeUpdate();
+                return true;
+                } catch (Exception e) {
+                System.out.println(e.toString());
+                JOptionPane.showMessageDialog(null, "Error en actualizar producto");  
+                return false;
+                     }  
+        } catch (Exception ae) {
+            JOptionPane.showMessageDialog(null, "seleccione un dato a modificar");  
             return false;
-                 }
+        }
+
+        
 
     }
     

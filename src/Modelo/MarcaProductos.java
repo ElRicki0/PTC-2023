@@ -8,8 +8,8 @@ package Modelo;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
 import java.sql.*;
-import Vista.Producto;
-import Vista.Producto_Marca;
+import Vista.VProducto;
+import Vista.VProducto_Marca;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -55,7 +55,7 @@ public class MarcaProductos {
         this.MP_correo = MP_correo;
     }
     
-    public void MostrarMarcas(Producto_Marca vistaProducto){
+    public void MostrarMarcas(VProducto_Marca vistaProducto){
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(new Object[]{"ID Marca", "Nombre", "Numero de Telefono", "Correo Electronico"});
         try {
@@ -73,7 +73,7 @@ public class MarcaProductos {
     
         
     
-    public boolean AgregarMarca(MarcaProductos marcamodelo, Producto_Marca vistaProducto){
+    public boolean AgregarMarca(MarcaProductos marcamodelo, VProducto_Marca vistaProducto){
         String textoTelefono = vistaProducto.txtNumeroMC.getText();
         String textoNombre = vistaProducto.txtNombreMC.getText();
         String textoCorreo = vistaProducto.txtCorreosMC.getText();
@@ -97,7 +97,7 @@ public class MarcaProductos {
                         AMarca.setString(3, marcamodelo.getMP_correo());
                         AMarca.executeUpdate();
                         JOptionPane.showMessageDialog(null, "La Marca se agrego correctamente");
-                        Producto ProductoVista = new Producto();
+                        VProducto ProductoVista = new VProducto();
                         return true;
                         } catch (Exception e) {
                          JOptionPane.showMessageDialog(null, "ERROR EN EL METODO DEL MODELO marca"+ e.toString());                        
@@ -123,7 +123,7 @@ public class MarcaProductos {
     
     
     
-    public void eliminar(Producto_Marca vistaProducto){
+    public void eliminar(VProducto_Marca vistaProducto){
     
         //obtenemos que fila seleccionó el usuario
         int filaSeleccionada = vistaProducto.tbMarca.getSelectedRow();
@@ -141,7 +141,7 @@ public class MarcaProductos {
         }
     }
     
-    public boolean actualizar(Producto_Marca vistamarca){
+    public boolean actualizar(VProducto_Marca vistamarca){
         
         String textoTelefono = vistamarca.txtNumeroMC.getText();
         String textoNombre = vistamarca.txtNombreMC.getText();

@@ -166,10 +166,11 @@ public class usuarios {
 
                 if (getUsr_contra().equals(contraseñaAlmacenada)) {
                     if (nivelU.equals("1")) {
-                        Main main = new Main();
-                        main.setVisible(true);
                         LoginPTC vista = new LoginPTC();
                         vista.dispose();
+                        System.out.println("hola123");
+                        Main main = new Main();
+                        main.setVisible(true);
                     }
                     if (nivelU.equals("2")) {
                         CMain main = new CMain();
@@ -200,9 +201,9 @@ public class usuarios {
 
     }
 
-    public void mostrarUsuarios(VUsuarios vistaUsuarios) {
+    public void mostrarUsuarios(VEmpleados_Usuarios vistaUsuarios) {
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.setColumnIdentifiers(new Object[]{"ID", "Usuario", "Contraseña", "Nombre Empleado", "Nivel Usuario"});
+        modelo.setColumnIdentifiers(new Object[]{"ID", "Usuario", "Nombre Empleado", "Nivel Usuario"});
         try {
             Statement st = CConexion.getConexion().createStatement();
 //        String sql = "select tbUsuarios.idUsuario, tbUsuarios.usr_nombre, tbUsuarios.usr_contrasenia, tbEmpleados.emp_nombre, tbNivelesUsuarios.usr_Nivel from tbUsuarios inner join tbEmpleados on tbUsuarios.idEmpleado=tbEmpleados.idEmpleado INNER JOIN tbNivelesUsuarios on tbUsuarios.idNivelUser=tbNivelesUsuarios.idNivelUser";
@@ -210,7 +211,7 @@ public class usuarios {
             ResultSet rs = st.executeQuery(sql);
 
             while (rs.next()) {
-                modelo.addRow(new Object[]{rs.getInt("idUsuario"), rs.getString("usr_nombre"), rs.getString("usr_contrasenia"), rs.getString("emp_nombre"), rs.getString("usr_Nivel")});
+                modelo.addRow(new Object[]{rs.getInt("idUsuario"), rs.getString("usr_nombre"), rs.getString("emp_nombre"), rs.getString("usr_Nivel")});
             }
             vistaUsuarios.tbEmpleados.setModel(modelo); // Corregir el nombre de la tabla
         } catch (Exception e) {
@@ -322,14 +323,14 @@ public class usuarios {
                 AUsuario.setInt(4, selID);
             } else {
             }
-
+            JOptionPane.showMessageDialog(null, "Llene todos los campos");
             AUsuario.execute();
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "el empleado ya esta en uso ");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "error "+e);
         }
     }
 
-    public void EliminarUsuario(VUsuarios vistaUsuario) {
+    public void EliminarUsuario(VEmpleados_Usuarios vistaUsuario) {
         try {
             int filaSeleccionada = vistaUsuario.tbEmpleados.getSelectedRow();
 
@@ -348,6 +349,39 @@ public class usuarios {
             JOptionPane.showMessageDialog(null, "seleccione un usuario");
         }
 
+    }
+    
+    public void ActualizarUsuario(usuarios modeloUsuario, JComboBox jcbEmpleado, JComboBox jcbUsuario, VEmpleados_Usuarios vistaUsuarios){
+        try {
+            
+            PreparedStatement ACUsuario = CConexion.getConexion().prepareStatement("update tbUsuarios set usr_nombre=?, idEmpleado=?, idNivelUser=? where idUsuario=? ");
+
+            ACUsuario.setString(1, modeloUsuario.getUsr_nombre());
+
+            int SelectEmpelado = jcbEmpleado.getSelectedIndex();
+            if (SelectEmpelado != -1) {
+                Map<Integer, String> idEmpleado = (Map<Integer, String>) jcbEmpleado.getClientProperty("idEmpleado");
+                int selID = (int) idEmpleado.keySet().toArray()[SelectEmpelado];
+                ACUsuario.setInt(2, selID);
+            } else {
+            }
+
+            int SelectTUsuario = jcbUsuario.getSelectedIndex();
+            if (SelectTUsuario != -1) {
+                Map<Integer, String> idNivelUser = (Map<Integer, String>) jcbUsuario.getClientProperty("idNivelUser");
+                int selID = (int) idNivelUser.keySet().toArray()[SelectTUsuario];
+                ACUsuario.setInt(3, selID);
+            } else {
+            }
+            int filaSeleccionada = vistaUsuarios.tbEmpleados.getSelectedRow();  
+            String miId = vistaUsuarios.tbEmpleados.getValueAt(filaSeleccionada, 0).toString();    
+            ACUsuario.setString(4, miId);   
+            
+            JOptionPane.showMessageDialog(null, "Usuario Modificado con exito");
+            ACUsuario.execute();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Seleccione un valor a modificar "+e.toString());
+        }
     }
     
     public void ActualizarContra(usuarios modeloUsuario){

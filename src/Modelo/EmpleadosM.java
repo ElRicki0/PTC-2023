@@ -278,34 +278,45 @@ public class EmpleadosM {
         }
     }
     
-    public void actualizar(VEmpleados vistaEmpleados){  
+    public void actualizar(EmpleadosM modeloEmpleados, JComboBox jcbGenero, JComboBox jcbTipo, VEmpleados vistaEmpleados){  
 
-        //obtenemos que fila seleccionó el usuario
-
+         try {
+            
+            String sql="update tbEmpleados set emp_nombre=?, emp_fecha=?, emp_direccion=?, emp_telefono=?, emp_correo=?, idGenero=?, idTipoEmpleado=? where idEmpleado=?";
+        
+        PreparedStatement UEmpleado= CConexion.getConexion().prepareStatement(sql);
+        UEmpleado.setString(1, modeloEmpleados.getEmp_nombre());
+        UEmpleado.setString(2, modeloEmpleados.getEmp_fecha());
+        UEmpleado.setString(3, modeloEmpleados.getEmp_direccion());
+        UEmpleado.setString(4, modeloEmpleados.getEmp_telefono());
+        UEmpleado.setString(5, modeloEmpleados.getEmp_correo());
+        
+        int SelectGenero= jcbGenero.getSelectedIndex();
+            if (SelectGenero!=-1) {
+                Map<Integer, String> idGenero = (Map<Integer, String>)jcbGenero.getClientProperty("idGenero");
+                int selID=(int) idGenero.keySet().toArray()[SelectGenero];
+                UEmpleado.setInt(6, selID);
+            } else {
+            }  
+            
+        int SelectTEmpl= jcbTipo.getSelectedIndex();
+            if (SelectTEmpl!=-1) {
+                Map<Integer, String> idTipoEmpleado = (Map<Integer, String>)jcbTipo.getClientProperty("idTipoEmpleado");
+                int selTEP=(int) idTipoEmpleado.keySet().toArray()[SelectTEmpl];
+                UEmpleado.setInt(7, selTEP);
+            } else {
+            }     
+        
         int filaSeleccionada = vistaEmpleados.tbTEmpleados.getSelectedRow();  
-        //Obtenemos el id de la fila seleccionada
-        String miId = vistaEmpleados.tbTEmpleados.getValueAt(filaSeleccionada, 0).toString();        
-
-       String nuevoValorIngresadoNombre = vistaEmpleados.txtNombre_emp.getText();
-       String nuevoValorIngresadoFecha = vistaEmpleados.txtFN_emp.getText();
-       String nuevoValorIngresadoDireccion = vistaEmpleados.txtDireccion_emp.getText();
-       String nuevoValorIngresadoTelefono = vistaEmpleados.txtTelefono_emp.getText();
-       String nuevoValorIngresadoCorreo = vistaEmpleados.txtCorreo_emp.getText(); 
-
-        try {
-            PreparedStatement updateUser = CConexion.getConexion().prepareStatement("update tbEmpleados set emp_nombre = ?, emp_fecha = ?, emp_direccion=?, emp_telefono=?, emp_correo=? where idEmpleado = ?");
-            updateUser.setString(1, nuevoValorIngresadoNombre);
-            updateUser.setString(2, nuevoValorIngresadoFecha);
-            updateUser.setString(3, nuevoValorIngresadoDireccion);
-            updateUser.setString(4, nuevoValorIngresadoTelefono);
-            updateUser.setString(5, nuevoValorIngresadoCorreo);
-            updateUser.setString(6, miId);
-            updateUser.executeUpdate();
-        JOptionPane.showMessageDialog(null, "Se actualizo el empleado");                
+        String miId = vistaEmpleados.tbTEmpleados.getValueAt(filaSeleccionada, 0).toString();    
+        UEmpleado.setString(8, miId);   
+        UEmpleado.execute();
+        JOptionPane.showMessageDialog(null, "El Empleado  se Modifico correctamente123");
         } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Error Actualizar empleados "+e.getMessage());                
-
+            System.out.println(e);        
         }
+
+          
      }
     
     

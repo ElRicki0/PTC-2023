@@ -19,17 +19,17 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class Producto extends javax.swing.JFrame {
+public class VProducto extends javax.swing.JFrame {
 
     
      
         productos ModeloProductos= new productos();
-        Producto_Marca Pmarca= new Producto_Marca();
+        VProducto_Marca Pmarca= new VProducto_Marca();
         
         
     
     Desface desplace;
-    public Producto() {
+    public VProducto() {
         initComponents();
         
         setIconImage(new ImageIcon(getClass().getResource("/Vista/Iconos/CASA.png")).getImage());
@@ -100,11 +100,6 @@ public class Producto extends javax.swing.JFrame {
         btnVehiculos = new Vista.PanelCurvas();
         icoCarro = new javax.swing.JLabel();
         txtCliente2 = new javax.swing.JLabel();
-        jpSubMenu = new javax.swing.JPanel();
-        btnSubProductos = new Vista.PanelCurvas();
-        txtSub = new javax.swing.JLabel();
-        btnSubMarcas = new Vista.PanelCurvas();
-        txtSub1 = new javax.swing.JLabel();
         jpProductos = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbProductos = new javax.swing.JTable();
@@ -136,6 +131,11 @@ public class Producto extends javax.swing.JFrame {
         jcbBuscador = new javax.swing.JComboBox<>();
         panelCurvas3 = new Vista.PanelCurvas();
         btnCXBuscar = new javax.swing.JButton();
+        jpSubMenu = new javax.swing.JPanel();
+        btnSubProductos = new Vista.PanelCurvas();
+        txtSub = new javax.swing.JLabel();
+        btnSubMarcas = new Vista.PanelCurvas();
+        txtSub1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1080, 760));
@@ -505,91 +505,6 @@ public class Producto extends javax.swing.JFrame {
 
         jPanel1.add(MenuPlegable, new org.netbeans.lib.awtextra.AbsoluteConstraints(-150, 0, 230, 760));
 
-        jpSubMenu.setBackground(new java.awt.Color(64, 81, 115));
-        jpSubMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnSubProductos.setBackground(new java.awt.Color(172, 147, 110));
-        btnSubProductos.setRoundBottomLeft(25);
-        btnSubProductos.setRoundBottomRight(25);
-        btnSubProductos.setRoundTopLeft(25);
-        btnSubProductos.setRoundTopRight(25);
-        btnSubProductos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSubProductosMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnSubProductosMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnSubProductosMouseExited(evt);
-            }
-        });
-
-        txtSub.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        txtSub.setForeground(new java.awt.Color(51, 51, 51));
-        txtSub.setText("Productos");
-
-        javax.swing.GroupLayout btnSubProductosLayout = new javax.swing.GroupLayout(btnSubProductos);
-        btnSubProductos.setLayout(btnSubProductosLayout);
-        btnSubProductosLayout.setHorizontalGroup(
-            btnSubProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnSubProductosLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(txtSub)
-                .addContainerGap(35, Short.MAX_VALUE))
-        );
-        btnSubProductosLayout.setVerticalGroup(
-            btnSubProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnSubProductosLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(txtSub, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jpSubMenu.add(btnSubProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 20, 150, -1));
-
-        btnSubMarcas.setBackground(new java.awt.Color(172, 147, 110));
-        btnSubMarcas.setRoundBottomLeft(25);
-        btnSubMarcas.setRoundBottomRight(25);
-        btnSubMarcas.setRoundTopLeft(25);
-        btnSubMarcas.setRoundTopRight(25);
-        btnSubMarcas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSubMarcasMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnSubMarcasMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnSubMarcasMouseExited(evt);
-            }
-        });
-
-        txtSub1.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        txtSub1.setForeground(new java.awt.Color(51, 51, 51));
-        txtSub1.setText("Marca");
-
-        javax.swing.GroupLayout btnSubMarcasLayout = new javax.swing.GroupLayout(btnSubMarcas);
-        btnSubMarcas.setLayout(btnSubMarcasLayout);
-        btnSubMarcasLayout.setHorizontalGroup(
-            btnSubMarcasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnSubMarcasLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(txtSub1)
-                .addContainerGap(51, Short.MAX_VALUE))
-        );
-        btnSubMarcasLayout.setVerticalGroup(
-            btnSubMarcasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnSubMarcasLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(txtSub1, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jpSubMenu.add(btnSubMarcas, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, -1, -1));
-
-        jPanel1.add(jpSubMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 1040, 110));
-
         jpProductos.setBackground(new java.awt.Color(246, 234, 204));
         jpProductos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -930,6 +845,91 @@ public class Producto extends javax.swing.JFrame {
 
         jPanel1.add(jpProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 1000, 650));
 
+        jpSubMenu.setBackground(new java.awt.Color(64, 81, 115));
+        jpSubMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnSubProductos.setBackground(new java.awt.Color(172, 147, 110));
+        btnSubProductos.setRoundBottomLeft(25);
+        btnSubProductos.setRoundBottomRight(25);
+        btnSubProductos.setRoundTopLeft(25);
+        btnSubProductos.setRoundTopRight(25);
+        btnSubProductos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSubProductosMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSubProductosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSubProductosMouseExited(evt);
+            }
+        });
+
+        txtSub.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        txtSub.setForeground(new java.awt.Color(255, 255, 255));
+        txtSub.setText("Productos");
+
+        javax.swing.GroupLayout btnSubProductosLayout = new javax.swing.GroupLayout(btnSubProductos);
+        btnSubProductos.setLayout(btnSubProductosLayout);
+        btnSubProductosLayout.setHorizontalGroup(
+            btnSubProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnSubProductosLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(txtSub)
+                .addContainerGap(35, Short.MAX_VALUE))
+        );
+        btnSubProductosLayout.setVerticalGroup(
+            btnSubProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnSubProductosLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(txtSub, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jpSubMenu.add(btnSubProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 150, -1));
+
+        btnSubMarcas.setBackground(new java.awt.Color(172, 147, 110));
+        btnSubMarcas.setRoundBottomLeft(25);
+        btnSubMarcas.setRoundBottomRight(25);
+        btnSubMarcas.setRoundTopLeft(25);
+        btnSubMarcas.setRoundTopRight(25);
+        btnSubMarcas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSubMarcasMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSubMarcasMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSubMarcasMouseExited(evt);
+            }
+        });
+
+        txtSub1.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        txtSub1.setForeground(new java.awt.Color(255, 255, 255));
+        txtSub1.setText("Marca");
+
+        javax.swing.GroupLayout btnSubMarcasLayout = new javax.swing.GroupLayout(btnSubMarcas);
+        btnSubMarcas.setLayout(btnSubMarcasLayout);
+        btnSubMarcasLayout.setHorizontalGroup(
+            btnSubMarcasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnSubMarcasLayout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addComponent(txtSub1)
+                .addContainerGap(51, Short.MAX_VALUE))
+        );
+        btnSubMarcasLayout.setVerticalGroup(
+            btnSubMarcasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnSubMarcasLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(txtSub1, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jpSubMenu.add(btnSubMarcas, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, -1, -1));
+
+        jPanel1.add(jpSubMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 1040, 110));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -958,37 +958,6 @@ public class Producto extends javax.swing.JFrame {
     private void txtPrecioUnitario_pdtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioUnitario_pdtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPrecioUnitario_pdtActionPerformed
-
-    private void btnSubProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubProductosMouseClicked
-//        ModeloProductos.RellenarMarcaCBX(jcbBuscador);
-//        ModeloProductos.RellenarBodegaCBX(jcbBuscador);
-    }//GEN-LAST:event_btnSubProductosMouseClicked
-
-    private void btnSubProductosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubProductosMouseEntered
-        btnSubProductos.setBackground(new Color(45,40,37));
-        txtSub.setForeground(Color.white);
-        
-        
-    }//GEN-LAST:event_btnSubProductosMouseEntered
-
-    private void btnSubProductosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubProductosMouseExited
-        btnSubProductos.setBackground(new Color(172,147,110));
-        txtSub.setForeground(Color.black);
-    }//GEN-LAST:event_btnSubProductosMouseExited
-
-    private void btnSubMarcasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubMarcasMouseClicked
-        this.dispose();
-        Pmarca.NIT();
-    }//GEN-LAST:event_btnSubMarcasMouseClicked
-
-    private void btnSubMarcasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubMarcasMouseEntered
-        btnSubMarcas.setBackground(new Color(45,40,37));
-        txtSub1.setForeground(Color.white);
-    }//GEN-LAST:event_btnSubMarcasMouseEntered
-
-    private void btnSubMarcasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubMarcasMouseExited
-        btnSubMarcas.setBackground(new Color(64,81,152));
-    }//GEN-LAST:event_btnSubMarcasMouseExited
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
@@ -1181,13 +1150,42 @@ public class Producto extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnReporteMouseClicked
 
+    private void btnSubProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubProductosMouseClicked
+        
+    }//GEN-LAST:event_btnSubProductosMouseClicked
+
+    private void btnSubProductosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubProductosMouseEntered
+        btnSubProductos.setBackground(new Color(45,40,37));
+        txtSub.setForeground(Color.white);
+
+    }//GEN-LAST:event_btnSubProductosMouseEntered
+
+    private void btnSubProductosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubProductosMouseExited
+        btnSubProductos.setBackground(new Color(64,81,152));
+    }//GEN-LAST:event_btnSubProductosMouseExited
+
+    private void btnSubMarcasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubMarcasMouseClicked
+        VProducto_Marca vista = new VProducto_Marca();
+        vista.NIT();
+        this.dispose();
+    }//GEN-LAST:event_btnSubMarcasMouseClicked
+
+    private void btnSubMarcasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubMarcasMouseEntered
+        btnSubMarcas.setBackground(new Color(45,40,37));
+        txtSub1.setForeground(Color.white);
+    }//GEN-LAST:event_btnSubMarcasMouseEntered
+
+    private void btnSubMarcasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubMarcasMouseExited
+        btnSubMarcas.setBackground(new Color(64,81,152));
+    }//GEN-LAST:event_btnSubMarcasMouseExited
+
     /**
      * @param args the command line arguments
      */
     
             
     public void NIT(){
-        Producto vista= new Producto();
+        VProducto vista= new VProducto();
         UProducto Uvista= new UProducto();
         vista.setVisible(true);
         productos modeloProductos= new productos();
@@ -1225,14 +1223,15 @@ public class Producto extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Producto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Producto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Producto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Producto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

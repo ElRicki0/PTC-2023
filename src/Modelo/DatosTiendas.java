@@ -283,11 +283,11 @@ public class DatosTiendas {
             MDTiendas.setString(5, miId);
         MDTiendas.executeUpdate();
             
-        JOptionPane.showMessageDialog(null, "Datos etitados correctamente");
+        JOptionPane.showMessageDialog(null, "Datos modificados correctamente");
 
         return true;
     } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "ERROR EN EL METODO DEL MODELO: " + e.toString());
+        JOptionPane.showMessageDialog(null, "Seleccione un dato a modificar");
         return false;
     }
      }

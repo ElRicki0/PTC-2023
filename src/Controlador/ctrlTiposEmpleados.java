@@ -1,17 +1,17 @@
 package Controlador;
 
 import Modelo.TiposEmpleados;
-import Vista.VNEmpleados;
+import Vista.VEmpleados_Tipos;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 public class ctrlTiposEmpleados implements ActionListener{
 
-    private VNEmpleados vistaTEmpleados;
+    private VEmpleados_Tipos vistaTEmpleados;
     private TiposEmpleados modeloTEmpleados;
     
-    public ctrlTiposEmpleados(VNEmpleados vistaTEmpleados, TiposEmpleados modeloTEmpleados){
+    public ctrlTiposEmpleados(VEmpleados_Tipos vistaTEmpleados, TiposEmpleados modeloTEmpleados){
         this.vistaTEmpleados=vistaTEmpleados;
         this.modeloTEmpleados=modeloTEmpleados;
         this.vistaTEmpleados.btnAgregar.addActionListener(this);

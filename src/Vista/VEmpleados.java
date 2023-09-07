@@ -994,7 +994,7 @@ public class VEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEmpleadosMouseExited
 
     private void btnTEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTEmpleadosMouseClicked
-        VNEmpleados tipos = new VNEmpleados();
+        VEmpleados_Tipos tipos = new VEmpleados_Tipos();
         tipos.INIT();
         this.dispose();
     }//GEN-LAST:event_btnTEmpleadosMouseClicked
@@ -1010,7 +1010,7 @@ public class VEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTEmpleadosMouseExited
 
     private void btnUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMouseClicked
-        VUsuarios usuarios=new VUsuarios();
+        VEmpleados_Usuarios usuarios=new VEmpleados_Usuarios();
         usuarios.INIT();
         this.dispose();
     }//GEN-LAST:event_btnUsuariosMouseClicked
@@ -1117,7 +1117,7 @@ public class VEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProductoMouseEntered
 
     private void btnProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseClicked
-        Producto producto = new Producto();
+        VProducto producto = new VProducto();
         producto.NIT();
         this.dispose();
     }//GEN-LAST:event_btnProductoMouseClicked

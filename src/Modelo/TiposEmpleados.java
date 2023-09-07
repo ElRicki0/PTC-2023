@@ -2,7 +2,7 @@
 package Modelo;
 
 import Vista.VEmpleados;
-import Vista.VNEmpleados;
+import Vista.VEmpleados_Tipos;
 import java.beans.Statement;
 import java.sql.*;
 import javax.swing.JOptionPane;
@@ -10,7 +10,7 @@ import javax.swing.table.DefaultTableModel;
 
 
 public class TiposEmpleados {
-    VNEmpleados vista = new VNEmpleados();
+    VEmpleados_Tipos vista = new VEmpleados_Tipos();
     
     private int idTipoEmpleado;
     private String Tipo_Emp;    
@@ -59,7 +59,7 @@ public class TiposEmpleados {
 
     }
     
-    public void MostrarTEmpleados(VNEmpleados vistaTEmpleados){
+    public void MostrarTEmpleados(VEmpleados_Tipos vistaTEmpleados){
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(new Object[]{"ID","Nombre", "Descripcion"});
         try {
@@ -75,25 +75,28 @@ public class TiposEmpleados {
         }
     }
     
-    public void eliminar(VNEmpleados vistaTEmpleado){
-    
-        //obtenemos que fila seleccionó el usuario
-        int filaSeleccionada = vistaTEmpleado.tbNiveles.getSelectedRow();
-        
-        //Obtenemos el id de la fila seleccionada
-        String miId = vistaTEmpleado.tbNiveles.getValueAt(filaSeleccionada, 0).toString();
-        //borramos 
+    public void eliminar(VEmpleados_Tipos vistaTEmpleado){
         try {
-            PreparedStatement deleteUser = CConexion.getConexion().prepareStatement("delete from tbTiposEmpleados where idTipoEmpleado = '" + miId + "'");
-            deleteUser.executeUpdate();
-            JOptionPane.showMessageDialog(null, "El tipo de empleado se elimino correctamente");
-        } catch (Exception e) {            
-//            JOptionPane.showMessageDialog(null, "El tipo de empleado esta en uso, modifique el empleado o eliminelo para poder continuar");
- JOptionPane.showMessageDialog(null, "error modelo Templeado"+e.toString());
+            //obtenemos que fila seleccionó el usuario
+            int filaSeleccionada = vistaTEmpleado.tbNiveles.getSelectedRow();
+
+            //Obtenemos el id de la fila seleccionada
+            String miId = vistaTEmpleado.tbNiveles.getValueAt(filaSeleccionada, 0).toString();
+            //borramos 
+            try {
+                PreparedStatement deleteUser = CConexion.getConexion().prepareStatement("delete from tbTiposEmpleados where idTipoEmpleado = '" + miId + "'");
+                deleteUser.executeUpdate();
+                JOptionPane.showMessageDialog(null, "El tipo de empleado se elimino correctamente");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "El tipo de empleado esta en uso, porfavor elimine o modifique los empleados para proseguir");
+            }
+        } catch (Exception ae) {
+            JOptionPane.showMessageDialog(null, "Seleccione un Tipo de empleado a eliminar");
         }
+        
     }
     
-    public void actualizar(VNEmpleados vistaTEmpleados){
+    public void actualizar(VEmpleados_Tipos vistaTEmpleados){
         try {
             //obtenemos que fila seleccionó el usuario
         int filaSeleccionada = vistaTEmpleados.tbNiveles.getSelectedRow();

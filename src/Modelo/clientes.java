@@ -194,10 +194,10 @@ public class clientes {
             UpCliente.setString(6, miId);
             
             UpCliente.executeUpdate();
-            JOptionPane.showMessageDialog(null, "El cliente  se actualizo correctamente");
+            JOptionPane.showMessageDialog(null, "El cliente  se modifico correctamente");
             
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "error en el modelo del cliente ACT"+ e.toString());   
+            JOptionPane.showMessageDialog(null, "Seleccione un dato a modificar");   
         }
     }
 }

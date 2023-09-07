@@ -1035,7 +1035,7 @@ public class VCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtBarrasMouseClicked
 
     private void btnProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseClicked
-        Producto producto = new Producto();
+        VProducto producto = new VProducto();
         producto.NIT();
         this.dispose();
     }//GEN-LAST:event_btnProductoMouseClicked

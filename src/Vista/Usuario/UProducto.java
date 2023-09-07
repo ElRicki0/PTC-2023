@@ -24,7 +24,7 @@ public class UProducto extends javax.swing.JFrame {
     
      
         productos ModeloProductos= new productos();
-        Producto_Marca Pmarca= new Producto_Marca();
+        VProducto_Marca Pmarca= new VProducto_Marca();
         
         
     
@@ -580,7 +580,7 @@ public class UProducto extends javax.swing.JFrame {
             
     public void INIT(){
         UProducto vista= new UProducto();
-        Producto vistaProducto=new Producto();
+        VProducto vistaProducto=new VProducto();
         ModeloProductos.MostrarProductosU(vista);
         ctrlProducto ctrl = new ctrlProducto(ModeloProductos, vistaProducto, vista);
         vista.setVisible(true);

@@ -2,7 +2,7 @@
 package Controlador;
 
 import Modelo.NivelesUsuarios;
-import Vista.VNEmpleados;
+import Vista.VEmpleados_Tipos;
 import Vista.VNUsuarios;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

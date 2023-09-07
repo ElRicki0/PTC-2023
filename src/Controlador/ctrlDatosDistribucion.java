@@ -1,7 +1,7 @@
 package Controlador;
 
 import Modelo.DatosDistribucion;
-import Vista.Producto;
+import Vista.VProducto;
 import Vista.VDatosDis;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

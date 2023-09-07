@@ -12,12 +12,12 @@ import desplazable.*;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
 
-public class VUsuarios extends javax.swing.JFrame {
+public class VEmpleados_Usuarios extends javax.swing.JFrame {
         
     EmpleadosM modeloEmpleados= new EmpleadosM();
     usuarios modeloUsuario =new usuarios();
         Desface desplace;
-    public VUsuarios() {        
+    public VEmpleados_Usuarios() {        
         initComponents();
         rsscalelabel.RSScaleLabel.setScaleLabel(txtLogo, "src/Vista/Iconos/logo.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(Casaicon, "src/Vista/Iconos/hogar.png");
@@ -101,9 +101,6 @@ public class VUsuarios extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jcbUsuario = new javax.swing.JComboBox<>();
-        jLabel11 = new javax.swing.JLabel();
-        panelCurvas3 = new Vista.PanelCurvas();
-        txtContra = new javax.swing.JTextField();
         agregar = new Vista.PanelCurvas();
         btnAgregar = new javax.swing.JButton();
         eliminar = new Vista.PanelCurvas();
@@ -649,7 +646,7 @@ public class VUsuarios extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("<html>Nombre Empleado:</html>");
-        panelCurvas1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 140, 60));
+        panelCurvas1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 140, 60));
 
         panelCurvas2.setBackground(new java.awt.Color(246, 234, 204));
         panelCurvas2.setRoundBottomLeft(25);
@@ -699,7 +696,7 @@ public class VUsuarios extends javax.swing.JFrame {
                 jcbEmpleadoActionPerformed(evt);
             }
         });
-        panelCurvas1.add(jcbEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 240, 50));
+        panelCurvas1.add(jcbEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 240, 50));
 
         jLabel10.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(51, 51, 51));
@@ -709,54 +706,11 @@ public class VUsuarios extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("<html>Nivel Usuario:</html>");
-        panelCurvas1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 140, 60));
+        panelCurvas1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 140, 60));
 
-        panelCurvas1.add(jcbUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 390, 240, 50));
+        panelCurvas1.add(jcbUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 240, 50));
 
-        jLabel11.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel11.setText("Contrasenia:");
-        panelCurvas1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 140, 60));
-
-        panelCurvas3.setBackground(new java.awt.Color(246, 234, 204));
-        panelCurvas3.setRoundBottomLeft(25);
-        panelCurvas3.setRoundBottomRight(25);
-        panelCurvas3.setRoundTopLeft(25);
-        panelCurvas3.setRoundTopRight(25);
-
-        txtContra.setBackground(new java.awt.Color(246, 234, 204));
-        txtContra.setForeground(new java.awt.Color(51, 51, 51));
-        txtContra.setBorder(null);
-        txtContra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtContraActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelCurvas3Layout = new javax.swing.GroupLayout(panelCurvas3);
-        panelCurvas3.setLayout(panelCurvas3Layout);
-        panelCurvas3Layout.setHorizontalGroup(
-            panelCurvas3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 240, Short.MAX_VALUE)
-            .addGroup(panelCurvas3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCurvas3Layout.createSequentialGroup()
-                    .addContainerGap(16, Short.MAX_VALUE)
-                    .addComponent(txtContra, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(5, 5, 5)))
-        );
-        panelCurvas3Layout.setVerticalGroup(
-            panelCurvas3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
-            .addGroup(panelCurvas3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelCurvas3Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(txtContra, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                    .addContainerGap()))
-        );
-
-        panelCurvas1.add(panelCurvas3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 240, 50));
-
-        jPanel1.add(panelCurvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 200, 410, 470));
+        jPanel1.add(panelCurvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 200, 410, 330));
 
         agregar.setBackground(new java.awt.Color(172, 147, 110));
         agregar.setRoundBottomLeft(25);
@@ -870,19 +824,11 @@ public class VUsuarios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tbEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbEmpleadosMouseClicked
-//        int filaSeleccionada = tbEmpleados.getSelectedRow();
-//
-//        String nombre = tbEmpleados.getValueAt(filaSeleccionada, 1).toString();
-//        String fecha = tbEmpleados.getValueAt(filaSeleccionada, 2).toString();
-//        String direccion   = tbEmpleados.getValueAt(filaSeleccionada, 3).toString();
-//        String telefono = tbEmpleados.getValueAt(filaSeleccionada, 4).toString();
-//        String correo = tbEmpleados.getValueAt(filaSeleccionada, 5).toString();
-//
-//        txtNombre_emp.setText(nombre);
-//        txtFN_emp.setText(fecha);
-//        txtDireccion_emp.setText(direccion);
-//        txtTelefono_emp.setText(telefono);
-//        txtCorreo_emp.setText(correo);
+        int filaSeleccionada = tbEmpleados.getSelectedRow();
+
+        String nombre = tbEmpleados.getValueAt(filaSeleccionada, 1).toString();
+
+        txtNombre_USR.setText(nombre);
     }//GEN-LAST:event_tbEmpleadosMouseClicked
 
     private void txtNombre_USRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombre_USRActionPerformed
@@ -925,11 +871,13 @@ public class VUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEmpleadosMouseExited
 
     private void txtSub1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtSub1MouseClicked
-        // TODO add your handling code here:
+        VEmpleados_Tipos tipos = new VEmpleados_Tipos();
+        tipos.INIT();
+        this.dispose();
     }//GEN-LAST:event_txtSub1MouseClicked
 
     private void btnUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMouseClicked
-        VNEmpleados tipos = new VNEmpleados();
+        VEmpleados_Tipos tipos = new VEmpleados_Tipos();
         tipos.INIT();
         this.dispose();
     }//GEN-LAST:event_btnUsuariosMouseClicked
@@ -977,7 +925,7 @@ public class VUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_txtBarrasMouseClicked
 
     private void btnProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseClicked
-        Producto producto = new Producto();
+        VProducto producto = new VProducto();
         producto.NIT();
         this.dispose();
     }//GEN-LAST:event_btnProductoMouseClicked
@@ -1072,16 +1020,12 @@ public class VUsuarios extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVehiculosMouseExited
 
-    private void txtContraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtContraActionPerformed
-
     /**
      * @param args the command line arguments
      */
     
     public void INIT(){
-        VUsuarios vistaUsuarios = new VUsuarios();
+        VEmpleados_Usuarios vistaUsuarios = new VEmpleados_Usuarios();
         modeloUsuario.mostrarUsuarios(vistaUsuarios);
         ctrlEncriptacion encript = new ctrlEncriptacion();
         ctrllUsuario control = new ctrllUsuario(vistaUsuarios, modeloUsuario, encript);
@@ -1101,14 +1045,16 @@ public class VUsuarios extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VEmpleados_Usuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VEmpleados_Usuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VEmpleados_Usuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VEmpleados_Usuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -1160,7 +1106,6 @@ public class VUsuarios extends javax.swing.JFrame {
     private javax.swing.JLabel icoCarro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
@@ -1172,7 +1117,6 @@ public class VUsuarios extends javax.swing.JFrame {
     private Vista.PanelCurvas modificar;
     private Vista.PanelCurvas panelCurvas1;
     private Vista.PanelCurvas panelCurvas2;
-    private Vista.PanelCurvas panelCurvas3;
     public javax.swing.JTable tbEmpleados;
     private javax.swing.JLabel txtBarras;
     private javax.swing.JLabel txtBitacora;
@@ -1180,7 +1124,6 @@ public class VUsuarios extends javax.swing.JFrame {
     private javax.swing.JLabel txtCasa;
     private javax.swing.JLabel txtCliente;
     private javax.swing.JLabel txtCliente2;
-    public javax.swing.JTextField txtContra;
     private javax.swing.JLabel txtEmpleado;
     private javax.swing.JLabel txtLogo;
     public javax.swing.JTextField txtNombre_USR;

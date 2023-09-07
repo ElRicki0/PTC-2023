@@ -110,28 +110,33 @@ public class Tiendas1 {
     
     public void actualizar(VTiendas vista)
     {
-        
-        int filaSeleccionada = vista.tbTienda.getSelectedRow();      
-
-        //Obtenemos el id de la fila seleccionada
-        String miId = vista.tbTienda.getValueAt(filaSeleccionada, 0).toString();
-        String nuevoValorIngresadoNombre = vista.txtNombre_CL.getText();
-        String nuevoValorIngresadDireccion = vista.txtDireccion.getText();
-        String nuevoValorIngresadoReferencia = vista.txtReferencia.getText();
-        String nuevoValorIngresadoCorreo = vista.txtCorreo_CL.getText();
         try {
+            int filaSeleccionada = vista.tbTienda.getSelectedRow();      
 
-            PreparedStatement updateUser = CConexion.getConexion().prepareStatement("update tbTiendas set Tien_Nombre = ?, Tien_Direccion=?, Tien_ReferenciasLDireccion = ?, Tien_Correo=? where idTienda = ?");
-            updateUser.setString(1, nuevoValorIngresadoNombre);
-            updateUser.setString(2, nuevoValorIngresadDireccion);
-            updateUser.setString(3, nuevoValorIngresadoReferencia);
-            updateUser.setString(4, nuevoValorIngresadoCorreo);
-            updateUser.setString(5, miId);
-            JOptionPane.showMessageDialog(null, "La tienda se actualizo correctamente");                           
-            updateUser.executeUpdate();
-            } catch (Exception e) {
-            System.out.println(e.toString());
-            JOptionPane.showMessageDialog(null, "Error en actualizar tienda"); 
-                 }
+            //Obtenemos el id de la fila seleccionada
+            String miId = vista.tbTienda.getValueAt(filaSeleccionada, 0).toString();
+            String nuevoValorIngresadoNombre = vista.txtNombre_CL.getText();
+            String nuevoValorIngresadDireccion = vista.txtDireccion.getText();
+            String nuevoValorIngresadoReferencia = vista.txtReferencia.getText();
+            String nuevoValorIngresadoCorreo = vista.txtCorreo_CL.getText();
+            try {
+
+                PreparedStatement updateUser = CConexion.getConexion().prepareStatement("update tbTiendas set Tien_Nombre = ?, Tien_Direccion=?, Tien_ReferenciasLDireccion = ?, Tien_Correo=? where idTienda = ?");
+                updateUser.setString(1, nuevoValorIngresadoNombre);
+                updateUser.setString(2, nuevoValorIngresadDireccion);
+                updateUser.setString(3, nuevoValorIngresadoReferencia);
+                updateUser.setString(4, nuevoValorIngresadoCorreo);
+                updateUser.setString(5, miId);
+                JOptionPane.showMessageDialog(null, "La tienda se modifico correctamente");                           
+                updateUser.executeUpdate();
+                } catch (Exception e) {
+                System.out.println(e.toString());
+                JOptionPane.showMessageDialog(null, "Error en modificar tienda");
+                }
+        } catch (Exception ae) {
+                JOptionPane.showMessageDialog(null, "Seleccione un dato a modificar");                           
+        }
+   
+
     }
 }

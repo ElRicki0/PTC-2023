@@ -1,8 +1,8 @@
 package Controlador;
 
 import Modelo.MarcaProductos;
-import Vista.Producto;
-import Vista.Producto_Marca;
+import Vista.VProducto;
+import Vista.VProducto_Marca;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -10,9 +10,9 @@ import javax.swing.JOptionPane;
 public class ctrlMarca implements ActionListener{
     
     private MarcaProductos modeloMarca;
-    private Producto_Marca        vistaMarca;
+    private VProducto_Marca        vistaMarca;
     
-    public ctrlMarca(MarcaProductos modeloMarca, Producto_Marca vistaMarca){
+    public ctrlMarca(MarcaProductos modeloMarca, VProducto_Marca vistaMarca){
         this.modeloMarca= modeloMarca;
         this.vistaMarca=vistaMarca;
         this.vistaMarca.btnAgregarMC.addActionListener(this);

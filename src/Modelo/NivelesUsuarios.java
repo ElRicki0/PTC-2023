@@ -2,7 +2,7 @@
 package Modelo;
 
 import Vista.VEmpleados;
-import Vista.VNEmpleados;
+import Vista.VEmpleados_Tipos;
 import Vista.VNUsuarios;
 import java.beans.Statement;
 import java.sql.PreparedStatement;
