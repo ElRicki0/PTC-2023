@@ -1,18 +1,28 @@
 package Vista.Usuario;
 
+
+
 import Vista.*;
+import Vista.*;
+import Controlador.ctrlDatosDistribucion;
+import Controlador.ctrlEnvios;
+import Controlador.ctrlPaqueteria;
+import Modelo.*;
 import javax.swing.ImageIcon;
 import desplazable.Desface;
 import java.awt.Color;
-import Modelo.*;
-import Controlador.*;
+import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
 
-public class UTiendas extends javax.swing.JFrame {
+public class UEnvios extends javax.swing.JFrame {
 
+        
+    
+    BitacoraDistribuciones modelo = new BitacoraDistribuciones();
     Desface desplace;
-    DatosTiendas modelo = new DatosTiendas();
-
-    public UTiendas() {
+    
+    public UEnvios() {
+        
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/Vista/Iconos/CASA.png")).getImage());
 
@@ -24,12 +34,11 @@ public class UTiendas extends javax.swing.JFrame {
         rsscalelabel.RSScaleLabel.setScaleLabel(txtBarras, "src/Vista/Iconos/lista.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(icoCarro, "src/Vista/Iconos/vehiculo.png");
         
+        
         desplace = new Desface();
         
-//        TextPrompt telefono         = new TextPrompt("Referencia de ubicacion...", txtReferencia);
-//        TextPrompt correo       = new TextPrompt("Correo Electronico...", txtCorreo_CL);        
-        
         this.setLocationRelativeTo(null);
+        transpareciaBoton();
     }
 
     /**
@@ -44,7 +53,7 @@ public class UTiendas extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbTienda = new javax.swing.JTable();
+        tbEnvios = new javax.swing.JTable();
         MenuPlegable = new javax.swing.JPanel();
         btnCasa = new Vista.PanelCurvas();
         Casaicon = new javax.swing.JLabel();
@@ -74,13 +83,10 @@ public class UTiendas extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel2.setText("Datos tiendas");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 320, 41));
+        jLabel2.setText("Envios Productos");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 390, 70));
 
-        jScrollPane1.setBackground(new java.awt.Color(172, 147, 110));
-
-        tbTienda.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
-        tbTienda.setModel(new javax.swing.table.DefaultTableModel(
+        tbEnvios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -91,16 +97,14 @@ public class UTiendas extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tbTienda.setFocusable(false);
-        tbTienda.setRowHeight(30);
-        tbTienda.addMouseListener(new java.awt.event.MouseAdapter() {
+        tbEnvios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbTiendaMouseClicked(evt);
+                tbEnviosMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tbTienda);
+        jScrollPane1.setViewportView(tbEnvios);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 970, 540));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 960, -1));
 
         MenuPlegable.setBackground(new java.awt.Color(64, 81, 115));
         MenuPlegable.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -337,25 +341,19 @@ public class UTiendas extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1080, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 779, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tbTiendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbTiendaMouseClicked
-        int filaSeleccionada = tbTienda.getSelectedRow();
-
-        String telefono = tbTienda.getValueAt(filaSeleccionada, 1).toString();
-        String encargado = tbTienda.getValueAt(filaSeleccionada, 2).toString();
-
-//        txtReferencia.setText(telefono);
-//        txtCorreo_CL.setText(correo);
-    }//GEN-LAST:event_tbTiendaMouseClicked
+    private void tbEnviosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbEnviosMouseClicked
+         
+    }//GEN-LAST:event_tbEnviosMouseClicked
 
     private void btnCasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseClicked
         UMain vista =new UMain();
@@ -408,9 +406,7 @@ public class UTiendas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClienteMouseExited
 
     private void btnRutaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseClicked
-        UEnvios rutas = new UEnvios();
-        rutas.INIT();
-        this.dispose();
+        
     }//GEN-LAST:event_btnRutaMouseClicked
 
     private void btnRutaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseEntered
@@ -422,7 +418,9 @@ public class UTiendas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRutaMouseExited
 
     private void btnVehiculosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculosMouseClicked
-        
+        UVehiculos vista = new UVehiculos();
+        vista.INIT();
+        this.dispose();
     }//GEN-LAST:event_btnVehiculosMouseClicked
 
     private void btnVehiculosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculosMouseEntered
@@ -433,18 +431,14 @@ public class UTiendas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVehiculosMouseExited
 
+    
     public void INIT(){
-        UTiendas vistaU =new UTiendas();
-        VDatosTiendas vista= new VDatosTiendas();
-        vistaU.setVisible(true);
-        modelo.MostrarTablaU(vistaU);
-        ctrlDatosTiendas control=new ctrlDatosTiendas(vista, modelo, vistaU);
+        UEnvios vista = new UEnvios();
+        modelo.UMostrarTabla(vista);
+        vista.setVisible(true);
     }
     
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
+        public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -458,22 +452,14 @@ public class UTiendas extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UTiendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UEnvios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UTiendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UEnvios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UTiendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UEnvios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UTiendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UEnvios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -486,9 +472,11 @@ public class UTiendas extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-//                new Cliente().setVisible(true);
             }
         });
+    }
+        
+    public void transpareciaBoton(){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -506,7 +494,7 @@ public class UTiendas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTable tbTienda;
+    public javax.swing.JTable tbEnvios;
     private javax.swing.JLabel txtBarras;
     private javax.swing.JLabel txtCasa;
     private javax.swing.JLabel txtCliente;

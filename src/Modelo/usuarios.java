@@ -325,7 +325,7 @@ public class usuarios {
             JOptionPane.showMessageDialog(null, "Llene todos los campos");
             AUsuario.execute();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "error " + e);
+            JOptionPane.showMessageDialog(null, "El empleado esta en uso, seleccione otro empleado o cree uno nuevo");
         }
     }
 
@@ -379,7 +379,7 @@ public class usuarios {
             JOptionPane.showMessageDialog(null, "Usuario Modificado con exito");
             ACUsuario.execute();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Seleccione un valor a modificar " + e.toString());
+            JOptionPane.showMessageDialog(null, "Seleccione un valor a modificar " );
         }
     }
 

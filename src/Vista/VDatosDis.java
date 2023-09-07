@@ -974,7 +974,8 @@ public class VDatosDis extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUsuariosMouseEntered
 
     private void btnUsuariosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMouseExited
-        btnUsuarios.setBackground(new Color(64,81,152));
+        btnUsuarios.setBackground(new Color(172,147,110));
+        txtSub1.setForeground(Color.black);
     }//GEN-LAST:event_btnUsuariosMouseExited
 
     private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
