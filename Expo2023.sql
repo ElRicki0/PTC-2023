@@ -41,10 +41,9 @@ idTipoEmpleado		int
 foreign key references [dbo].[tbTiposEmpleados] ([idTipoEmpleado])
 );
 go
+/*
+insert into tbEmpleados(emp_nombre,emp_fecha, emp_direccion, emp_telefono, emp_correo, idGenero, idTipoEmpleado) values('nombre1','2/2/2','calle1','tel1','correo1',1,1)
 
-/*
-insert into tbEmpleados(emp_nombre,emp_fecha, emp_direccion, emp_telefono, emp_correo, idGenero, idTipoEmpleado) values('nombre1','2/2/2','calle1','tel1','correo1',1,1)*/
-/*
 insert into tbEmpleados(emp_nombre, emp_direccion,		emp_telefono, emp_correo,			idGenero, idTipoEmpleado) 
 values                 ('Ricardo Melara',  'AV. Los Proceres', '7229-1462', 'Ricdo06melara@gmail.com', 1, 1);
 go*/
@@ -94,7 +93,7 @@ select*from tbBodegas
 
 create table tbUsuarios(
 idUsuario			int identity (1,1) primary key,
-usr_nombre			varchar(50) not null,
+usr_nombre			varchar(50) not null unique,
 usr_contrasenia	varchar(250) not null,
 usr_preguntasSeguridad	varchar(50),
 idEmpleado			int unique
