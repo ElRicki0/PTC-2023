@@ -20,7 +20,8 @@ import javax.swing.JOptionPane;
  */
 public class VEmpleados_Tipos extends javax.swing.JFrame {
         
-        Desface desplace;
+        Desface desplace; 
+        
     public VEmpleados_Tipos() {        
         initComponents();
         rsscalelabel.RSScaleLabel.setScaleLabel(txtLogo, "src/Vista/Iconos/logo.png");
