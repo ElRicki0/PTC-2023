@@ -22,10 +22,10 @@ public class PrimerEmpleado extends javax.swing.JFrame {
     public PrimerEmpleado() {
         initComponents();
         TextPrompt texto1 = new TextPrompt("Nombre", txtNombre);
-        TextPrompt texto3 = new TextPrompt("Correo Electronico", txtCorreo);
+        TextPrompt texto3 = new TextPrompt("Ejemplo@gmail.com", txtCorreo);
         TextPrompt texto4 = new TextPrompt("Dirección", txtDireccion);
         TextPrompt texto2 = new TextPrompt("Numero de Telefono", txtTelefono);
-        TextPrompt texto5 = new TextPrompt("Año/Mes/Dia", txtFecha);
+        TextPrompt texto5 = new TextPrompt("1990/10/15", txtFecha);
         
         this.setLocationRelativeTo(null);
         transparenciaBotin();

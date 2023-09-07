@@ -31,8 +31,8 @@ public class VDatosTiendas extends javax.swing.JFrame {
         modelo.llenarcmbCliente(jcbCliente);
         modelo.llenarcmbTienda(jcbTienda);
         
-        TextPrompt nombre       = new TextPrompt("Telefono...", txtTelefono);        
-        TextPrompt edad     = new TextPrompt("Encargado...", txtEncargado);
+        TextPrompt nombre       = new TextPrompt("Ingresar un telefono", txtTelefono);        
+        TextPrompt edad     = new TextPrompt("Ingresar un encargado", txtEncargado);
 //        TextPrompt telefono         = new TextPrompt("Referencia de ubicacion...", txtReferencia);
 //        TextPrompt correo       = new TextPrompt("Correo Electronico...", txtCorreo_CL);        
         

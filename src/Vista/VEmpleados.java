@@ -42,7 +42,7 @@ public class VEmpleados extends javax.swing.JFrame {
         modeloEmpleados.llenarCBXTipo(jcbTipo);
         
         TextPrompt nombre       = new TextPrompt("Nombre", txtNombre_emp);        
-        TextPrompt fecha     = new TextPrompt("Año/Mes/Dia", txtFN_emp);
+        TextPrompt fecha     = new TextPrompt("1990-10-15", txtFN_emp);
         TextPrompt telefono         = new TextPrompt("Numero de Telefono", txtTelefono_emp);
         TextPrompt correo       = new TextPrompt("Correo Electronico", txtCorreo_emp);      
         TextPrompt direccion     = new TextPrompt("Dirección", txtDireccion_emp); 

@@ -18,6 +18,7 @@ public class PrimerUsuario extends javax.swing.JFrame {
     public PrimerUsuario() {
         initComponents();
         this.setLocationRelativeTo(null);
+                TextPrompt textPrompta2 = new TextPrompt("Ingresas una contraseña", this.txtContrasenia);
         transparenciaBotin();
     }
     

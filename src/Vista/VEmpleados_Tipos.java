@@ -34,8 +34,8 @@ public class VEmpleados_Tipos extends javax.swing.JFrame {
         rsscalelabel.RSScaleLabel.setScaleLabel(txtBarras, "src/Vista/Iconos/lista.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(icoCarro, "src/Vista/Iconos/vehiculo.png");
         
-        TextPrompt nombre       = new TextPrompt("Nombre", txtNombre_TE);        
-        TextPrompt descripcion     = new TextPrompt("Descripción", txtDescripcion_TE);  
+        TextPrompt nombre       = new TextPrompt("Ingresar un nombre", txtNombre_TE);        
+        TextPrompt descripcion     = new TextPrompt("Ingresar una descripcion", txtDescripcion_TE);  
         
         desplace = new Desface();
         this.setLocationRelativeTo(null);

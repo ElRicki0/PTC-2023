@@ -68,7 +68,6 @@ public class VProducto extends javax.swing.JFrame {
         ModeloProductos.RellenarBodegaCBX(jcbBodega1);
         ModeloProductos.llenarBuscador(jcbBuscador);
         ModeloProductos.llenarReporte_Marca(jcbReporte);
-        ModeloProductos.llenarReporte_Producto(jcbReporte_Producto);
 
     }
     
@@ -140,13 +139,12 @@ public class VProducto extends javax.swing.JFrame {
         btnCXBuscar = new javax.swing.JButton();
         jcbBuscador = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
-        jcbReporte_Producto = new javax.swing.JComboBox<>();
         panelCurvas8 = new Vista.PanelCurvas();
         btnReporte_Marca = new javax.swing.JButton();
-        panelCurvas7 = new Vista.PanelCurvas();
-        btnReportes_Producto = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        modificar1 = new Vista.PanelCurvas();
+        btnReporte_General = new javax.swing.JButton();
         jpSubMenu = new javax.swing.JPanel();
         btnSubProductos = new Vista.PanelCurvas();
         txtSub = new javax.swing.JLabel();
@@ -684,6 +682,11 @@ public class VProducto extends javax.swing.JFrame {
         panelCurvas1.add(jcbMarca_pdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 240, 50));
 
         jcbBodega1.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        jcbBodega1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jcbBodega1MouseClicked(evt);
+            }
+        });
         panelCurvas1.add(jcbBodega1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, 240, 50));
 
         jLabel10.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
@@ -726,7 +729,7 @@ public class VProducto extends javax.swing.JFrame {
                 .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jpProductos.add(agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 580, -1, 60));
+        jpProductos.add(agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 580, -1, 60));
 
         eliminar.setBackground(new java.awt.Color(172, 147, 110));
         eliminar.setRoundBottomLeft(25);
@@ -756,7 +759,7 @@ public class VProducto extends javax.swing.JFrame {
                 .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jpProductos.add(eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 580, -1, -1));
+        jpProductos.add(eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 580, -1, -1));
 
         modificar.setBackground(new java.awt.Color(172, 147, 110));
         modificar.setRoundBottomLeft(25);
@@ -781,7 +784,7 @@ public class VProducto extends javax.swing.JFrame {
                 .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jpProductos.add(modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 580, 160, 60));
+        jpProductos.add(modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 580, 160, 60));
 
         jcbReporte.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
         jpProductos.add(jcbReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 60, 190, 40));
@@ -823,10 +826,7 @@ public class VProducto extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(51, 51, 51));
         jLabel8.setText("Reportes:");
-        jpProductos.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 0, 110, 41));
-
-        jcbReporte_Producto.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        jpProductos.add(jcbReporte_Producto, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 10, 190, 40));
+        jpProductos.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 0, 110, 41));
 
         panelCurvas8.setBackground(new java.awt.Color(172, 147, 110));
         panelCurvas8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -848,37 +848,6 @@ public class VProducto extends javax.swing.JFrame {
 
         jpProductos.add(panelCurvas8, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 60, 130, -1));
 
-        panelCurvas7.setBackground(new java.awt.Color(172, 147, 110));
-
-        btnReportes_Producto.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        btnReportes_Producto.setForeground(new java.awt.Color(255, 255, 255));
-        btnReportes_Producto.setText("Producto");
-        btnReportes_Producto.setMaximumSize(new java.awt.Dimension(125, 38));
-        btnReportes_Producto.setPreferredSize(new java.awt.Dimension(125, 38));
-        btnReportes_Producto.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnReportes_ProductoMouseClicked(evt);
-            }
-        });
-        btnReportes_Producto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReportes_ProductoActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelCurvas7Layout = new javax.swing.GroupLayout(panelCurvas7);
-        panelCurvas7.setLayout(panelCurvas7Layout);
-        panelCurvas7Layout.setHorizontalGroup(
-            panelCurvas7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnReportes_Producto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        panelCurvas7Layout.setVerticalGroup(
-            panelCurvas7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnReportes_Producto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
-        );
-
-        jpProductos.add(panelCurvas7, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 10, -1, -1));
-
         jLabel11.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(51, 51, 51));
         jLabel11.setText("Buscador:");
@@ -888,6 +857,39 @@ public class VProducto extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(51, 51, 51));
         jLabel9.setText("Productos");
         jpProductos.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 240, 41));
+
+        modificar1.setBackground(new java.awt.Color(172, 147, 110));
+        modificar1.setRoundBottomLeft(25);
+        modificar1.setRoundBottomRight(25);
+        modificar1.setRoundTopLeft(25);
+        modificar1.setRoundTopRight(25);
+
+        btnReporte_General.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        btnReporte_General.setForeground(new java.awt.Color(255, 255, 255));
+        btnReporte_General.setText("<html>Reporte Genera</html>");
+        btnReporte_General.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnReporte_GeneralMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout modificar1Layout = new javax.swing.GroupLayout(modificar1);
+        modificar1.setLayout(modificar1Layout);
+        modificar1Layout.setHorizontalGroup(
+            modificar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, modificar1Layout.createSequentialGroup()
+                .addContainerGap(17, Short.MAX_VALUE)
+                .addComponent(btnReporte_General, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
+        );
+        modificar1Layout.setVerticalGroup(
+            modificar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, modificar1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnReporte_General, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jpProductos.add(modificar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 580, -1, -1));
 
         jPanel1.add(jpProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 1000, 650));
 
@@ -1223,18 +1225,10 @@ public class VProducto extends javax.swing.JFrame {
         txtSub1.setForeground(Color.BLACK);
     }//GEN-LAST:event_btnSubMarcasMouseExited
 
-    private void btnReportes_ProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportes_ProductoMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnReportes_ProductoMouseClicked
-
-    private void btnReportes_ProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportes_ProductoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnReportes_ProductoActionPerformed
-
     private void btnReporte_MarcaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReporte_MarcaMouseClicked
         try {
             Map<String,Object> parametros = new HashMap<>();
-            parametros.put("Marca", jcbMarca_pdt.getSelectedItem());
+            parametros.put("Marca", jcbReporte.getSelectedItem());
             
             JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("/Vista/ReporteProducto.jasper"));
             JasperPrint jprint = JasperFillManager.fillReport(report, parametros, Modelo.CConexion.getConexion());
@@ -1252,6 +1246,26 @@ public class VProducto extends javax.swing.JFrame {
     private void btnReporte_MarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporte_MarcaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnReporte_MarcaActionPerformed
+
+    private void jcbBodega1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcbBodega1MouseClicked
+        
+    }//GEN-LAST:event_jcbBodega1MouseClicked
+
+    private void btnReporte_GeneralMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReporte_GeneralMouseClicked
+        try {
+            
+            JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("/Vista/General.jasper"));
+            JasperPrint jprint = JasperFillManager.fillReport(report, null, Modelo.CConexion.getConexion());
+
+            JasperViewer view = new JasperViewer(jprint, false);
+            view.setTitle("Nombre Reporte");
+            view.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            view.setVisible(true);
+
+        } catch (Exception ex) {
+            System.out.println(ex.toString());
+        }
+    }//GEN-LAST:event_btnReporte_GeneralMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1283,9 +1297,6 @@ public class VProducto extends javax.swing.JFrame {
         btnReporte_Marca.setOpaque(false);
         btnReporte_Marca.setContentAreaFilled(false);
         btnReporte_Marca.setBorderPainted(false);
-        btnReportes_Producto.setOpaque(false);
-        btnReportes_Producto.setContentAreaFilled(false);
-        btnReportes_Producto.setBorderPainted(false);
     }
     
     public static void main(String args[]) {
@@ -1344,8 +1355,8 @@ public class VProducto extends javax.swing.JFrame {
     public javax.swing.JButton btnEliminar;
     public javax.swing.JButton btnModificar;
     private Vista.PanelCurvas btnProducto;
+    public javax.swing.JButton btnReporte_General;
     public javax.swing.JButton btnReporte_Marca;
-    public javax.swing.JButton btnReportes_Producto;
     private Vista.PanelCurvas btnRuta;
     private Vista.PanelCurvas btnSubMarcas;
     private Vista.PanelCurvas btnSubProductos;
@@ -1368,16 +1379,15 @@ public class VProducto extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> jcbBuscador;
     public javax.swing.JComboBox<String> jcbMarca_pdt;
     public javax.swing.JComboBox<String> jcbReporte;
-    public javax.swing.JComboBox<String> jcbReporte_Producto;
     public javax.swing.JPanel jpProductos;
     private javax.swing.JPanel jpSubMenu;
     private Vista.PanelCurvas modificar;
+    private Vista.PanelCurvas modificar1;
     private Vista.PanelCurvas panelCurvas1;
     private Vista.PanelCurvas panelCurvas2;
     private Vista.PanelCurvas panelCurvas3;
     private Vista.PanelCurvas panelCurvas4;
     private Vista.PanelCurvas panelCurvas5;
-    private Vista.PanelCurvas panelCurvas7;
     private Vista.PanelCurvas panelCurvas8;
     public javax.swing.JTable tbProductos;
     private javax.swing.JLabel txtBarras;
