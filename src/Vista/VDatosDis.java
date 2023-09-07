@@ -1054,7 +1054,9 @@ public class VDatosDis extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUsuarios1MouseEntered
 
     private void btnUsuarios1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuarios1MouseClicked
-        
+        VEnvios vista = new VEnvios();
+        vista.INIT();
+        this.dispose();
     }//GEN-LAST:event_btnUsuarios1MouseClicked
 
     private void btnCasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseClicked

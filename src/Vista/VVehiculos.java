@@ -717,6 +717,9 @@ public class VVehiculos extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbVehiculosMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                tbVehiculosMouseEntered(evt);
+            }
         });
         jScrollPane1.setViewportView(tbVehiculos);
 
@@ -850,13 +853,11 @@ public class VVehiculos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnModificarMPMouseClicked
 
     private void tbVehiculosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbVehiculosMouseClicked
-//         int filaSeleccionada = tbMantenimiento.getSelectedRow();
-//
-//        String mecanico = tbMantenimiento.getValueAt(filaSeleccionada, 1).toString();
-//        String Telefono = tbMantenimiento.getValueAt(filaSeleccionada, 2).toString();
-//        
-//        txtmecanico.setText(mecanico);
-//        txtTelefono.setText(Telefono);
+         int filaSeleccionada = tbVehiculos.getSelectedRow();
+
+        String Matricula = tbVehiculos.getValueAt(filaSeleccionada, 1).toString();
+        
+        txtMatricula.setText(Matricula);
     }//GEN-LAST:event_tbVehiculosMouseClicked
 
     private void btnCasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseClicked
@@ -1032,6 +1033,10 @@ public class VVehiculos extends javax.swing.JFrame {
     private void btnVehiculoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculoMouseExited
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVehiculoMouseExited
+
+    private void tbVehiculosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbVehiculosMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbVehiculosMouseEntered
 
     
     public void INIT(){
