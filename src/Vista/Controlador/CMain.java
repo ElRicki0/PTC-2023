@@ -513,7 +513,7 @@ public class CMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClienteMouseClicked
 
     private void btnBitacoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitacoraMouseClicked
-        Bitacora bitacora = new Bitacora();
+        VBitacora bitacora = new VBitacora();
         bitacora.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnBitacoraMouseClicked
@@ -531,7 +531,7 @@ public class CMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRutaMouseClicked
 
     private void btnBodegaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseClicked
-        Bodega bodegas = new Bodega();
+        VBodega bodegas = new VBodega();
         bodegas.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnBodegaMouseClicked

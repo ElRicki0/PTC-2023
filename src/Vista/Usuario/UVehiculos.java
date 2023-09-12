@@ -49,6 +49,9 @@ public class UVehiculos extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbVehiculos = new javax.swing.JTable();
         MenuPlegable = new javax.swing.JPanel();
         btnCasa = new Vista.PanelCurvas();
         Casaicon = new javax.swing.JLabel();
@@ -67,9 +70,6 @@ public class UVehiculos extends javax.swing.JFrame {
         btnVehiculos = new Vista.PanelCurvas();
         icoCarro = new javax.swing.JLabel();
         txtCliente2 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tbVehiculos = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1080, 760));
@@ -78,6 +78,31 @@ public class UVehiculos extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(246, 234, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel2.setText("Vehiculos");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, 360, 70));
+
+        tbVehiculos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tbVehiculos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbVehiculosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tbVehiculos);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 970, -1));
 
         MenuPlegable.setBackground(new java.awt.Color(64, 81, 115));
         MenuPlegable.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -310,31 +335,6 @@ public class UVehiculos extends javax.swing.JFrame {
 
         jPanel1.add(MenuPlegable, new org.netbeans.lib.awtextra.AbsoluteConstraints(-150, 0, 230, 760));
 
-        jLabel2.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel2.setText("Vehiculos");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, 360, 70));
-
-        tbVehiculos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        tbVehiculos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbVehiculosMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tbVehiculos);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 970, -1));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -360,7 +360,9 @@ public class UVehiculos extends javax.swing.JFrame {
     }//GEN-LAST:event_tbVehiculosMouseClicked
 
     private void btnCasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseClicked
-
+        UMain vista = new UMain();
+        vista.INIT();
+        this.dispose();
     }//GEN-LAST:event_btnCasaMouseClicked
 
     private void btnCasaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseEntered
@@ -408,7 +410,7 @@ public class UVehiculos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClienteMouseExited
 
     private void btnRutaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseClicked
-        VDatosDis rutas = new VDatosDis();
+        UEnvios rutas = new UEnvios();
         rutas.INIT();
         this.dispose();
     }//GEN-LAST:event_btnRutaMouseClicked

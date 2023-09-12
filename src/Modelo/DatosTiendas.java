@@ -6,8 +6,8 @@
 package Modelo;
 
 import Vista.Usuario.UTiendas;
-import Vista.VDatosTiendas;
-import Vista.VTiendas;
+import Vista.VCliente_DatosTiendas;
+import Vista.VCliente_Tiendas;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -170,7 +170,7 @@ public class DatosTiendas {
         }
     }
     
-    public void MostrarTabla(VDatosTiendas vista){
+    public void MostrarTabla(VCliente_DatosTiendas vista){
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(new Object[]{"ID","Telefono", "Encargado", "Cliente", "Tienda","Direccion"});
         try {
@@ -227,7 +227,7 @@ public class DatosTiendas {
     }
     }
 
-     public void eliminar(VDatosTiendas vista){
+     public void eliminar(VCliente_DatosTiendas vista){
         try {
             //obtenemos que fila seleccionó el usuario
             int filaSeleccionada = vista.tbTienda.getSelectedRow();
@@ -247,7 +247,7 @@ public class DatosTiendas {
         }        
     }
      
-     public boolean modificar(VDatosTiendas vista, DatosTiendas modelo, JComboBox comboCliente, JComboBox comboTienda){
+     public boolean modificar(VCliente_DatosTiendas vista, DatosTiendas modelo, JComboBox comboCliente, JComboBox comboTienda){
          String SQL = "update tbDatosTiendas set DT_NumeroTelefono = ?, DT_PersonaDestinatario=?, idCliente = ?, idTienda=? where idDatosTienda = ?";
     try {
         PreparedStatement MDTiendas = CConexion.getConexion().prepareStatement(SQL);

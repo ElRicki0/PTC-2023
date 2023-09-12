@@ -1,6 +1,6 @@
 package Controlador;
 
-import Vista.VDatosTiendas;
+import Vista.VCliente_DatosTiendas;
 import Modelo.*;
 import Vista.Usuario.UTiendas;
 import java.awt.event.ActionEvent;
@@ -9,11 +9,11 @@ import javax.swing.JOptionPane;
 
 public class ctrlDatosTiendas implements ActionListener{
 
-    private VDatosTiendas vistaDatos;
+    private VCliente_DatosTiendas vistaDatos;
     private UTiendas vistaDatosU;
     private DatosTiendas modeloDatos;
     
-    public ctrlDatosTiendas(VDatosTiendas vistaDatos, DatosTiendas modeloDatos, UTiendas vistaDatosU){
+    public ctrlDatosTiendas(VCliente_DatosTiendas vistaDatos, DatosTiendas modeloDatos, UTiendas vistaDatosU){
         this.modeloDatos=modeloDatos;
         this.vistaDatos=vistaDatos;
         this.vistaDatosU=vistaDatosU;

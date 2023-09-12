@@ -5,7 +5,7 @@
  */
 package Modelo;
 
-import Vista.VMantenimiento;
+import Vista.VVehiculo_Mantenimiento;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -101,7 +101,7 @@ public class Mantenimiento {
     }
 }
     
-    public void Mostrartabla(VMantenimiento vista){
+    public void Mostrartabla(VVehiculo_Mantenimiento vista){
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(new Object[]{"ID", "Mecanico","Numero mecanico","Taller"});
         try {
@@ -144,7 +144,7 @@ public class Mantenimiento {
     }
     }
     
-    public void Eliminar(VMantenimiento vista){
+    public void Eliminar(VVehiculo_Mantenimiento vista){
         try {
             //obtenemos que fila seleccionó el usuario
             int filaSeleccionada = vista.tbMantenimiento.getSelectedRow();
@@ -166,7 +166,7 @@ public class Mantenimiento {
         
     }
     
-    public void Editar(Mantenimiento modelo, JComboBox Taller, VMantenimiento vista){
+    public void Editar(Mantenimiento modelo, JComboBox Taller, VVehiculo_Mantenimiento vista){
         String SQL = "update tbMantenimiento set Mecanico = ?, TFTaller = ?, idTaller = ? where idMantenimiento = ?";
     try {
         PreparedStatement EMantenimiento = CConexion.getConexion().prepareStatement(SQL);

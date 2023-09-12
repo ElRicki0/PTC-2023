@@ -5,9 +5,14 @@
  */
 package Vista;
 
+import Modelo.CConexion;
+import Modelo.productos;
 import javax.swing.ImageIcon;
 import desplazable.Desface;
 import java.awt.Color;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -531,9 +536,29 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCasaMouseClicked
 
     private void btnProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseClicked
-        VProducto producto = new VProducto();
-        producto.NIT();
-        this.dispose();
+        int resultado = 0;
+        String sql = "select idBodega from tbBodegas";
+        try {
+            Statement sta = CConexion.getConexion().createStatement();
+            ResultSet rs = sta.executeQuery(sql);
+            if (rs.next()) {
+                resultado = 1;
+                if (resultado == 1) {
+                    VProducto vista = new VProducto();
+                    vista.NIT();
+                    this.dispose();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Agrege una bodega para continuar");
+            }
+
+        } catch (Exception oe) {
+            JOptionPane.showMessageDialog(null, "error boton producto//bodega" + oe.toString());
+        }
+
+//        VProducto producto = new VProducto();
+//        producto.NIT();
+//        this.dispose();
     }//GEN-LAST:event_btnProductoMouseClicked
 
     private void btnClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseClicked
@@ -543,7 +568,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClienteMouseClicked
 
     private void btnBitacoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitacoraMouseClicked
-        Bitacora bitacora = new Bitacora();
+        VBitacora bitacora = new VBitacora();
         bitacora.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnBitacoraMouseClicked
@@ -555,19 +580,35 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTrabajadorMouseClicked
 
     private void btnRutaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseClicked
-        VDatosDis rutas = new VDatosDis();
-        rutas.INIT();
-        this.dispose();
+        int resultado = 0;
+        String sql = "select idProducto from tbProductos";
+        try {
+            Statement sta = CConexion.getConexion().createStatement();
+            ResultSet rs = sta.executeQuery(sql);
+            if (rs.next()) {
+                resultado = 1;
+                if (resultado == 1) {
+                    VDatosDis vista = new VDatosDis();
+                    vista.INIT();
+                    this.dispose();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Agrege un producto para continuar");
+            }
+
+        } catch (Exception oe) {
+            JOptionPane.showMessageDialog(null, "error 1" + oe.toString());
+        }
     }//GEN-LAST:event_btnRutaMouseClicked
 
     private void btnBodegaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseClicked
-        Bodega bodegas = new Bodega();
+        VBodega bodegas = new VBodega();
         bodegas.INIT();
         this.dispose();
     }//GEN-LAST:event_btnBodegaMouseClicked
 
     private void btnVehiculosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculosMouseClicked
-        VTaller vista =new VTaller();
+        VVehiculo_Taller vista =new VVehiculo_Taller();
         vista.INIT();
         this.dispose();
     }//GEN-LAST:event_btnVehiculosMouseClicked

@@ -48,7 +48,7 @@ public class Bodegas {
         this.bdg_correo = bdg_correo;
     }
     
-    public void MostrarBodega(Bodega vista){
+    public void MostrarBodega(VBodega vista){
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(new Object[]{"ID", "nombre", "Direccion", "Correo"});
         try {
@@ -73,13 +73,13 @@ public class Bodegas {
             ABodega.setString(2, modeloBodegas.getBdg_ubicacion());
             ABodega.setString(3, modeloBodegas.getBdg_correo());
             ABodega.execute();
-            JOptionPane.showMessageDialog(null, "Bodega agregadaexi itosamente.");
+            JOptionPane.showMessageDialog(null, "Bodega agregada exitosamente.");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al agregar bodega "+e.toString());
         }
     }
         
-    public void EliminarBodega (Bodega vistaBodega){
+    public void EliminarBodega (VBodega vistaBodega){
         try {
             int filaSeleccionada = vistaBodega.tbBodegas.getSelectedRow();
         
@@ -100,7 +100,7 @@ public class Bodegas {
         
     }
     
-    public boolean ActualizarBodega(Bodega vistaBodega){
+    public boolean ActualizarBodega(VBodega vistaBodega){
         try {
             int filaSeleccionada = vistaBodega.tbBodegas.getSelectedRow();      
             String miId = vistaBodega.tbBodegas.getValueAt(filaSeleccionada, 0).toString();

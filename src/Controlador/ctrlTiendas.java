@@ -1,6 +1,6 @@
 package Controlador;
 
-import Vista.VTiendas;
+import Vista.VCliente_Tiendas;
 import Modelo.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,10 +8,10 @@ import javax.swing.JOptionPane;
 
 public class ctrlTiendas implements ActionListener {
 
-    private VTiendas vistaTiendas;
+    private VCliente_Tiendas vistaTiendas;
     private Tiendas1 modeloTiendas;
 
-    public ctrlTiendas(VTiendas vistaTiendas, Tiendas1 modeloTiendas) {
+    public ctrlTiendas(VCliente_Tiendas vistaTiendas, Tiendas1 modeloTiendas) {
         this.modeloTiendas = modeloTiendas;
         this.vistaTiendas = vistaTiendas;
         this.vistaTiendas.btnAgregar_CL.addActionListener(this);

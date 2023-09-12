@@ -6,7 +6,7 @@
 package Modelo;
 
 import Vista.Usuario.UVehiculos;
-import Vista.VVehiculos;
+import Vista.VVehiculo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -164,7 +164,7 @@ public class vehiculos {
         }
     }
     
-    public void MostrarTabla( VVehiculos vistaVehiculos){
+    public void MostrarTabla( VVehiculo vistaVehiculos){
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(new Object[]{"ID", "Marca","Modelo","Mecanico","Taller"});
         try {

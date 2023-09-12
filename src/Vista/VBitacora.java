@@ -1,13 +1,19 @@
 package Vista;
 
+import Modelo.CConexion;
+import Modelo.productos;
 import javax.swing.ImageIcon;
 import desplazable.Desface;
 import java.awt.Color;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 
-public class Rutas extends javax.swing.JFrame {
+public class VBitacora extends javax.swing.JFrame {
 
+    
     Desface desplace;
-    public Rutas() {
+    public VBitacora() {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/Vista/Iconos/CASA.png")).getImage());
 
@@ -45,9 +51,6 @@ public class Rutas extends javax.swing.JFrame {
         btnProducto = new Vista.PanelCurvas();
         Productoicon = new javax.swing.JLabel();
         txtproducto = new javax.swing.JLabel();
-        btnRuta = new Vista.PanelCurvas();
-        Rutaicon = new javax.swing.JLabel();
-        txtRuta = new javax.swing.JLabel();
         btnTrabajador = new Vista.PanelCurvas();
         Trabajadoricon = new javax.swing.JLabel();
         txtEmpleado = new javax.swing.JLabel();
@@ -60,15 +63,19 @@ public class Rutas extends javax.swing.JFrame {
         btnCliente = new Vista.PanelCurvas();
         Clienteicon = new javax.swing.JLabel();
         txtCliente = new javax.swing.JLabel();
+        btnRuta = new Vista.PanelCurvas();
+        Rutaicon = new javax.swing.JLabel();
+        txtRuta = new javax.swing.JLabel();
+        btnVehiculos = new Vista.PanelCurvas();
+        icoCarro = new javax.swing.JLabel();
+        txtCliente2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1080, 760));
         setMinimumSize(new java.awt.Dimension(1080, 760));
-        setPreferredSize(new java.awt.Dimension(1080, 760));
         setResizable(false);
         setSize(new java.awt.Dimension(1080, 760));
 
-        jPanel1.setBackground(new java.awt.Color(255, 51, 51));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 102));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         MenuPlegable.setBackground(new java.awt.Color(64, 81, 115));
@@ -92,7 +99,7 @@ public class Rutas extends javax.swing.JFrame {
         });
 
         txtCasa.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        txtCasa.setForeground(new java.awt.Color(45, 40, 37));
+        txtCasa.setForeground(new java.awt.Color(255, 255, 255));
         txtCasa.setText("Inicio");
 
         javax.swing.GroupLayout btnCasaLayout = new javax.swing.GroupLayout(btnCasa);
@@ -143,7 +150,7 @@ public class Rutas extends javax.swing.JFrame {
         });
 
         txtproducto.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        txtproducto.setForeground(new java.awt.Color(45, 40, 37));
+        txtproducto.setForeground(new java.awt.Color(255, 255, 255));
         txtproducto.setText("Productos");
 
         javax.swing.GroupLayout btnProductoLayout = new javax.swing.GroupLayout(btnProducto);
@@ -168,49 +175,6 @@ public class Rutas extends javax.swing.JFrame {
 
         MenuPlegable.add(btnProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, -1, 50));
 
-        btnRuta.setBackground(new java.awt.Color(64, 81, 115));
-        btnRuta.setRoundBottomLeft(25);
-        btnRuta.setRoundBottomRight(25);
-        btnRuta.setRoundTopLeft(25);
-        btnRuta.setRoundTopRight(25);
-        btnRuta.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnRutaMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnRutaMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnRutaMouseExited(evt);
-            }
-        });
-
-        txtRuta.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        txtRuta.setForeground(new java.awt.Color(45, 40, 37));
-        txtRuta.setText("Rutas");
-
-        javax.swing.GroupLayout btnRutaLayout = new javax.swing.GroupLayout(btnRuta);
-        btnRuta.setLayout(btnRutaLayout);
-        btnRutaLayout.setHorizontalGroup(
-            btnRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnRutaLayout.createSequentialGroup()
-                .addGap(0, 101, Short.MAX_VALUE)
-                .addComponent(txtRuta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Rutaicon, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
-        );
-        btnRutaLayout.setVerticalGroup(
-            btnRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnRutaLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(btnRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtRuta, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Rutaicon, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
-
-        MenuPlegable.add(btnRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, -1, 53));
-
         btnTrabajador.setBackground(new java.awt.Color(64, 81, 115));
         btnTrabajador.setRoundBottomLeft(25);
         btnTrabajador.setRoundBottomRight(25);
@@ -229,7 +193,7 @@ public class Rutas extends javax.swing.JFrame {
         });
 
         txtEmpleado.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        txtEmpleado.setForeground(new java.awt.Color(45, 40, 37));
+        txtEmpleado.setForeground(new java.awt.Color(255, 255, 255));
         txtEmpleado.setText("Empleados");
 
         javax.swing.GroupLayout btnTrabajadorLayout = new javax.swing.GroupLayout(btnTrabajador);
@@ -272,7 +236,7 @@ public class Rutas extends javax.swing.JFrame {
         });
 
         txtBodega.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        txtBodega.setForeground(new java.awt.Color(45, 40, 37));
+        txtBodega.setForeground(new java.awt.Color(255, 255, 255));
         txtBodega.setText("Bodegas");
 
         javax.swing.GroupLayout btnBodegaLayout = new javax.swing.GroupLayout(btnBodega);
@@ -315,7 +279,7 @@ public class Rutas extends javax.swing.JFrame {
         });
 
         txtBitacora.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        txtBitacora.setForeground(new java.awt.Color(45, 40, 37));
+        txtBitacora.setForeground(new java.awt.Color(255, 255, 255));
         txtBitacora.setText("Bitacora");
 
         javax.swing.GroupLayout btnBitacoraLayout = new javax.swing.GroupLayout(btnBitacora);
@@ -338,7 +302,7 @@ public class Rutas extends javax.swing.JFrame {
                     .addComponent(Bitacoraicon, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        MenuPlegable.add(btnBitacora, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, -1, -1));
+        MenuPlegable.add(btnBitacora, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 630, -1, -1));
 
         btnCliente.setBackground(new java.awt.Color(64, 81, 115));
         btnCliente.setRoundBottomLeft(25);
@@ -358,7 +322,7 @@ public class Rutas extends javax.swing.JFrame {
         });
 
         txtCliente.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        txtCliente.setForeground(new java.awt.Color(45, 40, 37));
+        txtCliente.setForeground(new java.awt.Color(255, 255, 255));
         txtCliente.setText("Cliente");
 
         javax.swing.GroupLayout btnClienteLayout = new javax.swing.GroupLayout(btnCliente);
@@ -381,7 +345,96 @@ public class Rutas extends javax.swing.JFrame {
                     .addComponent(Clienteicon, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        MenuPlegable.add(btnCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, -1, -1));
+        MenuPlegable.add(btnCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 230, -1));
+
+        btnRuta.setBackground(new java.awt.Color(64, 81, 115));
+        btnRuta.setRoundBottomLeft(25);
+        btnRuta.setRoundBottomRight(25);
+        btnRuta.setRoundTopLeft(25);
+        btnRuta.setRoundTopRight(25);
+        btnRuta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRutaMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnRutaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnRutaMouseExited(evt);
+            }
+        });
+
+        txtRuta.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        txtRuta.setForeground(new java.awt.Color(255, 255, 255));
+        txtRuta.setText("Rutas");
+
+        javax.swing.GroupLayout btnRutaLayout = new javax.swing.GroupLayout(btnRuta);
+        btnRuta.setLayout(btnRutaLayout);
+        btnRutaLayout.setHorizontalGroup(
+            btnRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnRutaLayout.createSequentialGroup()
+                .addGap(0, 101, Short.MAX_VALUE)
+                .addComponent(txtRuta)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Rutaicon, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
+        );
+        btnRutaLayout.setVerticalGroup(
+            btnRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnRutaLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(btnRutaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtRuta, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Rutaicon, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
+        MenuPlegable.add(btnRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, -1, -1));
+
+        btnVehiculos.setBackground(new java.awt.Color(64, 81, 115));
+        btnVehiculos.setRoundBottomLeft(25);
+        btnVehiculos.setRoundBottomRight(25);
+        btnVehiculos.setRoundTopLeft(25);
+        btnVehiculos.setRoundTopRight(25);
+        btnVehiculos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnVehiculosMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnVehiculosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnVehiculosMouseExited(evt);
+            }
+        });
+
+        icoCarro.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        icoCarro.setForeground(new java.awt.Color(255, 255, 255));
+
+        txtCliente2.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        txtCliente2.setForeground(new java.awt.Color(255, 255, 255));
+        txtCliente2.setText("Vehiculos");
+
+        javax.swing.GroupLayout btnVehiculosLayout = new javax.swing.GroupLayout(btnVehiculos);
+        btnVehiculos.setLayout(btnVehiculosLayout);
+        btnVehiculosLayout.setHorizontalGroup(
+            btnVehiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnVehiculosLayout.createSequentialGroup()
+                .addContainerGap(67, Short.MAX_VALUE)
+                .addComponent(txtCliente2)
+                .addGap(18, 18, 18)
+                .addComponent(icoCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        btnVehiculosLayout.setVerticalGroup(
+            btnVehiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(icoCarro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnVehiculosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtCliente2, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        MenuPlegable.add(btnVehiculos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 230, 53));
 
         jPanel1.add(MenuPlegable, new org.netbeans.lib.awtextra.AbsoluteConstraints(-150, 0, 230, 760));
 
@@ -393,7 +446,7 @@ public class Rutas extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 779, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -407,12 +460,10 @@ public class Rutas extends javax.swing.JFrame {
 
     private void btnCasaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseEntered
         btnCasa.setBackground(new Color(45,40,37));
-        txtCasa.setForeground(Color.white);
     }//GEN-LAST:event_btnCasaMouseEntered
 
     private void btnCasaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseExited
         btnCasa.setBackground(new Color(64,81,115));
-        txtCasa.setForeground(new Color(45,40,37));
     }//GEN-LAST:event_btnCasaMouseExited
 
     private void txtBarrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtBarrasMouseClicked
@@ -424,35 +475,39 @@ public class Rutas extends javax.swing.JFrame {
     }//GEN-LAST:event_txtBarrasMouseClicked
 
     private void btnProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseClicked
-        VProducto producto = new VProducto();
-        producto.NIT();
-        //  producto.setVisible(true);
-        this.dispose();
+        
+        int resultado = 0;
+        String sql = "select idBodega from tbBodegas";
+        try {
+            Statement sta = CConexion.getConexion().createStatement();
+            ResultSet rs = sta.executeQuery(sql);
+            if (rs.next()) {
+                resultado = 1;
+                if (resultado == 1) {
+                    VProducto vista = new VProducto();
+                    vista.NIT();
+                    this.dispose();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Agrege una bodega para continuar");
+            }
+
+        } catch (Exception oe) {
+            JOptionPane.showMessageDialog(null, "error boton producto//bodega" + oe.toString());
+        }
+
+        //        VProducto producto = new VProducto();
+        //        producto.NIT();
+        //        this.dispose();
     }//GEN-LAST:event_btnProductoMouseClicked
 
     private void btnProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseEntered
         btnProducto.setBackground(new Color(45,40,37));
-        txtproducto.setForeground(Color.white);
     }//GEN-LAST:event_btnProductoMouseEntered
 
     private void btnProductoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseExited
         btnProducto.setBackground(new Color(64,81,115));
-        txtproducto.setForeground(new Color(45,40,37));
     }//GEN-LAST:event_btnProductoMouseExited
-
-    private void btnRutaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseClicked
-        
-    }//GEN-LAST:event_btnRutaMouseClicked
-
-    private void btnRutaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseEntered
-        btnRuta.setBackground(new Color(45,40,37));
-        txtRuta.setForeground(Color.white);
-    }//GEN-LAST:event_btnRutaMouseEntered
-
-    private void btnRutaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseExited
-        btnRuta.setBackground(new Color(64,81,115));
-        txtRuta.setForeground(new Color(45,40,37));
-    }//GEN-LAST:event_btnRutaMouseExited
 
     private void btnTrabajadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadorMouseClicked
         VEmpleados empleados = new VEmpleados();
@@ -462,44 +517,36 @@ public class Rutas extends javax.swing.JFrame {
 
     private void btnTrabajadorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadorMouseEntered
         btnTrabajador.setBackground(new Color(45,40,37));
-        txtEmpleado.setForeground(Color.white);
     }//GEN-LAST:event_btnTrabajadorMouseEntered
 
     private void btnTrabajadorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadorMouseExited
         btnTrabajador.setBackground(new Color(64,81,115));
-        txtEmpleado.setForeground(new Color(45,40,37));
     }//GEN-LAST:event_btnTrabajadorMouseExited
 
     private void btnBodegaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseClicked
-        Bodega bodegas = new Bodega();
+        VBodega bodegas = new VBodega();
         bodegas.INIT();
         this.dispose();
     }//GEN-LAST:event_btnBodegaMouseClicked
 
     private void btnBodegaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseEntered
         btnBodega.setBackground(new Color(45,40,37));
-        txtBodega.setForeground(Color.white);
     }//GEN-LAST:event_btnBodegaMouseEntered
 
     private void btnBodegaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseExited
         btnBodega.setBackground(new Color(64,81,115));
-        txtBodega.setForeground(new Color(45,40,37));
     }//GEN-LAST:event_btnBodegaMouseExited
 
     private void btnBitacoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitacoraMouseClicked
-        Bitacora bitacora = new Bitacora();
-        bitacora.setVisible(true);
-        this.setVisible(false);
+        
     }//GEN-LAST:event_btnBitacoraMouseClicked
 
     private void btnBitacoraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitacoraMouseEntered
         btnBitacora.setBackground(new Color(45,40,37));
-        txtBitacora.setForeground(Color.white);
     }//GEN-LAST:event_btnBitacoraMouseEntered
 
     private void btnBitacoraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitacoraMouseExited
         btnBitacora.setBackground(new Color(64,81,115));
-        txtBitacora.setForeground(new Color(45,40,37));
     }//GEN-LAST:event_btnBitacoraMouseExited
 
     private void btnClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseClicked
@@ -510,14 +557,56 @@ public class Rutas extends javax.swing.JFrame {
 
     private void btnClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseEntered
         btnCliente.setBackground(new Color(45,40,37));
-        txtCliente.setForeground(Color.white);
     }//GEN-LAST:event_btnClienteMouseEntered
 
     private void btnClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseExited
         btnCliente.setBackground(new Color(64,81,115));
-        txtCliente.setForeground(new Color(45,40,37));
     }//GEN-LAST:event_btnClienteMouseExited
 
+    private void btnRutaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseClicked
+        int resultado = 0;
+        String sql = "select idProducto from tbProductos";
+        try {
+            Statement sta = CConexion.getConexion().createStatement();
+            ResultSet rs = sta.executeQuery(sql);
+            if (rs.next()) {
+                resultado = 1;
+                if (resultado == 1) {
+                    VDatosDis vista = new VDatosDis();
+                    vista.INIT();
+                    this.dispose();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Agrege un producto para continuar");
+            }
+
+        } catch (Exception oe) {
+            JOptionPane.showMessageDialog(null, "error 1" + oe.toString());
+        }
+    }//GEN-LAST:event_btnRutaMouseClicked
+
+    private void btnRutaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseEntered
+        btnRuta.setBackground(new Color(45,40,37));
+    }//GEN-LAST:event_btnRutaMouseEntered
+
+    private void btnRutaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseExited
+        btnRuta.setBackground(new Color(64,81,115));
+    }//GEN-LAST:event_btnRutaMouseExited
+
+    private void btnVehiculosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculosMouseClicked
+        VVehiculo_Taller vista =new VVehiculo_Taller();
+        vista.INIT();
+        this.dispose();
+    }//GEN-LAST:event_btnVehiculosMouseClicked
+
+    private void btnVehiculosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculosMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVehiculosMouseEntered
+
+    private void btnVehiculosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculosMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVehiculosMouseExited
+    
     /**
      * @param args the command line arguments
      */
@@ -535,20 +624,21 @@ public class Rutas extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Rutas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VBitacora.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Rutas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VBitacora.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Rutas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VBitacora.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Rutas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VBitacora.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Rutas().setVisible(true);
+                new VBitacora().setVisible(true);
             }
         });
     }
@@ -569,12 +659,15 @@ public class Rutas extends javax.swing.JFrame {
     private Vista.PanelCurvas btnProducto;
     private Vista.PanelCurvas btnRuta;
     private Vista.PanelCurvas btnTrabajador;
+    private Vista.PanelCurvas btnVehiculos;
+    private javax.swing.JLabel icoCarro;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel txtBarras;
     private javax.swing.JLabel txtBitacora;
     private javax.swing.JLabel txtBodega;
     private javax.swing.JLabel txtCasa;
     private javax.swing.JLabel txtCliente;
+    private javax.swing.JLabel txtCliente2;
     private javax.swing.JLabel txtEmpleado;
     private javax.swing.JLabel txtLogo;
     private javax.swing.JLabel txtRuta;

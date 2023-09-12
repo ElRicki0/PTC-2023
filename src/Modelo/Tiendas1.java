@@ -1,7 +1,7 @@
 package Modelo;
 
-import Vista.Bodega;
-import Vista.VTiendas;
+import Vista.VBodega;
+import Vista.VCliente_Tiendas;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -55,7 +55,7 @@ public class Tiendas1 {
         this.Tien_Correo = Tien_Correo;
     }
     
-    public void MostrarTabla(VTiendas vista){
+    public void MostrarTabla(VCliente_Tiendas vista){
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(new Object[]{"ID", "nombre", "Direccion", "Referencia","Correo"});
         try {
@@ -87,7 +87,7 @@ public class Tiendas1 {
         }
     }
     
-    public void eliminar(VTiendas vista){
+    public void eliminar(VCliente_Tiendas vista){
         try {
             int filaSeleccionada = vista.tbTienda.getSelectedRow();
         
@@ -108,7 +108,7 @@ public class Tiendas1 {
         
     }
     
-    public void actualizar(VTiendas vista)
+    public void actualizar(VCliente_Tiendas vista)
     {
         try {
             int filaSeleccionada = vista.tbTienda.getSelectedRow();      

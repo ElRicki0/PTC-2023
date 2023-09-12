@@ -5,7 +5,7 @@
  */
 package Modelo;
 
-import Vista.VModelos;
+import Vista.VVehiculo_Modelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -56,7 +56,7 @@ public class Modelos1 {
         this.Marcavehiculo = Marcavehiculo;
     }
     
-    public void MostrarTabla(VModelos vistaModelos){
+    public void MostrarTabla(VVehiculo_Modelo vistaModelos){
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(new Object[]{"ID", "Modelo","anualidad","Marca"});
         try {
@@ -92,7 +92,7 @@ public class Modelos1 {
         }
     }
     
-    public void Eliminar(VModelos vista){
+    public void Eliminar(VVehiculo_Modelo vista){
         try {
             int filaSeleccionada = vista.tbModelos.getSelectedRow();
 
@@ -110,7 +110,7 @@ public class Modelos1 {
         }
     }
     
-    public void Editar(VModelos vista){
+    public void Editar(VVehiculo_Modelo vista){
         try {
             int filaSeleccionada = vista.tbModelos.getSelectedRow();      
 

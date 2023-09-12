@@ -8,10 +8,10 @@ import javax.swing.JOptionPane;
 
 public class ctrlBodega implements ActionListener {
 
-    private Bodega vistaBodega;
+    private VBodega vistaBodega;
     private Bodegas modeloBodegas;
 
-    public ctrlBodega(Bodega vistaBodega, Bodegas modeloBodegas) {
+    public ctrlBodega(VBodega vistaBodega, Bodegas modeloBodegas) {
         this.modeloBodegas = modeloBodegas;
         this.vistaBodega = vistaBodega;
         this.vistaBodega.btnAgregar.addActionListener(this);
@@ -27,12 +27,16 @@ public class ctrlBodega implements ActionListener {
             String texto3 = vistaBodega.txtCorreo_bdg.getText();
 
             if (!texto1.isEmpty() || !texto2.isEmpty() || !texto3.isEmpty()) {
-
-                modeloBodegas.setBdg_nombre(vistaBodega.txtNombre_bdg.getText());
-                modeloBodegas.setBdg_ubicacion(vistaBodega.txtDireccion_bdg.getText());
-                modeloBodegas.setBdg_correo(vistaBodega.txtCorreo_bdg.getText());
-                modeloBodegas.AgregarBodega(modeloBodegas);
-                modeloBodegas.MostrarBodega(vistaBodega);
+                if (!texto3.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+                    JOptionPane.showMessageDialog(null, "El correo electronico tiene que ser valido");
+                } else {
+                    modeloBodegas.setBdg_nombre(vistaBodega.txtNombre_bdg.getText());
+                    modeloBodegas.setBdg_ubicacion(vistaBodega.txtDireccion_bdg.getText());
+                    modeloBodegas.setBdg_correo(vistaBodega.txtCorreo_bdg.getText());
+                    modeloBodegas.AgregarBodega(modeloBodegas);
+                    modeloBodegas.MostrarBodega(vistaBodega);
+                }
+                
             } else {
                 JOptionPane.showMessageDialog(null, "Llene todos los campos");
             }
@@ -47,8 +51,12 @@ public class ctrlBodega implements ActionListener {
             String texto3 = vistaBodega.txtCorreo_bdg.getText();
 
             if (!texto1.isEmpty() || !texto2.isEmpty() || !texto3.isEmpty()) {
-                modeloBodegas.ActualizarBodega(vistaBodega);
-                modeloBodegas.MostrarBodega(vistaBodega);
+                if (!texto3.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+                    JOptionPane.showMessageDialog(null, "El correo electronico tiene que ser valido");
+                } else {
+                    modeloBodegas.ActualizarBodega(vistaBodega);
+                    modeloBodegas.MostrarBodega(vistaBodega);
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Llene todos los campos");
             }

@@ -1,6 +1,6 @@
 package Controlador;
 
-import Vista.VMantenimiento;
+import Vista.VVehiculo_Mantenimiento;
 import Modelo.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,10 +13,10 @@ import javax.swing.JOptionPane;
  */
 public class ctrlMantenimiento implements ActionListener{
 
-    private VMantenimiento Vista;
+    private VVehiculo_Mantenimiento Vista;
     private Mantenimiento Modelo;
     
-    public ctrlMantenimiento(VMantenimiento Vista, Mantenimiento Modelo){
+    public ctrlMantenimiento(VVehiculo_Mantenimiento Vista, Mantenimiento Modelo){
         this.Modelo=Modelo;
         this.Vista=Vista;
         this.Vista.btnAgregar.addActionListener(this);

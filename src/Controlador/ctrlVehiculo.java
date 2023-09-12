@@ -1,7 +1,7 @@
 package Controlador;
 
 import Modelo.vehiculos;
-import Vista.VVehiculos;
+import Vista.VVehiculo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -11,10 +11,10 @@ import java.awt.event.ActionListener;
  */
 public class ctrlVehiculo implements ActionListener {
 
-    private VVehiculos vistaVehiculos;
+    private VVehiculo vistaVehiculos;
     private vehiculos modeloVehiculo;
 
-    public ctrlVehiculo(VVehiculos vistaVehiculos, vehiculos modeloVehiculo) {
+    public ctrlVehiculo(VVehiculo vistaVehiculos, vehiculos modeloVehiculo) {
         this.modeloVehiculo = modeloVehiculo;
         this.vistaVehiculos = vistaVehiculos;
         this.vistaVehiculos.btnAgregar.addActionListener(this);

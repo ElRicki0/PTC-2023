@@ -9,10 +9,10 @@ import javax.swing.plaf.synth.SynthListUI;
 
 public class ctrlModelo implements ActionListener{
 
-    private VModelos vistaModelo;
+    private VVehiculo_Modelo vistaModelo;
     private Modelos1 modeloModelo;
     
-    public ctrlModelo(VModelos vista, Modelos1 modelo){
+    public ctrlModelo(VVehiculo_Modelo vista, Modelos1 modelo){
         this.modeloModelo=modelo;
         this.vistaModelo=vista;
         this.vistaModelo.btnAgregar.addActionListener(this);

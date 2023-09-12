@@ -5,22 +5,23 @@ package Vista;
 import Vista.*;
 import Controlador.ctrlDatosDistribucion;
 import Controlador.ctrlMantenimiento;
+import Controlador.ctrlModelo;
 import Controlador.ctrlPaqueteria;
 import Controlador.ctrlTalleres;
-import Controlador.ctrlVehiculo;
 import Modelo.*;
+import Modelo.CConexion;
+import Modelo.productos;
 import javax.swing.ImageIcon;
 import desplazable.Desface;
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import javax.swing.JComboBox;
-
-public class VVehiculos extends javax.swing.JFrame {
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+public class VVehiculo_Modelo extends javax.swing.JFrame {
 
     Desface desplace;
-    vehiculos modeloVehiculos = new vehiculos();
     
-    public VVehiculos() {
+    public VVehiculo_Modelo() {
         
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/Vista/Iconos/CASA.png")).getImage());
@@ -37,8 +38,6 @@ public class VVehiculos extends javax.swing.JFrame {
         rsscalelabel.RSScaleLabel.setScaleLabel(icoCarro, "src/Vista/Iconos/vehiculo.png");
         
         desplace = new Desface();
-        modeloVehiculos.RellenarMantenimientoCBX(jcbMantenimiento);
-        modeloVehiculos.RellenarModeloCBX(jcbModelo);
         
         this.setLocationRelativeTo(null);
         transpareciaBoton();
@@ -81,15 +80,6 @@ public class VVehiculos extends javax.swing.JFrame {
         btnVehiculos = new Vista.PanelCurvas();
         icoCarro = new javax.swing.JLabel();
         txtCliente2 = new javax.swing.JLabel();
-        jpSubMenu = new javax.swing.JPanel();
-        btnTalleres = new Vista.PanelCurvas();
-        txtSub1 = new javax.swing.JLabel();
-        btnMantenimiento = new Vista.PanelCurvas();
-        txtSub2 = new javax.swing.JLabel();
-        btnModelo = new Vista.PanelCurvas();
-        txtSub3 = new javax.swing.JLabel();
-        btnVehiculo = new Vista.PanelCurvas();
-        txtSub4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         panelCurvas1 = new Vista.PanelCurvas();
         jLabel7 = new javax.swing.JLabel();
@@ -97,17 +87,28 @@ public class VVehiculos extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         panelCurvas3 = new Vista.PanelCurvas();
-        txtMatricula = new javax.swing.JTextField();
-        jcbMantenimiento = new javax.swing.JComboBox<>();
-        jcbModelo = new javax.swing.JComboBox<>();
+        txtModelo = new javax.swing.JTextField();
+        panelCurvas4 = new Vista.PanelCurvas();
+        txtAnio = new javax.swing.JTextField();
+        panelCurvas5 = new Vista.PanelCurvas();
+        txtMarca = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbVehiculos = new javax.swing.JTable();
+        tbModelos = new javax.swing.JTable();
         agregar1 = new Vista.PanelCurvas();
         btnAgregar = new javax.swing.JButton();
         eliminar1 = new Vista.PanelCurvas();
         btnEliminar = new javax.swing.JButton();
         modificar1 = new Vista.PanelCurvas();
         btnModificarMP = new javax.swing.JButton();
+        jpSubMenu = new javax.swing.JPanel();
+        btnSubTaller = new Vista.PanelCurvas();
+        txtSub1 = new javax.swing.JLabel();
+        btnSubMantenimeinto = new Vista.PanelCurvas();
+        txtSub2 = new javax.swing.JLabel();
+        btnSubModelo = new Vista.PanelCurvas();
+        txtSub3 = new javax.swing.JLabel();
+        btnSubVehiculo = new Vista.PanelCurvas();
+        txtSub4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1080, 760));
@@ -477,165 +478,9 @@ public class VVehiculos extends javax.swing.JFrame {
 
         jPanel1.add(MenuPlegable, new org.netbeans.lib.awtextra.AbsoluteConstraints(-150, 0, 230, 760));
 
-        jpSubMenu.setBackground(new java.awt.Color(64, 81, 115));
-        jpSubMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnTalleres.setBackground(new java.awt.Color(172, 147, 110));
-        btnTalleres.setRoundBottomLeft(25);
-        btnTalleres.setRoundBottomRight(25);
-        btnTalleres.setRoundTopLeft(25);
-        btnTalleres.setRoundTopRight(25);
-        btnTalleres.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnTalleresMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnTalleresMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnTalleresMouseExited(evt);
-            }
-        });
-
-        txtSub1.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        txtSub1.setForeground(new java.awt.Color(51, 51, 51));
-        txtSub1.setText("Talleres");
-
-        javax.swing.GroupLayout btnTalleresLayout = new javax.swing.GroupLayout(btnTalleres);
-        btnTalleres.setLayout(btnTalleresLayout);
-        btnTalleresLayout.setHorizontalGroup(
-            btnTalleresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnTalleresLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(txtSub1)
-                .addContainerGap(45, Short.MAX_VALUE))
-        );
-        btnTalleresLayout.setVerticalGroup(
-            btnTalleresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnTalleresLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtSub1, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jpSubMenu.add(btnTalleres, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 150, 60));
-
-        btnMantenimiento.setBackground(new java.awt.Color(172, 147, 110));
-        btnMantenimiento.setRoundBottomLeft(25);
-        btnMantenimiento.setRoundBottomRight(25);
-        btnMantenimiento.setRoundTopLeft(25);
-        btnMantenimiento.setRoundTopRight(25);
-        btnMantenimiento.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnMantenimientoMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnMantenimientoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnMantenimientoMouseExited(evt);
-            }
-        });
-
-        txtSub2.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        txtSub2.setForeground(new java.awt.Color(51, 51, 51));
-        txtSub2.setText("Mantenimiento");
-
-        javax.swing.GroupLayout btnMantenimientoLayout = new javax.swing.GroupLayout(btnMantenimiento);
-        btnMantenimiento.setLayout(btnMantenimientoLayout);
-        btnMantenimientoLayout.setHorizontalGroup(
-            btnMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnMantenimientoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtSub2)
-                .addContainerGap(10, Short.MAX_VALUE))
-        );
-        btnMantenimientoLayout.setVerticalGroup(
-            btnMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtSub2, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-        );
-
-        jpSubMenu.add(btnMantenimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 150, 60));
-
-        btnModelo.setBackground(new java.awt.Color(172, 147, 110));
-        btnModelo.setRoundBottomLeft(25);
-        btnModelo.setRoundBottomRight(25);
-        btnModelo.setRoundTopLeft(25);
-        btnModelo.setRoundTopRight(25);
-        btnModelo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnModeloMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnModeloMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnModeloMouseExited(evt);
-            }
-        });
-
-        txtSub3.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        txtSub3.setForeground(new java.awt.Color(51, 51, 51));
-        txtSub3.setText("Modelos");
-
-        javax.swing.GroupLayout btnModeloLayout = new javax.swing.GroupLayout(btnModelo);
-        btnModelo.setLayout(btnModeloLayout);
-        btnModeloLayout.setHorizontalGroup(
-            btnModeloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnModeloLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(txtSub3)
-                .addContainerGap(42, Short.MAX_VALUE))
-        );
-        btnModeloLayout.setVerticalGroup(
-            btnModeloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtSub3, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-        );
-
-        jpSubMenu.add(btnModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 30, 150, 60));
-
-        btnVehiculo.setBackground(new java.awt.Color(172, 147, 110));
-        btnVehiculo.setRoundBottomLeft(25);
-        btnVehiculo.setRoundBottomRight(25);
-        btnVehiculo.setRoundTopLeft(25);
-        btnVehiculo.setRoundTopRight(25);
-        btnVehiculo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnVehiculoMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnVehiculoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnVehiculoMouseExited(evt);
-            }
-        });
-
-        txtSub4.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        txtSub4.setForeground(new java.awt.Color(51, 51, 51));
-        txtSub4.setText("Vehiculos");
-
-        javax.swing.GroupLayout btnVehiculoLayout = new javax.swing.GroupLayout(btnVehiculo);
-        btnVehiculo.setLayout(btnVehiculoLayout);
-        btnVehiculoLayout.setHorizontalGroup(
-            btnVehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnVehiculoLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(txtSub4)
-                .addContainerGap(40, Short.MAX_VALUE))
-        );
-        btnVehiculoLayout.setVerticalGroup(
-            btnVehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtSub4, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-        );
-
-        jpSubMenu.add(btnVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 30, 150, 60));
-
-        jPanel1.add(jpSubMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 1040, 110));
-
         jLabel2.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel2.setText("Vehiculos");
+        jLabel2.setText("Modelos");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 360, 70));
 
         panelCurvas1.setBackground(new java.awt.Color(172, 147, 110));
@@ -652,18 +497,18 @@ public class VVehiculos extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel4.setText("Matricula:");
+        jLabel4.setText("Modelo");
         panelCurvas1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 140, 40));
 
         jLabel5.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel5.setText("Modelo:");
-        panelCurvas1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 150, 30));
+        jLabel5.setText("Año:");
+        panelCurvas1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 150, 40));
 
-        jLabel6.setFont(new java.awt.Font("Leelawadee UI", 1, 20)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel6.setText("Mantenimiento:");
-        panelCurvas1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 190, 40));
+        jLabel6.setText("Marca:");
+        panelCurvas1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 150, 50));
 
         panelCurvas3.setBackground(new java.awt.Color(246, 234, 204));
         panelCurvas3.setRoundBottomLeft(25);
@@ -671,9 +516,9 @@ public class VVehiculos extends javax.swing.JFrame {
         panelCurvas3.setRoundTopLeft(25);
         panelCurvas3.setRoundTopRight(25);
 
-        txtMatricula.setBackground(new java.awt.Color(246, 234, 204));
-        txtMatricula.setForeground(new java.awt.Color(51, 51, 51));
-        txtMatricula.setBorder(null);
+        txtModelo.setBackground(new java.awt.Color(246, 234, 204));
+        txtModelo.setForeground(new java.awt.Color(51, 51, 51));
+        txtModelo.setBorder(null);
 
         javax.swing.GroupLayout panelCurvas3Layout = new javax.swing.GroupLayout(panelCurvas3);
         panelCurvas3.setLayout(panelCurvas3Layout);
@@ -681,28 +526,80 @@ public class VVehiculos extends javax.swing.JFrame {
             panelCurvas3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCurvas3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtMatricula, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                .addComponent(txtModelo, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelCurvas3Layout.setVerticalGroup(
             panelCurvas3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCurvas3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtMatricula, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addComponent(txtModelo, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         panelCurvas1.add(panelCurvas3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, -1, -1));
 
-        jcbMantenimiento.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        panelCurvas1.add(jcbMantenimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 240, 50));
+        panelCurvas4.setBackground(new java.awt.Color(246, 234, 204));
+        panelCurvas4.setRoundBottomLeft(25);
+        panelCurvas4.setRoundBottomRight(25);
+        panelCurvas4.setRoundTopLeft(25);
+        panelCurvas4.setRoundTopRight(25);
 
-        jcbModelo.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        panelCurvas1.add(jcbModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 240, 50));
+        txtAnio.setBackground(new java.awt.Color(246, 234, 204));
+        txtAnio.setForeground(new java.awt.Color(51, 51, 51));
+        txtAnio.setBorder(null);
 
-        jPanel1.add(panelCurvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 270, 420, 310));
+        javax.swing.GroupLayout panelCurvas4Layout = new javax.swing.GroupLayout(panelCurvas4);
+        panelCurvas4.setLayout(panelCurvas4Layout);
+        panelCurvas4Layout.setHorizontalGroup(
+            panelCurvas4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCurvas4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtAnio, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        panelCurvas4Layout.setVerticalGroup(
+            panelCurvas4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCurvas4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtAnio, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
-        tbVehiculos.setModel(new javax.swing.table.DefaultTableModel(
+        panelCurvas1.add(panelCurvas4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, -1, -1));
+
+        panelCurvas5.setBackground(new java.awt.Color(246, 234, 204));
+        panelCurvas5.setRoundBottomLeft(25);
+        panelCurvas5.setRoundBottomRight(25);
+        panelCurvas5.setRoundTopLeft(25);
+        panelCurvas5.setRoundTopRight(25);
+
+        txtMarca.setBackground(new java.awt.Color(246, 234, 204));
+        txtMarca.setForeground(new java.awt.Color(51, 51, 51));
+        txtMarca.setBorder(null);
+
+        javax.swing.GroupLayout panelCurvas5Layout = new javax.swing.GroupLayout(panelCurvas5);
+        panelCurvas5.setLayout(panelCurvas5Layout);
+        panelCurvas5Layout.setHorizontalGroup(
+            panelCurvas5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCurvas5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtMarca, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        panelCurvas5Layout.setVerticalGroup(
+            panelCurvas5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCurvas5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtMarca, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        panelCurvas1.add(panelCurvas5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, -1, -1));
+
+        jPanel1.add(panelCurvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 210, 420, 310));
+
+        tbModelos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -713,12 +610,12 @@ public class VVehiculos extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tbVehiculos.addMouseListener(new java.awt.event.MouseAdapter() {
+        tbModelos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbVehiculosMouseClicked(evt);
+                tbModelosMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tbVehiculos);
+        jScrollPane1.setViewportView(tbModelos);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 210, 550, -1));
 
@@ -819,6 +716,165 @@ public class VVehiculos extends javax.swing.JFrame {
 
         jPanel1.add(modificar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 680, 160, 60));
 
+        jpSubMenu.setBackground(new java.awt.Color(64, 81, 115));
+        jpSubMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnSubTaller.setBackground(new java.awt.Color(172, 147, 110));
+        btnSubTaller.setRoundBottomLeft(25);
+        btnSubTaller.setRoundBottomRight(25);
+        btnSubTaller.setRoundTopLeft(25);
+        btnSubTaller.setRoundTopRight(25);
+        btnSubTaller.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSubTallerMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSubTallerMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSubTallerMouseExited(evt);
+            }
+        });
+
+        txtSub1.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        txtSub1.setForeground(new java.awt.Color(51, 51, 51));
+        txtSub1.setText("Talleres");
+
+        javax.swing.GroupLayout btnSubTallerLayout = new javax.swing.GroupLayout(btnSubTaller);
+        btnSubTaller.setLayout(btnSubTallerLayout);
+        btnSubTallerLayout.setHorizontalGroup(
+            btnSubTallerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnSubTallerLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(txtSub1)
+                .addContainerGap(45, Short.MAX_VALUE))
+        );
+        btnSubTallerLayout.setVerticalGroup(
+            btnSubTallerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnSubTallerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtSub1, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jpSubMenu.add(btnSubTaller, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 150, 60));
+
+        btnSubMantenimeinto.setBackground(new java.awt.Color(172, 147, 110));
+        btnSubMantenimeinto.setRoundBottomLeft(25);
+        btnSubMantenimeinto.setRoundBottomRight(25);
+        btnSubMantenimeinto.setRoundTopLeft(25);
+        btnSubMantenimeinto.setRoundTopRight(25);
+        btnSubMantenimeinto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSubMantenimeintoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSubMantenimeintoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSubMantenimeintoMouseExited(evt);
+            }
+        });
+
+        txtSub2.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        txtSub2.setForeground(new java.awt.Color(51, 51, 51));
+        txtSub2.setText("Mantenimiento");
+
+        javax.swing.GroupLayout btnSubMantenimeintoLayout = new javax.swing.GroupLayout(btnSubMantenimeinto);
+        btnSubMantenimeinto.setLayout(btnSubMantenimeintoLayout);
+        btnSubMantenimeintoLayout.setHorizontalGroup(
+            btnSubMantenimeintoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnSubMantenimeintoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtSub2)
+                .addContainerGap(10, Short.MAX_VALUE))
+        );
+        btnSubMantenimeintoLayout.setVerticalGroup(
+            btnSubMantenimeintoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnSubMantenimeintoLayout.createSequentialGroup()
+                .addContainerGap(20, Short.MAX_VALUE)
+                .addComponent(txtSub2)
+                .addGap(15, 15, 15))
+        );
+
+        jpSubMenu.add(btnSubMantenimeinto, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 150, 60));
+
+        btnSubModelo.setBackground(new java.awt.Color(172, 147, 110));
+        btnSubModelo.setRoundBottomLeft(25);
+        btnSubModelo.setRoundBottomRight(25);
+        btnSubModelo.setRoundTopLeft(25);
+        btnSubModelo.setRoundTopRight(25);
+        btnSubModelo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSubModeloMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSubModeloMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSubModeloMouseExited(evt);
+            }
+        });
+
+        txtSub3.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        txtSub3.setForeground(new java.awt.Color(51, 51, 51));
+        txtSub3.setText("Modelos");
+
+        javax.swing.GroupLayout btnSubModeloLayout = new javax.swing.GroupLayout(btnSubModelo);
+        btnSubModelo.setLayout(btnSubModeloLayout);
+        btnSubModeloLayout.setHorizontalGroup(
+            btnSubModeloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnSubModeloLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(txtSub3)
+                .addContainerGap(42, Short.MAX_VALUE))
+        );
+        btnSubModeloLayout.setVerticalGroup(
+            btnSubModeloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtSub3, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+        );
+
+        jpSubMenu.add(btnSubModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 30, 150, 60));
+
+        btnSubVehiculo.setBackground(new java.awt.Color(172, 147, 110));
+        btnSubVehiculo.setRoundBottomLeft(25);
+        btnSubVehiculo.setRoundBottomRight(25);
+        btnSubVehiculo.setRoundTopLeft(25);
+        btnSubVehiculo.setRoundTopRight(25);
+        btnSubVehiculo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSubVehiculoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSubVehiculoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSubVehiculoMouseExited(evt);
+            }
+        });
+
+        txtSub4.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        txtSub4.setForeground(new java.awt.Color(51, 51, 51));
+        txtSub4.setText("Vehiculos");
+
+        javax.swing.GroupLayout btnSubVehiculoLayout = new javax.swing.GroupLayout(btnSubVehiculo);
+        btnSubVehiculo.setLayout(btnSubVehiculoLayout);
+        btnSubVehiculoLayout.setHorizontalGroup(
+            btnSubVehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnSubVehiculoLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(txtSub4)
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+        btnSubVehiculoLayout.setVerticalGroup(
+            btnSubVehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtSub4, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+        );
+
+        jpSubMenu.add(btnSubVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 30, 150, 60));
+
+        jPanel1.add(jpSubMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 1040, 110));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -849,15 +905,17 @@ public class VVehiculos extends javax.swing.JFrame {
             
     }//GEN-LAST:event_btnModificarMPMouseClicked
 
-    private void tbVehiculosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbVehiculosMouseClicked
-//         int filaSeleccionada = tbMantenimiento.getSelectedRow();
-//
-//        String mecanico = tbMantenimiento.getValueAt(filaSeleccionada, 1).toString();
-//        String Telefono = tbMantenimiento.getValueAt(filaSeleccionada, 2).toString();
-//        
-//        txtmecanico.setText(mecanico);
-//        txtTelefono.setText(Telefono);
-    }//GEN-LAST:event_tbVehiculosMouseClicked
+    private void tbModelosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbModelosMouseClicked
+         int filaSeleccionada = tbModelos.getSelectedRow();
+
+        String modelo = tbModelos.getValueAt(filaSeleccionada, 1).toString();
+        String anio = tbModelos.getValueAt(filaSeleccionada, 2).toString();
+        String marca = tbModelos.getValueAt(filaSeleccionada, 3).toString();
+        
+        txtModelo.setText(modelo);
+        txtAnio.setText(anio);
+        txtMarca.setText(marca);
+    }//GEN-LAST:event_tbModelosMouseClicked
 
     private void btnCasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseClicked
         Main vista = new Main();
@@ -882,9 +940,29 @@ public class VVehiculos extends javax.swing.JFrame {
     }//GEN-LAST:event_txtBarrasMouseClicked
 
     private void btnProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseClicked
-        VProducto producto = new VProducto();
-        producto.NIT();
-        this.dispose();
+        int resultado = 0;
+        String sql = "select idBodega from tbBodegas";
+        try {
+            Statement sta = CConexion.getConexion().createStatement();
+            ResultSet rs = sta.executeQuery(sql);
+            if (rs.next()) {
+                resultado = 1;
+                if (resultado == 1) {
+                    VProducto vista = new VProducto();
+                    vista.NIT();
+                    this.dispose();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Agrege una bodega para continuar");
+            }
+
+        } catch (Exception oe) {
+            JOptionPane.showMessageDialog(null, "error boton producto//bodega" + oe.toString());
+        }
+
+        //        VProducto producto = new VProducto();
+        //        producto.NIT();
+        //        this.dispose();
     }//GEN-LAST:event_btnProductoMouseClicked
 
     private void btnProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseEntered
@@ -910,7 +988,7 @@ public class VVehiculos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTrabajadorMouseExited
 
     private void btnBodegaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseClicked
-        Bodega bodegas = new Bodega();
+        VBodega bodegas = new VBodega();
         bodegas.INIT();
         this.dispose();
     }//GEN-LAST:event_btnBodegaMouseClicked
@@ -924,7 +1002,7 @@ public class VVehiculos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBodegaMouseExited
 
     private void btnBitacoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitacoraMouseClicked
-        Bitacora bitacora = new Bitacora();
+        VBitacora bitacora = new VBitacora();
         bitacora.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnBitacoraMouseClicked
@@ -952,9 +1030,25 @@ public class VVehiculos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClienteMouseExited
 
     private void btnRutaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseClicked
-        VDatosDis rutas = new VDatosDis();
-        rutas.INIT();
-        this.dispose();
+        int resultado = 0;
+        String sql = "select idProducto from tbProductos";
+        try {
+            Statement sta = CConexion.getConexion().createStatement();
+            ResultSet rs = sta.executeQuery(sql);
+            if (rs.next()) {
+                resultado = 1;
+                if (resultado == 1) {
+                    VDatosDis vista = new VDatosDis();
+                    vista.INIT();
+                    this.dispose();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Agrege un producto para continuar");
+            }
+
+        } catch (Exception oe) {
+            JOptionPane.showMessageDialog(null, "error 1" + oe.toString());
+        }
     }//GEN-LAST:event_btnRutaMouseClicked
 
     private void btnRutaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseEntered
@@ -977,74 +1071,125 @@ public class VVehiculos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVehiculosMouseExited
 
-    private void btnTalleresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTalleresMouseClicked
-        VTaller vista = new VTaller();
+    private void btnSubTallerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubTallerMouseClicked
+        VVehiculo_Taller vista = new VVehiculo_Taller();
         vista.INIT();
         this.dispose();
-    }//GEN-LAST:event_btnTalleresMouseClicked
+    }//GEN-LAST:event_btnSubTallerMouseClicked
 
-    private void btnTalleresMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTalleresMouseEntered
-        btnTalleres.setBackground(new Color(45,40,37));
+    private void btnSubTallerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubTallerMouseEntered
+        btnSubTaller.setBackground(new Color(45,40,37));
         txtSub1.setForeground(Color.WHITE);
+    }//GEN-LAST:event_btnSubTallerMouseEntered
 
-    }//GEN-LAST:event_btnTalleresMouseEntered
-
-    private void btnTalleresMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTalleresMouseExited
-        btnTalleres.setBackground(new Color (172,147,110));
+    private void btnSubTallerMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubTallerMouseExited
+        btnSubTaller.setBackground(new Color (172,147,110));
         txtSub1.setForeground(Color.BLACK);
-    }//GEN-LAST:event_btnTalleresMouseExited
+    }//GEN-LAST:event_btnSubTallerMouseExited
 
-    private void btnMantenimientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMantenimientoMouseClicked
-        VMantenimiento vista = new VMantenimiento();
-        vista.INIT();
-        this.dispose();
-    }//GEN-LAST:event_btnMantenimientoMouseClicked
+    private void btnSubMantenimeintoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubMantenimeintoMouseClicked
+        int resultado = 0;
+        String sql = "select idMantenimiento from tbMantenimiento";
+        try {
+            Statement sta = CConexion.getConexion().createStatement();
+            ResultSet rs = sta.executeQuery(sql);
+            if (rs.next()) {
+                resultado = 1;
+                if (resultado == 1) {
+                    VVehiculo_Mantenimiento vista = new VVehiculo_Mantenimiento();
+                    vista.INIT();
+                    this.dispose();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Agrege un taller para continuar");
+            }
 
-    private void btnMantenimientoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMantenimientoMouseEntered
-        btnMantenimiento.setBackground(new Color(45,40,37));
-        txtSub2.setForeground(Color.WHITE);
-    }//GEN-LAST:event_btnMantenimientoMouseEntered
+        } catch (Exception oe) {
+            JOptionPane.showMessageDialog(null, "error boton producto//bodega" + oe.toString());
+        }
 
-    private void btnMantenimientoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMantenimientoMouseExited
-        btnMantenimiento.setBackground(new Color (172,147,110));
+    }//GEN-LAST:event_btnSubMantenimeintoMouseClicked
+
+    private void btnSubMantenimeintoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubMantenimeintoMouseEntered
+        btnSubMantenimeinto.setBackground(new Color (45,40,37));
+        txtSub2.setForeground(Color.white);
+    }//GEN-LAST:event_btnSubMantenimeintoMouseEntered
+
+    private void btnSubMantenimeintoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubMantenimeintoMouseExited
+        btnSubMantenimeinto.setBackground(new Color (172,147,110));
         txtSub2.setForeground(Color.BLACK);
-    }//GEN-LAST:event_btnMantenimientoMouseExited
+    }//GEN-LAST:event_btnSubMantenimeintoMouseExited
 
-    private void btnModeloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModeloMouseClicked
-        VModelos vista = new VModelos();
-        vista.INIT();
-        this.dispose();
-    }//GEN-LAST:event_btnModeloMouseClicked
+    private void btnSubModeloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubModeloMouseClicked
+        
+    }//GEN-LAST:event_btnSubModeloMouseClicked
 
-    private void btnModeloMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModeloMouseEntered
-        btnModelo.setBackground(new Color(45,40,37));
-        txtSub3.setForeground(Color.WHITE);
-    }//GEN-LAST:event_btnModeloMouseEntered
+    private void btnSubModeloMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubModeloMouseEntered
+        btnSubModelo.setBackground(new Color (45,40,37));
+        txtSub3.setForeground(Color.white);
+    }//GEN-LAST:event_btnSubModeloMouseEntered
 
-    private void btnModeloMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModeloMouseExited
-        btnModelo.setBackground(new Color (172,147,110));
+    private void btnSubModeloMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubModeloMouseExited
+        btnSubModelo.setBackground(new Color (172,147,110));
         txtSub3.setForeground(Color.BLACK);
-    }//GEN-LAST:event_btnModeloMouseExited
+    }//GEN-LAST:event_btnSubModeloMouseExited
 
-    private void btnVehiculoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculoMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnVehiculoMouseClicked
+    private void btnSubVehiculoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubVehiculoMouseClicked
 
-    private void btnVehiculoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculoMouseEntered
-        btnVehiculo.setBackground(new Color(45,40,37));
-        txtSub4.setForeground(Color.WHITE);
-    }//GEN-LAST:event_btnVehiculoMouseEntered
+        int resultado = 0;
+        String sql = "select idMantenimiento from tbMantenimiento";
+        try {
+            Statement sta = CConexion.getConexion().createStatement();
+            ResultSet rs = sta.executeQuery(sql);
+            if (rs.next()) {
+                resultado = 1;
+                if (resultado == 1) {
+                    int resultado2 = 0;
+                    String sql2 = "select idModelo from tbModelos";
+                    try {
+                        Statement sta2 = CConexion.getConexion().createStatement();
+                        ResultSet rs2 = sta2.executeQuery(sql2);
+                        if (rs2.next()) {
+                            resultado2 = 1;
+                            if (resultado2 == 1) {
+                                VVehiculo vista = new VVehiculo();
+                                vista.INIT();
+                                this.dispose();
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Agrege un modelo de vehiculo para continuar");
+                        }
 
-    private void btnVehiculoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculoMouseExited
-        btnVehiculo.setBackground(new Color (172,147,110));
+                    } catch (Exception oe) {
+                        JOptionPane.showMessageDialog(null, "error boton vehiculo//otros" + oe.toString());
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Agrege un modelo y un taller para continuar");
+            }
+
+        } catch (Exception oe) {
+            JOptionPane.showMessageDialog(null, "error boton que hueva//ptm" + oe.toString());
+        }
+
+    }//GEN-LAST:event_btnSubVehiculoMouseClicked
+
+    private void btnSubVehiculoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubVehiculoMouseEntered
+        btnSubVehiculo.setBackground(new Color (45,40,37));
+        txtSub4.setForeground(Color.white);
+    }//GEN-LAST:event_btnSubVehiculoMouseEntered
+
+    private void btnSubVehiculoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubVehiculoMouseExited
+        btnSubVehiculo.setBackground(new Color (172,147,110));
         txtSub4.setForeground(Color.BLACK);
-    }//GEN-LAST:event_btnVehiculoMouseExited
+    }//GEN-LAST:event_btnSubVehiculoMouseExited
 
     
     public void INIT(){
-        VVehiculos vista = new VVehiculos();
-        modeloVehiculos.MostrarTabla(vista);
-        ctrlVehiculo ctrl = new ctrlVehiculo(vista, modeloVehiculos);
+        VVehiculo_Modelo vista = new VVehiculo_Modelo();
+        Modelos1 modelo = new Modelos1();
+        ctrlModelo ctrl = new ctrlModelo(vista, modelo);
+        modelo.MostrarTabla(vista);
         vista.setVisible(true);
     }
     
@@ -1062,14 +1207,30 @@ public class VVehiculos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VVehiculos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VVehiculo_Modelo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VVehiculos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VVehiculo_Modelo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VVehiculos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VVehiculo_Modelo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VVehiculos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VVehiculo_Modelo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -1105,6 +1266,50 @@ public class VVehiculos extends javax.swing.JFrame {
         btnModificarMP.setContentAreaFilled(false);
         btnModificarMP.setBorderPainted(false);
     }
+            /*
+            ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠄⠀⠀⠀⠀⠀⠈⠒⠤⡀⠀⠀⠀⢀⢀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠁⠀⠀⠀⠀⠀⢄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⢀⢢⠁⠀⠀⢀⡌⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠢⢄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⡈⠈⠀⠀⣁⠏⠀⠀⡄⠀⠀⠆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠂⠄⡀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠇⠀⠀⠀⠃⠀⠀⠜⠀⢀⣼⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠐⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⡌⠀⠀⠀⠀⠀⠀⡈⣠⠖⠋⠀⠐⠢⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠑⠄⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⡔⠁⠀⠀⠀⠀⠀⡼⠂⠀⠀⠀⠀⠀⠀⠀⠉⠀⠠⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠐⠀⠀⠀⠀⠀⠀⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠒⠦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⡆⠀
+⠀⠀⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠁⠲⢄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⠀
+⠀⠀⠀⢀⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠄⠓⠠⢀⠀⠀⠀⠀⠀⠀⠀⠀⡈⠀
+⠀⠀⠀⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⢔⡡⠖⠙⡂⠀⠑⢆⡀⠀⠀⠀⠀⡜⠁⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠤⣢⠔⠻⡄⠀⠀⠐⢄⡄⠀⠙⢳⡖⠒⠈⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⣀⡤⠶⢯⠀⠀⣀⣄⠀⠀⠀⠀⠙⢦⡀⠀⠐⠄⠀⢀⣀⠀
+⠈⠢⢀⠀⠀⠀⢀⠄⠀⠀⠀⠀⠀⡀⣀⣤⣤⣶⣦⣴⣶⣖⠛⠉⠉⠀⠀⢀⣴⣿⣿⣿⣿⣶⣄⠀⠀⠀⡇⠀⠇⠀⠀⠀⠀⢁
+⠀⠀⠀⢋⠁⠀⠀⠀⠀⣄⠀⠀⢰⠋⣼⣿⣿⣿⣿⣿⣟⠿⣷⣤⣀⣀⣤⣾⢿⣿⣿⣿⣿⣿⣿⣧⠀⠀⡇⢀⠀⠀⠀⢀⠔⠁
+⠀⠀⠀⠀⠢⠀⣀⣀⡼⠛⡆⠀⡏⢼⣿⠏⠻⣿⣿⠏⣽⣴⠟⠉⠉⠉⠉⠛⢦⣻⣹⣿⡿⠃⢙⡿⠛⠀⠇⠂⠁⠆⠉⠀⠀⠀
+⠀⠀⠀⠀⠀⡴⠂⠀⠀⠀⣱⡀⣣⠀⢨⠷⣤⣤⡽⠞⠋⠁⠀⠀⠛⠛⠂⠀⠀⠉⠛⠶⠶⠶⠛⠇⠀⠠⡠⡀⠀⠀⠀⣰⠀⠀
+⠀⠀⠀⠀⠀⠈⠂⠀⠀⠀⡯⢃⣠⣀⠀⠀⠦⠀⠀⠀⠀⠀⠐⠶⠖⠒⠒⠚⠀⠀⠀⠀⠀⠀⠀⣀⣴⣤⣱⣵⠀⠐⠀⠁⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠴⠍⠿⠏⠑⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⠚⠁⠀⠀⠈⡑⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠣⠤⠤⠀⠂⠉⡠⠘⢳⡄⠂⠠⠀⠀⠀⠀⠀⠀⠀⢀⡠⠀⣴⠈⠂⠀⠐⠤⠠⠤⠞⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠸⠈⣢⣀⠈⠉⠁⠀⡀⠀⠀⢀⣠⡈⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡠⠀⠀⠀⠀⢀⡠⠔⣿⣿⣿⣿⣶⣴⣀⣨⣴⣶⣿⣿⣿⡞⠤⢄⡀⠀⠀⠠⡀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⢀⠄⠁⠀⠀⣀⠤⠚⠉⠀⢸⣿⣿⣏⣋⠉⠋⠉⠉⠛⠛⢛⣿⣿⠇⠀⠀⠑⢦⡀⠀⠈⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⢀⠔⠁⠀⠀⣠⠔⠁⠀⠀⠀⠀⣸⣿⣿⡿⠿⠿⠷⠶⠶⠿⢿⣿⣿⣿⠀⠀⠀⠀⠀⢹⡄⠀⠀⠡⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠁⠀⠀⢀⡼⠁⠀⠀⠀⢀⣤⣾⣿⣿⣿⡿⠿⠷⠶⠶⠶⠶⣿⣿⣿⣿⣿⣦⡄⠀⠀⠀⠙⡤⠀⠀⠈⠂⡀⠀⠀
+⠀⠀⠀⠀⠀⠐⠄⠀⠋⠀⠀⠀⠀⣠⣿⣿⣿⣿⣿⣿⣿⣶⣤⣤⣤⣤⣤⣶⣿⣿⣿⣿⣿⣿⣦⠀⠀⠀⠘⡆⠀⠀⠀⢈⠄⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⣿⣿⣿⣿⣽⣿⣿⣿⢿⣿⣿⡿⣿⣿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠀⠈⠆⡀⠀⡸⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢿⣿⣿⡿⣿⣿⣟⣿⣯⣿⣿⣿⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣴⠉⠛⠛⠿⣿⢿⣿⠿⠛⠛⠉⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⠀⠀⠀⢀⡟⢸⣧⠀⠀⠀⢠⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣧⣤⣶⣿⡄⢸⣿⣶⣶⣶⣟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⣿⣿⣿⣿⣼⣿⣿⣿⣿⣿⣦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⠹⣿⣿⣿⣿⣿⣿⣿⣿⣷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⢻⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣿⣿⣿⣿⣿⣿⣿⡏⠀⠈⢿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⠿⣿⣿⡿⠿⠟⠀⠀⠀⠈⢛⠿⢿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠐⠒⠊⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+            */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Bitacoraicon;
@@ -1122,14 +1327,14 @@ public class VVehiculos extends javax.swing.JFrame {
     private Vista.PanelCurvas btnCasa;
     private Vista.PanelCurvas btnCliente;
     public javax.swing.JButton btnEliminar;
-    private Vista.PanelCurvas btnMantenimiento;
-    private Vista.PanelCurvas btnModelo;
     public javax.swing.JButton btnModificarMP;
     private Vista.PanelCurvas btnProducto;
     private Vista.PanelCurvas btnRuta;
-    private Vista.PanelCurvas btnTalleres;
+    private Vista.PanelCurvas btnSubMantenimeinto;
+    private Vista.PanelCurvas btnSubModelo;
+    private Vista.PanelCurvas btnSubTaller;
+    private Vista.PanelCurvas btnSubVehiculo;
     private Vista.PanelCurvas btnTrabajador;
-    private Vista.PanelCurvas btnVehiculo;
     private Vista.PanelCurvas btnVehiculos;
     private Vista.PanelCurvas eliminar1;
     private javax.swing.JLabel icoCarro;
@@ -1140,13 +1345,14 @@ public class VVehiculos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JComboBox<String> jcbMantenimiento;
-    public javax.swing.JComboBox<String> jcbModelo;
     private javax.swing.JPanel jpSubMenu;
     private Vista.PanelCurvas modificar1;
     private Vista.PanelCurvas panelCurvas1;
     private Vista.PanelCurvas panelCurvas3;
-    public javax.swing.JTable tbVehiculos;
+    private Vista.PanelCurvas panelCurvas4;
+    private Vista.PanelCurvas panelCurvas5;
+    public javax.swing.JTable tbModelos;
+    public javax.swing.JTextField txtAnio;
     private javax.swing.JLabel txtBarras;
     private javax.swing.JLabel txtBitacora;
     private javax.swing.JLabel txtBodega;
@@ -1155,7 +1361,8 @@ public class VVehiculos extends javax.swing.JFrame {
     private javax.swing.JLabel txtCliente2;
     private javax.swing.JLabel txtEmpleado;
     private javax.swing.JLabel txtLogo;
-    public javax.swing.JTextField txtMatricula;
+    public javax.swing.JTextField txtMarca;
+    public javax.swing.JTextField txtModelo;
     private javax.swing.JLabel txtRuta;
     private javax.swing.JLabel txtSub1;
     private javax.swing.JLabel txtSub2;

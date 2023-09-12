@@ -5,7 +5,7 @@
  */
 package Modelo;
 
-import Vista.VTaller;
+import Vista.VVehiculo_Taller;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Map;
@@ -63,7 +63,7 @@ public class talleres {
         this.Tall_Dueño = Tall_Dueño;
     }
     
-    public void MostratTabla(VTaller vista){
+    public void MostratTabla(VVehiculo_Taller vista){
          DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(new Object[]{"ID","Nombre", "Telefono", "Correo", "Dueño"});
         try {
@@ -95,7 +95,7 @@ public class talleres {
         }
     }
     
-    public void Eliminar(VTaller vista){
+    public void Eliminar(VVehiculo_Taller vista){
         try {
             //obtenemos que fila seleccionó el usuario
             int filaSeleccionada = vista.tbTaller.getSelectedRow();
@@ -115,7 +115,7 @@ public class talleres {
         }     
     }
     
-    public void Editar(VTaller vista){
+    public void Editar(VVehiculo_Taller vista){
         
         int filaSeleccionada = vista.tbTaller.getSelectedRow();      
 

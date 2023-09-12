@@ -532,7 +532,7 @@ public class UProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProductoMouseExited
 
     private void btnClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseClicked
-        VCliente vista= new VCliente();
+        UTiendas vista= new UTiendas();
         vista.INIT();
         this.dispose();
     }//GEN-LAST:event_btnClienteMouseClicked
@@ -546,7 +546,7 @@ public class UProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClienteMouseExited
 
     private void btnRutaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseClicked
-        VDatosDis rutas = new VDatosDis();
+        UEnvios rutas = new UEnvios();
         rutas.INIT();
         this.dispose();
     }//GEN-LAST:event_btnRutaMouseClicked
@@ -560,7 +560,7 @@ public class UProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRutaMouseExited
 
     private void btnVehiculosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculosMouseClicked
-        VTaller vista =new VTaller();
+        UVehiculos vista = new UVehiculos();
         vista.INIT();
         this.dispose();
     }//GEN-LAST:event_btnVehiculosMouseClicked

@@ -1,17 +1,17 @@
 package Controlador;
 
 import Modelo.talleres;
-import Vista.VTaller;
+import Vista.VVehiculo_Taller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 public class ctrlTalleres implements ActionListener{
 
-    private VTaller vista;
+    private VVehiculo_Taller vista;
     private talleres modelo;
     
-    public ctrlTalleres(VTaller vista, talleres modelo) {
+    public ctrlTalleres(VVehiculo_Taller vista, talleres modelo) {
         this.modelo=modelo;
         this.vista=vista;
         this.vista.btnAgregar.addActionListener(this);

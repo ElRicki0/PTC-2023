@@ -105,6 +105,11 @@ public class UEnvios extends javax.swing.JFrame {
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 960, -1));
 
         MenuPlegable.setBackground(new java.awt.Color(64, 81, 115));
+        MenuPlegable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MenuPlegableMouseClicked(evt);
+            }
+        });
         MenuPlegable.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnCasa.setBackground(new java.awt.Color(64, 81, 115));
@@ -354,7 +359,7 @@ public class UEnvios extends javax.swing.JFrame {
     }//GEN-LAST:event_tbEnviosMouseClicked
 
     private void btnCasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseClicked
-        UMain vista =new UMain();
+        UMain vista = new UMain();
         vista.INIT();
         this.dispose();
     }//GEN-LAST:event_btnCasaMouseClicked
@@ -428,6 +433,12 @@ public class UEnvios extends javax.swing.JFrame {
     private void btnVehiculosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculosMouseExited
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVehiculosMouseExited
+
+    private void MenuPlegableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuPlegableMouseClicked
+        UMain vista = new UMain();
+        vista.INIT();
+        this.dispose();
+    }//GEN-LAST:event_MenuPlegableMouseClicked
 
     
     public void INIT(){

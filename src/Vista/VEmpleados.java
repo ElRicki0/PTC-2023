@@ -16,6 +16,14 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import Modelo.CConexion;
+import Modelo.productos;
+import javax.swing.ImageIcon;
+import desplazable.Desface;
+import java.awt.Color;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -136,6 +144,11 @@ public class VEmpleados extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         MenuPlegable.setBackground(new java.awt.Color(64, 81, 115));
+        MenuPlegable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MenuPlegableMouseClicked(evt);
+            }
+        });
         MenuPlegable.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnCasa.setBackground(new java.awt.Color(64, 81, 115));
@@ -1026,101 +1039,19 @@ public class VEmpleados extends javax.swing.JFrame {
         txtSub2.setForeground(new Color(51,51,51));
     }//GEN-LAST:event_btnUsuariosMouseExited
 
-    private void btnVehiculosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculosMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnVehiculosMouseExited
-
-    private void btnVehiculosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculosMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnVehiculosMouseEntered
-
-    private void btnVehiculosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculosMouseClicked
-        VTaller vista =new VTaller();
+    private void btnCasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseClicked
+        Main vista = new Main ();
         vista.INIT();
         this.dispose();
-    }//GEN-LAST:event_btnVehiculosMouseClicked
+    }//GEN-LAST:event_btnCasaMouseClicked
 
-    private void btnRutaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseExited
-        btnRuta.setBackground(new Color(64,81,115));
-    }//GEN-LAST:event_btnRutaMouseExited
+    private void btnCasaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseEntered
+        btnCasa.setBackground(new Color(45,40,37));
+    }//GEN-LAST:event_btnCasaMouseEntered
 
-    private void btnRutaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseEntered
-        btnRuta.setBackground(new Color(45,40,37));
-    }//GEN-LAST:event_btnRutaMouseEntered
-
-    private void btnRutaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseClicked
-        VDatosDis rutas = new VDatosDis();
-        rutas.INIT();
-        this.dispose();
-    }//GEN-LAST:event_btnRutaMouseClicked
-
-    private void btnClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseExited
-        btnCliente.setBackground(new Color(64,81,115));
-    }//GEN-LAST:event_btnClienteMouseExited
-
-    private void btnClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseEntered
-        btnCliente.setBackground(new Color(45,40,37));
-    }//GEN-LAST:event_btnClienteMouseEntered
-
-    private void btnClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseClicked
-        VCliente vista= new VCliente();
-        vista.INIT();
-        this.dispose();
-    }//GEN-LAST:event_btnClienteMouseClicked
-
-    private void btnBitacoraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitacoraMouseExited
-        btnBitacora.setBackground(new Color(64,81,115));
-    }//GEN-LAST:event_btnBitacoraMouseExited
-
-    private void btnBitacoraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitacoraMouseEntered
-        btnBitacora.setBackground(new Color(45,40,37));
-    }//GEN-LAST:event_btnBitacoraMouseEntered
-
-    private void btnBitacoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitacoraMouseClicked
-        Bitacora bitacora = new Bitacora();
-        bitacora.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_btnBitacoraMouseClicked
-
-    private void btnBodegaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseExited
-        btnBodega.setBackground(new Color(64,81,115));
-    }//GEN-LAST:event_btnBodegaMouseExited
-
-    private void btnBodegaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseEntered
-        btnBodega.setBackground(new Color(45,40,37));
-    }//GEN-LAST:event_btnBodegaMouseEntered
-
-    private void btnBodegaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseClicked
-        Bodega bodegas = new Bodega();
-        bodegas.INIT();
-        this.dispose();
-    }//GEN-LAST:event_btnBodegaMouseClicked
-
-    private void btnTrabajadorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadorMouseExited
-        btnTrabajador.setBackground(new Color(64,81,115));
-    }//GEN-LAST:event_btnTrabajadorMouseExited
-
-    private void btnTrabajadorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadorMouseEntered
-        btnTrabajador.setBackground(new Color(45,40,37));
-    }//GEN-LAST:event_btnTrabajadorMouseEntered
-
-    private void btnTrabajadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadorMouseClicked
-
-    }//GEN-LAST:event_btnTrabajadorMouseClicked
-
-    private void btnProductoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseExited
-        btnProducto.setBackground(new Color(64,81,115));
-    }//GEN-LAST:event_btnProductoMouseExited
-
-    private void btnProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseEntered
-        btnProducto.setBackground(new Color(45,40,37));
-    }//GEN-LAST:event_btnProductoMouseEntered
-
-    private void btnProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseClicked
-        VProducto producto = new VProducto();
-        producto.NIT();
-        this.dispose();
-    }//GEN-LAST:event_btnProductoMouseClicked
+    private void btnCasaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseExited
+        btnCasa.setBackground(new Color(64,81,115));
+    }//GEN-LAST:event_btnCasaMouseExited
 
     private void txtBarrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtBarrasMouseClicked
         if (MenuPlegable.getX()==-150) {
@@ -1130,19 +1061,141 @@ public class VEmpleados extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtBarrasMouseClicked
 
-    private void btnCasaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseExited
-        btnCasa.setBackground(new Color(64,81,115));
-    }//GEN-LAST:event_btnCasaMouseExited
+    private void btnProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseClicked
+        int resultado = 0;
+        String sql = "select idBodega from tbBodegas";
+        try {
+            Statement sta = CConexion.getConexion().createStatement();
+            ResultSet rs = sta.executeQuery(sql);
+            if (rs.next()) {
+                resultado = 1;
+                if (resultado == 1) {
+                    VProducto vista = new VProducto();
+                    vista.NIT();
+                    this.dispose();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Agrege una bodega para continuar");
+            }
 
-    private void btnCasaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseEntered
-        btnCasa.setBackground(new Color(45,40,37));
-    }//GEN-LAST:event_btnCasaMouseEntered
+        } catch (Exception oe) {
+            JOptionPane.showMessageDialog(null, "error boton producto//bodega" + oe.toString());
+        }
 
-    private void btnCasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseClicked
-        Main vista = new Main();
+        //        VProducto producto = new VProducto();
+        //        producto.NIT();
+        //        this.dispose();
+    }//GEN-LAST:event_btnProductoMouseClicked
+
+    private void btnProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseEntered
+        btnProducto.setBackground(new Color(45,40,37));
+    }//GEN-LAST:event_btnProductoMouseEntered
+
+    private void btnProductoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseExited
+        btnProducto.setBackground(new Color(64,81,115));
+    }//GEN-LAST:event_btnProductoMouseExited
+
+    private void btnTrabajadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadorMouseClicked
+        
+    }//GEN-LAST:event_btnTrabajadorMouseClicked
+
+    private void btnTrabajadorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadorMouseEntered
+        btnTrabajador.setBackground(new Color(45,40,37));
+    }//GEN-LAST:event_btnTrabajadorMouseEntered
+
+    private void btnTrabajadorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadorMouseExited
+        btnTrabajador.setBackground(new Color(64,81,115));
+    }//GEN-LAST:event_btnTrabajadorMouseExited
+
+    private void btnBodegaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseClicked
+        VBodega bodegas = new VBodega();
+        bodegas.INIT();
+        this.dispose();
+    }//GEN-LAST:event_btnBodegaMouseClicked
+
+    private void btnBodegaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseEntered
+        btnBodega.setBackground(new Color(45,40,37));
+    }//GEN-LAST:event_btnBodegaMouseEntered
+
+    private void btnBodegaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseExited
+        btnBodega.setBackground(new Color(64,81,115));
+    }//GEN-LAST:event_btnBodegaMouseExited
+
+    private void btnBitacoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitacoraMouseClicked
+        VBitacora bitacora = new VBitacora();
+        bitacora.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnBitacoraMouseClicked
+
+    private void btnBitacoraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitacoraMouseEntered
+        btnBitacora.setBackground(new Color(45,40,37));
+    }//GEN-LAST:event_btnBitacoraMouseEntered
+
+    private void btnBitacoraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitacoraMouseExited
+        btnBitacora.setBackground(new Color(64,81,115));
+    }//GEN-LAST:event_btnBitacoraMouseExited
+
+    private void btnClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseClicked
+        VCliente vista= new VCliente();
         vista.INIT();
         this.dispose();
-    }//GEN-LAST:event_btnCasaMouseClicked
+    }//GEN-LAST:event_btnClienteMouseClicked
+
+    private void btnClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseEntered
+        btnCliente.setBackground(new Color(45,40,37));
+    }//GEN-LAST:event_btnClienteMouseEntered
+
+    private void btnClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseExited
+        btnCliente.setBackground(new Color(64,81,115));
+    }//GEN-LAST:event_btnClienteMouseExited
+
+    private void btnRutaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseClicked
+        int resultado = 0;
+        String sql = "select idProducto from tbProductos";
+        try {
+            Statement sta = CConexion.getConexion().createStatement();
+            ResultSet rs = sta.executeQuery(sql);
+            if (rs.next()) {
+                resultado = 1;
+                if (resultado == 1) {
+                    VDatosDis vista = new VDatosDis();
+                    vista.INIT();
+                    this.dispose();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Agrege un producto para continuar");
+            }
+
+        } catch (Exception oe) {
+            JOptionPane.showMessageDialog(null, "error 1" + oe.toString());
+        }
+    }//GEN-LAST:event_btnRutaMouseClicked
+
+    private void btnRutaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseEntered
+        btnRuta.setBackground(new Color(45,40,37));
+    }//GEN-LAST:event_btnRutaMouseEntered
+
+    private void btnRutaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseExited
+        btnRuta.setBackground(new Color(64,81,115));
+    }//GEN-LAST:event_btnRutaMouseExited
+
+    private void btnVehiculosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculosMouseClicked
+        VVehiculo_Taller vista =new VVehiculo_Taller();
+        vista.INIT();
+        this.dispose();
+    }//GEN-LAST:event_btnVehiculosMouseClicked
+
+    private void btnVehiculosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculosMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVehiculosMouseEntered
+
+    private void btnVehiculosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculosMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVehiculosMouseExited
+
+    private void MenuPlegableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuPlegableMouseClicked
+        
+    }//GEN-LAST:event_MenuPlegableMouseClicked
 
         public void transpareciaBoton(){
         btnAgregar.setOpaque(false);        

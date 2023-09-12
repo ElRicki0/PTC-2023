@@ -253,7 +253,7 @@ public class ContraSMS extends javax.swing.JFrame {
 
     int aleatorio = 0;
     public static final String ACCOUNT_SID = "AC4afb361fef3f52feb1a840bac7d177f7";
-    public static final String AUTH_TOKEN = "718ba461f566da69154a6279ed43caf7";
+    public static final String AUTH_TOKEN = "c451b9764e68033b3a79b4f25bebd1aa";
     private String Numero = "+19289107991";
 
     public void mandarSMS() {
