@@ -525,7 +525,7 @@ public class CMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTrabajadorMouseClicked
 
     private void btnRutaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseClicked
-        VDatosDis rutas = new VDatosDis();
+        VRutas_DatosDis rutas = new VRutas_DatosDis();
         rutas.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnRutaMouseClicked

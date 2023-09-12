@@ -5,8 +5,8 @@
  */
 package Modelo;
 
-import Vista.VDatosDis;
-import Vista.VPaqueteria;
+import Vista.VRutas_DatosDis;
+import Vista.VRutas_Paqueteria;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -176,7 +176,7 @@ public class paqueteria {
                 
     }
     
-    public void Mostrartabla(VPaqueteria vista){
+    public void Mostrartabla(VRutas_Paqueteria vista){
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(new Object[]{"ID","Nombre", "Nombre Empleado", "Datos Distribucion", "Ubicacion"});
         try {
@@ -194,7 +194,7 @@ public class paqueteria {
         }
     }
     
-    public void Eliminar(VPaqueteria vista){
+    public void Eliminar(VRutas_Paqueteria vista){
         try {
             //obtenemos que fila seleccionó el usuario
             int filaSeleccionada = vista.tbPaqueteria.getSelectedRow();
@@ -215,7 +215,7 @@ public class paqueteria {
         
     }
     
-    public void actualizar(paqueteria modelo, JComboBox Empleado, JComboBox Datos, VPaqueteria vista){
+    public void actualizar(paqueteria modelo, JComboBox Empleado, JComboBox Datos, VRutas_Paqueteria vista){
         try {
             //obtenemos que fila seleccionó el usuario
             int filaSeleccionada = vista.tbPaqueteria.getSelectedRow();

@@ -4,8 +4,14 @@ package Vista;
 
 import Vista.*;
 import Controlador.ctrlDatosDistribucion;
+import Controlador.ctrlEnvios;
 import Controlador.ctrlPaqueteria;
 import Modelo.*;
+import javax.swing.ImageIcon;
+import desplazable.Desface;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
 import Modelo.CConexion;
 import Modelo.productos;
 import javax.swing.ImageIcon;
@@ -15,14 +21,14 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 
-public class VPaqueteria extends javax.swing.JFrame {
+public class VRutas_Envios extends javax.swing.JFrame {
 
         
     
-    paqueteria modelo = new paqueteria();
+    BitacoraDistribuciones modelo = new BitacoraDistribuciones();
     Desface desplace;
     
-    public VPaqueteria() {
+    public VRutas_Envios() {
         
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/Vista/Iconos/CASA.png")).getImage());
@@ -40,8 +46,11 @@ public class VPaqueteria extends javax.swing.JFrame {
         
         
         desplace = new Desface();
-        modelo.LlenarCbxEmpleado(jcbEmpleado);
-        modelo.LlenarCbxDistru(jcbDistribucion);
+        modelo.LlenarcbxEmpleado(jcbEmpleado);
+        modelo.LlenarcbxUsuario(jcbUsuario);
+        modelo.LlenarcbxVehiculo(jcbVehiculo);
+        modelo.LlenarcbxPaqueteria(jcbPaquete);
+        modelo.LlenarcbxEstado(jcbEstado);
         
         this.setLocationRelativeTo(null);
         transpareciaBoton();
@@ -95,17 +104,20 @@ public class VPaqueteria extends javax.swing.JFrame {
         panelCurvas1 = new Vista.PanelCurvas();
         jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jcbDistribucion = new javax.swing.JComboBox<>();
+        jcbPaquete = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        jcbEmpleado = new javax.swing.JComboBox<>();
+        jcbVehiculo = new javax.swing.JComboBox<>();
         panelCurvas2 = new Vista.PanelCurvas();
-        txtDireccion = new javax.swing.JTextField();
+        txtFecha = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        panelCurvas3 = new Vista.PanelCurvas();
-        txtNombre = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jcbUsuario = new javax.swing.JComboBox<>();
+        jcbEmpleado = new javax.swing.JComboBox<>();
+        jLabel9 = new javax.swing.JLabel();
+        jcbEstado = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbPaqueteria = new javax.swing.JTable();
+        tbEnvios = new javax.swing.JTable();
         agregar1 = new Vista.PanelCurvas();
         btnAgregar = new javax.swing.JButton();
         eliminar1 = new Vista.PanelCurvas();
@@ -608,8 +620,8 @@ public class VPaqueteria extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel2.setText("Paqueteria");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 111, 300, 70));
+        jLabel2.setText("Envios Productos");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 111, 390, 70));
 
         panelCurvas1.setBackground(new java.awt.Color(172, 147, 110));
         panelCurvas1.setRoundBottomLeft(35);
@@ -620,22 +632,22 @@ public class VPaqueteria extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel3.setText("Ubicacion:");
-        panelCurvas1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 150, 60));
+        jLabel3.setText("<html>Fecha de entrega:</html>");
+        panelCurvas1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 150, 60));
 
         jLabel7.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
         jLabel7.setText("Informacion");
         panelCurvas1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 167, 41));
 
-        panelCurvas1.add(jcbDistribucion, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 240, 50));
+        panelCurvas1.add(jcbPaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, 240, 50));
 
         jLabel4.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel4.setText("Empleado:");
-        panelCurvas1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 140, 60));
+        jLabel4.setText("Vehiculo:");
+        panelCurvas1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 140, 60));
 
-        panelCurvas1.add(jcbEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 240, 50));
+        panelCurvas1.add(jcbVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, 240, 50));
 
         panelCurvas2.setBackground(new java.awt.Color(246, 234, 204));
         panelCurvas2.setRoundBottomLeft(25);
@@ -643,9 +655,9 @@ public class VPaqueteria extends javax.swing.JFrame {
         panelCurvas2.setRoundTopLeft(25);
         panelCurvas2.setRoundTopRight(25);
 
-        txtDireccion.setBackground(new java.awt.Color(246, 234, 204));
-        txtDireccion.setForeground(new java.awt.Color(51, 51, 51));
-        txtDireccion.setBorder(null);
+        txtFecha.setBackground(new java.awt.Color(246, 234, 204));
+        txtFecha.setForeground(new java.awt.Color(51, 51, 51));
+        txtFecha.setBorder(null);
 
         javax.swing.GroupLayout panelCurvas2Layout = new javax.swing.GroupLayout(panelCurvas2);
         panelCurvas2.setLayout(panelCurvas2Layout);
@@ -653,61 +665,48 @@ public class VPaqueteria extends javax.swing.JFrame {
             panelCurvas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCurvas2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                .addComponent(txtFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelCurvas2Layout.setVerticalGroup(
             panelCurvas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCurvas2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addComponent(txtFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        panelCurvas1.add(panelCurvas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 240, 50));
+        panelCurvas1.add(panelCurvas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 240, 50));
 
         jLabel5.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel5.setText("Distribucion:");
-        panelCurvas1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 150, 60));
+        jLabel5.setText("Paqueteria:");
+        panelCurvas1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 150, 60));
 
         jLabel6.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel6.setText("Nombre:");
-        panelCurvas1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 150, 60));
+        jLabel6.setText("Empleado:");
+        panelCurvas1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 140, 60));
 
-        panelCurvas3.setBackground(new java.awt.Color(246, 234, 204));
-        panelCurvas3.setRoundBottomLeft(25);
-        panelCurvas3.setRoundBottomRight(25);
-        panelCurvas3.setRoundTopLeft(25);
-        panelCurvas3.setRoundTopRight(25);
+        jLabel8.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel8.setText("Usuario:");
+        panelCurvas1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 150, 60));
 
-        txtNombre.setBackground(new java.awt.Color(246, 234, 204));
-        txtNombre.setForeground(new java.awt.Color(51, 51, 51));
-        txtNombre.setBorder(null);
+        panelCurvas1.add(jcbUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 240, 50));
 
-        javax.swing.GroupLayout panelCurvas3Layout = new javax.swing.GroupLayout(panelCurvas3);
-        panelCurvas3.setLayout(panelCurvas3Layout);
-        panelCurvas3Layout.setHorizontalGroup(
-            panelCurvas3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCurvas3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        panelCurvas3Layout.setVerticalGroup(
-            panelCurvas3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCurvas3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        panelCurvas1.add(jcbEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 240, 50));
 
-        panelCurvas1.add(panelCurvas3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 240, 50));
+        jLabel9.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel9.setText("<html>Estado entrega:</html>");
+        panelCurvas1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 150, 60));
 
-        jPanel1.add(panelCurvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 210, 420, 370));
+        panelCurvas1.add(jcbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 410, 240, 50));
 
-        tbPaqueteria.setModel(new javax.swing.table.DefaultTableModel(
+        jPanel1.add(panelCurvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 160, 420, 480));
+
+        tbEnvios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -718,12 +717,12 @@ public class VPaqueteria extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tbPaqueteria.addMouseListener(new java.awt.event.MouseAdapter() {
+        tbEnvios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbPaqueteriaMouseClicked(evt);
+                tbEnviosMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tbPaqueteria);
+        jScrollPane1.setViewportView(tbEnvios);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 210, 550, -1));
 
@@ -854,55 +853,13 @@ public class VPaqueteria extends javax.swing.JFrame {
             
     }//GEN-LAST:event_btnModificarMPMouseClicked
 
-    private void tbPaqueteriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbPaqueteriaMouseClicked
-         int filaSeleccionada = tbPaqueteria.getSelectedRow();
+    private void tbEnviosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbEnviosMouseClicked
+         int filaSeleccionada = tbEnvios.getSelectedRow();
 
-        String Direccion = tbPaqueteria.getValueAt(filaSeleccionada, 3).toString();
+        String Direccion = tbEnvios.getValueAt(filaSeleccionada, 3).toString();
         
-        txtDireccion.setText(Direccion);
-    }//GEN-LAST:event_tbPaqueteriaMouseClicked
-
-    private void btnDistribucionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDistribucionMouseClicked
-        VDatosDis vista =new VDatosDis();
-        vista.INIT();
-        this.dispose();
-    }//GEN-LAST:event_btnDistribucionMouseClicked
-
-    private void btnDistribucionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDistribucionMouseEntered
-        btnDistribucion.setBackground(new Color(45,40,37));
-        txtSub.setForeground(Color.white);
-    }//GEN-LAST:event_btnDistribucionMouseEntered
-
-    private void btnDistribucionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDistribucionMouseExited
-        btnDistribucion.setBackground(new Color(64,81,152));
-    }//GEN-LAST:event_btnDistribucionMouseExited
-
-    private void btnUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMouseClicked
-        
-    }//GEN-LAST:event_btnUsuariosMouseClicked
-
-    private void btnUsuariosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMouseEntered
-        btnUsuarios.setBackground(new Color(45,40,37));
-        txtSub1.setForeground(Color.white);
-    }//GEN-LAST:event_btnUsuariosMouseEntered
-
-    private void btnUsuariosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMouseExited
-        btnUsuarios.setBackground(new Color(64,81,152));
-    }//GEN-LAST:event_btnUsuariosMouseExited
-
-    private void btnUsuarios1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuarios1MouseClicked
-    VEnvios vista = new VEnvios();
-    vista.INIT();
-    this.dispose();
-    }//GEN-LAST:event_btnUsuarios1MouseClicked
-
-    private void btnUsuarios1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuarios1MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnUsuarios1MouseEntered
-
-    private void btnUsuarios1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuarios1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnUsuarios1MouseExited
+        txtFecha.setText(Direccion);
+    }//GEN-LAST:event_tbEnviosMouseClicked
 
     private void btnCasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseClicked
         Main vista = new Main();
@@ -1017,7 +974,7 @@ public class VPaqueteria extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClienteMouseExited
 
     private void btnRutaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseClicked
-       
+        
     }//GEN-LAST:event_btnRutaMouseClicked
 
     private void btnRutaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseEntered
@@ -1042,13 +999,54 @@ public class VPaqueteria extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVehiculosMouseExited
 
+    private void btnUsuarios1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuarios1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUsuarios1MouseExited
+
+    private void btnUsuarios1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuarios1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUsuarios1MouseEntered
+
+    private void btnUsuarios1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuarios1MouseClicked
+
+    }//GEN-LAST:event_btnUsuarios1MouseClicked
+
+    private void btnUsuariosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMouseExited
+        btnUsuarios.setBackground(new Color(64,81,152));
+    }//GEN-LAST:event_btnUsuariosMouseExited
+
+    private void btnUsuariosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMouseEntered
+        btnUsuarios.setBackground(new Color(45,40,37));
+        txtSub1.setForeground(Color.white);
+    }//GEN-LAST:event_btnUsuariosMouseEntered
+
+    private void btnUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMouseClicked
+        VRutas_Paqueteria vista = new VRutas_Paqueteria();
+        vista.INIT();
+        this.dispose();
+    }//GEN-LAST:event_btnUsuariosMouseClicked
+
+    private void btnDistribucionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDistribucionMouseExited
+        btnDistribucion.setBackground(new Color(64,81,152));
+    }//GEN-LAST:event_btnDistribucionMouseExited
+
+    private void btnDistribucionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDistribucionMouseEntered
+        btnDistribucion.setBackground(new Color(45,40,37));
+        txtSub.setForeground(Color.white);
+    }//GEN-LAST:event_btnDistribucionMouseEntered
+
+    private void btnDistribucionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDistribucionMouseClicked
+        VRutas_DatosDis vista =new VRutas_DatosDis();
+        vista.INIT();
+        this.dispose();
+    }//GEN-LAST:event_btnDistribucionMouseClicked
+
     
     public void INIT(){
-        VPaqueteria vista = new VPaqueteria();
+        VRutas_Envios vista = new VRutas_Envios();
         vista.setVisible(true);
-        paqueteria modelo = new paqueteria();
-        modelo.Mostrartabla(vista);
-        ctrlPaqueteria control = new ctrlPaqueteria(vista, modelo);
+        modelo.MostrarTabla(vista);
+        ctrlEnvios ctrl = new ctrlEnvios(vista, modelo);
     }
     
         public static void main(String args[]) {
@@ -1065,14 +1063,20 @@ public class VPaqueteria extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VPaqueteria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VRutas_Envios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VPaqueteria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VRutas_Envios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VPaqueteria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VRutas_Envios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VPaqueteria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VRutas_Envios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -1127,26 +1131,29 @@ public class VPaqueteria extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JComboBox<String> jcbDistribucion;
     public javax.swing.JComboBox<String> jcbEmpleado;
+    public javax.swing.JComboBox<String> jcbEstado;
+    public javax.swing.JComboBox<String> jcbPaquete;
+    public javax.swing.JComboBox<String> jcbUsuario;
+    public javax.swing.JComboBox<String> jcbVehiculo;
     private javax.swing.JPanel jpSubMenu;
     private Vista.PanelCurvas modificar1;
     private Vista.PanelCurvas panelCurvas1;
     private Vista.PanelCurvas panelCurvas2;
-    private Vista.PanelCurvas panelCurvas3;
-    public javax.swing.JTable tbPaqueteria;
+    public javax.swing.JTable tbEnvios;
     private javax.swing.JLabel txtBarras;
     private javax.swing.JLabel txtBitacora;
     private javax.swing.JLabel txtBodega;
     private javax.swing.JLabel txtCasa;
     private javax.swing.JLabel txtCliente;
     private javax.swing.JLabel txtCliente2;
-    public javax.swing.JTextField txtDireccion;
     private javax.swing.JLabel txtEmpleado;
+    public javax.swing.JTextField txtFecha;
     private javax.swing.JLabel txtLogo;
-    public javax.swing.JTextField txtNombre;
     private javax.swing.JLabel txtRuta;
     private javax.swing.JLabel txtSub;
     private javax.swing.JLabel txtSub1;

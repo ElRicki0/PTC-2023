@@ -5,7 +5,7 @@
  */
 package Modelo;
 
-import Vista.VDatosDis;
+import Vista.VRutas_DatosDis;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -143,7 +143,7 @@ public class DatosDistribucion {
         }
     }
     
-    public void Mostrartabla(VDatosDis vistaRutas){
+    public void Mostrartabla(VRutas_DatosDis vistaRutas){
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(new Object[]{"ID","Nombre", "Producto", "Cantidad", "Empleado responsable"});
         try {
@@ -193,7 +193,7 @@ public class DatosDistribucion {
         }        
     }
         
-    public void Eliminar(VDatosDis vistaDistribucion){
+    public void Eliminar(VRutas_DatosDis vistaDistribucion){
          try {
             int filaSeleccionada = vistaDistribucion.tbDistribucion.getSelectedRow();
 
@@ -214,7 +214,7 @@ public class DatosDistribucion {
         }
         
         
-    public void Actualizar(VDatosDis vista, DatosDistribucion modelo, JComboBox Producto, JComboBox Empleado){
+    public void Actualizar(VRutas_DatosDis vista, DatosDistribucion modelo, JComboBox Producto, JComboBox Empleado){
         try {
                 
                String sql="update tbDatosDistribucion set DaDis_Nombre = ?, idProducto=?, DaDis_CantidadProducto = ?, idEmpleado = ? where idDatoDistribucion = ?";

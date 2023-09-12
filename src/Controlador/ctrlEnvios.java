@@ -1,15 +1,15 @@
 package Controlador;
 
 import Modelo.BitacoraDistribuciones;
-import Vista.VEnvios;
+import Vista.VRutas_Envios;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 public class ctrlEnvios implements ActionListener{
 
-    private VEnvios vistaEnvios;
+    private VRutas_Envios vistaEnvios;
     private BitacoraDistribuciones modeloEnvios;
     
-    public ctrlEnvios(VEnvios vistaEnvios, BitacoraDistribuciones modeloEnvios){
+    public ctrlEnvios(VRutas_Envios vistaEnvios, BitacoraDistribuciones modeloEnvios){
         this.modeloEnvios=modeloEnvios;
         this.vistaEnvios=vistaEnvios;
         this.vistaEnvios.btnAgregar.addActionListener(this);

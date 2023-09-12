@@ -977,7 +977,7 @@ public class VVehiculo_Taller extends javax.swing.JFrame {
 
     private void btnSubMantenimeintoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubMantenimeintoMouseClicked
         int resultado = 0;
-        String sql = "select idMantenimiento from tbMantenimiento";
+        String sql = "select idTaller from tbTalleres";
         try {
             Statement sta = CConexion.getConexion().createStatement();
             ResultSet rs = sta.executeQuery(sql);
@@ -1197,7 +1197,7 @@ public class VVehiculo_Taller extends javax.swing.JFrame {
             if (rs.next()) {
                 resultado = 1;
                 if (resultado == 1) {
-                    VDatosDis vista = new VDatosDis();
+                    VRutas_DatosDis vista = new VRutas_DatosDis();
                     vista.INIT();
                     this.dispose();
                 }

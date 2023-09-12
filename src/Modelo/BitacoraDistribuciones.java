@@ -6,7 +6,7 @@
 package Modelo;
 
 import Vista.Usuario.UEnvios;
-import Vista.VEnvios;
+import Vista.VRutas_Envios;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -283,7 +283,7 @@ public class BitacoraDistribuciones {
         }
     }
     
-    public void MostrarTabla(VEnvios vista){
+    public void MostrarTabla(VRutas_Envios vista){
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(new Object[]{"ID", "Fecha entrega", "Empleado ENC", "usuario ENC", "matricula vehiculo", "Paqueteria","Estado entrega"});
         try {

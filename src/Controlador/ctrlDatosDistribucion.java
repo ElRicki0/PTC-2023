@@ -2,16 +2,16 @@ package Controlador;
 
 import Modelo.DatosDistribucion;
 import Vista.VProducto;
-import Vista.VDatosDis;
+import Vista.VRutas_DatosDis;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 public class ctrlDatosDistribucion implements ActionListener{
     
-    private VDatosDis Vista;
+    private VRutas_DatosDis Vista;
     private DatosDistribucion Modelo;
-    public ctrlDatosDistribucion(VDatosDis Vista, DatosDistribucion Modelo){
+    public ctrlDatosDistribucion(VRutas_DatosDis Vista, DatosDistribucion Modelo){
         this.Modelo=Modelo;
         this.Vista=Vista;
         this.Vista.btnAgregar1.addActionListener(this);

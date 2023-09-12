@@ -1156,7 +1156,7 @@ public class CEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClienteMouseExited
 
     private void btnRutaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseClicked
-        VDatosDis rutas = new VDatosDis();
+        VRutas_DatosDis rutas = new VRutas_DatosDis();
         rutas.INIT();
         this.dispose();
     }//GEN-LAST:event_btnRutaMouseClicked

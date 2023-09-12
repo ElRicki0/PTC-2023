@@ -1,17 +1,17 @@
 package Controlador;
 
 import Modelo.paqueteria;
-import Vista.VPaqueteria;
+import Vista.VRutas_Paqueteria;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 public class ctrlPaqueteria implements ActionListener{
 
-    private VPaqueteria vistaPaqueteria;
+    private VRutas_Paqueteria vistaPaqueteria;
     private paqueteria modeloPaqueteria;
     
-    public ctrlPaqueteria(VPaqueteria vistaPaqueteria, paqueteria modeloPaqueteria){
+    public ctrlPaqueteria(VRutas_Paqueteria vistaPaqueteria, paqueteria modeloPaqueteria){
         this.modeloPaqueteria=modeloPaqueteria;
         this.vistaPaqueteria=vistaPaqueteria;
         this.vistaPaqueteria.btnAgregar.addActionListener(this);

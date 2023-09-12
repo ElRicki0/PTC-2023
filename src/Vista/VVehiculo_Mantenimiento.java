@@ -1010,7 +1010,7 @@ public class VVehiculo_Mantenimiento extends javax.swing.JFrame {
             if (rs.next()) {
                 resultado = 1;
                 if (resultado == 1) {
-                    VDatosDis vista = new VDatosDis();
+                    VRutas_DatosDis vista = new VRutas_DatosDis();
                     vista.INIT();
                     this.dispose();
                 }
