@@ -996,26 +996,42 @@ public class VCliente extends javax.swing.JFrame {
     private void btnSubDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubDatosMouseClicked
         
         int resultado = 0;
-        String sql = "select idDatosTienda from tbDatosTiendas";
+        String sql = "select idCliente from tbClientes";
         try {
             Statement sta = CConexion.getConexion().createStatement();
             ResultSet rs = sta.executeQuery(sql);
             if (rs.next()) {
                 resultado = 1;
                 if (resultado == 1) {
-                    VCliente_DatosTiendas vista = new VCliente_DatosTiendas();
-        vista.INIT();
-        this.dispose();
+                    int resultado2 = 0;
+                    String sql2 = "select idTienda from tbTiendas";
+                    try {
+                        Statement sta2 = CConexion.getConexion().createStatement();
+                        ResultSet rs2 = sta2.executeQuery(sql2);
+                        if (rs2.next()) {
+                            resultado2 = 1;
+                            if (resultado == 1) {
+                                VCliente_DatosTiendas vista = new VCliente_DatosTiendas();
+                                vista.INIT();
+                                this.dispose();
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Agrege una tienda para continuar");
+                        }
+
+                    } catch (Exception oe) {
+                        JOptionPane.showMessageDialog(null, "error boton cliente//datos" + oe.toString());
+                    }
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Agrege un cliente y tienda para continuar");
+                JOptionPane.showMessageDialog(null, "Agrege un cliente para continuar");
             }
 
         } catch (Exception oe) {
             JOptionPane.showMessageDialog(null, "error boton cliente//datos" + oe.toString());
-        }   
-        
-        
+        }
+
+
     }//GEN-LAST:event_btnSubDatosMouseClicked
 
     private void btnSubDatosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubDatosMouseEntered
