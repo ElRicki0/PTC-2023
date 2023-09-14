@@ -25,9 +25,12 @@ public class LoginPTC extends javax.swing.JFrame {
     
     public LoginPTC() {
         initComponents();
+        this.jbNo.setVisible(false);
         setIconImage(new ImageIcon(getClass().getResource("/Vista/Imagenes/lupa.png")).getImage());
         this.setLocationRelativeTo(null);
         rsscalelabel.RSScaleLabel.setScaleLabel(txtImagen, "src/Vista/Imagenes/trabajador.png");
+        rsscalelabel.RSScaleLabel.setScaleLabel(jbVer, "src/Vista/Imagenes/ver.png");
+        rsscalelabel.RSScaleLabel.setScaleLabel(jbNo, "src/Vista/Imagenes/noVer.png");
         TextPrompt txtUsuario = new TextPrompt("Usuario", this.txtUsuario);
         TextPrompt txtContraseña = new TextPrompt("Contraseñas", this.txtContraseña);
         transpareciaBoton();
@@ -45,13 +48,15 @@ public class LoginPTC extends javax.swing.JFrame {
         panelCurvas2 = new Vista.PanelCurvas();
         txtUsuario = new javax.swing.JTextField();
         panelCurvas3 = new Vista.PanelCurvas();
-        txtContraseña = new javax.swing.JTextField();
+        txtContraseña = new javax.swing.JPasswordField();
         bntSesion1 = new Vista.PanelCurvas();
         btnRecContrasenia = new javax.swing.JButton();
         bntSesion = new Vista.PanelCurvas();
         btnLogin = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jbVer = new javax.swing.JLabel();
+        jbNo = new javax.swing.JLabel();
         txtImagen = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -132,8 +137,8 @@ public class LoginPTC extends javax.swing.JFrame {
             panelCurvas3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCurvas3Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         panelCurvas3Layout.setVerticalGroup(
             panelCurvas3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,7 +148,7 @@ public class LoginPTC extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        panelCurvas1.add(panelCurvas3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
+        panelCurvas1.add(panelCurvas3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
 
         bntSesion1.setBackground(new java.awt.Color(255, 255, 255));
         bntSesion1.setRoundBottomLeft(25);
@@ -171,7 +176,7 @@ public class LoginPTC extends javax.swing.JFrame {
         });
         bntSesion1.add(btnRecContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 80));
 
-        panelCurvas1.add(bntSesion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 220, 140, 80));
+        panelCurvas1.add(bntSesion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, 140, 80));
 
         bntSesion.setBackground(new java.awt.Color(255, 255, 255));
         bntSesion.setRoundBottomLeft(25);
@@ -199,7 +204,7 @@ public class LoginPTC extends javax.swing.JFrame {
         });
         bntSesion.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 80));
 
-        panelCurvas1.add(bntSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 140, 80));
+        panelCurvas1.add(bntSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 140, 80));
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -213,13 +218,27 @@ public class LoginPTC extends javax.swing.JFrame {
         jLabel4.setText("Usuario:");
         panelCurvas1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
+        jbVer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbVerMouseClicked(evt);
+            }
+        });
+        panelCurvas1.add(jbVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, 30, 30));
+
+        jbNo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbNoMouseClicked(evt);
+            }
+        });
+        panelCurvas1.add(jbNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, 30, 30));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelCurvas1, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
+                .addComponent(panelCurvas1, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -230,7 +249,7 @@ public class LoginPTC extends javax.swing.JFrame {
                 .addContainerGap(48, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 460, 440));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 480, 440));
         jPanel1.add(txtImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 290, 290));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -250,10 +269,6 @@ public class LoginPTC extends javax.swing.JFrame {
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsuarioActionPerformed
-
-    private void txtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtContraseñaActionPerformed
 
     private void bntSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bntSesionMouseClicked
        
@@ -282,6 +297,23 @@ public class LoginPTC extends javax.swing.JFrame {
     private void bntSesion1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bntSesion1MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_bntSesion1MouseClicked
+
+    private void jbVerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbVerMouseClicked
+        jbVer.setVisible(false);
+        jbNo.setVisible(true);
+        txtContraseña.setEchoChar((char)0);
+    }//GEN-LAST:event_jbVerMouseClicked
+
+    private void jbNoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbNoMouseClicked
+
+        jbVer.setVisible(true);
+        jbNo.setVisible(false);
+        txtContraseña.setEchoChar('*');
+    }//GEN-LAST:event_jbNoMouseClicked
+
+    private void txtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtContraseñaActionPerformed
 
     public void transpareciaBoton(){
         btnLogin.setOpaque(false);        
@@ -370,10 +402,12 @@ public class LoginPTC extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel jbNo;
+    private javax.swing.JLabel jbVer;
     private Vista.PanelCurvas panelCurvas1;
     private Vista.PanelCurvas panelCurvas2;
     private Vista.PanelCurvas panelCurvas3;
-    public javax.swing.JTextField txtContraseña;
+    public javax.swing.JPasswordField txtContraseña;
     private javax.swing.JLabel txtImagen;
     public javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
