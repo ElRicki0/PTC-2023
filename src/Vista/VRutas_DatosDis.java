@@ -776,7 +776,7 @@ public class VRutas_DatosDis extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setText("Nombre:");
-        panelCurvas1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 140, 41));
+        panelCurvas1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 140, 41));
 
         btnEmpleados3.setBackground(new java.awt.Color(246, 234, 204));
         btnEmpleados3.setRoundBottomLeft(25);
