@@ -14,6 +14,7 @@ import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class VCliente_DatosTiendas extends javax.swing.JFrame {
 
@@ -37,6 +38,7 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
         
         desplace = new Desface();
         modelo.llenarcmbCliente(jcbCliente);
+        modelo.llenarcmbBuscador(jcbBuscador);
         modelo.llenarcmbTienda(jcbTienda);
         
         TextPrompt nombre       = new TextPrompt("Ingresar un telefono", txtTelefono);        
@@ -101,7 +103,6 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
         eliminar = new Vista.PanelCurvas();
         btnEliminar_TN = new javax.swing.JButton();
         panelCurvas1 = new Vista.PanelCurvas();
-        jLabel1 = new javax.swing.JLabel();
         panelCurvas2 = new Vista.PanelCurvas();
         txtTelefono = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -109,9 +110,15 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         panelCurvas6 = new Vista.PanelCurvas();
         txtEncargado = new javax.swing.JTextField();
-        jcbCliente = new javax.swing.JComboBox<>();
         jcbTienda = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jcbCliente = new javax.swing.JComboBox<>();
+        jcbBuscador = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+        btnBuscarcmx = new javax.swing.JButton();
+        modificar1 = new Vista.PanelCurvas();
+        btnRestablecer = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1080, 760));
@@ -663,7 +670,7 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
         modificar.setLayout(modificarLayout);
         modificarLayout.setHorizontalGroup(
             modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnModificar_CL, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+            .addComponent(btnModificar_CL, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
         );
         modificarLayout.setVerticalGroup(
             modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -672,7 +679,7 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
                 .addComponent(btnModificar_CL, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 670, -1, -1));
+        jPanel1.add(modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 670, -1, -1));
 
         jScrollPane1.setBackground(new java.awt.Color(172, 147, 110));
 
@@ -727,7 +734,7 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
                 .addComponent(btnEliminar_TN, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 670, -1, -1));
+        jPanel1.add(eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 670, -1, -1));
 
         panelCurvas1.setBackground(new java.awt.Color(172, 147, 110));
         panelCurvas1.setRoundBottomLeft(35);
@@ -735,11 +742,6 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
         panelCurvas1.setRoundTopLeft(35);
         panelCurvas1.setRoundTopRight(35);
         panelCurvas1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel1.setText("Telefono:");
-        panelCurvas1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 140, 41));
 
         panelCurvas2.setBackground(new java.awt.Color(246, 234, 204));
         panelCurvas2.setRoundBottomLeft(25);
@@ -822,9 +824,6 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
 
         panelCurvas1.add(panelCurvas6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 240, 50));
 
-        jcbCliente.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        panelCurvas1.add(jcbCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 240, 50));
-
         jcbTienda.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
         panelCurvas1.add(jcbTienda, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 240, 50));
 
@@ -833,7 +832,58 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
         jLabel6.setText("Tienda:");
         panelCurvas1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 140, 30));
 
-        jPanel1.add(panelCurvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 190, 410, 370));
+        jLabel4.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel4.setText("Telefono:");
+        panelCurvas1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 140, 41));
+
+        jcbCliente.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        panelCurvas1.add(jcbCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 240, 50));
+
+        jPanel1.add(panelCurvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 210, 410, 360));
+
+        jcbBuscador.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        jPanel1.add(jcbBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 130, 220, 50));
+
+        jLabel8.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel8.setText("<html>Ordenar por Cliente:</html>");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 120, 150, 60));
+
+        btnBuscarcmx.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBuscarcmxMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnBuscarcmx, new org.netbeans.lib.awtextra.AbsoluteConstraints(1035, 130, 40, 50));
+
+        modificar1.setBackground(new java.awt.Color(172, 147, 110));
+        modificar1.setRoundBottomLeft(25);
+        modificar1.setRoundBottomRight(25);
+        modificar1.setRoundTopLeft(25);
+        modificar1.setRoundTopRight(25);
+
+        btnRestablecer.setFont(new java.awt.Font("Leelawadee UI", 1, 23)); // NOI18N
+        btnRestablecer.setForeground(new java.awt.Color(51, 51, 51));
+        btnRestablecer.setText("<html>Restablecer tabla</html>");
+        btnRestablecer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRestablecerMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout modificar1Layout = new javax.swing.GroupLayout(modificar1);
+        modificar1.setLayout(modificar1Layout);
+        modificar1Layout.setHorizontalGroup(
+            modificar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnRestablecer, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+        );
+        modificar1Layout.setVerticalGroup(
+            modificar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnRestablecer, javax.swing.GroupLayout.PREFERRED_SIZE, 60, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(modificar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 670, -1, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1082,6 +1132,14 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVehiculosMouseExited
 
+    private void btnRestablecerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRestablecerMouseClicked
+        
+    }//GEN-LAST:event_btnRestablecerMouseClicked
+
+    private void btnBuscarcmxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarcmxMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarcmxMouseClicked
+
     public void INIT(){
         VCliente_DatosTiendas vista =new VCliente_DatosTiendas();
         UTiendas vistaU =new UTiendas();
@@ -1154,12 +1212,14 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
     public javax.swing.JButton btnAgregar_CL;
     private Vista.PanelCurvas btnBitacora;
     private Vista.PanelCurvas btnBodega;
+    public javax.swing.JButton btnBuscarcmx;
     private Vista.PanelCurvas btnCasa;
     private Vista.PanelCurvas btnCliente;
     private Vista.PanelCurvas btnDatos;
     public javax.swing.JButton btnEliminar_TN;
     public javax.swing.JButton btnModificar_CL;
     private Vista.PanelCurvas btnProducto;
+    public javax.swing.JButton btnRestablecer;
     private Vista.PanelCurvas btnRuta;
     private Vista.PanelCurvas btnSubMarcas;
     private Vista.PanelCurvas btnSubProductos;
@@ -1167,18 +1227,21 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
     private Vista.PanelCurvas btnVehiculos;
     private Vista.PanelCurvas eliminar;
     private javax.swing.JLabel icoCarro;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JComboBox<String> jcbBuscador;
     public javax.swing.JComboBox<String> jcbCliente;
     public javax.swing.JComboBox<String> jcbTienda;
     private javax.swing.JPanel jpSubMenu;
     private Vista.PanelCurvas modificar;
+    private Vista.PanelCurvas modificar1;
     private Vista.PanelCurvas panelCurvas1;
     private Vista.PanelCurvas panelCurvas2;
     private Vista.PanelCurvas panelCurvas6;

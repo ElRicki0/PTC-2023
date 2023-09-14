@@ -17,6 +17,8 @@ public class ctrlTalleres implements ActionListener{
         this.vista.btnAgregar.addActionListener(this);
         this.vista.btnEliminar.addActionListener(this);
         this.vista.btnModificarMP.addActionListener(this);
+        this.vista.btnRestaurar.addActionListener(this);
+        this.vista.btnClasificar.addActionListener(this);
     }
 
     
@@ -46,6 +48,7 @@ public class ctrlTalleres implements ActionListener{
                                 modelo.setTall_Correo(vista.txtCorreo.getText());
                                 modelo.setTall_Dueño(vista.txtDuenio.getText());
                                 modelo.Agregar(modelo);
+                                modelo.llenarJCBDuenio(vista.jcbDuenio);
                                 modelo.MostratTabla(vista);
                             }
                         } else {
@@ -78,6 +81,7 @@ public class ctrlTalleres implements ActionListener{
                                 JOptionPane.showMessageDialog(null, "El correo electronico tiene que ser valido");                        
                             } else {
                                 modelo.Editar(vista);
+                                modelo.llenarJCBDuenio(vista.jcbDuenio);
                                 modelo.MostratTabla(vista);
                             }
                         } else {
@@ -87,6 +91,10 @@ public class ctrlTalleres implements ActionListener{
                 }
             }
             
+        }if (e.getSource()==vista.btnClasificar) {
+            modelo.Clasificar(vista);
+        }if (e.getSource()==vista.btnRestaurar) {
+            modelo.MostratTabla(vista);
         }
 //        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }

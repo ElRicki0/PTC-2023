@@ -77,34 +77,34 @@ public class productos {
     }
     
     public void llenarBuscador(JComboBox combo){
-        String sql="select MP_Nombre from tbMarcaProductos";
+        String sql = "select MP_Nombre from tbMarcaProductos";
         Statement st;
-    CConexion con = new CConexion();
-    Connection conexion=con.getConexion();
+        CConexion con = new CConexion();
+        Connection conexion = con.getConexion();
         try {
-            st= conexion.createStatement();
-            ResultSet rs= st.executeQuery(sql) ;
-            while(rs.next()){
+            st = conexion.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
                 combo.addItem(rs.getString("MP_Nombre"));
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error en marca buscador  "+ e.toString());
+            JOptionPane.showMessageDialog(null, "Error en marca buscador  " + e.toString());
         }
     }
     
     public void llenarReporte_Marca(JComboBox combo){
-        String sql="select MP_Nombre from tbMarcaProductos";
+        String sql = "select MP_Nombre from tbMarcaProductos";
         Statement st;
-    CConexion con = new CConexion();
-    Connection conexion=con.getConexion();
+        CConexion con = new CConexion();
+        Connection conexion = con.getConexion();
         try {
-            st= conexion.createStatement();
-            ResultSet rs= st.executeQuery(sql) ;
-            while(rs.next()){
+            st = conexion.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
                 combo.addItem(rs.getString("MP_Nombre"));
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error en marca buscador  "+ e.toString());
+            JOptionPane.showMessageDialog(null, "Error en marca buscador  " + e.toString());
         }
     }
     

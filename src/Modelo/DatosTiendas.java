@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JComboBox;
@@ -67,6 +68,22 @@ public class DatosTiendas {
 
     public void setIdTienda(String idTienda) {
         this.idTienda = idTienda;
+    }
+    
+    public void llenarcmbBuscador(JComboBox combo){
+        String sql = "select clie_Nombre from tbClientes";
+        Statement st;
+        CConexion con = new CConexion();
+        Connection conexion = con.getConexion();
+        try {
+            st = conexion.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                combo.addItem(rs.getString("clie_Nombre"));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error en cliente buscador  " + e.toString());
+        }
     }
     
     public void llenarcmbCliente(JComboBox combo){
@@ -151,6 +168,24 @@ public class DatosTiendas {
             }
         }
     }
+    }
+    
+    public void BuscadorCMB(VCliente_DatosTiendas vista){
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(new Object[]{"ID", "Telefono", "Encargado", "Cliente", "Tienda", "Direccion"});
+        try {
+            java.sql.Statement st = CConexion.getConexion().createStatement();
+            String sql = "select idDatosTienda, DT_NumeroTelefono, DT_PersonaDestinatario, tbClientes.clie_Nombre, tbTiendas.Tien_Nombre, tbTiendas.Tien_Direccion  from tbDatosTiendas \n"
+                    + "inner join tbClientes on tbDatosTiendas.idCliente=tbClientes.idCliente \n"
+                    + "inner join tbTiendas on tbDatosTiendas.idTienda = tbTiendas.idTienda where tbClientes.clie_Nombre='" + vista.jcbBuscador.getSelectedItem() + "'";
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                modelo.addRow(new Object[]{rs.getInt("idDatosTienda"), rs.getString("DT_NumeroTelefono"), rs.getString("DT_PersonaDestinatario"), rs.getString("clie_Nombre"), rs.getString("Tien_Nombre"), rs.getString("Tien_Direccion")});
+            }
+            vista.tbTienda.setModel(modelo);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error tabla datos tiendas " + e.getMessage());
+        }
     }
     
     public void MostrarTablaU(UTiendas vista){

@@ -6,9 +6,12 @@
 package Modelo;
 
 import Vista.VVehiculo_Taller;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.Map;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -63,6 +66,22 @@ public class talleres {
         this.Tall_Dueño = Tall_Dueño;
     }
     
+    public void Clasificar(VVehiculo_Taller vista){
+         DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(new Object[]{"ID","Nombre", "Telefono", "Correo", "Dueño"});
+        try {
+            java.sql.Statement st = CConexion.getConexion().createStatement();
+            String sql ="select *from tbTalleres where Tall_Duenio='"+vista.jcbDuenio.getSelectedItem()+"'";
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+                modelo.addRow(new Object[]{rs.getInt("idTaller"), rs.getString("Tall_Nombre"), rs.getString("Tall_Telefono"), rs.getString("Tall_Correo"), rs.getString("Tall_Duenio")});
+            }
+            vista.tbTaller.setModel(modelo);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error tabla taller "+e.getMessage());                
+        }
+    }
+    
     public void MostratTabla(VVehiculo_Taller vista){
          DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(new Object[]{"ID","Nombre", "Telefono", "Correo", "Dueño"});
@@ -76,6 +95,22 @@ public class talleres {
             vista.tbTaller.setModel(modelo);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error tabla taller "+e.getMessage());                
+        }
+    }
+    
+    public void llenarJCBDuenio(JComboBox combo){
+        String sql = "select Tall_Duenio from tbTalleres";
+        Statement st;
+        CConexion con = new CConexion();
+        Connection conexion = con.getConexion();
+        try {
+            st = conexion.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                combo.addItem(rs.getString("Tall_Duenio"));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error en dueño buscador  " + e.toString());
         }
     }
     

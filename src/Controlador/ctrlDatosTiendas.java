@@ -20,6 +20,8 @@ public class ctrlDatosTiendas implements ActionListener{
         this.vistaDatos.btnAgregar_CL.addActionListener(this);
         this.vistaDatos.btnEliminar_TN.addActionListener(this);
         this.vistaDatos.btnModificar_CL.addActionListener(this);
+        this.vistaDatos.btnRestablecer.addActionListener(this);
+        this.vistaDatos.btnBuscarcmx.addActionListener(this);
     }
     
     @Override
@@ -80,6 +82,10 @@ public class ctrlDatosTiendas implements ActionListener{
                 }
             }
             
+        }if (e.getSource()==vistaDatos.btnBuscarcmx) {
+            modeloDatos.BuscadorCMB(vistaDatos);
+        }if (e.getSource()==vistaDatos.btnRestablecer) {
+            modeloDatos.MostrarTabla(vistaDatos);
         }
 //        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
