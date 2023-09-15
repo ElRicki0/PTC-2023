@@ -8,9 +8,15 @@ public class NuevoContra extends javax.swing.JFrame {
     public NuevoContra() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.jbNo.setVisible(false);
+        this.jbNoRepetir.setVisible(false);
         TextPrompt textPrompta = new TextPrompt("Ingrese su usuario", this.txtUsuario);
         TextPrompt textPrompta2 = new TextPrompt("ingrese nueva contraseña", this.txtContrasenia);
         TextPrompt textPrompta1 = new TextPrompt("Repita la contraseña", this.txtRepetir);
+        rsscalelabel.RSScaleLabel.setScaleLabel(jbver, "src/Vista/Iconos/ver.png");
+        rsscalelabel.RSScaleLabel.setScaleLabel(jbNo, "src/Vista/Iconos/noVer.png");
+        rsscalelabel.RSScaleLabel.setScaleLabel(jbVerRepetir, "src/Vista/Iconos/ver.png");
+        rsscalelabel.RSScaleLabel.setScaleLabel(jbNoRepetir, "src/Vista/Iconos/noVer.png");
         transparenciaBotin();
     }
 
@@ -22,18 +28,23 @@ public class NuevoContra extends javax.swing.JFrame {
         panelCurvas1 = new Vista.PanelCurvas();
         jLabel14 = new javax.swing.JLabel();
         panelCurvas2 = new Vista.PanelCurvas();
-        txtRepetir = new javax.swing.JTextField();
+        txtRepetir = new javax.swing.JPasswordField();
         panelCurvas4 = new Vista.PanelCurvas();
         btnEnviar = new javax.swing.JButton();
         panelCurvas7 = new Vista.PanelCurvas();
         jLabel1 = new javax.swing.JLabel();
         panelCurvas3 = new Vista.PanelCurvas();
-        txtContrasenia = new javax.swing.JTextField();
+        txtContrasenia = new javax.swing.JPasswordField();
         panelCurvas5 = new Vista.PanelCurvas();
         txtUsuario = new javax.swing.JTextField();
+        jbver = new javax.swing.JLabel();
+        jbNo = new javax.swing.JLabel();
+        jbNoRepetir = new javax.swing.JLabel();
+        jbVerRepetir = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(590, 470));
+        setResizable(false);
         setSize(new java.awt.Dimension(590, 470));
 
         jPanel1.setBackground(new java.awt.Color(246, 234, 204));
@@ -58,8 +69,6 @@ public class NuevoContra extends javax.swing.JFrame {
         panelCurvas2.setRoundTopRight(25);
 
         txtRepetir.setBackground(new java.awt.Color(255, 255, 255));
-        txtRepetir.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtRepetir.setForeground(new java.awt.Color(51, 51, 51));
         txtRepetir.setBorder(null);
 
         javax.swing.GroupLayout panelCurvas2Layout = new javax.swing.GroupLayout(panelCurvas2);
@@ -67,9 +76,9 @@ public class NuevoContra extends javax.swing.JFrame {
         panelCurvas2Layout.setHorizontalGroup(
             panelCurvas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCurvas2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtRepetir, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(28, 28, 28)
+                .addComponent(txtRepetir, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         panelCurvas2Layout.setVerticalGroup(
             panelCurvas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,7 +115,7 @@ public class NuevoContra extends javax.swing.JFrame {
             .addComponent(btnEnviar, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        jPanel1.add(panelCurvas4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, -1, 50));
+        jPanel1.add(panelCurvas4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 440, -1, 50));
 
         panelCurvas7.setBackground(new java.awt.Color(255, 255, 255));
         panelCurvas7.setPreferredSize(new java.awt.Dimension(100, 100));
@@ -148,8 +157,6 @@ public class NuevoContra extends javax.swing.JFrame {
         panelCurvas3.setRoundTopRight(25);
 
         txtContrasenia.setBackground(new java.awt.Color(255, 255, 255));
-        txtContrasenia.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtContrasenia.setForeground(new java.awt.Color(51, 51, 51));
         txtContrasenia.setBorder(null);
 
         javax.swing.GroupLayout panelCurvas3Layout = new javax.swing.GroupLayout(panelCurvas3);
@@ -157,13 +164,13 @@ public class NuevoContra extends javax.swing.JFrame {
         panelCurvas3Layout.setHorizontalGroup(
             panelCurvas3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCurvas3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtContrasenia, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(19, 19, 19)
+                .addComponent(txtContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         panelCurvas3Layout.setVerticalGroup(
             panelCurvas3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCurvas3Layout.createSequentialGroup()
+            .addGroup(panelCurvas3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(txtContrasenia, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
                 .addContainerGap())
@@ -201,6 +208,36 @@ public class NuevoContra extends javax.swing.JFrame {
 
         jPanel1.add(panelCurvas5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 400, 50));
 
+        jbver.setToolTipText("");
+        jbver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbverMouseClicked(evt);
+            }
+        });
+        jPanel1.add(jbver, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 240, 50, 50));
+
+        jbNo.setToolTipText("");
+        jbNo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbNoMouseClicked(evt);
+            }
+        });
+        jPanel1.add(jbNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 240, 50, 50));
+
+        jbNoRepetir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbNoRepetirMouseClicked(evt);
+            }
+        });
+        jPanel1.add(jbNoRepetir, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 350, 50, 40));
+
+        jbVerRepetir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbVerRepetirMouseClicked(evt);
+            }
+        });
+        jPanel1.add(jbVerRepetir, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 350, 50, 40));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -224,6 +261,30 @@ public class NuevoContra extends javax.swing.JFrame {
     private void btnEnviarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnviarMouseClicked
 
     }//GEN-LAST:event_btnEnviarMouseClicked
+
+    private void jbverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbverMouseClicked
+        jbver.setVisible(false);
+        jbNo.setVisible(true);
+        txtContrasenia.setEchoChar((char) 0);
+    }//GEN-LAST:event_jbverMouseClicked
+
+    private void jbNoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbNoMouseClicked
+        jbver.setVisible(true);
+        jbNo.setVisible(false);
+        txtContrasenia.setEchoChar('*');
+    }//GEN-LAST:event_jbNoMouseClicked
+
+    private void jbVerRepetirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbVerRepetirMouseClicked
+        jbVerRepetir.setVisible(false);
+        jbNoRepetir.setVisible(true);
+        txtRepetir.setEchoChar((char) 0);
+    }//GEN-LAST:event_jbVerRepetirMouseClicked
+
+    private void jbNoRepetirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbNoRepetirMouseClicked
+        jbVerRepetir.setVisible(true);
+        jbNoRepetir.setVisible(false);
+        txtRepetir.setEchoChar('*');
+    }//GEN-LAST:event_jbNoRepetirMouseClicked
 
     public void transparenciaBotin() {
         btnEnviar.setOpaque(false);
@@ -308,14 +369,18 @@ public class NuevoContra extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jbNo;
+    private javax.swing.JLabel jbNoRepetir;
+    private javax.swing.JLabel jbVerRepetir;
+    private javax.swing.JLabel jbver;
     private Vista.PanelCurvas panelCurvas1;
     private Vista.PanelCurvas panelCurvas2;
-    private Vista.PanelCurvas panelCurvas3;
+    public Vista.PanelCurvas panelCurvas3;
     private Vista.PanelCurvas panelCurvas4;
     private Vista.PanelCurvas panelCurvas5;
     private Vista.PanelCurvas panelCurvas7;
-    public javax.swing.JTextField txtContrasenia;
-    public javax.swing.JTextField txtRepetir;
+    public javax.swing.JPasswordField txtContrasenia;
+    public javax.swing.JPasswordField txtRepetir;
     public javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 
