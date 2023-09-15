@@ -230,7 +230,6 @@ public class ContraGMAIL extends javax.swing.JFrame {
         RecContrasenia vista = new RecContrasenia();
         vista.INIT();
         this.dispose();
-        
     }//GEN-LAST:event_panelCurvas7MouseClicked
 
     private void btnEnviarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnviarMouseClicked
