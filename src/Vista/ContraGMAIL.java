@@ -1,9 +1,11 @@
-
 package Vista;
 
 import Controlador.ctrlEncriptacion;
 import Controlador.ctrlPrimerUsuario;
+import Controlador.ctrlverificarCorreo;
 import Modelo.usuarios;
+import Modelo.CConexion;
+import com.sun.jdi.connect.spi.Connection;
 import java.util.Properties;
 import java.util.Random;
 import javax.mail.Session;
@@ -15,6 +17,7 @@ import javax.mail.internet.MimeMessage;
 import javax.swing.JOptionPane;
 
 public class ContraGMAIL extends javax.swing.JFrame {
+
     int aleatorio = 0;
 
     public ContraGMAIL() {
@@ -248,7 +251,7 @@ public class ContraGMAIL extends javax.swing.JFrame {
         btnCodigo.setContentAreaFilled(false);
         btnCodigo.setBorderPainted(false);
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -260,7 +263,20 @@ public class ContraGMAIL extends javax.swing.JFrame {
     public void mandarCorreo() {
         aleatorio = (int) (Math.random() * 100000000);
         try {
-            //Preparar las cosas
+
+            CConexion Connection = null;
+
+            CConexion conexion = Connection;
+
+            ctrlverificarCorreo ContrCorreo = new ctrlverificarCorreo(conexion);
+
+            String correoAVerificar = txtCorreo.getText();
+
+            boolean existeCorreo = ContrCorreo.CorreoBD(correoAVerificar);
+
+            if (existeCorreo == true) {
+
+                            //Preparar las cosas
             String correoEmisor = "GoldenManagerStudio@gmail.com";
             String contraseñaEmisor = "urjqvpuobtjciwwk";
             String CorreoReceptor = txtCorreo.getText();
@@ -291,6 +307,12 @@ public class ContraGMAIL extends javax.swing.JFrame {
             t.close();
 
             JOptionPane.showMessageDialog(null, "Correo enviado");
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "Correo electronico invalido");
+            }
+
+
 
         } catch (Exception e) {
             System.out.println(e.toString());
@@ -314,7 +336,7 @@ public class ContraGMAIL extends javax.swing.JFrame {
         }
 
     }
-    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -353,12 +375,10 @@ public class ContraGMAIL extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-                 
-        
-        
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+
             }
         });
     }
@@ -379,5 +399,4 @@ public class ContraGMAIL extends javax.swing.JFrame {
     public javax.swing.JTextField txtCorreo;
     // End of variables declaration//GEN-END:variables
 
-    
 }
