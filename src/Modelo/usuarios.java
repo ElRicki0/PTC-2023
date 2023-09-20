@@ -8,7 +8,8 @@ package Modelo;
 import Controlador.ctrlEncriptacion;
 import Vista.*;
 import Controlador.ctrlLogin;
-import Vista.Controlador.CMain;
+import Vista.Controlador.MainC;
+import Vista.Controlador.MainC;
 import Vista.Repartidor.RMain;
 import Vista.Usuario.UMain;
 import java.sql.*;
@@ -163,21 +164,25 @@ public class usuarios {
                 String contraseñaAlmacenada = rs.getString("usr_contrasenia");
                 String nivelU = rs.getString("idNivelUser");
 
-                if (getUsr_contra().equals(contraseñaAlmacenada)) {
+                if (modeloUsuario.getUsr_contra().equals(contraseñaAlmacenada)) {
                     if (nivelU.equals("1")) {
                         LoginPTC vista = new LoginPTC();
                         vista.dispose();
-                        System.out.println("hola123");
                         Main main = new Main();
-                        main.setVisible(true);
+                        main.INIT();
                     }
                     if (nivelU.equals("2")) {
-                        CMain main = new CMain();
-                        main.setVisible(true);
+//                    if (nivelU.equals("2")) {
+                        LoginPTC vista = new LoginPTC();
+                        vista.dispose();
+                        MainC main = new MainC();
+                        main.INIT();
                     }
                     if (nivelU.equals("3")) {
                         RMain main = new RMain();
                         main.setVisible(true);
+                       LoginPTC vista = new LoginPTC();
+                        vista.dispose();
                     }
                     if (nivelU.equals("4")) {
                         UMain main = new UMain();
@@ -322,7 +327,6 @@ public class usuarios {
                 AUsuario.setInt(4, selID);
             } else {
             }
-            JOptionPane.showMessageDialog(null, "Llene todos los campos");
             AUsuario.execute();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "El empleado ya esta en uso, eliga otro empleado o cree uno nuevo");

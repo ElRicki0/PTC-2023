@@ -38,6 +38,7 @@ public class VVehiculo_Mantenimiento extends javax.swing.JFrame {
         rsscalelabel.RSScaleLabel.setScaleLabel(icoCarro, "src/Vista/Iconos/vehiculo.png");
         
         modelo.RellenarTallerCBX(jcbTaller);
+        modelo.RellenarBuscadorCBX(jcbBuscador);
         desplace = new Desface();
         
         this.setLocationRelativeTo(null);
@@ -109,6 +110,12 @@ public class VVehiculo_Mantenimiento extends javax.swing.JFrame {
         txtSub3 = new javax.swing.JLabel();
         btnSubVehiculo = new Vista.PanelCurvas();
         txtSub4 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jcbBuscador = new javax.swing.JComboBox<>();
+        btnBuscador = new Vista.PanelCurvas();
+        btnBuscar = new javax.swing.JButton();
+        btnRestaurador = new Vista.PanelCurvas();
+        btnRestaurar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1080, 760));
@@ -649,7 +656,7 @@ public class VVehiculo_Mantenimiento extends javax.swing.JFrame {
         eliminar1.setLayout(eliminar1Layout);
         eliminar1Layout.setHorizontalGroup(
             eliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+            .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
         );
         eliminar1Layout.setVerticalGroup(
             eliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -658,7 +665,7 @@ public class VVehiculo_Mantenimiento extends javax.swing.JFrame {
                 .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(eliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 680, -1, -1));
+        jPanel1.add(eliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 680, -1, -1));
 
         modificar1.setBackground(new java.awt.Color(172, 147, 110));
         modificar1.setRoundBottomLeft(25);
@@ -688,7 +695,7 @@ public class VVehiculo_Mantenimiento extends javax.swing.JFrame {
                 .addComponent(btnModificarMP, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(modificar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 680, 160, 60));
+        jPanel1.add(modificar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 680, 160, 60));
 
         jpSubMenu.setBackground(new java.awt.Color(64, 81, 115));
         jpSubMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -848,6 +855,71 @@ public class VVehiculo_Mantenimiento extends javax.swing.JFrame {
         jpSubMenu.add(btnSubVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 30, 150, 60));
 
         jPanel1.add(jpSubMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 1040, 110));
+
+        jLabel8.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel8.setText("<html>Clasificar por Taller:</html>");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 120, 150, 60));
+
+        jcbBuscador.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        jPanel1.add(jcbBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 130, 240, 50));
+
+        btnBuscador.setBackground(new java.awt.Color(172, 147, 110));
+        btnBuscador.setRoundBottomLeft(25);
+        btnBuscador.setRoundBottomRight(25);
+        btnBuscador.setRoundTopLeft(25);
+        btnBuscador.setRoundTopRight(25);
+
+        btnBuscar.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBuscarMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout btnBuscadorLayout = new javax.swing.GroupLayout(btnBuscador);
+        btnBuscador.setLayout(btnBuscadorLayout);
+        btnBuscadorLayout.setHorizontalGroup(
+            btnBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+        );
+        btnBuscadorLayout.setVerticalGroup(
+            btnBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(btnBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 130, 70, 50));
+
+        btnRestaurador.setBackground(new java.awt.Color(172, 147, 110));
+        btnRestaurador.setRoundBottomLeft(25);
+        btnRestaurador.setRoundBottomRight(25);
+        btnRestaurador.setRoundTopLeft(25);
+        btnRestaurador.setRoundTopRight(25);
+
+        btnRestaurar.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        btnRestaurar.setForeground(new java.awt.Color(255, 255, 255));
+        btnRestaurar.setText("<html>Restaurar Tabla</html>");
+        btnRestaurar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRestaurarMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout btnRestauradorLayout = new javax.swing.GroupLayout(btnRestaurador);
+        btnRestaurador.setLayout(btnRestauradorLayout);
+        btnRestauradorLayout.setHorizontalGroup(
+            btnRestauradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnRestaurar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+        );
+        btnRestauradorLayout.setVerticalGroup(
+            btnRestauradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnRestauradorLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnRestaurar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPanel1.add(btnRestaurador, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 680, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1141,6 +1213,14 @@ public class VVehiculo_Mantenimiento extends javax.swing.JFrame {
         txtSub4.setForeground(Color.BLACK);
     }//GEN-LAST:event_btnSubVehiculoMouseExited
 
+    private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarMouseClicked
+
+    private void btnRestaurarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRestaurarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRestaurarMouseClicked
+
     
     public void INIT(){
         VVehiculo_Mantenimiento vista = new VVehiculo_Mantenimiento();
@@ -1220,11 +1300,15 @@ public class VVehiculo_Mantenimiento extends javax.swing.JFrame {
     public javax.swing.JButton btnAgregar;
     private Vista.PanelCurvas btnBitacora;
     private Vista.PanelCurvas btnBodega;
+    private Vista.PanelCurvas btnBuscador;
+    public javax.swing.JButton btnBuscar;
     private Vista.PanelCurvas btnCasa;
     private Vista.PanelCurvas btnCliente;
     public javax.swing.JButton btnEliminar;
     public javax.swing.JButton btnModificarMP;
     private Vista.PanelCurvas btnProducto;
+    private Vista.PanelCurvas btnRestaurador;
+    public javax.swing.JButton btnRestaurar;
     private Vista.PanelCurvas btnRuta;
     private Vista.PanelCurvas btnSubMantenimeinto;
     private Vista.PanelCurvas btnSubModelo;
@@ -1239,8 +1323,10 @@ public class VVehiculo_Mantenimiento extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JComboBox<String> jcbBuscador;
     public javax.swing.JComboBox<String> jcbTaller;
     private javax.swing.JPanel jpSubMenu;
     private Vista.PanelCurvas modificar1;

@@ -38,7 +38,10 @@ public class VVehiculo extends javax.swing.JFrame {
         desplace = new Desface();
         modeloVehiculos.RellenarMantenimientoCBX(jcbMantenimiento);
         modeloVehiculos.RellenarModeloCBX(jcbModelo);
-        
+        modeloVehiculos.RellenarBuscador(jcbBuscador);
+
+        TextPrompt txtContraseña = new TextPrompt("PXXX-XXX", this.txtMatricula);
+       
         this.setLocationRelativeTo(null);
         transpareciaBoton();
     }
@@ -107,6 +110,12 @@ public class VVehiculo extends javax.swing.JFrame {
         txtSub3 = new javax.swing.JLabel();
         btnSubVehiculo = new Vista.PanelCurvas();
         txtSub4 = new javax.swing.JLabel();
+        jcbBuscador = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+        eliminar2 = new Vista.PanelCurvas();
+        btnRestaurar = new javax.swing.JButton();
+        eliminar3 = new Vista.PanelCurvas();
+        btnBuscar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1080, 760));
@@ -543,7 +552,7 @@ public class VVehiculo extends javax.swing.JFrame {
         jcbModelo.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
         panelCurvas1.add(jcbModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 240, 50));
 
-        jPanel1.add(panelCurvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 270, 420, 310));
+        jPanel1.add(panelCurvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 210, 420, 310));
 
         tbVehiculos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -630,7 +639,7 @@ public class VVehiculo extends javax.swing.JFrame {
                 .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(eliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 680, -1, -1));
+        jPanel1.add(eliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 680, -1, -1));
 
         modificar1.setBackground(new java.awt.Color(172, 147, 110));
         modificar1.setRoundBottomLeft(25);
@@ -660,7 +669,7 @@ public class VVehiculo extends javax.swing.JFrame {
                 .addComponent(btnModificarMP, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(modificar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 680, 160, 60));
+        jPanel1.add(modificar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 680, 160, 60));
 
         jpSubMenu.setBackground(new java.awt.Color(64, 81, 115));
         jpSubMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -821,6 +830,71 @@ public class VVehiculo extends javax.swing.JFrame {
 
         jPanel1.add(jpSubMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 1040, 110));
 
+        jcbBuscador.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        jPanel1.add(jcbBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 130, 220, 50));
+
+        jLabel8.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel8.setText("<html>Buscar por Modelo de vehiculo</html>");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 120, 220, 60));
+
+        eliminar2.setBackground(new java.awt.Color(172, 147, 110));
+        eliminar2.setRoundBottomLeft(25);
+        eliminar2.setRoundBottomRight(25);
+        eliminar2.setRoundTopLeft(25);
+        eliminar2.setRoundTopRight(25);
+
+        btnRestaurar.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        btnRestaurar.setForeground(new java.awt.Color(255, 255, 255));
+        btnRestaurar.setText("<html>Restaurar Tabla</html>");
+        btnRestaurar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRestaurarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout eliminar2Layout = new javax.swing.GroupLayout(eliminar2);
+        eliminar2.setLayout(eliminar2Layout);
+        eliminar2Layout.setHorizontalGroup(
+            eliminar2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnRestaurar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+        );
+        eliminar2Layout.setVerticalGroup(
+            eliminar2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eliminar2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnRestaurar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPanel1.add(eliminar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 680, -1, -1));
+
+        eliminar3.setBackground(new java.awt.Color(172, 147, 110));
+        eliminar3.setRoundBottomLeft(25);
+        eliminar3.setRoundBottomRight(25);
+        eliminar3.setRoundTopLeft(25);
+        eliminar3.setRoundTopRight(25);
+
+        btnBuscar.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout eliminar3Layout = new javax.swing.GroupLayout(eliminar3);
+        eliminar3.setLayout(eliminar3Layout);
+        eliminar3Layout.setHorizontalGroup(
+            eliminar3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+        );
+        eliminar3Layout.setVerticalGroup(
+            eliminar3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(eliminar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 130, 50, 50));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -852,13 +926,11 @@ public class VVehiculo extends javax.swing.JFrame {
     }//GEN-LAST:event_btnModificarMPMouseClicked
 
     private void tbVehiculosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbVehiculosMouseClicked
-//         int filaSeleccionada = tbMantenimiento.getSelectedRow();
-//
-//        String mecanico = tbMantenimiento.getValueAt(filaSeleccionada, 1).toString();
-//        String Telefono = tbMantenimiento.getValueAt(filaSeleccionada, 2).toString();
-//        
-//        txtmecanico.setText(mecanico);
-//        txtTelefono.setText(Telefono);
+         int filaSeleccionada = tbVehiculos.getSelectedRow();
+
+        String Matricula = tbVehiculos.getValueAt(filaSeleccionada, 1).toString();
+        
+        txtMatricula.setText(Matricula);
     }//GEN-LAST:event_tbVehiculosMouseClicked
 
     private void btnCasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseClicked
@@ -1094,6 +1166,14 @@ public class VVehiculo extends javax.swing.JFrame {
         txtSub4.setForeground(Color.BLACK);
     }//GEN-LAST:event_btnSubVehiculoMouseExited
 
+    private void btnRestaurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestaurarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRestaurarActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
     
     public void INIT(){
         VVehiculo vista = new VVehiculo();
@@ -1189,11 +1269,13 @@ public class VVehiculo extends javax.swing.JFrame {
     public javax.swing.JButton btnAgregar;
     private Vista.PanelCurvas btnBitacora;
     private Vista.PanelCurvas btnBodega;
+    public javax.swing.JButton btnBuscar;
     private Vista.PanelCurvas btnCasa;
     private Vista.PanelCurvas btnCliente;
     public javax.swing.JButton btnEliminar;
     public javax.swing.JButton btnModificarMP;
     private Vista.PanelCurvas btnProducto;
+    public javax.swing.JButton btnRestaurar;
     private Vista.PanelCurvas btnRuta;
     private Vista.PanelCurvas btnSubMantenimeinto;
     private Vista.PanelCurvas btnSubModelo;
@@ -1202,14 +1284,18 @@ public class VVehiculo extends javax.swing.JFrame {
     private Vista.PanelCurvas btnTrabajador;
     private Vista.PanelCurvas btnVehiculos;
     private Vista.PanelCurvas eliminar1;
+    private Vista.PanelCurvas eliminar2;
+    private Vista.PanelCurvas eliminar3;
     private javax.swing.JLabel icoCarro;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JComboBox<String> jcbBuscador;
     public javax.swing.JComboBox<String> jcbMantenimiento;
     public javax.swing.JComboBox<String> jcbModelo;
     private javax.swing.JPanel jpSubMenu;

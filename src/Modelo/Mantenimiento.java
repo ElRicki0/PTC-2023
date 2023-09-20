@@ -59,6 +59,42 @@ public class Mantenimiento {
         this.idTaller = idTaller;
     }
     
+    public void Buscador(VVehiculo_Mantenimiento vista){
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(new Object[]{"ID", "Mecanico","Numero mecanico","Taller"});
+        try {
+            Statement st= CConexion.getConexion().createStatement();
+                String SQL ="select idMantenimiento, Mecanico, TFTaller, tbTalleres.Tall_Nombre from tbMantenimiento inner join tbTalleres on tbMantenimiento.idTaller=tbTalleres.idTaller where Tall_Nombre='"+vista.jcbBuscador.getSelectedItem()+"'";
+            ResultSet rs = st.executeQuery(SQL);
+            
+            while (rs.next()) {
+                modelo.addRow(new Object[]{rs.getInt("idMantenimiento"), rs.getString("Mecanico"), rs.getString("TFTaller"), rs.getString("Tall_Nombre")});
+            }
+            vista.tbMantenimiento.setModel(modelo);            
+        } 
+        catch (Exception e) 
+        {
+            JOptionPane.showMessageDialog(null, "Error tabla producto "+e.getMessage());                
+        }
+    }
+    
+    public void RellenarBuscadorCBX(JComboBox combo){
+        combo.removeAllItems();
+        String sql = "select Tall_Nombre from tbTalleres";
+        Statement st;
+        CConexion con = new CConexion();
+        Connection conexion = con.getConexion();
+        try {
+            st = conexion.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                combo.addItem(rs.getString("Tall_Nombre"));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error en taller buscador  " + e.toString());
+        }
+    }
+    
     public void RellenarTallerCBX(JComboBox combo) {
     Connection conectar = null;
     PreparedStatement pst = null;

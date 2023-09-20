@@ -18,6 +18,8 @@ public class ctrlModelo implements ActionListener{
         this.vistaModelo.btnAgregar.addActionListener(this);
         this.vistaModelo.btnEliminar.addActionListener(this);
         this.vistaModelo.btnModificarMP.addActionListener(this);
+        this.vistaModelo.btnBuscar.addActionListener(this);
+        this.vistaModelo.btnRestaurar.addActionListener(this);
     }
     
     @Override
@@ -46,7 +48,7 @@ public class ctrlModelo implements ActionListener{
                                 modeloModelo.setModelo(vistaModelo.txtModelo.getText());
                                 modeloModelo.setMo_anio(Integer.parseInt(vistaModelo.txtAnio.getText()));
                                 modeloModelo.setMarcavehiculo(vistaModelo.txtMarca.getText());
-                                modeloModelo.Agregar(modeloModelo);
+                                modeloModelo.Agregar(modeloModelo, vistaModelo);
                                 modeloModelo.MostrarTabla(vistaModelo);
                             }
                         }
@@ -87,6 +89,10 @@ public class ctrlModelo implements ActionListener{
                 }
             }
             
+        }if (e.getSource()==vistaModelo.btnRestaurar) {
+            modeloModelo.MostrarTabla(vistaModelo);
+        }if (e.getSource()==vistaModelo.btnBuscar) {
+            modeloModelo.Buscador(vistaModelo);
         }
 //        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }

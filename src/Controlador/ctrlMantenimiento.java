@@ -22,6 +22,8 @@ public class ctrlMantenimiento implements ActionListener{
         this.Vista.btnAgregar.addActionListener(this);
         this.Vista.btnModificarMP.addActionListener(this);
         this.Vista.btnEliminar.addActionListener(this);
+        this.Vista.btnRestaurar.addActionListener(this);
+        this.Vista.btnBuscar.addActionListener(this);
     }
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -78,6 +80,10 @@ public class ctrlMantenimiento implements ActionListener{
                     }
                 }
             }            
+        }if (e.getSource()==Vista.btnRestaurar) {
+            Modelo.Mostrartabla(Vista);
+        }if (e.getSource()==Vista.btnBuscar) {
+            Modelo.Buscador(Vista);
         }
         
 //        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

@@ -77,6 +77,7 @@ public class productos {
     }
     
     public void llenarBuscador(JComboBox combo){
+        combo.removeAllItems();
         String sql = "select MP_Nombre from tbMarcaProductos";
         Statement st;
         CConexion con = new CConexion();
@@ -93,6 +94,7 @@ public class productos {
     }
     
     public void llenarReporte_Marca(JComboBox combo){
+        combo.removeAllItems();
         String sql = "select MP_Nombre from tbMarcaProductos";
         Statement st;
         CConexion con = new CConexion();
@@ -105,22 +107,6 @@ public class productos {
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error en marca buscador  " + e.toString());
-        }
-    }
-    
-    public void llenarReporte_Producto(JComboBox combo){
-        String sql="select Prod_Nombre from tbProductos";
-        Statement st;
-    CConexion con = new CConexion();
-    Connection conexion=con.getConexion();
-        try {
-            st= conexion.createStatement();
-            ResultSet rs= st.executeQuery(sql) ;
-            while(rs.next()){
-                combo.addItem(rs.getString("Prod_Nombre"));
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error en producto buscador  "+ e.toString());
         }
     }
     
@@ -284,7 +270,7 @@ public class productos {
             JOptionPane.showMessageDialog(null, "Se elimino correctamente la marca");                           
         } catch (Exception e) {
          System.out.println(e.toString());
-          JOptionPane.showMessageDialog(null, "Error al intentar eliminar el producto");                           
+          JOptionPane.showMessageDialog(null, "Existe registro en rutas con este producto, modifique o elimine el dato en rutas");                           
         }
     }
     

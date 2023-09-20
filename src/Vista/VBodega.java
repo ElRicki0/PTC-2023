@@ -6,6 +6,7 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 import Controlador.ctrlBodega;
 import Modelo.Bodegas;
+import Vista.Controlador.CBodega;
 import javax.swing.ImageIcon;
 import desplazable.Desface;
 import java.awt.Color;
@@ -929,8 +930,9 @@ public class VBodega extends javax.swing.JFrame {
     
     public void INIT(){
         VBodega vista= new VBodega();
+        CBodega Cvista= new CBodega();
         Bodegas modelo = new Bodegas();
-        ctrlBodega control= new ctrlBodega(vista, modelo);
+        ctrlBodega control= new ctrlBodega(vista, modelo, Cvista);
         modelo.MostrarBodega(vista);
         vista.setVisible(true);
     }

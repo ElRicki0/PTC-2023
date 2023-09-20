@@ -6,6 +6,7 @@
 package Modelo;
 
 import Vista.VVehiculo_Modelo;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -56,6 +57,42 @@ public class Modelos1 {
         this.Marcavehiculo = Marcavehiculo;
     }
     
+    public void RellenarBuscadorCBX(JComboBox combo){
+        combo.removeAllItems();
+        String sql = "select Mo_marca from tbModelos";
+        Statement st;
+        CConexion con = new CConexion();
+        Connection conexion = con.getConexion();
+        try {
+            st = conexion.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                combo.addItem(rs.getString("Mo_marca"));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error en marca vehiculo buscador  " + e.toString());
+        }
+    }
+    
+    public void Buscador(VVehiculo_Modelo vistaModelos){
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(new Object[]{"ID", "Modelo","anualidad","Marca"});
+        try {
+            Statement st= CConexion.getConexion().createStatement();
+                String SQL ="select *from tbModelos where Mo_marca='"+vistaModelos.jcbBuscador.getSelectedItem()+"'";
+            ResultSet rs = st.executeQuery(SQL);
+            
+            while (rs.next()) {
+                modelo.addRow(new Object[]{rs.getInt("idModelo"), rs.getString("Modelo"), rs.getString("Mo_anio"), rs.getString("Mo_marca")});
+            }
+            vistaModelos.tbModelos.setModel(modelo);            
+        } 
+        catch (Exception e) 
+        {
+            JOptionPane.showMessageDialog(null, "Error tabla modelos A "+e.getMessage());                
+        }
+    }
+    
     public void MostrarTabla(VVehiculo_Modelo vistaModelos){
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(new Object[]{"ID", "Modelo","anualidad","Marca"});
@@ -75,7 +112,7 @@ public class Modelos1 {
         }
     }
     
-    public void Agregar(Modelos1 modelo){
+    public void Agregar(Modelos1 modelo, VVehiculo_Modelo vista){
         
         String SQL = "INSERT INTO tbModelos (Modelo, Mo_anio, Mo_marca) VALUES (?, ?, ?)";
     try {
@@ -86,6 +123,7 @@ public class Modelos1 {
         
         AModelo.executeUpdate();
         JOptionPane.showMessageDialog(null, "El modelo se agregó correctamente");
+        RellenarBuscadorCBX(vista.jcbBuscador);
 
     } catch (Exception e) {
         JOptionPane.showMessageDialog(null, "ERROR EN EL METODO DEL MODELO: " + e.toString());

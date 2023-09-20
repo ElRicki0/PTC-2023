@@ -23,7 +23,8 @@ import javax.swing.table.DefaultTableModel;
  * @author Javier
  */
 public class vehiculos {
-    private int idVehiculo; 
+
+    private int idVehiculo;
     private String vehi_Matricula;
     private String idModelo;
     private String idMantenimineto;
@@ -59,164 +60,255 @@ public class vehiculos {
     public void setIdMantenimineto(String idMantenimineto) {
         this.idMantenimineto = idMantenimineto;
     }
-    
+
+    public void RellenarBuscador(JComboBox combo) {
+        combo.removeAllItems();
+        String sql = "select Modelo from tbModelos";
+        Statement st;
+        CConexion con = new CConexion();
+        Connection conexion = con.getConexion();
+        try {
+            st = conexion.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                combo.addItem(rs.getString("Modelo"));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error en modelo vehiculo buscador  " + e.toString());
+        }
+    }
+
+    public void Buscador(VVehiculo vistaVehiculos) {
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(new Object[]{"ID", "Marca", "Modelo", "Mecanico", "Taller"});
+        try {
+            Statement st = CConexion.getConexion().createStatement();
+            String SQL = "select idVehiculo, vehi_Matricula, tbModelos.Modelo, tbMantenimiento.Mecanico, tbTalleres.Tall_Nombre from tbVehiculos \n"
+                    + "inner join tbModelos on tbVehiculos.idModelo=tbModelos.idModelo inner join tbMantenimiento on tbVehiculos.idMantenimeinto=tbMantenimiento.idMantenimiento inner join tbTalleres on tbMantenimiento.idTaller=tbTalleres.idTaller where tbModelos.Modelo='" + vistaVehiculos.jcbBuscador.getSelectedItem() + "'";
+            ResultSet rs = st.executeQuery(SQL);
+
+            while (rs.next()) {
+                modelo.addRow(new Object[]{rs.getInt("idVehiculo"), rs.getString("vehi_Matricula"), rs.getString("Modelo"), rs.getString("Mecanico"), rs.getString("Tall_Nombre")});
+            }
+            vistaVehiculos.tbVehiculos.setModel(modelo);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error tabla vehiculos A " + e.getMessage());
+        }
+    }
+
     public void RellenarModeloCBX(JComboBox combo) {
-    Connection conectar = null;
-    PreparedStatement pst = null;
-    ResultSet result = null;
+        Connection conectar = null;
+        PreparedStatement pst = null;
+        ResultSet result = null;
 
-    String SSQL = "SELECT idModelo, Modelo FROM tbModelos";
-    combo.removeAllItems();
-    
-    // Usamos un Map para almacenar pares de ID y nombre
-    Map<Integer, String> idModelo = new HashMap<>();
+        String SSQL = "SELECT idModelo, Modelo FROM tbModelos";
+        combo.removeAllItems();
 
-    try {
-        conectar = CConexion.getConexion();
-        pst = conectar.prepareStatement(SSQL);
-        result = pst.executeQuery();
+        // Usamos un Map para almacenar pares de ID y nombre
+        Map<Integer, String> idModelo = new HashMap<>();
 
-        while (result.next()) {
-            int id = result.getInt("idModelo");
-            String nombre = result.getString("Modelo");
-            idModelo.put(id, nombre); // Almacenamos el ID y el nombre en el Map
-            combo.addItem(nombre);
-        }
+        try {
+            conectar = CConexion.getConexion();
+            pst = conectar.prepareStatement(SSQL);
+            result = pst.executeQuery();
 
-        // Almacenamos el Map en las propiedades del combo box
-        combo.putClientProperty("idModelo", idModelo);
+            while (result.next()) {
+                int id = result.getInt("idModelo");
+                String nombre = result.getString("Modelo");
+                idModelo.put(id, nombre); // Almacenamos el ID y el nombre en el Map
+                combo.addItem(nombre);
+            }
 
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(null, e);
-    } finally {
-        if (conectar != null) {
-            try {
-                conectar.close();
-                result.close();
-                conectar = null;
-                result = null;
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, ex);
+            // Almacenamos el Map en las propiedades del combo box
+            combo.putClientProperty("idModelo", idModelo);
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        } finally {
+            if (conectar != null) {
+                try {
+                    conectar.close();
+                    result.close();
+                    conectar = null;
+                    result = null;
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, ex);
+                }
             }
         }
     }
-}
-    
+
     public void RellenarMantenimientoCBX(JComboBox combo) {
-    Connection conectar = null;
-    PreparedStatement pst = null;
-    ResultSet result = null;
+        Connection conectar = null;
+        PreparedStatement pst = null;
+        ResultSet result = null;
 
-    String SSQL = "SELECT idMantenimiento, Mecanico FROM tbMantenimiento";
-    combo.removeAllItems();
-    
-    // Usamos un Map para almacenar pares de ID y nombre
-    Map<Integer, String> idMecanico = new HashMap<>();
+        String SSQL = "SELECT idMantenimiento, Mecanico FROM tbMantenimiento";
+        combo.removeAllItems();
 
-    try {
-        conectar = CConexion.getConexion();
-        pst = conectar.prepareStatement(SSQL);
-        result = pst.executeQuery();
+        // Usamos un Map para almacenar pares de ID y nombre
+        Map<Integer, String> idMecanico = new HashMap<>();
 
-        while (result.next()) {
-            int id = result.getInt("idMantenimiento");
-            String nombre = result.getString("Mecanico");
-            idMecanico.put(id, nombre); // Almacenamos el ID y el nombre en el Map
-            combo.addItem(nombre);
-        }
+        try {
+            conectar = CConexion.getConexion();
+            pst = conectar.prepareStatement(SSQL);
+            result = pst.executeQuery();
 
-        // Almacenamos el Map en las propiedades del combo box
-        combo.putClientProperty("idMantenimiento", idMecanico);
+            while (result.next()) {
+                int id = result.getInt("idMantenimiento");
+                String nombre = result.getString("Mecanico");
+                idMecanico.put(id, nombre); // Almacenamos el ID y el nombre en el Map
+                combo.addItem(nombre);
+            }
 
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(null, e);
-    } finally {
-        if (conectar != null) {
-            try {
-                conectar.close();
-                result.close();
-                conectar = null;
-                result = null;
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, ex);
+            // Almacenamos el Map en las propiedades del combo box
+            combo.putClientProperty("idMantenimiento", idMecanico);
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        } finally {
+            if (conectar != null) {
+                try {
+                    conectar.close();
+                    result.close();
+                    conectar = null;
+                    result = null;
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, ex);
+                }
             }
         }
     }
-}
-    
-    public void MostrarTablaU( UVehiculos vistaVehiculos){
+
+    public void MostrarTabla(VVehiculo vistaVehiculos) {
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.setColumnIdentifiers(new Object[]{"ID", "Marca","Modelo","Mecanico","Taller"});
+        modelo.setColumnIdentifiers(new Object[]{"ID", "Marca", "Modelo", "Mecanico", "Taller"});
         try {
-            Statement st= CConexion.getConexion().createStatement();
-                String SQL ="select idVehiculo, vehi_Matricula, tbModelos.Modelo, tbMantenimiento.Mecanico, tbTalleres.Tall_Nombre from tbVehiculos \n" +
-                            "inner join tbModelos on tbVehiculos.idModelo=tbModelos.idModelo inner join tbMantenimiento on tbVehiculos.idMantenimeinto=tbMantenimiento.idMantenimiento inner join tbTalleres on tbMantenimiento.idTaller=tbTalleres.idTaller";
+            Statement st = CConexion.getConexion().createStatement();
+            String SQL = "select idVehiculo, vehi_Matricula, tbModelos.Modelo, tbMantenimiento.Mecanico, tbTalleres.Tall_Nombre from tbVehiculos \n"
+                    + "inner join tbModelos on tbVehiculos.idModelo=tbModelos.idModelo inner join tbMantenimiento on tbVehiculos.idMantenimeinto=tbMantenimiento.idMantenimiento inner join tbTalleres on tbMantenimiento.idTaller=tbTalleres.idTaller";
             ResultSet rs = st.executeQuery(SQL);
-            
+
             while (rs.next()) {
                 modelo.addRow(new Object[]{rs.getInt("idVehiculo"), rs.getString("vehi_Matricula"), rs.getString("Modelo"), rs.getString("Mecanico"), rs.getString("Tall_Nombre")});
             }
-            vistaVehiculos.tbVehiculos.setModel(modelo);            
-        } 
-        catch (Exception e) 
-        {
-            JOptionPane.showMessageDialog(null, "Error tabla vehiculos A "+e.getMessage());                
+            vistaVehiculos.tbVehiculos.setModel(modelo);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error tabla vehiculos A " + e.getMessage());
         }
     }
-    
-    public void MostrarTabla( VVehiculo vistaVehiculos){
-        DefaultTableModel modelo = new DefaultTableModel();
-        modelo.setColumnIdentifiers(new Object[]{"ID", "Marca","Modelo","Mecanico","Taller"});
-        try {
-            Statement st= CConexion.getConexion().createStatement();
-                String SQL ="select idVehiculo, vehi_Matricula, tbModelos.Modelo, tbMantenimiento.Mecanico, tbTalleres.Tall_Nombre from tbVehiculos \n" +
-                            "inner join tbModelos on tbVehiculos.idModelo=tbModelos.idModelo inner join tbMantenimiento on tbVehiculos.idMantenimeinto=tbMantenimiento.idMantenimiento inner join tbTalleres on tbMantenimiento.idTaller=tbTalleres.idTaller";
-            ResultSet rs = st.executeQuery(SQL);
-            
-            while (rs.next()) {
-                modelo.addRow(new Object[]{rs.getInt("idVehiculo"), rs.getString("vehi_Matricula"), rs.getString("Modelo"), rs.getString("Mecanico"), rs.getString("Tall_Nombre")});
-            }
-            vistaVehiculos.tbVehiculos.setModel(modelo);            
-        } 
-        catch (Exception e) 
-        {
-            JOptionPane.showMessageDialog(null, "Error tabla vehiculos A "+e.getMessage());                
-        }
-    }
-    
-    public void Agregar(vehiculos modelo, JComboBox comboModelo, JComboBox comboMantenimiento){
+
+    public void Agregar(vehiculos modelo, JComboBox comboModelo, JComboBox comboMantenimiento, VVehiculo vista) {
         String SQL = "insert into tbVehiculos (vehi_Matricula, idModelo, idMantenimeinto)values(?,?,?)";
-    try {
-        PreparedStatement AVehiculo = CConexion.getConexion().prepareStatement(SQL);
-        AVehiculo.setString(1, modelo.getVehi_Matricula());
+        try {
+            PreparedStatement AVehiculo = CConexion.getConexion().prepareStatement(SQL);
+            AVehiculo.setString(1, modelo.getVehi_Matricula());
 
-        // Obtener el ID de la marca seleccionada desde el JComboBox de marcas
-        
-        int selectedMarcaIndex = comboModelo.getSelectedIndex();
-        if (selectedMarcaIndex != -1) {
-            Map<Integer, String> idModelo = (Map<Integer, String>) comboModelo.getClientProperty("idModelo");
-            int selectedModeloID = (int) idModelo.keySet().toArray()[selectedMarcaIndex];
-            AVehiculo.setInt(2, selectedModeloID); // Usar el ID de la marca seleccionada
-        } else {        
-            JOptionPane.showMessageDialog(null, "Seleccione una marca válida del ComboBox de modelo.");
+            // Obtener el ID de la marca seleccionada desde el JComboBox de marcas
+            int selectedMarcaIndex = comboModelo.getSelectedIndex();
+            if (selectedMarcaIndex != -1) {
+                Map<Integer, String> idModelo = (Map<Integer, String>) comboModelo.getClientProperty("idModelo");
+                int selectedModeloID = (int) idModelo.keySet().toArray()[selectedMarcaIndex];
+                AVehiculo.setInt(2, selectedModeloID); // Usar el ID de la marca seleccionada
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione una marca válida del ComboBox de modelo.");
+            }
+
+            // Obtener el ID de la bodega seleccionada desde el JComboBox de bodegas
+            int selectedBodegaIndex = comboMantenimiento.getSelectedIndex();
+            if (selectedBodegaIndex != -1) {
+                Map<Integer, String> idMecanico = (Map<Integer, String>) comboMantenimiento.getClientProperty("idMantenimiento");
+                int selectedMecanico = (int) idMecanico.keySet().toArray()[selectedBodegaIndex];
+                AVehiculo.setInt(3, selectedMecanico); // Usar el ID de la bodega seleccionada
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione un mecanico válida del ComboBox de bodegas.");
+            }
+            RellenarBuscador(vista.jcbBuscador);
+            AVehiculo.execute();
+            JOptionPane.showMessageDialog(null, "El vehiculo se agregó correctamente");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERROR EN EL METODO DEL vehiculo: " + e.toString());
+        }
+    }
+
+    public void Eliminar(VVehiculo vista) {
+        try {
+            //obtenemos que fila seleccionó el usuario
+            int filaSeleccionada = vista.tbVehiculos.getSelectedRow();
+
+            //Obtenemos el id de la fila seleccionada
+            String miId = vista.tbVehiculos.getValueAt(filaSeleccionada, 0).toString();
+            //borramos 
+            try {
+                PreparedStatement deleteUser = CConexion.getConexion().prepareStatement("delete from tbVehiculos where idVehiculo = '" + miId + "'");
+                deleteUser.executeUpdate();
+                JOptionPane.showMessageDialog(null, "El vehiculo se elimino correctamente");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error eliminar vehiculo " + e.toString());
+
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Seleccione un dato para eliminar");
         }
 
-        // Obtener el ID de la bodega seleccionada desde el JComboBox de bodegas
-        int selectedBodegaIndex = comboMantenimiento.getSelectedIndex();
-        if (selectedBodegaIndex != -1) {
-            Map<Integer, String> idMecanico = (Map<Integer, String>) comboMantenimiento.getClientProperty("idMantenimiento");
-            int selectedMecanico = (int) idMecanico.keySet().toArray()[selectedBodegaIndex];
-            AVehiculo.setInt(3, selectedMecanico); // Usar el ID de la bodega seleccionada
-        } else {
-            JOptionPane.showMessageDialog(null, "Seleccione un mecanico válida del ComboBox de bodegas.");
-        }
+    }
 
-        AVehiculo.execute();
-        JOptionPane.showMessageDialog(null, "El vehiculo se agregó correctamente");
-        
+    public void Actualizar(vehiculos modelo, JComboBox comboModelo, JComboBox comboMantenimiento, VVehiculo vista) {
+        String SQL = "update tbVehiculos set vehi_Matricula = ?, idModelo = ?, idMantenimeinto = ? where idVehiculo = ?";
+        try {
+            PreparedStatement MVehiculo = CConexion.getConexion().prepareStatement(SQL);
+            MVehiculo.setString(1, modelo.getVehi_Matricula());
+
+            // Obtener el ID de la marca seleccionada desde el JComboBox de marcas
+            int selectedMarcaIndex = comboModelo.getSelectedIndex();
+            if (selectedMarcaIndex != -1) {
+                Map<Integer, String> idModelo = (Map<Integer, String>) comboModelo.getClientProperty("idModelo");
+                int selectedModeloID = (int) idModelo.keySet().toArray()[selectedMarcaIndex];
+                MVehiculo.setInt(2, selectedModeloID); // Usar el ID de la marca seleccionada
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione una marca válida del ComboBox de modelo.");
+            }
+
+            // Obtener el ID de la bodega seleccionada desde el JComboBox de bodegas
+            int selectedBodegaIndex = comboMantenimiento.getSelectedIndex();
+            if (selectedBodegaIndex != -1) {
+                Map<Integer, String> idMecanico = (Map<Integer, String>) comboMantenimiento.getClientProperty("idMantenimiento");
+                int selectedMecanico = (int) idMecanico.keySet().toArray()[selectedBodegaIndex];
+                MVehiculo.setInt(3, selectedMecanico); // Usar el ID de la bodega seleccionada
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione un mecanico válida del ComboBox de bodegas.");
+            }
+
+            int filaSeleccionada = vista.tbVehiculos.getSelectedRow();
+            //Obtenemos el id de la fila seleccionada
+            String miId = vista.tbVehiculos.getValueAt(filaSeleccionada, 0).toString();
+            MVehiculo.setString(4, miId);
+
+            MVehiculo.execute();
+            JOptionPane.showMessageDialog(null, "El vehiculo se modifico correctamente");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Seleccione un dato a modificar");
+        }
     }
-        catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "ERROR EN EL METODO DEL vehiculo: " + e.toString());
-    }
+
+    //////////////////////////////////////////////////////////Apartado de Usuarios///////////////////////////////////////////////////////////////////////////////////////
+    public void MostrarTablaU(UVehiculos vistaVehiculos) {
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(new Object[]{"ID", "Marca", "Modelo", "Mecanico", "Taller"});
+        try {
+            Statement st = CConexion.getConexion().createStatement();
+            String SQL = "select idVehiculo, vehi_Matricula, tbModelos.Modelo, tbMantenimiento.Mecanico, tbTalleres.Tall_Nombre from tbVehiculos \n"
+                    + "inner join tbModelos on tbVehiculos.idModelo=tbModelos.idModelo inner join tbMantenimiento on tbVehiculos.idMantenimeinto=tbMantenimiento.idMantenimiento inner join tbTalleres on tbMantenimiento.idTaller=tbTalleres.idTaller";
+            ResultSet rs = st.executeQuery(SQL);
+
+            while (rs.next()) {
+                modelo.addRow(new Object[]{rs.getInt("idVehiculo"), rs.getString("vehi_Matricula"), rs.getString("Modelo"), rs.getString("Mecanico"), rs.getString("Tall_Nombre")});
+            }
+            vistaVehiculos.tbVehiculos.setModel(modelo);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error tabla vehiculos A " + e.getMessage());
+        }
     }
 }

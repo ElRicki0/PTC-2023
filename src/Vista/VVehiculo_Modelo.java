@@ -20,6 +20,7 @@ import javax.swing.JOptionPane;
 public class VVehiculo_Modelo extends javax.swing.JFrame {
 
     Desface desplace;
+    Modelos1 modelo = new Modelos1();
     
     public VVehiculo_Modelo() {
         
@@ -39,6 +40,7 @@ public class VVehiculo_Modelo extends javax.swing.JFrame {
         
         desplace = new Desface();
         
+        modelo.RellenarBuscadorCBX(jcbBuscador);
         this.setLocationRelativeTo(null);
         transpareciaBoton();
     }
@@ -82,7 +84,6 @@ public class VVehiculo_Modelo extends javax.swing.JFrame {
         txtCliente2 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         panelCurvas1 = new Vista.PanelCurvas();
-        jLabel7 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -92,6 +93,7 @@ public class VVehiculo_Modelo extends javax.swing.JFrame {
         txtAnio = new javax.swing.JTextField();
         panelCurvas5 = new Vista.PanelCurvas();
         txtMarca = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbModelos = new javax.swing.JTable();
         agregar1 = new Vista.PanelCurvas();
@@ -109,6 +111,12 @@ public class VVehiculo_Modelo extends javax.swing.JFrame {
         txtSub3 = new javax.swing.JLabel();
         btnSubVehiculo = new Vista.PanelCurvas();
         txtSub4 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jcbBuscador = new javax.swing.JComboBox<>();
+        modificar2 = new Vista.PanelCurvas();
+        btnBuscar = new javax.swing.JButton();
+        btnRestaurador = new Vista.PanelCurvas();
+        btnRestaurar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1080, 760));
@@ -490,15 +498,10 @@ public class VVehiculo_Modelo extends javax.swing.JFrame {
         panelCurvas1.setRoundTopRight(35);
         panelCurvas1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel7.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel7.setText("Informacion");
-        panelCurvas1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 167, 41));
-
         jLabel4.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel4.setText("Modelo");
-        panelCurvas1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 140, 40));
+        jLabel4.setText("Modelo:");
+        panelCurvas1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 140, 40));
 
         jLabel5.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
@@ -508,7 +511,7 @@ public class VVehiculo_Modelo extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
         jLabel6.setText("Marca:");
-        panelCurvas1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 150, 50));
+        panelCurvas1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 150, 50));
 
         panelCurvas3.setBackground(new java.awt.Color(246, 234, 204));
         panelCurvas3.setRoundBottomLeft(25);
@@ -537,7 +540,7 @@ public class VVehiculo_Modelo extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        panelCurvas1.add(panelCurvas3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, -1, -1));
+        panelCurvas1.add(panelCurvas3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, -1, -1));
 
         panelCurvas4.setBackground(new java.awt.Color(246, 234, 204));
         panelCurvas4.setRoundBottomLeft(25);
@@ -595,7 +598,12 @@ public class VVehiculo_Modelo extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        panelCurvas1.add(panelCurvas5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, -1, -1));
+        panelCurvas1.add(panelCurvas5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel8.setText("Informacion");
+        panelCurvas1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 167, 41));
 
         jPanel1.add(panelCurvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 210, 420, 310));
 
@@ -684,7 +692,7 @@ public class VVehiculo_Modelo extends javax.swing.JFrame {
                 .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(eliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 680, -1, -1));
+        jPanel1.add(eliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 680, -1, -1));
 
         modificar1.setBackground(new java.awt.Color(172, 147, 110));
         modificar1.setRoundBottomLeft(25);
@@ -714,7 +722,7 @@ public class VVehiculo_Modelo extends javax.swing.JFrame {
                 .addComponent(btnModificarMP, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(modificar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 680, 160, 60));
+        jPanel1.add(modificar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 680, 160, 60));
 
         jpSubMenu.setBackground(new java.awt.Color(64, 81, 115));
         jpSubMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -874,6 +882,73 @@ public class VVehiculo_Modelo extends javax.swing.JFrame {
         jpSubMenu.add(btnSubVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 30, 150, 60));
 
         jPanel1.add(jpSubMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 1040, 110));
+
+        jLabel7.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel7.setText("<html>Clasificar por Marca</html>");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 120, 167, -1));
+
+        jcbBuscador.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        jPanel1.add(jcbBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 130, 200, 50));
+
+        modificar2.setBackground(new java.awt.Color(172, 147, 110));
+        modificar2.setRoundBottomLeft(25);
+        modificar2.setRoundBottomRight(25);
+        modificar2.setRoundTopLeft(25);
+        modificar2.setRoundTopRight(25);
+
+        btnBuscar.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBuscarMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout modificar2Layout = new javax.swing.GroupLayout(modificar2);
+        modificar2.setLayout(modificar2Layout);
+        modificar2Layout.setHorizontalGroup(
+            modificar2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+        );
+        modificar2Layout.setVerticalGroup(
+            modificar2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(modificar2Layout.createSequentialGroup()
+                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(modificar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 130, 60, 50));
+
+        btnRestaurador.setBackground(new java.awt.Color(172, 147, 110));
+        btnRestaurador.setRoundBottomLeft(25);
+        btnRestaurador.setRoundBottomRight(25);
+        btnRestaurador.setRoundTopLeft(25);
+        btnRestaurador.setRoundTopRight(25);
+
+        btnRestaurar.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        btnRestaurar.setForeground(new java.awt.Color(255, 255, 255));
+        btnRestaurar.setText("<html>Restaurar Tabla</html>");
+        btnRestaurar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRestaurarMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout btnRestauradorLayout = new javax.swing.GroupLayout(btnRestaurador);
+        btnRestaurador.setLayout(btnRestauradorLayout);
+        btnRestauradorLayout.setHorizontalGroup(
+            btnRestauradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnRestaurar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+        );
+        btnRestauradorLayout.setVerticalGroup(
+            btnRestauradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnRestauradorLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnRestaurar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPanel1.add(btnRestaurador, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 680, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1184,10 +1259,17 @@ public class VVehiculo_Modelo extends javax.swing.JFrame {
         txtSub4.setForeground(Color.BLACK);
     }//GEN-LAST:event_btnSubVehiculoMouseExited
 
+    private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarMouseClicked
+
+    private void btnRestaurarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRestaurarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRestaurarMouseClicked
+
     
     public void INIT(){
         VVehiculo_Modelo vista = new VVehiculo_Modelo();
-        Modelos1 modelo = new Modelos1();
         ctrlModelo ctrl = new ctrlModelo(vista, modelo);
         modelo.MostrarTabla(vista);
         vista.setVisible(true);
@@ -1324,11 +1406,14 @@ public class VVehiculo_Modelo extends javax.swing.JFrame {
     public javax.swing.JButton btnAgregar;
     private Vista.PanelCurvas btnBitacora;
     private Vista.PanelCurvas btnBodega;
+    public javax.swing.JButton btnBuscar;
     private Vista.PanelCurvas btnCasa;
     private Vista.PanelCurvas btnCliente;
     public javax.swing.JButton btnEliminar;
     public javax.swing.JButton btnModificarMP;
     private Vista.PanelCurvas btnProducto;
+    private Vista.PanelCurvas btnRestaurador;
+    public javax.swing.JButton btnRestaurar;
     private Vista.PanelCurvas btnRuta;
     private Vista.PanelCurvas btnSubMantenimeinto;
     private Vista.PanelCurvas btnSubModelo;
@@ -1343,10 +1428,13 @@ public class VVehiculo_Modelo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JComboBox<String> jcbBuscador;
     private javax.swing.JPanel jpSubMenu;
     private Vista.PanelCurvas modificar1;
+    private Vista.PanelCurvas modificar2;
     private Vista.PanelCurvas panelCurvas1;
     private Vista.PanelCurvas panelCurvas3;
     private Vista.PanelCurvas panelCurvas4;

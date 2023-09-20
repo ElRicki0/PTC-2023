@@ -99,9 +99,6 @@ public class EmpleadosM {
     public void setEmp_correo(String Emp_correo) {
         this.Emp_correo = Emp_correo;
     }
-        
-    private PrimerEmpleado PMEmpleado;
-    
     
     public void llenarCBXGenero(JComboBox combox){
     Connection conectar = null;
@@ -155,36 +152,6 @@ public class EmpleadosM {
 //        }
     }
     
-    
-    public boolean AgregarEmpleado(EmpleadosM modeloEmpleados, JComboBox jcbGenero){        
-        try {
-            
-            String sql="insert into tbEmpleados(emp_nombre,emp_fecha, emp_direccion, emp_telefono, emp_correo, idGenero, idTipoEmpleado) values(?, ?, ?, ?, ?, ?, 1)";
-
-        
-        PreparedStatement AEmpleado= CConexion.getConexion().prepareStatement(sql);
-        AEmpleado.setString(1, modeloEmpleados.getEmp_nombre());
-        AEmpleado.setString(2, modeloEmpleados.getEmp_fecha());
-        AEmpleado.setString(3, modeloEmpleados.getEmp_direccion());
-        AEmpleado.setString(4, modeloEmpleados.getEmp_telefono());
-        AEmpleado.setString(5, modeloEmpleados.getEmp_correo());
-        
-        int SelectGenero= jcbGenero.getSelectedIndex();
-            if (SelectGenero!=-1) {
-                Map<Integer, String> idGenero = (Map<Integer, String>)jcbGenero.getClientProperty("idGenero");
-                int selID=(int) idGenero.keySet().toArray()[SelectGenero];
-                AEmpleado.setInt(6, selID);
-            } else {
-            }
-        
-        AEmpleado.execute();
-        JOptionPane.showMessageDialog(null, "El Empleado se agrego correctamente");            
-        } catch (Exception e) {
-                        JOptionPane.showMessageDialog(null, "Error en agregar empleado "+ e.toString()); 
-        }
-        return true;
-    }
-    
     public void llenarCBXTipo(JComboBox combox){
         
         Connection conectar = null;
@@ -222,6 +189,35 @@ public class EmpleadosM {
                 }
             }
         }
+    }
+    
+    public boolean AgregarEmpleado(EmpleadosM modeloEmpleados, JComboBox jcbGenero){        
+        try {
+            
+            String sql="insert into tbEmpleados(emp_nombre,emp_fecha, emp_direccion, emp_telefono, emp_correo, idGenero, idTipoEmpleado) values(?, ?, ?, ?, ?, ?, 1)";
+
+        
+        PreparedStatement AEmpleado= CConexion.getConexion().prepareStatement(sql);
+        AEmpleado.setString(1, modeloEmpleados.getEmp_nombre());
+        AEmpleado.setString(2, modeloEmpleados.getEmp_fecha());
+        AEmpleado.setString(3, modeloEmpleados.getEmp_direccion());
+        AEmpleado.setString(4, modeloEmpleados.getEmp_telefono());
+        AEmpleado.setString(5, modeloEmpleados.getEmp_correo());
+        
+        int SelectGenero= jcbGenero.getSelectedIndex();
+            if (SelectGenero!=-1) {
+                Map<Integer, String> idGenero = (Map<Integer, String>)jcbGenero.getClientProperty("idGenero");
+                int selID=(int) idGenero.keySet().toArray()[SelectGenero];
+                AEmpleado.setInt(6, selID);
+            } else {
+            }
+        
+        AEmpleado.execute();
+        JOptionPane.showMessageDialog(null, "El Empleado se agrego correctamente");            
+        } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, "Error en agregar empleado "+ e.toString()); 
+        }
+        return true;
     }
     
     public boolean MAgregarEmpleado(EmpleadosM modeloEmpleados, JComboBox jcbGenero, JComboBox jcbTipo ){
@@ -319,8 +315,6 @@ public class EmpleadosM {
           
      }
     
-    
-         
     public void MostrarEmpleados(VEmpleados vistaEmpleados){
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(new Object[]{"ID","Nombre", "Fecha Nacimiento", "Direccion", "Telefono","Correo", "Genero", "Tipo Empleado"});
@@ -337,4 +331,5 @@ public class EmpleadosM {
         }
     }
     
+    ///////////////////////////////Controlador /////////////////////////////////////////////
 }

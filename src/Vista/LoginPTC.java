@@ -14,6 +14,7 @@ import java.sql.*;
 import javax.swing.JOptionPane;
 import Modelo.usuarios;
 import Controlador.ctrlPrimerUsuario;
+import Vista.Controlador.MainC;
 import java.awt.event.MouseEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -148,7 +149,7 @@ public class LoginPTC extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        panelCurvas1.add(panelCurvas3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
+        panelCurvas1.add(panelCurvas3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
 
         bntSesion1.setBackground(new java.awt.Color(255, 255, 255));
         bntSesion1.setRoundBottomLeft(25);
@@ -356,7 +357,7 @@ public class LoginPTC extends javax.swing.JFrame {
                         this.dispose();
                     }
                     if (l.equals("2")) {
-                        Vista.Controlador.CMain main = new Vista.Controlador.CMain();
+                        MainC main = new MainC();
                         main.setVisible(true);
                         this.dispose();
                     }

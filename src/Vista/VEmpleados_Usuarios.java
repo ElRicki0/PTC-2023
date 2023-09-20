@@ -46,12 +46,6 @@ public class VEmpleados_Usuarios extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         transpareciaBoton();
     }
-    
-    
-    public static void pass123(){
-            String pass123 = "pass123";
-
-    } 
 
     /**
      * This method is called from within the constructor to initialize the form.
