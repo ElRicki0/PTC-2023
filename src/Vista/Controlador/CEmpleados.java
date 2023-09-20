@@ -785,7 +785,7 @@ public class CEmpleados extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel7.setText("Informacion");
+        jLabel7.setText("Informacion:");
         panelCurvas1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 167, 41));
 
         panelCurvas6.setBackground(new java.awt.Color(246, 234, 204));
