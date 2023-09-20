@@ -17,8 +17,11 @@ public class PrimerUsuario extends javax.swing.JFrame {
     
     public PrimerUsuario() {
         initComponents();
+        this.jbNo.setVisible(false);
         this.setLocationRelativeTo(null);
-                TextPrompt textPrompta2 = new TextPrompt("Ingresas una contraseña", this.txtContrasenia);
+        TextPrompt textPrompta2 = new TextPrompt("Ingresas una contraseña", this.txtContrasenia);
+        rsscalelabel.RSScaleLabel.setScaleLabel(jbVer, "src/Vista/Iconos/ver.png");
+        rsscalelabel.RSScaleLabel.setScaleLabel(jbNo, "src/Vista/Iconos/noVer.png");
         transparenciaBotin();
     }
     
@@ -35,12 +38,15 @@ public class PrimerUsuario extends javax.swing.JFrame {
         txtUsuario = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         panelCurvas4 = new Vista.PanelCurvas();
-        txtContrasenia = new javax.swing.JTextField();
+        txtContrasenia = new javax.swing.JPasswordField();
         panelCurvas7 = new Vista.PanelCurvas();
         btnAgregar = new javax.swing.JButton();
+        jbVer = new javax.swing.JLabel();
+        jbNo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(750, 730));
+        setResizable(false);
         setSize(new java.awt.Dimension(750, 730));
 
         jPanel1.setBackground(new java.awt.Color(246, 234, 204));
@@ -66,7 +72,7 @@ public class PrimerUsuario extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
         jLabel4.setText("Ingrese su Usuario:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, 220, 30));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 220, 30));
 
         panelCurvas3.setBackground(new java.awt.Color(255, 255, 255));
         panelCurvas3.setRoundBottomLeft(25);
@@ -81,12 +87,12 @@ public class PrimerUsuario extends javax.swing.JFrame {
         txtUsuario.setBorder(null);
         panelCurvas3.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 270, 40));
 
-        jPanel1.add(panelCurvas3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 290, 60));
+        jPanel1.add(panelCurvas3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 290, 60));
 
         jLabel1.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("Ingrese su Contraseña");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 350, 190, 30));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 350, 190, 30));
 
         panelCurvas4.setBackground(new java.awt.Color(255, 255, 255));
         panelCurvas4.setRoundBottomLeft(25);
@@ -96,17 +102,10 @@ public class PrimerUsuario extends javax.swing.JFrame {
         panelCurvas4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtContrasenia.setBackground(new java.awt.Color(255, 255, 255));
-        txtContrasenia.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
-        txtContrasenia.setForeground(new java.awt.Color(51, 51, 51));
         txtContrasenia.setBorder(null);
-        txtContrasenia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtContraseniaActionPerformed(evt);
-            }
-        });
         panelCurvas4.add(txtContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 270, 40));
 
-        jPanel1.add(panelCurvas4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 380, 290, 60));
+        jPanel1.add(panelCurvas4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 380, 290, 60));
 
         panelCurvas7.setBackground(new java.awt.Color(64, 81, 115));
         panelCurvas7.setRoundBottomLeft(50);
@@ -147,6 +146,20 @@ public class PrimerUsuario extends javax.swing.JFrame {
 
         jPanel1.add(panelCurvas7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 580, 230, -1));
 
+        jbVer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbVerMouseClicked(evt);
+            }
+        });
+        jPanel1.add(jbVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 390, 60, 50));
+
+        jbNo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbNoMouseClicked(evt);
+            }
+        });
+        jPanel1.add(jbNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 390, 60, 50));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -161,10 +174,6 @@ public class PrimerUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtContraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseniaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtContraseniaActionPerformed
-
     private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarMouseClicked
@@ -172,6 +181,18 @@ public class PrimerUsuario extends javax.swing.JFrame {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void jbVerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbVerMouseClicked
+        jbVer.setVisible(false);
+        jbNo.setVisible(true);
+        txtContrasenia.setEchoChar((char) 0);
+    }//GEN-LAST:event_jbVerMouseClicked
+
+    private void jbNoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbNoMouseClicked
+        jbVer.setVisible(true);
+        jbNo.setVisible(false);
+        txtContrasenia.setEchoChar('*');
+    }//GEN-LAST:event_jbNoMouseClicked
 
     public void transparenciaBotin(){
         btnAgregar.setOpaque(false);        
@@ -240,11 +261,13 @@ public class PrimerUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jbNo;
+    private javax.swing.JLabel jbVer;
     private Vista.PanelCurvas panelCurvas1;
     private Vista.PanelCurvas panelCurvas3;
     private Vista.PanelCurvas panelCurvas4;
     private Vista.PanelCurvas panelCurvas7;
-    public javax.swing.JTextField txtContrasenia;
+    public javax.swing.JPasswordField txtContrasenia;
     public javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
