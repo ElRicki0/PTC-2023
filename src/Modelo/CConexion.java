@@ -16,7 +16,7 @@ public class CConexion { // <- Editar por el nombre del archivo de la clase
         String conexionUrl  = "jdbc:sqlserver://localhost:50021;" // <- Editar por su puerto de SQL
                             + "databaseName=EXPOdb;" // <- Editar por su base de datos
                             + "user=sa;"
-                            + "password=fireproof1;" 
+                            + "password=Melara2006#;" 
                             + "encrypt=true;trustServerCertificate=true";
         //Melara:Melara2006#, 54855
         //Escritorio melara: itr2023, 60805

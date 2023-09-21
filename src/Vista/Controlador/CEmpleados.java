@@ -1007,7 +1007,7 @@ public class CEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEmpleadosMouseExited
 
     private void btnTEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTEmpleadosMouseClicked
-        VEmpleados_Tipos tipos = new VEmpleados_Tipos();
+        CEmpleados_Tipos tipos = new CEmpleados_Tipos();
         tipos.INIT();
         this.dispose();
     }//GEN-LAST:event_btnTEmpleadosMouseClicked
@@ -1023,7 +1023,7 @@ public class CEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTEmpleadosMouseExited
 
     private void btnUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMouseClicked
-        VEmpleados_Usuarios usuarios=new VEmpleados_Usuarios();
+        CEmpleados_Usuarios usuarios=new CEmpleados_Usuarios();
         usuarios.INIT();
         this.dispose();
     }//GEN-LAST:event_btnUsuariosMouseClicked
@@ -1040,7 +1040,7 @@ public class CEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUsuariosMouseExited
 
     private void btnCasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseClicked
-        Main vista = new Main ();
+        MainC vista = new MainC ();
         vista.INIT();
         this.dispose();
     }//GEN-LAST:event_btnCasaMouseClicked
@@ -1108,7 +1108,7 @@ public class CEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTrabajadorMouseExited
 
     private void btnBodegaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseClicked
-        VBodega bodegas = new VBodega();
+        CBodega bodegas = new CBodega();
         bodegas.INIT();
         this.dispose();
     }//GEN-LAST:event_btnBodegaMouseClicked
@@ -1255,10 +1255,11 @@ public class CEmpleados extends javax.swing.JFrame {
 //    }
 //    
     public void INIT(){
-        CEmpleados vistaempleados = new CEmpleados();
-//        ctrlEmpleado control= new ctrlEmpleado(vistaempleados, modeloEmpleados);
-//        modeloEmpleados.MostrarEmpleados(vistaempleados);
-        vistaempleados.setVisible(true);
+        VEmpleados vistaempleados = new VEmpleados();
+        CEmpleados Cvistaempleados = new CEmpleados();
+        ctrlEmpleado control= new ctrlEmpleado(vistaempleados, modeloEmpleados, Cvistaempleados);
+        modeloEmpleados.CMostrarEmpleados(Cvistaempleados);
+        Cvistaempleados.setVisible(true);
     }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

@@ -15,6 +15,7 @@ import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
 import Modelo.CConexion;
 import Modelo.productos;
+import Vista.Controlador.CEmpleados_Tipos;
 import javax.swing.ImageIcon;
 import desplazable.Desface;
 import java.awt.Color;
@@ -1087,10 +1088,11 @@ public class VEmpleados_Tipos extends javax.swing.JFrame {
      */
         
     public void INIT(){
+        CEmpleados_Tipos Cvistaempleados = new CEmpleados_Tipos();
         VEmpleados_Tipos vistaempleados = new VEmpleados_Tipos();
         TiposEmpleados ModeloTEmpleados= new TiposEmpleados();
         ModeloTEmpleados.MostrarTEmpleados(vistaempleados);
-        ctrlTiposEmpleados control= new ctrlTiposEmpleados(vistaempleados, ModeloTEmpleados);
+        ctrlTiposEmpleados control= new ctrlTiposEmpleados(vistaempleados, ModeloTEmpleados, Cvistaempleados);
         vistaempleados.setVisible(true);
     }
     public static void main(String args[]) {

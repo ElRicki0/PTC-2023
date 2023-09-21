@@ -18,6 +18,7 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import Modelo.CConexion;
 import Modelo.productos;
+import Vista.Controlador.CEmpleados;
 import javax.swing.ImageIcon;
 import desplazable.Desface;
 import java.awt.Color;
@@ -1256,7 +1257,8 @@ public class VEmpleados extends javax.swing.JFrame {
 //    
     public void INIT(){
         VEmpleados vistaempleados = new VEmpleados();
-        ctrlEmpleado control= new ctrlEmpleado(vistaempleados, modeloEmpleados);
+        CEmpleados Cvistaempleados = new CEmpleados();
+        ctrlEmpleado control= new ctrlEmpleado(vistaempleados, modeloEmpleados, Cvistaempleados);
         modeloEmpleados.MostrarEmpleados(vistaempleados);
         vistaempleados.setVisible(true);
     }

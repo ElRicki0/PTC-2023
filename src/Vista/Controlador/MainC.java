@@ -79,6 +79,7 @@ public class MainC extends javax.swing.JFrame {
         btnVehiculos = new Vista.PanelCurvas();
         icoCarro = new javax.swing.JLabel();
         txtCliente2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1080, 760));
@@ -448,6 +449,11 @@ public class MainC extends javax.swing.JFrame {
 
         jPanel1.add(MenuPlegable, new org.netbeans.lib.awtextra.AbsoluteConstraints(-150, 0, 230, 760));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel1.setText("Controlador");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 200, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -573,7 +579,7 @@ public class MainC extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBitacoraMouseClicked
 
     private void btnTrabajadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadorMouseClicked
-        VEmpleados empleados = new VEmpleados();
+        CEmpleados empleados = new CEmpleados();
         empleados.INIT();
         this.dispose();
     }//GEN-LAST:event_btnTrabajadorMouseClicked
@@ -601,8 +607,8 @@ public class MainC extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRutaMouseClicked
 
     private void btnBodegaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseClicked
-        CBodega bodegas = new CBodega();
-        bodegas.INIT();
+        CBodega vista =new CBodega();
+        vista.INIT();
         this.dispose();
     }//GEN-LAST:event_btnBodegaMouseClicked
 
@@ -678,6 +684,7 @@ public class MainC extends javax.swing.JFrame {
     private Vista.PanelCurvas btnTrabajador;
     private Vista.PanelCurvas btnVehiculos;
     private javax.swing.JLabel icoCarro;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel txtBarras;
     private javax.swing.JLabel txtBitacora;

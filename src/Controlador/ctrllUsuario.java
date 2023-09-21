@@ -3,6 +3,7 @@ package Controlador;
 import Modelo.usuarios;
 import Vista.VEmpleados_Usuarios;
 import Controlador.ctrlEncriptacion;
+import Vista.Controlador.CEmpleados_Usuarios;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -10,16 +11,21 @@ import javax.swing.JOptionPane;
 public class ctrllUsuario implements ActionListener {
 
     private VEmpleados_Usuarios vistaUsuario;
+    private CEmpleados_Usuarios CvistaUsuario;
     private usuarios modeloUsuario;
     private ctrlEncriptacion encript;
 
-    public ctrllUsuario(VEmpleados_Usuarios vistaUsuario, usuarios modeloUsuario, ctrlEncriptacion encript) {
+    public ctrllUsuario(VEmpleados_Usuarios vistaUsuario, usuarios modeloUsuario, ctrlEncriptacion encript, CEmpleados_Usuarios CvistaUsuario) {
         this.modeloUsuario = modeloUsuario;
         this.vistaUsuario = vistaUsuario;
+        this.CvistaUsuario = CvistaUsuario;
         this.encript = encript;
         this.vistaUsuario.btnAgregar.addActionListener(this);
         this.vistaUsuario.btnEliminar.addActionListener(this);
         this.vistaUsuario.btnModificarMP.addActionListener(this);
+        this.CvistaUsuario.btnAgregar.addActionListener(this);
+        this.CvistaUsuario.btnEliminar.addActionListener(this);
+        this.CvistaUsuario.btnModificarMP.addActionListener(this);
     }
 
     @Override
@@ -64,6 +70,53 @@ public class ctrllUsuario implements ActionListener {
                     modeloUsuario.setIdnivelUser(vistaUsuario.jcbUsuario.getSelectedItem().toString());
                     modeloUsuario.ActualizarUsuario(modeloUsuario, vistaUsuario.jcbEmpleado, vistaUsuario.jcbUsuario, vistaUsuario);
                     modeloUsuario.mostrarUsuarios(vistaUsuario);
+                } else {
+                    JOptionPane.showMessageDialog(null, "El nombre del usuario tiene que ser superior a 5 digitos");
+
+                }
+            }
+        }
+        ///////////////////////////Controlador////////////////////////////////////////////
+        if (e.getSource() == CvistaUsuario.btnAgregar) {
+            try {
+                String texto1 = CvistaUsuario.txtNombre_USR.getText();
+                if (texto1.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Llene todos los campos");
+                } else {
+                    if (texto1.length() >= 5) {
+                        String contra = "pass123";
+                        modeloUsuario.setUsr_nombre(CvistaUsuario.txtNombre_USR.getText());
+                        modeloUsuario.setUsr_contra(encript.convertirSHA256(contra));
+                        modeloUsuario.setIdEmpleado(CvistaUsuario.jcbEmpleado.getSelectedItem().toString());
+                        modeloUsuario.setIdnivelUser(CvistaUsuario.jcbUsuario.getSelectedItem().toString());
+                        modeloUsuario.CAUsuarios(modeloUsuario, CvistaUsuario.jcbEmpleado, CvistaUsuario.jcbUsuario);
+                        modeloUsuario.CmostrarUsuarios(CvistaUsuario);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "El nombre del usuario tiene que ser superior a 5 digitos");
+
+                    }
+                }
+            } catch (Exception ae) {
+                JOptionPane.showMessageDialog(null, "error ctrl usuario " + ae.toString());
+                modeloUsuario.CmostrarUsuarios(CvistaUsuario);
+            }
+
+        }
+        if (e.getSource() == CvistaUsuario.btnEliminar) {
+            modeloUsuario.CEliminarUsuario(CvistaUsuario);
+            modeloUsuario.CmostrarUsuarios(CvistaUsuario);
+        }
+        if (e.getSource() == vistaUsuario.btnModificarMP) {
+            String texto1 = CvistaUsuario.txtNombre_USR.getText();
+            if (texto1.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Llene todos los campos");
+            } else {
+                if (texto1.length() >= 5) {
+                    modeloUsuario.setUsr_nombre(CvistaUsuario.txtNombre_USR.getText());
+                    modeloUsuario.setIdEmpleado(CvistaUsuario.jcbEmpleado.getSelectedItem().toString());
+                    modeloUsuario.setIdnivelUser(CvistaUsuario.jcbUsuario.getSelectedItem().toString());
+                    modeloUsuario.CActualizarUsuario(modeloUsuario, CvistaUsuario.jcbEmpleado, CvistaUsuario.jcbUsuario, CvistaUsuario);
+                    modeloUsuario.CmostrarUsuarios(CvistaUsuario);
                 } else {
                     JOptionPane.showMessageDialog(null, "El nombre del usuario tiene que ser superior a 5 digitos");
 

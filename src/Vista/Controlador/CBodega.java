@@ -933,8 +933,8 @@ public class CBodega extends javax.swing.JFrame {
         CBodega Cvista= new CBodega();
         Bodegas modelo = new Bodegas();
         ctrlBodega control= new ctrlBodega(vista, modelo, Cvista);
-        modelo.MostrarBodega(vista);
-        vista.setVisible(true);
+        modelo.CMostrarBodega(Cvista);
+        Cvista.setVisible(true);
     }
     
     
