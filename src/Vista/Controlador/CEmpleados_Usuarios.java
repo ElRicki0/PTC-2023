@@ -115,11 +115,6 @@ public class CEmpleados_Usuarios extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         MenuPlegable.setBackground(new java.awt.Color(64, 81, 115));
-        MenuPlegable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                MenuPlegableMouseClicked(evt);
-            }
-        });
         MenuPlegable.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnCasa.setBackground(new java.awt.Color(64, 81, 115));
@@ -901,7 +896,7 @@ public class CEmpleados_Usuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUsuariosMouseExited
 
     private void btnCasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseClicked
-        MainC vista = new MainC ();
+        MainC vista = new MainC();
         vista.INIT();
         this.dispose();
     }//GEN-LAST:event_btnCasaMouseClicked
@@ -931,7 +926,7 @@ public class CEmpleados_Usuarios extends javax.swing.JFrame {
             if (rs.next()) {
                 resultado = 1;
                 if (resultado == 1) {
-                    VProducto vista = new VProducto();
+                    CProducto vista = new CProducto();
                     vista.NIT();
                     this.dispose();
                 }
@@ -969,8 +964,8 @@ public class CEmpleados_Usuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTrabajadorMouseExited
 
     private void btnBodegaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseClicked
-        CBodega bodegas = new CBodega();
-        bodegas.INIT();
+        CBodega vista =new CBodega();
+        vista.INIT();
         this.dispose();
     }//GEN-LAST:event_btnBodegaMouseClicked
 
@@ -997,7 +992,7 @@ public class CEmpleados_Usuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBitacoraMouseExited
 
     private void btnClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseClicked
-        VCliente vista= new VCliente();
+        CCliente vista= new CCliente();
         vista.INIT();
         this.dispose();
     }//GEN-LAST:event_btnClienteMouseClicked
@@ -1019,7 +1014,7 @@ public class CEmpleados_Usuarios extends javax.swing.JFrame {
             if (rs.next()) {
                 resultado = 1;
                 if (resultado == 1) {
-                    VRutas_DatosDis vista = new VRutas_DatosDis();
+                    CRutas_DatosDis vista = new CRutas_DatosDis();
                     vista.INIT();
                     this.dispose();
                 }
@@ -1041,7 +1036,7 @@ public class CEmpleados_Usuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRutaMouseExited
 
     private void btnVehiculosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculosMouseClicked
-        VVehiculo_Taller vista =new VVehiculo_Taller();
+        CVehiculo_Taller vista =new CVehiculo_Taller();
         vista.INIT();
         this.dispose();
     }//GEN-LAST:event_btnVehiculosMouseClicked
@@ -1053,10 +1048,6 @@ public class CEmpleados_Usuarios extends javax.swing.JFrame {
     private void btnVehiculosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculosMouseExited
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVehiculosMouseExited
-
-    private void MenuPlegableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuPlegableMouseClicked
-
-    }//GEN-LAST:event_MenuPlegableMouseClicked
 
     /**
      * @param args the command line arguments

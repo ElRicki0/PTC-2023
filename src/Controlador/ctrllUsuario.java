@@ -106,7 +106,7 @@ public class ctrllUsuario implements ActionListener {
             modeloUsuario.CEliminarUsuario(CvistaUsuario);
             modeloUsuario.CmostrarUsuarios(CvistaUsuario);
         }
-        if (e.getSource() == vistaUsuario.btnModificarMP) {
+        if (e.getSource() == CvistaUsuario.btnModificarMP) {
             String texto1 = CvistaUsuario.txtNombre_USR.getText();
             if (texto1.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Llene todos los campos");

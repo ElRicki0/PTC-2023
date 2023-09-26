@@ -1,5 +1,6 @@
 package Modelo;
 
+import Vista.Controlador.CCliente_Tiendas;
 import Vista.VBodega;
 import Vista.VCliente_Tiendas;
 import java.sql.PreparedStatement;
@@ -55,6 +56,7 @@ public class Tiendas1 {
         this.Tien_Correo = Tien_Correo;
     }
     
+    ////////////Admin///////////////////////////////////////////////////////////
     public void MostrarTabla(VCliente_Tiendas vista){
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(new Object[]{"ID", "nombre", "Direccion", "Referencia","Correo"});
@@ -72,7 +74,7 @@ public class Tiendas1 {
         }
     }
     
-    public void agregar(Tiendas1 modelo){
+    public void Agregar(Tiendas1 modelo){
         String SQL="insert into tbTiendas(Tien_Nombre, Tien_Direccion, Tien_ReferenciasLDireccion, Tien_Correo) VALUES(?,?,?,?)";
         try {
             PreparedStatement ATienda= CConexion.getConexion().prepareStatement(SQL);
@@ -87,7 +89,7 @@ public class Tiendas1 {
         }
     }
     
-    public void eliminar(VCliente_Tiendas vista){
+    public void Eliminar(VCliente_Tiendas vista){
         try {
             int filaSeleccionada = vista.tbTienda.getSelectedRow();
         
@@ -108,8 +110,92 @@ public class Tiendas1 {
         
     }
     
-    public void actualizar(VCliente_Tiendas vista)
-    {
+    public void Actualizar(VCliente_Tiendas vista){
+        try {
+            int filaSeleccionada = vista.tbTienda.getSelectedRow();      
+
+            //Obtenemos el id de la fila seleccionada
+            String miId = vista.tbTienda.getValueAt(filaSeleccionada, 0).toString();
+            String nuevoValorIngresadoNombre = vista.txtNombre_CL.getText();
+            String nuevoValorIngresadDireccion = vista.txtDireccion.getText();
+            String nuevoValorIngresadoReferencia = vista.txtReferencia.getText();
+            String nuevoValorIngresadoCorreo = vista.txtCorreo_CL.getText();
+            try {
+
+                PreparedStatement updateUser = CConexion.getConexion().prepareStatement("update tbTiendas set Tien_Nombre = ?, Tien_Direccion=?, Tien_ReferenciasLDireccion = ?, Tien_Correo=? where idTienda = ?");
+                updateUser.setString(1, nuevoValorIngresadoNombre);
+                updateUser.setString(2, nuevoValorIngresadDireccion);
+                updateUser.setString(3, nuevoValorIngresadoReferencia);
+                updateUser.setString(4, nuevoValorIngresadoCorreo);
+                updateUser.setString(5, miId);
+                JOptionPane.showMessageDialog(null, "La tienda se modifico correctamente");                           
+                updateUser.executeUpdate();
+                } catch (Exception e) {
+                System.out.println(e.toString());
+                JOptionPane.showMessageDialog(null, "Error en modificar tienda");
+                }
+        } catch (Exception ae) {
+                JOptionPane.showMessageDialog(null, "Seleccione un dato a modificar");                           
+        }
+   
+
+    }
+    
+    ////////////Controlador///////////////////////////////////////////////////////////
+    public void CMostrarTabla(CCliente_Tiendas vista){
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(new Object[]{"ID", "nombre", "Direccion", "Referencia","Correo"});
+        try {
+             Statement st = CConexion.getConexion().createStatement();
+             String SQL = "select*from tbTiendas";
+             ResultSet rs= st.executeQuery(SQL);
+             while(rs.next()){                 
+                modelo.addRow(new Object[]{rs.getInt("idTienda"), rs.getString("Tien_Nombre"), rs.getString("Tien_Direccion"), rs.getString("Tien_ReferenciasLDireccion"), rs.getString("Tien_Correo")});
+             }
+             
+             vista.tbTienda.setModel(modelo);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error tabla tienda "+e.getMessage());                
+        }
+    }
+    
+    public void CAgregar(Tiendas1 modelo){
+        String SQL="insert into tbTiendas(Tien_Nombre, Tien_Direccion, Tien_ReferenciasLDireccion, Tien_Correo) VALUES(?,?,?,?)";
+        try {
+            PreparedStatement ATienda= CConexion.getConexion().prepareStatement(SQL);
+            ATienda.setString(1, modelo.getTien_Nombre());
+            ATienda.setString(2, modelo.getTien_Direccion());
+            ATienda.setString(3, modelo.getTien_ReferenciasLDireccion());
+            ATienda.setString(4, modelo.getTien_Correo());
+            ATienda.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Tienda aghregada  exitosamente.");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al agregar tienda "+e.toString());
+        }
+    }
+    
+    public void CEliminar(CCliente_Tiendas vista){
+        try {
+            int filaSeleccionada = vista.tbTienda.getSelectedRow();
+        
+            //Obtenemos el id de la fila seleccionada
+            String miId = vista.tbTienda.getValueAt(filaSeleccionada, 0).toString();
+            //borramos 
+            try {
+                PreparedStatement deleteUser = CConexion.getConexion().prepareStatement("delete from tbTiendas where idTienda = '" + miId + "'");
+                deleteUser.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Se elimino correctamente la tienda");                           
+            } catch (Exception e) {
+             System.out.println(e.toString());
+              JOptionPane.showMessageDialog(null, "La tienda esta en uso, modifique o elimine el ''datos generales''");                           
+            }
+        } catch (Exception ae) {
+              JOptionPane.showMessageDialog(null, "Seleccione una tienda para eliminar");                           
+        }
+        
+    }
+    
+    public void CActualizar(CCliente_Tiendas vista){
         try {
             int filaSeleccionada = vista.tbTienda.getSelectedRow();      
 

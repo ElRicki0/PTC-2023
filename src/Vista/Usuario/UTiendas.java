@@ -437,7 +437,7 @@ public class UTiendas extends javax.swing.JFrame {
         UTiendas vistaU =new UTiendas();
         VCliente_DatosTiendas vista= new VCliente_DatosTiendas();
         vistaU.setVisible(true);
-        modelo.MostrarTablaU(vistaU);
+        modelo.UMostrarTabla(vistaU);
         ctrlDatosTiendas control=new ctrlDatosTiendas(vista, modelo, vistaU);
     }
     

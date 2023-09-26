@@ -221,6 +221,7 @@ public class EmpleadosM {
         return true;
     }
     
+    ///////////////////////////////Admin//////////////////////////////////////////////
     public boolean MAgregarEmpleado(EmpleadosM modeloEmpleados, JComboBox jcbGenero, JComboBox jcbTipo ){
         try {
             
@@ -309,8 +310,8 @@ public class EmpleadosM {
         UEmpleado.setString(8, miId);   
         UEmpleado.execute();
         JOptionPane.showMessageDialog(null, "El Empleado  se Modifico correctamente123");
-        } catch (Exception e) {
-            System.out.println(e);        
+        } catch (Exception e) {             
+            JOptionPane.showMessageDialog(null, "Seleccione un dato a modificar");
         }
 
           

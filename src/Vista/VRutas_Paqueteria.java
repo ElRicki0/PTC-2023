@@ -8,6 +8,7 @@ import Controlador.ctrlPaqueteria;
 import Modelo.*;
 import Modelo.CConexion;
 import Modelo.productos;
+import Vista.Controlador.CRutas_Paqueteria;
 import javax.swing.ImageIcon;
 import desplazable.Desface;
 import java.awt.Color;
@@ -857,9 +858,11 @@ public class VRutas_Paqueteria extends javax.swing.JFrame {
     private void tbPaqueteriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbPaqueteriaMouseClicked
          int filaSeleccionada = tbPaqueteria.getSelectedRow();
 
-        String Direccion = tbPaqueteria.getValueAt(filaSeleccionada, 3).toString();
+        String Nombre   = tbPaqueteria.getValueAt(filaSeleccionada, 1).toString();
+        String Direccion = tbPaqueteria.getValueAt(filaSeleccionada, 4).toString();
         
         txtDireccion.setText(Direccion);
+        txtNombre.setText(Nombre);
     }//GEN-LAST:event_tbPaqueteriaMouseClicked
 
     private void btnCasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseClicked
@@ -1078,10 +1081,11 @@ public class VRutas_Paqueteria extends javax.swing.JFrame {
     
     public void INIT(){
         VRutas_Paqueteria vista = new VRutas_Paqueteria();
+        CRutas_Paqueteria Cvista = new CRutas_Paqueteria();
         vista.setVisible(true);
         paqueteria modelo = new paqueteria();
         modelo.Mostrartabla(vista);
-        ctrlPaqueteria control = new ctrlPaqueteria(vista, modelo);
+        ctrlPaqueteria control = new ctrlPaqueteria(vista, modelo, Cvista);
     }
     
         public static void main(String args[]) {

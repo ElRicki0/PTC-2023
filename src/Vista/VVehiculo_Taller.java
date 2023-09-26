@@ -14,6 +14,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import Modelo.CConexion;
 import Modelo.productos;
+import Vista.Controlador.CVehiculo_Taller;
 import javax.swing.ImageIcon;
 import desplazable.Desface;
 import java.awt.Color;
@@ -1282,7 +1283,8 @@ public class VVehiculo_Taller extends javax.swing.JFrame {
     
     public void INIT(){
         VVehiculo_Taller vista = new VVehiculo_Taller();
-        ctrlTalleres control= new ctrlTalleres(vista, modelo);
+        CVehiculo_Taller Cvista = new CVehiculo_Taller();
+        ctrlTalleres control= new ctrlTalleres(vista, modelo, Cvista);
         modelo.MostratTabla(vista);
         vista.setVisible(true);
     }

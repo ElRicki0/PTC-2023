@@ -3,6 +3,7 @@ package Vista;
 import Controlador.ctrlDatosDistribucion;
 import Modelo.DatosDistribucion;
 import Modelo.CConexion;
+import Vista.Controlador.CRutas_DatosDis;
 import javax.swing.ImageIcon;
 import desplazable.Desface;
 import java.awt.Color;
@@ -1253,10 +1254,11 @@ public class VRutas_DatosDis extends javax.swing.JFrame {
     
     public void INIT(){
         VRutas_DatosDis vista = new VRutas_DatosDis();
+        CRutas_DatosDis Cvista = new CRutas_DatosDis();
         DatosDistribucion modelo = new DatosDistribucion();
         modelo.Mostrartabla(vista);
         vista.setVisible(true);
-        ctrlDatosDistribucion contro = new ctrlDatosDistribucion(vista, modelo);
+        ctrlDatosDistribucion contro = new ctrlDatosDistribucion(vista, modelo, Cvista);
     }
     
         public static void main(String args[]) {

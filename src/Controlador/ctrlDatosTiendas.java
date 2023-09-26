@@ -54,7 +54,7 @@ public class ctrlDatosTiendas implements ActionListener{
             
             
         }if (e.getSource()==vistaDatos.btnEliminar_TN) {
-            modeloDatos.eliminar(vistaDatos);
+            modeloDatos.Eliminar(vistaDatos);
             modeloDatos.MostrarTabla(vistaDatos);
         }if (e.getSource()==vistaDatos.btnModificar_CL) {
             String texto1 = vistaDatos.txtEncargado.getText();
@@ -73,7 +73,7 @@ public class ctrlDatosTiendas implements ActionListener{
                             modeloDatos.setDT_PersonaDestinatario(vistaDatos.txtEncargado.getText());
                             modeloDatos.setIdCliente(vistaDatos.jcbCliente.getSelectedItem().toString());
                             modeloDatos.setIdTienda(vistaDatos.jcbTienda.getSelectedItem().toString());
-                            modeloDatos.modificar(vistaDatos, modeloDatos, vistaDatos.jcbCliente, vistaDatos.jcbTienda);
+                            modeloDatos.Modificar(vistaDatos, modeloDatos, vistaDatos.jcbCliente, vistaDatos.jcbTienda);
                             modeloDatos.MostrarTabla(vistaDatos);
                         } else {
                             JOptionPane.showMessageDialog(null, "El telefono tiene que ser valido");
@@ -83,7 +83,7 @@ public class ctrlDatosTiendas implements ActionListener{
             }
             
         }if (e.getSource()==vistaDatos.btnBuscarcmx) {
-            modeloDatos.BuscadorCMB(vistaDatos);
+            modeloDatos.llenarcmbBuscador(vistaDatos);
         }if (e.getSource()==vistaDatos.btnRestablecer) {
             modeloDatos.MostrarTabla(vistaDatos);
         }

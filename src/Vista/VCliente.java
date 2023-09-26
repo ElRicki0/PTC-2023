@@ -7,6 +7,7 @@ import Modelo.*;
 import Controlador.*;
 import Modelo.CConexion;
 import Modelo.productos;
+import Vista.Controlador.CCliente;
 import javax.swing.ImageIcon;
 import desplazable.Desface;
 import java.awt.Color;
@@ -1200,7 +1201,8 @@ public class VCliente extends javax.swing.JFrame {
 
     public void INIT(){
         VCliente vistaCliente =new VCliente();
-        ctrlCliente control= new ctrlCliente(modeloCliente, vistaCliente);
+        CCliente CvistaCliente =new CCliente();
+        ctrlCliente control= new ctrlCliente(modeloCliente, vistaCliente, CvistaCliente);
         modeloCliente.MostrarTabla(vistaCliente);
         vistaCliente.setVisible(true);
     }

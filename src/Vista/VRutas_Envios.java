@@ -14,6 +14,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import Modelo.CConexion;
 import Modelo.productos;
+import Vista.Controlador.CRutas_Envios;
 import javax.swing.ImageIcon;
 import desplazable.Desface;
 import java.awt.Color;
@@ -856,9 +857,9 @@ public class VRutas_Envios extends javax.swing.JFrame {
     private void tbEnviosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbEnviosMouseClicked
          int filaSeleccionada = tbEnvios.getSelectedRow();
 
-        String Direccion = tbEnvios.getValueAt(filaSeleccionada, 3).toString();
+        String Fecha = tbEnvios.getValueAt(filaSeleccionada, 1).toString();
         
-        txtFecha.setText(Direccion);
+        txtFecha.setText(Fecha);
     }//GEN-LAST:event_tbEnviosMouseClicked
 
     private void btnCasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseClicked
@@ -1044,9 +1045,10 @@ public class VRutas_Envios extends javax.swing.JFrame {
     
     public void INIT(){
         VRutas_Envios vista = new VRutas_Envios();
+        CRutas_Envios Cvista = new CRutas_Envios();
         vista.setVisible(true);
         modelo.MostrarTabla(vista);
-        ctrlEnvios ctrl = new ctrlEnvios(vista, modelo);
+        ctrlEnvios ctrl = new ctrlEnvios(vista, modelo, Cvista);
     }
     
         public static void main(String args[]) {

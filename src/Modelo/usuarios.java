@@ -348,6 +348,7 @@ public class usuarios {
             } else {
             }
             AUsuario.execute();
+            JOptionPane.showMessageDialog(null, "Usuario agregado exitosamente");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "El empleado ya esta en uso, eliga otro empleado o cree uno nuevo");
         }

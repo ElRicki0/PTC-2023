@@ -11,6 +11,7 @@ import Controlador.ctrlTalleres;
 import Modelo.*;
 import Modelo.CConexion;
 import Modelo.productos;
+import Vista.Controlador.CVehiculo_Modelo;
 import javax.swing.ImageIcon;
 import desplazable.Desface;
 import java.awt.Color;
@@ -1270,7 +1271,8 @@ public class VVehiculo_Modelo extends javax.swing.JFrame {
     
     public void INIT(){
         VVehiculo_Modelo vista = new VVehiculo_Modelo();
-        ctrlModelo ctrl = new ctrlModelo(vista, modelo);
+        CVehiculo_Modelo Cvista = new CVehiculo_Modelo();
+        ctrlModelo ctrl = new ctrlModelo(vista, modelo, Cvista);
         modelo.MostrarTabla(vista);
         vista.setVisible(true);
     }

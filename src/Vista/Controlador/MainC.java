@@ -549,7 +549,7 @@ public class MainC extends javax.swing.JFrame {
             if (rs.next()) {
                 resultado = 1;
                 if (resultado == 1) {
-                    VProducto vista = new VProducto();
+                    CProducto vista = new CProducto();
                     vista.NIT();
                     this.dispose();
                 }
@@ -567,7 +567,7 @@ public class MainC extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProductoMouseClicked
 
     private void btnClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseClicked
-        VCliente vista= new VCliente();
+        CCliente vista= new CCliente();
         vista.INIT();
         this.dispose();
     }//GEN-LAST:event_btnClienteMouseClicked
@@ -593,7 +593,7 @@ public class MainC extends javax.swing.JFrame {
             if (rs.next()) {
                 resultado = 1;
                 if (resultado == 1) {
-                    VRutas_DatosDis vista = new VRutas_DatosDis();
+                    CRutas_DatosDis vista = new CRutas_DatosDis();
                     vista.INIT();
                     this.dispose();
                 }
@@ -613,7 +613,7 @@ public class MainC extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBodegaMouseClicked
 
     private void btnVehiculosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculosMouseClicked
-        VVehiculo_Taller vista =new VVehiculo_Taller();
+        CVehiculo_Taller vista =new CVehiculo_Taller();
         vista.INIT();
         this.dispose();
     }//GEN-LAST:event_btnVehiculosMouseClicked

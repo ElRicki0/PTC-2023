@@ -5,6 +5,7 @@
  */
 package Modelo;
 
+import Vista.Controlador.CVehiculo_Mantenimiento;
 import Vista.VVehiculo_Mantenimiento;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -137,6 +138,7 @@ public class Mantenimiento {
     }
 }
     
+    ///////////Administrador////////////////////////////////////////////////////////////
     public void Mostrartabla(VVehiculo_Mantenimiento vista){
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(new Object[]{"ID", "Mecanico","Numero mecanico","Taller"});
@@ -203,6 +205,120 @@ public class Mantenimiento {
     }
     
     public void Editar(Mantenimiento modelo, JComboBox Taller, VVehiculo_Mantenimiento vista){
+        String SQL = "update tbMantenimiento set Mecanico = ?, TFTaller = ?, idTaller = ? where idMantenimiento = ?";
+    try {
+        PreparedStatement EMantenimiento = CConexion.getConexion().prepareStatement(SQL);
+        EMantenimiento.setString(1, modelo.getMecanico());
+        EMantenimiento.setString(2, modelo.getTFTaller());
+        
+        int selectedTallerIndex = Taller.getSelectedIndex();
+        if (selectedTallerIndex != -1) {
+            Map<Integer, String> idMantenimiento = (Map<Integer, String>) Taller.getClientProperty("idMantenimiento");
+            int selectedMarcaID = (int) idMantenimiento.keySet().toArray()[selectedTallerIndex];
+            EMantenimiento.setInt(3, selectedMarcaID); // Usar el ID de la marca seleccionada
+        } else {
+            JOptionPane.showMessageDialog(null, "problema combobox.");
+        }
+        
+         int filaSeleccionada = vista.tbMantenimiento.getSelectedRow();
+        //Obtenemos el id de la fila seleccionada
+        String miId = vista.tbMantenimiento.getValueAt(filaSeleccionada, 0).toString();
+        EMantenimiento.setString(4, miId);
+        
+        EMantenimiento.executeUpdate();
+        JOptionPane.showMessageDialog(null, "El mantenimiento se actualizo correctamente");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Seleccione un dato para editar");
+        }
+    }
+    
+    ////////////Controlador///////////////////////////////////////////////////////////
+    public void CBuscador(CVehiculo_Mantenimiento vista){
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(new Object[]{"ID", "Mecanico","Numero mecanico","Taller"});
+        try {
+            Statement st= CConexion.getConexion().createStatement();
+                String SQL ="select idMantenimiento, Mecanico, TFTaller, tbTalleres.Tall_Nombre from tbMantenimiento inner join tbTalleres on tbMantenimiento.idTaller=tbTalleres.idTaller where Tall_Nombre='"+vista.jcbBuscador.getSelectedItem()+"'";
+            ResultSet rs = st.executeQuery(SQL);
+            
+            while (rs.next()) {
+                modelo.addRow(new Object[]{rs.getInt("idMantenimiento"), rs.getString("Mecanico"), rs.getString("TFTaller"), rs.getString("Tall_Nombre")});
+            }
+            vista.tbMantenimiento.setModel(modelo);            
+        } 
+        catch (Exception e) 
+        {
+            JOptionPane.showMessageDialog(null, "Error tabla producto "+e.getMessage());                
+        }
+    }
+    
+    public void CMostrartabla(CVehiculo_Mantenimiento vista){
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(new Object[]{"ID", "Mecanico","Numero mecanico","Taller"});
+        try {
+            Statement st= CConexion.getConexion().createStatement();
+                String SQL ="select idMantenimiento, Mecanico, TFTaller, tbTalleres.Tall_Nombre from tbMantenimiento inner join tbTalleres on tbMantenimiento.idTaller=tbTalleres.idTaller";
+            ResultSet rs = st.executeQuery(SQL);
+            
+            while (rs.next()) {
+                modelo.addRow(new Object[]{rs.getInt("idMantenimiento"), rs.getString("Mecanico"), rs.getString("TFTaller"), rs.getString("Tall_Nombre")});
+            }
+            vista.tbMantenimiento.setModel(modelo);            
+        } 
+        catch (Exception e) 
+        {
+            JOptionPane.showMessageDialog(null, "Error tabla producto "+e.getMessage());                
+        }
+    }
+    
+    public void CAgregar(Mantenimiento modelo, JComboBox Taller){
+        String SQL = "INSERT INTO tbMantenimiento (Mecanico, TFTaller, idTaller) VALUES (?, ?, ?)";
+    try {
+        PreparedStatement AMantenimiento = CConexion.getConexion().prepareStatement(SQL);
+        AMantenimiento.setString(1, modelo.getMecanico());
+        AMantenimiento.setString(2, modelo.getTFTaller());
+        
+        int selectedTallerIndex = Taller.getSelectedIndex();
+        if (selectedTallerIndex != -1) {
+            Map<Integer, String> idMantenimiento = (Map<Integer, String>) Taller.getClientProperty("idMantenimiento");
+            int selectedMarcaID = (int) idMantenimiento.keySet().toArray()[selectedTallerIndex];
+            AMantenimiento.setInt(3, selectedMarcaID); // Usar el ID de la marca seleccionada
+        } else {
+            JOptionPane.showMessageDialog(null, "problema combobox.");
+        }
+
+        AMantenimiento.executeUpdate();
+        JOptionPane.showMessageDialog(null, "El mantenimiento se agregó correctamente");
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "ERROR EN EL METODO DEL MODELO: " + e.toString());
+    }
+    }
+    
+    public void CEliminar(CVehiculo_Mantenimiento vista){
+        try {
+            //obtenemos que fila seleccionó el usuario
+            int filaSeleccionada = vista.tbMantenimiento.getSelectedRow();
+
+            //Obtenemos el id de la fila seleccionada
+            String miId = vista.tbMantenimiento.getValueAt(filaSeleccionada, 0).toString();
+            //borramos 
+            try {
+                PreparedStatement deleteUser = CConexion.getConexion().prepareStatement("delete from tbMantenimiento where idMantenimiento = '" + miId + "'");
+                deleteUser.executeUpdate();
+                JOptionPane.showMessageDialog(null, "El Mantenimiento se elimino correctamente");
+            } catch (Exception e) {             
+                JOptionPane.showMessageDialog(null, "Error eliminar mantenimiento "+e.toString());
+
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Seleccione un dato para eliminar");
+        }
+        
+    }
+    
+    public void CEditar(Mantenimiento modelo, JComboBox Taller, CVehiculo_Mantenimiento vista){
         String SQL = "update tbMantenimiento set Mecanico = ?, TFTaller = ?, idTaller = ? where idMantenimiento = ?";
     try {
         PreparedStatement EMantenimiento = CConexion.getConexion().prepareStatement(SQL);

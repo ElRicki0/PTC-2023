@@ -8,6 +8,7 @@ import Controlador.ctrlMantenimiento;
 import Modelo.*;
 import Modelo.CConexion;
 import Modelo.productos;
+import Vista.Controlador.CVehiculo_Mantenimiento;
 import javax.swing.ImageIcon;
 import desplazable.Desface;
 import java.awt.Color;
@@ -1224,9 +1225,10 @@ public class VVehiculo_Mantenimiento extends javax.swing.JFrame {
     
     public void INIT(){
         VVehiculo_Mantenimiento vista = new VVehiculo_Mantenimiento();
+        CVehiculo_Mantenimiento Cvista = new CVehiculo_Mantenimiento();
         vista.setVisible(true);
         modelo.Mostrartabla(vista);
-        ctrlMantenimiento contrl= new ctrlMantenimiento(vista, modelo);
+        ctrlMantenimiento contrl= new ctrlMantenimiento(vista, modelo, Cvista);
     }
     
         public static void main(String args[]) {

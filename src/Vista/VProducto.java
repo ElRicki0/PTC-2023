@@ -5,6 +5,7 @@ import Controlador.ctrlProducto;
 import Modelo.productos;
 import Modelo.CConexion;
 import Modelo.MarcaProductos;
+import Vista.Controlador.CProducto;
 import Vista.Usuario.UProducto;
 import javax.swing.ImageIcon;
 import desplazable.Desface;
@@ -66,8 +67,8 @@ public class VProducto extends javax.swing.JFrame {
        
         ModeloProductos.RellenarMarcaCBX(jcbMarca_pdt);
         ModeloProductos.RellenarBodegaCBX(jcbBodega1);
-        ModeloProductos.llenarBuscador(jcbBuscador);
-        ModeloProductos.llenarReporte_Marca(jcbReporte);
+        ModeloProductos.RellenarBuscadorCBX(jcbBuscador);
+        ModeloProductos.RellenarReporte_Marca(jcbReporte);
 
     }
     
@@ -1290,10 +1291,11 @@ public class VProducto extends javax.swing.JFrame {
             
     public void NIT(){
         VProducto vista= new VProducto();
+        CProducto Cvista= new CProducto();
         UProducto Uvista= new UProducto();
         vista.setVisible(true);
         productos modeloProductos= new productos();
-        ctrlProducto control = new ctrlProducto(modeloProductos, vista, Uvista);
+        ctrlProducto control = new ctrlProducto(modeloProductos, vista, Cvista, Uvista);
         modeloProductos.MostrarProductos(vista);        
     }
     

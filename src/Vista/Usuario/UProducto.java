@@ -6,6 +6,7 @@ import Controlador.ctrlProducto;
 import Modelo.productos;
 import Modelo.CConexion;
 import Modelo.MarcaProductos;
+import Vista.Controlador.CProducto;
 import javax.swing.ImageIcon;
 import desplazable.Desface;
 import java.awt.Color;
@@ -49,7 +50,7 @@ public class UProducto extends javax.swing.JFrame {
         transpareciaBoton();
             
        
-        ModeloProductos.llenarBuscador(jcbBuscador);
+        ModeloProductos.RellenarBuscadorCBX(jcbBuscador);
 
     }
     
@@ -579,11 +580,12 @@ public class UProducto extends javax.swing.JFrame {
     
             
     public void INIT(){
-        UProducto vista= new UProducto();
-        VProducto vistaProducto=new VProducto();
-        ModeloProductos.MostrarProductosU(vista);
-        ctrlProducto ctrl = new ctrlProducto(ModeloProductos, vistaProducto, vista);
-        vista.setVisible(true);
+        VProducto vista=new VProducto();
+        CProducto Cvista= new CProducto();
+        UProducto Uvista= new UProducto();
+        ModeloProductos.UMostrarProductos(Uvista);
+        ctrlProducto ctrl = new ctrlProducto(ModeloProductos, vista, Cvista, Uvista);
+        Uvista.setVisible(true);
     }
     
     public void transpareciaBoton(){

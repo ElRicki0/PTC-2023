@@ -7,6 +7,8 @@ import Controlador.ctrlVehiculo;
 import Modelo.*;
 import Modelo.CConexion;
 import Modelo.productos;
+import Vista.Controlador.CVehiculo;
+import Vista.Usuario.UVehiculos;
 import javax.swing.ImageIcon;
 import desplazable.Desface;
 import java.awt.Color;
@@ -1177,8 +1179,10 @@ public class VVehiculo extends javax.swing.JFrame {
     
     public void INIT(){
         VVehiculo vista = new VVehiculo();
+        CVehiculo Cvista = new CVehiculo();
+        UVehiculos Uvista = new UVehiculos();
         modeloVehiculos.MostrarTabla(vista);
-        ctrlVehiculo ctrl = new ctrlVehiculo(vista, modeloVehiculos);
+        ctrlVehiculo ctrl = new ctrlVehiculo(vista, modeloVehiculos, Cvista, Uvista);
         vista.setVisible(true);
     }
     

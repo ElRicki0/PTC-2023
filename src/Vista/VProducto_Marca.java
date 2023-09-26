@@ -5,6 +5,7 @@ import Controlador.ctrlProducto;
 import Modelo.productos;
 import Modelo.CConexion;
 import Modelo.MarcaProductos;
+import Vista.Controlador.CProducto_Marca;
 import javax.swing.ImageIcon;
 import desplazable.Desface;
 import java.awt.Color;
@@ -1064,13 +1065,10 @@ public class VProducto_Marca extends javax.swing.JFrame {
     
             
     public void NIT(){
-//        productos modeloProductos= new productos();
         VProducto_Marca vista= new VProducto_Marca();
-//        ctrlProducto control = new ctrlProducto(modeloProductos,vista);
-//        modeloProductos.MostrarProductos(vista);
-//        
+        CProducto_Marca Cvista= new CProducto_Marca();
         MarcaProductos modeloMarca= new MarcaProductos();
-        ctrlMarca controlMarca= new ctrlMarca(modeloMarca, vista);        
+        ctrlMarca controlMarca= new ctrlMarca(modeloMarca, vista, Cvista);        
         modeloMarca.MostrarMarcas(vista);
         vista.setVisible(true);
         
