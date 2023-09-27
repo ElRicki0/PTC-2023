@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 
 public class ctrlLogin implements ActionListener {
 
+    
     private usuarios modeloUsuario;
     private LoginPTC vistaLogin;
     private Main main;
@@ -35,7 +36,8 @@ public class ctrlLogin implements ActionListener {
                 String contraseñaAlmacenada = modeloUsuario.obtenerContraseñaDesdeBD();
 
                 if (contraseñaAlmacenada != null && contraseñaAlmacenada.equals(contraseñaIngresadaEncriptada)) {
-
+                    
+//                    MNombre.setNombreUsr(vistaLogin.txtUsuario.getText());
                     modeloUsuario.setUsr_nombre(vistaLogin.txtUsuario.getText());
                     modeloUsuario.setUsr_contra(encript.convertirSHA256(vistaLogin.txtContraseña.getText()));
 //                    Main main = new Main();

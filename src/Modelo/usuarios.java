@@ -170,19 +170,23 @@ public class usuarios {
                         LoginPTC vista = new LoginPTC();
                         vista.dispose();
                         Main main = new Main();
+
                         main.INIT();
                     }
                     if (nivelU.equals("2")) {
 //                    if (nivelU.equals("2")) {
                         LoginPTC vista = new LoginPTC();
                         vista.dispose();
+                        if (contraseñaAlmacenada.matches("9b8769a4a742959a2d0298c36fb70623f2dfacda8436237df08d8dfd5b37374c")) {
+                            System.out.println("si papa" + contraseñaAlmacenada);
+                        }
                         MainC main = new MainC();
                         main.INIT();
                     }
                     if (nivelU.equals("3")) {
                         RMain main = new RMain();
                         main.setVisible(true);
-                       LoginPTC vista = new LoginPTC();
+                        LoginPTC vista = new LoginPTC();
                         vista.dispose();
                     }
                     if (nivelU.equals("4")) {
@@ -205,7 +209,7 @@ public class usuarios {
         }
 
     }
-    
+
     public void jcbEmpleado(JComboBox combox) {
         Connection conectar = null;
         PreparedStatement ps = null;
@@ -244,7 +248,7 @@ public class usuarios {
 
         }
     }
-    
+
     public void jcbNivelesU(JComboBox combox) {
 
         Connection conectar = null;
@@ -284,7 +288,7 @@ public class usuarios {
 
         }
     }
-    
+
     public void ActualizarContra(usuarios modeloUsuario) {
         try {
             String sql = "update tbUsuarios set usr_contrasenia=? where usr_nombre=?";
@@ -323,7 +327,7 @@ public class usuarios {
             JOptionPane.showMessageDialog(null, "Error tabla usuarios " + e.getMessage());
         }
     }
-    
+
     public void AUsuarios(usuarios modeloUsuario, JComboBox jcbEmpleado, JComboBox jcbUsuario) {
         try {
 
@@ -409,7 +413,6 @@ public class usuarios {
     }
 
     /////////////////////////Controlador/////////////////////////////////////////////////////
-    
     public void CjcbNivelesU(JComboBox combox) {
 
         Connection conectar = null;
@@ -467,7 +470,7 @@ public class usuarios {
             JOptionPane.showMessageDialog(null, "Error tabla usuarios " + e.getMessage());
         }
     }
-    
+
     public void CAUsuarios(usuarios modeloUsuario, JComboBox jcbEmpleado, JComboBox jcbUsuario) {
         try {
 

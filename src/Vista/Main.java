@@ -7,6 +7,7 @@ package Vista;
 
 import Modelo.CConexion;
 import Modelo.productos;
+import Modelo.usuarios;
 import javax.swing.ImageIcon;
 import desplazable.Desface;
 import java.awt.Color;
@@ -81,6 +82,7 @@ public class Main extends javax.swing.JFrame {
         btnSalir = new Vista.PanelCurvas();
         logOut = new javax.swing.JLabel();
         txtBitacora1 = new javax.swing.JLabel();
+        Nombrelbl = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1080, 850));
@@ -502,6 +504,9 @@ public class Main extends javax.swing.JFrame {
 
         jPanel1.add(MenuPlegable, new org.netbeans.lib.awtextra.AbsoluteConstraints(-150, 0, 230, 810));
 
+        Nombrelbl.setText("-----");
+        jPanel1.add(Nombrelbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 220, 90, 50));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -694,9 +699,17 @@ public class Main extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    private String NombreUsr;
+    
+    public void NombreUsr(String NombreUsr){
+        this.NombreUsr=NombreUsr;
+        Nombrelbl.setText(NombreUsr);
+    }
+    
     public void INIT(){
         Main main= new Main();
         main.setVisible(true);
+//        txtNombre.setText(modelo.getNombreUsr());
     }
     
     public static void main(String args[]) {
@@ -736,6 +749,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel Casaicon;
     private javax.swing.JLabel Clienteicon;
     private javax.swing.JPanel MenuPlegable;
+    private javax.swing.JLabel Nombrelbl;
     private javax.swing.JLabel Productoicon;
     private javax.swing.JLabel Rutaicon;
     private javax.swing.JLabel Trabajadoricon;
