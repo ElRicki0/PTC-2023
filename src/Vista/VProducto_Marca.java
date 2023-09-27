@@ -88,12 +88,16 @@ public class VProducto_Marca extends javax.swing.JFrame {
         btnVehiculos = new Vista.PanelCurvas();
         icoCarro = new javax.swing.JLabel();
         txtCliente2 = new javax.swing.JLabel();
+        btnSalir = new Vista.PanelCurvas();
+        logOut = new javax.swing.JLabel();
+        txtBitacora1 = new javax.swing.JLabel();
         jpSubMenu = new javax.swing.JPanel();
         btnSubProductos = new Vista.PanelCurvas();
         txtSub = new javax.swing.JLabel();
         btnSubMarcas = new Vista.PanelCurvas();
         txtSub1 = new javax.swing.JLabel();
         jpMarcas = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbMarca = new javax.swing.JTable();
         panelCurvas3 = new Vista.PanelCurvas();
@@ -107,7 +111,6 @@ public class VProducto_Marca extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
         agregar1 = new Vista.PanelCurvas();
         btnAgregarMC = new javax.swing.JButton();
         eliminar1 = new Vista.PanelCurvas();
@@ -124,6 +127,9 @@ public class VProducto_Marca extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         MenuPlegable.setBackground(new java.awt.Color(64, 81, 115));
+        MenuPlegable.setMaximumSize(new java.awt.Dimension(230, 900));
+        MenuPlegable.setMinimumSize(new java.awt.Dimension(230, 900));
+        MenuPlegable.setPreferredSize(new java.awt.Dimension(230, 900));
         MenuPlegable.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnCasa.setBackground(new java.awt.Color(64, 81, 115));
@@ -167,7 +173,7 @@ public class VProducto_Marca extends javax.swing.JFrame {
                     .addComponent(txtCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        MenuPlegable.add(btnCasa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 230, -1));
+        MenuPlegable.add(btnCasa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 230, -1));
         MenuPlegable.add(txtLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 90, 90));
 
         txtBarras.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -218,7 +224,7 @@ public class VProducto_Marca extends javax.swing.JFrame {
                     .addComponent(Productoicon, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        MenuPlegable.add(btnProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, -1, 50));
+        MenuPlegable.add(btnProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, -1, 50));
 
         btnTrabajador.setBackground(new java.awt.Color(64, 81, 115));
         btnTrabajador.setRoundBottomLeft(25);
@@ -261,7 +267,7 @@ public class VProducto_Marca extends javax.swing.JFrame {
                     .addComponent(Trabajadoricon, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        MenuPlegable.add(btnTrabajador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, -1, 50));
+        MenuPlegable.add(btnTrabajador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, -1, 50));
 
         btnBodega.setBackground(new java.awt.Color(64, 81, 115));
         btnBodega.setRoundBottomLeft(25);
@@ -304,7 +310,7 @@ public class VProducto_Marca extends javax.swing.JFrame {
                     .addComponent(Bodegaicon, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        MenuPlegable.add(btnBodega, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, -1, -1));
+        MenuPlegable.add(btnBodega, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, -1, -1));
 
         btnBitacora.setBackground(new java.awt.Color(64, 81, 115));
         btnBitacora.setRoundBottomLeft(25);
@@ -347,7 +353,7 @@ public class VProducto_Marca extends javax.swing.JFrame {
                     .addComponent(Bitacoraicon, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        MenuPlegable.add(btnBitacora, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 630, -1, -1));
+        MenuPlegable.add(btnBitacora, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 600, -1, -1));
 
         btnCliente.setBackground(new java.awt.Color(64, 81, 115));
         btnCliente.setRoundBottomLeft(25);
@@ -390,7 +396,7 @@ public class VProducto_Marca extends javax.swing.JFrame {
                     .addComponent(Clienteicon, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        MenuPlegable.add(btnCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 230, -1));
+        MenuPlegable.add(btnCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 230, -1));
 
         btnRuta.setBackground(new java.awt.Color(64, 81, 115));
         btnRuta.setRoundBottomLeft(25);
@@ -433,7 +439,7 @@ public class VProducto_Marca extends javax.swing.JFrame {
                     .addComponent(Rutaicon, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        MenuPlegable.add(btnRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, -1, -1));
+        MenuPlegable.add(btnRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 530, -1, -1));
 
         btnVehiculos.setBackground(new java.awt.Color(64, 81, 115));
         btnVehiculos.setRoundBottomLeft(25);
@@ -479,9 +485,54 @@ public class VProducto_Marca extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        MenuPlegable.add(btnVehiculos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 230, 53));
+        MenuPlegable.add(btnVehiculos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 230, 53));
 
-        jPanel1.add(MenuPlegable, new org.netbeans.lib.awtextra.AbsoluteConstraints(-150, 0, 230, 760));
+        btnSalir.setBackground(new java.awt.Color(64, 81, 115));
+        btnSalir.setRoundBottomLeft(25);
+        btnSalir.setRoundBottomRight(25);
+        btnSalir.setRoundTopLeft(25);
+        btnSalir.setRoundTopRight(25);
+        btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSalirMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSalirMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSalirMouseExited(evt);
+            }
+        });
+
+        txtBitacora1.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        txtBitacora1.setForeground(new java.awt.Color(255, 153, 153));
+        txtBitacora1.setText("Cerrar secion");
+
+        javax.swing.GroupLayout btnSalirLayout = new javax.swing.GroupLayout(btnSalir);
+        btnSalir.setLayout(btnSalirLayout);
+        btnSalirLayout.setHorizontalGroup(
+            btnSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnSalirLayout.createSequentialGroup()
+                .addContainerGap(42, Short.MAX_VALUE)
+                .addComponent(txtBitacora1)
+                .addGap(18, 18, 18)
+                .addComponent(logOut, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        btnSalirLayout.setVerticalGroup(
+            btnSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnSalirLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(logOut, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(btnSalirLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtBitacora1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(12, 12, 12))
+        );
+
+        MenuPlegable.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 750, 230, 53));
+
+        jPanel1.add(MenuPlegable, new org.netbeans.lib.awtextra.AbsoluteConstraints(-150, 0, 230, 810));
 
         jpSubMenu.setBackground(new java.awt.Color(64, 81, 115));
         jpSubMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -571,6 +622,11 @@ public class VProducto_Marca extends javax.swing.JFrame {
         jpMarcas.setBackground(new java.awt.Color(246, 234, 204));
         jpMarcas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel14.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel14.setText("Marcas");
+        jpMarcas.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 260, 41));
+
         jScrollPane2.setBackground(new java.awt.Color(172, 147, 110));
 
         tbMarca.setModel(new javax.swing.table.DefaultTableModel(
@@ -591,7 +647,7 @@ public class VProducto_Marca extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tbMarca);
 
-        jpMarcas.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 550, 460));
+        jpMarcas.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 550, 510));
 
         panelCurvas3.setBackground(new java.awt.Color(172, 147, 110));
         panelCurvas3.setRoundBottomLeft(35);
@@ -733,12 +789,7 @@ public class VProducto_Marca extends javax.swing.JFrame {
         jLabel13.setText("Informacion");
         panelCurvas3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 167, 41));
 
-        jpMarcas.add(panelCurvas3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 70, 410, 460));
-
-        jLabel14.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel14.setText("Marcas");
-        jpMarcas.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 260, 41));
+        jpMarcas.add(panelCurvas3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 100, 410, 460));
 
         agregar1.setBackground(new java.awt.Color(172, 147, 110));
         agregar1.setRoundBottomLeft(25);
@@ -774,7 +825,7 @@ public class VProducto_Marca extends javax.swing.JFrame {
                 .addComponent(btnAgregarMC, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jpMarcas.add(agregar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 550, -1, 60));
+        jpMarcas.add(agregar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 630, -1, 60));
 
         eliminar1.setBackground(new java.awt.Color(172, 147, 110));
         eliminar1.setRoundBottomLeft(25);
@@ -806,7 +857,7 @@ public class VProducto_Marca extends javax.swing.JFrame {
                 .addComponent(btnEliminarMC, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jpMarcas.add(eliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 550, -1, -1));
+        jpMarcas.add(eliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 630, -1, -1));
 
         modificar1.setBackground(new java.awt.Color(172, 147, 110));
         modificar1.setRoundBottomLeft(25);
@@ -830,9 +881,9 @@ public class VProducto_Marca extends javax.swing.JFrame {
                 .addComponent(btnModificarMC, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jpMarcas.add(modificar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 550, 160, 60));
+        jpMarcas.add(modificar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 630, 160, 60));
 
-        jPanel1.add(jpMarcas, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 1000, 650));
+        jPanel1.add(jpMarcas, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 1000, 700));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -948,7 +999,7 @@ public class VProducto_Marca extends javax.swing.JFrame {
     }//GEN-LAST:event_txtBarrasMouseClicked
 
     private void btnProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseClicked
-    
+
     }//GEN-LAST:event_btnProductoMouseClicked
 
     private void btnProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseEntered
@@ -1059,6 +1110,23 @@ public class VProducto_Marca extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVehiculosMouseExited
 
+    private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
+        // [64,81,115]
+        LoginPTC vista = new LoginPTC();
+        vista.INIT();
+        this.dispose();
+    }//GEN-LAST:event_btnSalirMouseClicked
+
+    private void btnSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseEntered
+        btnSalir.setBackground(new Color(102,0,0));
+    }//GEN-LAST:event_btnSalirMouseEntered
+
+    private void btnSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseExited
+
+        btnSalir.setBackground(new Color(64,81,115));
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSalirMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -1146,6 +1214,7 @@ public class VProducto_Marca extends javax.swing.JFrame {
     public javax.swing.JButton btnModificarMC;
     private Vista.PanelCurvas btnProducto;
     private Vista.PanelCurvas btnRuta;
+    private Vista.PanelCurvas btnSalir;
     private Vista.PanelCurvas btnSubMarcas;
     private Vista.PanelCurvas btnSubProductos;
     private Vista.PanelCurvas btnTrabajador;
@@ -1161,6 +1230,7 @@ public class VProducto_Marca extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JPanel jpMarcas;
     private javax.swing.JPanel jpSubMenu;
+    private javax.swing.JLabel logOut;
     private Vista.PanelCurvas modificar1;
     private Vista.PanelCurvas panelCurvas3;
     private Vista.PanelCurvas panelCurvas6;
@@ -1169,6 +1239,7 @@ public class VProducto_Marca extends javax.swing.JFrame {
     public javax.swing.JTable tbMarca;
     private javax.swing.JLabel txtBarras;
     private javax.swing.JLabel txtBitacora;
+    private javax.swing.JLabel txtBitacora1;
     private javax.swing.JLabel txtBodega;
     private javax.swing.JLabel txtCasa;
     private javax.swing.JLabel txtCliente;

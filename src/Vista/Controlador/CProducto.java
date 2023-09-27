@@ -6,6 +6,7 @@ import Controlador.ctrlProducto;
 import Modelo.productos;
 import Modelo.CConexion;
 import Modelo.MarcaProductos;
+import Vista.Repartidor.RProducto;
 import Vista.Usuario.UProducto;
 import javax.swing.ImageIcon;
 import desplazable.Desface;
@@ -111,6 +112,9 @@ public class CProducto extends javax.swing.JFrame {
         btnVehiculos = new Vista.PanelCurvas();
         icoCarro = new javax.swing.JLabel();
         txtCliente2 = new javax.swing.JLabel();
+        btnSalir = new Vista.PanelCurvas();
+        logOut = new javax.swing.JLabel();
+        txtBitacora2 = new javax.swing.JLabel();
         jpProductos = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbProductos = new javax.swing.JTable();
@@ -518,7 +522,52 @@ public class CProducto extends javax.swing.JFrame {
 
         MenuPlegable.add(btnVehiculos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 230, 53));
 
-        jPanel1.add(MenuPlegable, new org.netbeans.lib.awtextra.AbsoluteConstraints(-150, 0, 230, 760));
+        btnSalir.setBackground(new java.awt.Color(64, 81, 115));
+        btnSalir.setRoundBottomLeft(25);
+        btnSalir.setRoundBottomRight(25);
+        btnSalir.setRoundTopLeft(25);
+        btnSalir.setRoundTopRight(25);
+        btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSalirMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSalirMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSalirMouseExited(evt);
+            }
+        });
+
+        txtBitacora2.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        txtBitacora2.setForeground(new java.awt.Color(255, 153, 153));
+        txtBitacora2.setText("Cerrar secion");
+
+        javax.swing.GroupLayout btnSalirLayout = new javax.swing.GroupLayout(btnSalir);
+        btnSalir.setLayout(btnSalirLayout);
+        btnSalirLayout.setHorizontalGroup(
+            btnSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnSalirLayout.createSequentialGroup()
+                .addContainerGap(42, Short.MAX_VALUE)
+                .addComponent(txtBitacora2)
+                .addGap(18, 18, 18)
+                .addComponent(logOut, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        btnSalirLayout.setVerticalGroup(
+            btnSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnSalirLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(logOut, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(btnSalirLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtBitacora2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(12, 12, 12))
+        );
+
+        MenuPlegable.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 750, -1, -1));
+
+        jPanel1.add(MenuPlegable, new org.netbeans.lib.awtextra.AbsoluteConstraints(-150, 0, 230, 810));
 
         jpProductos.setBackground(new java.awt.Color(246, 234, 204));
         jpProductos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1284,6 +1333,23 @@ public class CProducto extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVehiculosMouseExited
 
+    private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
+        // [64,81,115]
+        LoginPTC vista = new LoginPTC();
+        vista.INIT();
+        this.dispose();
+    }//GEN-LAST:event_btnSalirMouseClicked
+
+    private void btnSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseEntered
+        btnSalir.setBackground(new Color(102,0,0));
+    }//GEN-LAST:event_btnSalirMouseEntered
+
+    private void btnSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseExited
+
+        btnSalir.setBackground(new Color(64,81,115));
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSalirMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -1292,10 +1358,11 @@ public class CProducto extends javax.swing.JFrame {
     public void NIT(){
         VProducto vista= new VProducto();
         CProducto Cvista= new CProducto();
+        RProducto Rvista= new RProducto();
         UProducto Uvista= new UProducto();
         Cvista.setVisible(true);
         productos modeloProductos= new productos();
-        ctrlProducto control = new ctrlProducto(modeloProductos, vista, Cvista, Uvista);
+        ctrlProducto control = new ctrlProducto(modeloProductos, vista, Cvista,Rvista, Uvista);
         modeloProductos.CMostrarProductos(Cvista);        
     }
     
@@ -1378,6 +1445,7 @@ public class CProducto extends javax.swing.JFrame {
     public javax.swing.JButton btnReporte_General;
     public javax.swing.JButton btnReporte_Marca;
     private Vista.PanelCurvas btnRuta;
+    private Vista.PanelCurvas btnSalir;
     private Vista.PanelCurvas btnSubMarcas;
     private Vista.PanelCurvas btnSubProductos;
     private Vista.PanelCurvas btnTrabajador;
@@ -1401,6 +1469,7 @@ public class CProducto extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> jcbReporte;
     public javax.swing.JPanel jpProductos;
     private javax.swing.JPanel jpSubMenu;
+    private javax.swing.JLabel logOut;
     private Vista.PanelCurvas modificar;
     private Vista.PanelCurvas modificar1;
     private Vista.PanelCurvas panelCurvas1;
@@ -1412,6 +1481,7 @@ public class CProducto extends javax.swing.JFrame {
     public javax.swing.JTable tbProductos;
     private javax.swing.JLabel txtBarras;
     private javax.swing.JLabel txtBitacora;
+    private javax.swing.JLabel txtBitacora2;
     private javax.swing.JLabel txtBodega;
     private javax.swing.JLabel txtCasa;
     private javax.swing.JLabel txtCliente;

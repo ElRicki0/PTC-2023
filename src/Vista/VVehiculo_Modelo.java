@@ -83,6 +83,9 @@ public class VVehiculo_Modelo extends javax.swing.JFrame {
         btnVehiculos = new Vista.PanelCurvas();
         icoCarro = new javax.swing.JLabel();
         txtCliente2 = new javax.swing.JLabel();
+        btnSalir = new Vista.PanelCurvas();
+        logOut = new javax.swing.JLabel();
+        txtBitacora1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         panelCurvas1 = new Vista.PanelCurvas();
         jLabel4 = new javax.swing.JLabel();
@@ -128,6 +131,9 @@ public class VVehiculo_Modelo extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         MenuPlegable.setBackground(new java.awt.Color(64, 81, 115));
+        MenuPlegable.setMaximumSize(new java.awt.Dimension(230, 900));
+        MenuPlegable.setMinimumSize(new java.awt.Dimension(230, 900));
+        MenuPlegable.setPreferredSize(new java.awt.Dimension(230, 900));
         MenuPlegable.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnCasa.setBackground(new java.awt.Color(64, 81, 115));
@@ -171,7 +177,7 @@ public class VVehiculo_Modelo extends javax.swing.JFrame {
                     .addComponent(txtCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        MenuPlegable.add(btnCasa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 230, -1));
+        MenuPlegable.add(btnCasa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 230, -1));
         MenuPlegable.add(txtLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 90, 90));
 
         txtBarras.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -222,7 +228,7 @@ public class VVehiculo_Modelo extends javax.swing.JFrame {
                     .addComponent(Productoicon, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        MenuPlegable.add(btnProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, -1, 50));
+        MenuPlegable.add(btnProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, -1, 50));
 
         btnTrabajador.setBackground(new java.awt.Color(64, 81, 115));
         btnTrabajador.setRoundBottomLeft(25);
@@ -265,7 +271,7 @@ public class VVehiculo_Modelo extends javax.swing.JFrame {
                     .addComponent(Trabajadoricon, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        MenuPlegable.add(btnTrabajador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, -1, 50));
+        MenuPlegable.add(btnTrabajador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, -1, 50));
 
         btnBodega.setBackground(new java.awt.Color(64, 81, 115));
         btnBodega.setRoundBottomLeft(25);
@@ -308,7 +314,7 @@ public class VVehiculo_Modelo extends javax.swing.JFrame {
                     .addComponent(Bodegaicon, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        MenuPlegable.add(btnBodega, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, -1, -1));
+        MenuPlegable.add(btnBodega, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, -1, -1));
 
         btnBitacora.setBackground(new java.awt.Color(64, 81, 115));
         btnBitacora.setRoundBottomLeft(25);
@@ -351,7 +357,7 @@ public class VVehiculo_Modelo extends javax.swing.JFrame {
                     .addComponent(Bitacoraicon, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        MenuPlegable.add(btnBitacora, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 630, -1, -1));
+        MenuPlegable.add(btnBitacora, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 600, -1, -1));
 
         btnCliente.setBackground(new java.awt.Color(64, 81, 115));
         btnCliente.setRoundBottomLeft(25);
@@ -394,7 +400,7 @@ public class VVehiculo_Modelo extends javax.swing.JFrame {
                     .addComponent(Clienteicon, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        MenuPlegable.add(btnCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 230, -1));
+        MenuPlegable.add(btnCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 230, -1));
 
         btnRuta.setBackground(new java.awt.Color(64, 81, 115));
         btnRuta.setRoundBottomLeft(25);
@@ -437,7 +443,7 @@ public class VVehiculo_Modelo extends javax.swing.JFrame {
                     .addComponent(Rutaicon, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        MenuPlegable.add(btnRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, -1, -1));
+        MenuPlegable.add(btnRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 530, -1, -1));
 
         btnVehiculos.setBackground(new java.awt.Color(64, 81, 115));
         btnVehiculos.setRoundBottomLeft(25);
@@ -483,9 +489,54 @@ public class VVehiculo_Modelo extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        MenuPlegable.add(btnVehiculos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 230, 53));
+        MenuPlegable.add(btnVehiculos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 230, 53));
 
-        jPanel1.add(MenuPlegable, new org.netbeans.lib.awtextra.AbsoluteConstraints(-150, 0, 230, 760));
+        btnSalir.setBackground(new java.awt.Color(64, 81, 115));
+        btnSalir.setRoundBottomLeft(25);
+        btnSalir.setRoundBottomRight(25);
+        btnSalir.setRoundTopLeft(25);
+        btnSalir.setRoundTopRight(25);
+        btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSalirMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSalirMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSalirMouseExited(evt);
+            }
+        });
+
+        txtBitacora1.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        txtBitacora1.setForeground(new java.awt.Color(255, 153, 153));
+        txtBitacora1.setText("Cerrar secion");
+
+        javax.swing.GroupLayout btnSalirLayout = new javax.swing.GroupLayout(btnSalir);
+        btnSalir.setLayout(btnSalirLayout);
+        btnSalirLayout.setHorizontalGroup(
+            btnSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnSalirLayout.createSequentialGroup()
+                .addContainerGap(42, Short.MAX_VALUE)
+                .addComponent(txtBitacora1)
+                .addGap(18, 18, 18)
+                .addComponent(logOut, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        btnSalirLayout.setVerticalGroup(
+            btnSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnSalirLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(logOut, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(btnSalirLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtBitacora1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(12, 12, 12))
+        );
+
+        MenuPlegable.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 750, 230, 53));
+
+        jPanel1.add(MenuPlegable, new org.netbeans.lib.awtextra.AbsoluteConstraints(-150, 0, 230, 810));
 
         jLabel2.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
@@ -993,6 +1044,127 @@ public class VVehiculo_Modelo extends javax.swing.JFrame {
         txtMarca.setText(marca);
     }//GEN-LAST:event_tbModelosMouseClicked
 
+    private void btnSubTallerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubTallerMouseClicked
+        VVehiculo_Taller vista = new VVehiculo_Taller();
+        vista.INIT();
+        this.dispose();
+    }//GEN-LAST:event_btnSubTallerMouseClicked
+
+    private void btnSubTallerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubTallerMouseEntered
+        btnSubTaller.setBackground(new Color(45,40,37));
+        txtSub1.setForeground(Color.WHITE);
+    }//GEN-LAST:event_btnSubTallerMouseEntered
+
+    private void btnSubTallerMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubTallerMouseExited
+        btnSubTaller.setBackground(new Color (172,147,110));
+        txtSub1.setForeground(Color.BLACK);
+    }//GEN-LAST:event_btnSubTallerMouseExited
+
+    private void btnSubMantenimeintoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubMantenimeintoMouseClicked
+        int resultado = 0;
+        String sql = "select idTaller from tbTalleres";
+        try {
+            Statement sta = CConexion.getConexion().createStatement();
+            ResultSet rs = sta.executeQuery(sql);
+            if (rs.next()) {
+                resultado = 1;
+                if (resultado == 1) {
+                    VVehiculo_Mantenimiento vista = new VVehiculo_Mantenimiento();
+                    vista.INIT();
+                    this.dispose();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Agrege un taller para continuar");
+            }
+
+        } catch (Exception oe) {
+            JOptionPane.showMessageDialog(null, "error boton producto//bodega" + oe.toString());
+        }
+
+    }//GEN-LAST:event_btnSubMantenimeintoMouseClicked
+
+    private void btnSubMantenimeintoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubMantenimeintoMouseEntered
+        btnSubMantenimeinto.setBackground(new Color (45,40,37));
+        txtSub2.setForeground(Color.white);
+    }//GEN-LAST:event_btnSubMantenimeintoMouseEntered
+
+    private void btnSubMantenimeintoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubMantenimeintoMouseExited
+        btnSubMantenimeinto.setBackground(new Color (172,147,110));
+        txtSub2.setForeground(Color.BLACK);
+    }//GEN-LAST:event_btnSubMantenimeintoMouseExited
+
+    private void btnSubModeloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubModeloMouseClicked
+        
+    }//GEN-LAST:event_btnSubModeloMouseClicked
+
+    private void btnSubModeloMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubModeloMouseEntered
+        btnSubModelo.setBackground(new Color (45,40,37));
+        txtSub3.setForeground(Color.white);
+    }//GEN-LAST:event_btnSubModeloMouseEntered
+
+    private void btnSubModeloMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubModeloMouseExited
+        btnSubModelo.setBackground(new Color (172,147,110));
+        txtSub3.setForeground(Color.BLACK);
+    }//GEN-LAST:event_btnSubModeloMouseExited
+
+    private void btnSubVehiculoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubVehiculoMouseClicked
+
+        int resultado = 0;
+        String sql = "select idMantenimiento from tbMantenimiento";
+        try {
+            Statement sta = CConexion.getConexion().createStatement();
+            ResultSet rs = sta.executeQuery(sql);
+            if (rs.next()) {
+                resultado = 1;
+                if (resultado == 1) {
+                    int resultado2 = 0;
+                    String sql2 = "select idModelo from tbModelos";
+                    try {
+                        Statement sta2 = CConexion.getConexion().createStatement();
+                        ResultSet rs2 = sta2.executeQuery(sql2);
+                        if (rs2.next()) {
+                            resultado2 = 1;
+                            if (resultado2 == 1) {
+                                VVehiculo vista = new VVehiculo();
+                                vista.INIT();
+                                this.dispose();
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Agrege un modelo de vehiculo para continuar");
+                        }
+
+                    } catch (Exception oe) {
+                        JOptionPane.showMessageDialog(null, "error boton vehiculo//otros" + oe.toString());
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Agrege un modelo y un taller para continuar");
+            }
+
+        } catch (Exception oe) {
+            JOptionPane.showMessageDialog(null, "error boton que hueva//ptm" + oe.toString());
+        }
+
+    }//GEN-LAST:event_btnSubVehiculoMouseClicked
+
+    private void btnSubVehiculoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubVehiculoMouseEntered
+        btnSubVehiculo.setBackground(new Color (45,40,37));
+        txtSub4.setForeground(Color.white);
+    }//GEN-LAST:event_btnSubVehiculoMouseEntered
+
+    private void btnSubVehiculoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubVehiculoMouseExited
+        btnSubVehiculo.setBackground(new Color (172,147,110));
+        txtSub4.setForeground(Color.BLACK);
+    }//GEN-LAST:event_btnSubVehiculoMouseExited
+
+    private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarMouseClicked
+
+    private void btnRestaurarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRestaurarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRestaurarMouseClicked
+
     private void btnCasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseClicked
         Main vista = new Main();
         vista.INIT();
@@ -1136,7 +1308,7 @@ public class VVehiculo_Modelo extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRutaMouseExited
 
     private void btnVehiculosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculosMouseClicked
-        
+
     }//GEN-LAST:event_btnVehiculosMouseClicked
 
     private void btnVehiculosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculosMouseEntered
@@ -1147,126 +1319,22 @@ public class VVehiculo_Modelo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVehiculosMouseExited
 
-    private void btnSubTallerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubTallerMouseClicked
-        VVehiculo_Taller vista = new VVehiculo_Taller();
+    private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
+        // [64,81,115]
+        LoginPTC vista = new LoginPTC();
         vista.INIT();
         this.dispose();
-    }//GEN-LAST:event_btnSubTallerMouseClicked
+    }//GEN-LAST:event_btnSalirMouseClicked
 
-    private void btnSubTallerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubTallerMouseEntered
-        btnSubTaller.setBackground(new Color(45,40,37));
-        txtSub1.setForeground(Color.WHITE);
-    }//GEN-LAST:event_btnSubTallerMouseEntered
+    private void btnSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseEntered
+        btnSalir.setBackground(new Color(102,0,0));
+    }//GEN-LAST:event_btnSalirMouseEntered
 
-    private void btnSubTallerMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubTallerMouseExited
-        btnSubTaller.setBackground(new Color (172,147,110));
-        txtSub1.setForeground(Color.BLACK);
-    }//GEN-LAST:event_btnSubTallerMouseExited
+    private void btnSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseExited
 
-    private void btnSubMantenimeintoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubMantenimeintoMouseClicked
-        int resultado = 0;
-        String sql = "select idTaller from tbTalleres";
-        try {
-            Statement sta = CConexion.getConexion().createStatement();
-            ResultSet rs = sta.executeQuery(sql);
-            if (rs.next()) {
-                resultado = 1;
-                if (resultado == 1) {
-                    VVehiculo_Mantenimiento vista = new VVehiculo_Mantenimiento();
-                    vista.INIT();
-                    this.dispose();
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "Agrege un taller para continuar");
-            }
-
-        } catch (Exception oe) {
-            JOptionPane.showMessageDialog(null, "error boton producto//bodega" + oe.toString());
-        }
-
-    }//GEN-LAST:event_btnSubMantenimeintoMouseClicked
-
-    private void btnSubMantenimeintoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubMantenimeintoMouseEntered
-        btnSubMantenimeinto.setBackground(new Color (45,40,37));
-        txtSub2.setForeground(Color.white);
-    }//GEN-LAST:event_btnSubMantenimeintoMouseEntered
-
-    private void btnSubMantenimeintoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubMantenimeintoMouseExited
-        btnSubMantenimeinto.setBackground(new Color (172,147,110));
-        txtSub2.setForeground(Color.BLACK);
-    }//GEN-LAST:event_btnSubMantenimeintoMouseExited
-
-    private void btnSubModeloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubModeloMouseClicked
-        
-    }//GEN-LAST:event_btnSubModeloMouseClicked
-
-    private void btnSubModeloMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubModeloMouseEntered
-        btnSubModelo.setBackground(new Color (45,40,37));
-        txtSub3.setForeground(Color.white);
-    }//GEN-LAST:event_btnSubModeloMouseEntered
-
-    private void btnSubModeloMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubModeloMouseExited
-        btnSubModelo.setBackground(new Color (172,147,110));
-        txtSub3.setForeground(Color.BLACK);
-    }//GEN-LAST:event_btnSubModeloMouseExited
-
-    private void btnSubVehiculoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubVehiculoMouseClicked
-
-        int resultado = 0;
-        String sql = "select idMantenimiento from tbMantenimiento";
-        try {
-            Statement sta = CConexion.getConexion().createStatement();
-            ResultSet rs = sta.executeQuery(sql);
-            if (rs.next()) {
-                resultado = 1;
-                if (resultado == 1) {
-                    int resultado2 = 0;
-                    String sql2 = "select idModelo from tbModelos";
-                    try {
-                        Statement sta2 = CConexion.getConexion().createStatement();
-                        ResultSet rs2 = sta2.executeQuery(sql2);
-                        if (rs2.next()) {
-                            resultado2 = 1;
-                            if (resultado2 == 1) {
-                                VVehiculo vista = new VVehiculo();
-                                vista.INIT();
-                                this.dispose();
-                            }
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Agrege un modelo de vehiculo para continuar");
-                        }
-
-                    } catch (Exception oe) {
-                        JOptionPane.showMessageDialog(null, "error boton vehiculo//otros" + oe.toString());
-                    }
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "Agrege un modelo y un taller para continuar");
-            }
-
-        } catch (Exception oe) {
-            JOptionPane.showMessageDialog(null, "error boton que hueva//ptm" + oe.toString());
-        }
-
-    }//GEN-LAST:event_btnSubVehiculoMouseClicked
-
-    private void btnSubVehiculoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubVehiculoMouseEntered
-        btnSubVehiculo.setBackground(new Color (45,40,37));
-        txtSub4.setForeground(Color.white);
-    }//GEN-LAST:event_btnSubVehiculoMouseEntered
-
-    private void btnSubVehiculoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubVehiculoMouseExited
-        btnSubVehiculo.setBackground(new Color (172,147,110));
-        txtSub4.setForeground(Color.BLACK);
-    }//GEN-LAST:event_btnSubVehiculoMouseExited
-
-    private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
+        btnSalir.setBackground(new Color(64,81,115));
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnBuscarMouseClicked
-
-    private void btnRestaurarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRestaurarMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRestaurarMouseClicked
+    }//GEN-LAST:event_btnSalirMouseExited
 
     
     public void INIT(){
@@ -1417,6 +1485,7 @@ public class VVehiculo_Modelo extends javax.swing.JFrame {
     private Vista.PanelCurvas btnRestaurador;
     public javax.swing.JButton btnRestaurar;
     private Vista.PanelCurvas btnRuta;
+    private Vista.PanelCurvas btnSalir;
     private Vista.PanelCurvas btnSubMantenimeinto;
     private Vista.PanelCurvas btnSubModelo;
     private Vista.PanelCurvas btnSubTaller;
@@ -1435,6 +1504,7 @@ public class VVehiculo_Modelo extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JComboBox<String> jcbBuscador;
     private javax.swing.JPanel jpSubMenu;
+    private javax.swing.JLabel logOut;
     private Vista.PanelCurvas modificar1;
     private Vista.PanelCurvas modificar2;
     private Vista.PanelCurvas panelCurvas1;
@@ -1445,6 +1515,7 @@ public class VVehiculo_Modelo extends javax.swing.JFrame {
     public javax.swing.JTextField txtAnio;
     private javax.swing.JLabel txtBarras;
     private javax.swing.JLabel txtBitacora;
+    private javax.swing.JLabel txtBitacora1;
     private javax.swing.JLabel txtBodega;
     private javax.swing.JLabel txtCasa;
     private javax.swing.JLabel txtCliente;

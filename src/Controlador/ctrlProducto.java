@@ -3,6 +3,7 @@ package Controlador;
 import Modelo.productos;
 import Vista.*;
 import Vista.Controlador.CProducto;
+import Vista.Repartidor.RProducto;
 import Vista.Usuario.UProducto;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,12 +14,14 @@ public class ctrlProducto implements ActionListener {
     private productos modeloProductos;
     private VProducto vistaProducto;
     private CProducto CvistaProducto;
+    private RProducto RvistaProducto;
     private UProducto UvistaProducto;
 
-    public ctrlProducto(productos modeloProducto, VProducto vistaProducto, CProducto CvistaProducto, UProducto UvistaProducto) {
+    public ctrlProducto(productos modeloProducto, VProducto vistaProducto, CProducto CvistaProducto, RProducto RvistaProducto, UProducto UvistaProducto) {
         this.modeloProductos = modeloProducto;
         this.vistaProducto = vistaProducto;
         this.CvistaProducto = CvistaProducto;
+        this.RvistaProducto = RvistaProducto;
         this.UvistaProducto = UvistaProducto;
         /////////////////////////Admin/////////////////////////////////////////////
         this.vistaProducto.btnAgregar.addActionListener(this);
@@ -28,6 +31,8 @@ public class ctrlProducto implements ActionListener {
         this.CvistaProducto.btnAgregar.addActionListener(this);
         this.CvistaProducto.btnEliminar.addActionListener(this);
         this.CvistaProducto.btnModificar.addActionListener(this);
+        ////////////////////////Repartidor///////////////////////////////////////////////
+        this.RvistaProducto.btnActualizar.addActionListener(this);
         ////////////////////////Usuario///////////////////////////////////////////////
         this.UvistaProducto.btnActualizar.addActionListener(this);
     }
@@ -153,6 +158,10 @@ public class ctrlProducto implements ActionListener {
 
         }
         
+        //////////////////////////Repartidor/////////////////////////////////////////////
+        if (e.getSource() == RvistaProducto.btnActualizar) {
+            modeloProductos.RMostrarProductos(RvistaProducto);
+        }
         //////////////////////////Usuario/////////////////////////////////////////////
         if (e.getSource() == UvistaProducto.btnActualizar) {
             modeloProductos.UMostrarProductos(UvistaProducto);

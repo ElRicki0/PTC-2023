@@ -2,6 +2,7 @@ package Controlador;
 
 import Modelo.vehiculos;
 import Vista.Controlador.CVehiculo;
+import Vista.Repartidor.RVehiculos;
 import Vista.Usuario.UVehiculos;
 import Vista.VVehiculo;
 import java.awt.event.ActionEvent;
@@ -16,24 +17,32 @@ public class ctrlVehiculo implements ActionListener {
 
     private VVehiculo vistaVehiculo;
     private CVehiculo CvistaVehiculo;
+    private RVehiculos RvistaVehiculo;
     private UVehiculos UvistaVehiculo;
     private vehiculos modeloVehiculo;
 
-    public ctrlVehiculo(VVehiculo vistaVehiculo, vehiculos modeloVehiculo, CVehiculo CvistaVehiculo, UVehiculos UvistaVehiculo) {
+    public ctrlVehiculo(VVehiculo vistaVehiculo, vehiculos modeloVehiculo, CVehiculo CvistaVehiculo, RVehiculos RvistaVehiculo, UVehiculos UvistaVehiculo) {
         this.modeloVehiculo = modeloVehiculo;
         this.vistaVehiculo = vistaVehiculo;
         this.CvistaVehiculo = CvistaVehiculo;
+        this.RvistaVehiculo = RvistaVehiculo;
         this.UvistaVehiculo = UvistaVehiculo;
+    /////////////Administrador//////////////////////////////////////////////////////////
         this.vistaVehiculo.btnAgregar.addActionListener(this);
         this.vistaVehiculo.btnEliminar.addActionListener(this);
         this.vistaVehiculo.btnModificarMP.addActionListener(this);
         this.vistaVehiculo.btnRestaurar.addActionListener(this);
         this.vistaVehiculo.btnBuscar.addActionListener(this);
+    /////////////Controlador//////////////////////////////////////////////////////////
         this.CvistaVehiculo.btnAgregar.addActionListener(this);
         this.CvistaVehiculo.btnEliminar.addActionListener(this);
         this.CvistaVehiculo.btnModificarMP.addActionListener(this);
         this.CvistaVehiculo.btnRestaurar.addActionListener(this);
         this.CvistaVehiculo.btnBuscar.addActionListener(this);
+    /////////////repartidor//////////////////////////////////////////////////////////
+        this.RvistaVehiculo.btnRestaurar.addActionListener(this);
+        this.RvistaVehiculo.btnBuscar.addActionListener(this);
+    /////////////usuario//////////////////////////////////////////////////////////
         this.UvistaVehiculo.btnRestaurar.addActionListener(this);
         this.UvistaVehiculo.btnBuscar.addActionListener(this);
     }
@@ -128,7 +137,14 @@ public class ctrlVehiculo implements ActionListener {
         if (e.getSource() == CvistaVehiculo.btnBuscar) {
             modeloVehiculo.CBuscador(CvistaVehiculo);
         }
-        ///////////////////////////////////////////////////////////////////////
+        ////////////////////Repartidor///////////////////////////////////////////////////
+        if (e.getSource() == RvistaVehiculo.btnRestaurar) {
+            modeloVehiculo.RMostrarTabla(RvistaVehiculo);
+        }
+        if (e.getSource() == UvistaVehiculo.btnBuscar) {
+            modeloVehiculo.RBuscador(RvistaVehiculo);
+        }
+        ////////////////////usuario///////////////////////////////////////////////////
         if (e.getSource() == UvistaVehiculo.btnRestaurar) {
             modeloVehiculo.UMostrarTabla(UvistaVehiculo);
         }

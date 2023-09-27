@@ -60,7 +60,7 @@ public class LoginPTC extends javax.swing.JFrame {
         jbNo = new javax.swing.JLabel();
         txtImagen = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inicio de Sesión");
         setResizable(false);
         setSize(new java.awt.Dimension(600, 400));

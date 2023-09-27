@@ -8,6 +8,8 @@ import Controlador.*;
 import Vista.Usuario.UTiendas;
 import Modelo.CConexion;
 import Modelo.productos;
+import Vista.Controlador.CCliente_DatosTiendas;
+import Vista.Repartidor.RTiendas;
 import javax.swing.ImageIcon;
 import desplazable.Desface;
 import java.awt.Color;
@@ -86,6 +88,9 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
         btnVehiculos = new Vista.PanelCurvas();
         icoCarro = new javax.swing.JLabel();
         txtCliente2 = new javax.swing.JLabel();
+        btnSalir = new Vista.PanelCurvas();
+        logOut = new javax.swing.JLabel();
+        txtBitacora1 = new javax.swing.JLabel();
         jpSubMenu = new javax.swing.JPanel();
         btnSubProductos = new Vista.PanelCurvas();
         txtSub = new javax.swing.JLabel();
@@ -94,14 +99,11 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
         btnDatos = new Vista.PanelCurvas();
         txtDatos = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        agregar = new Vista.PanelCurvas();
-        btnAgregar_CL = new javax.swing.JButton();
-        modificar = new Vista.PanelCurvas();
-        btnModificar_CL = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jcbBuscador = new javax.swing.JComboBox<>();
+        btnBuscarcmx = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbTienda = new javax.swing.JTable();
-        eliminar = new Vista.PanelCurvas();
-        btnEliminar_TN = new javax.swing.JButton();
         panelCurvas1 = new Vista.PanelCurvas();
         panelCurvas2 = new Vista.PanelCurvas();
         txtTelefono = new javax.swing.JTextField();
@@ -114,9 +116,12 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jcbCliente = new javax.swing.JComboBox<>();
-        jcbBuscador = new javax.swing.JComboBox<>();
-        jLabel8 = new javax.swing.JLabel();
-        btnBuscarcmx = new javax.swing.JButton();
+        agregar = new Vista.PanelCurvas();
+        btnAgregar_CL = new javax.swing.JButton();
+        modificar = new Vista.PanelCurvas();
+        btnModificar_CL = new javax.swing.JButton();
+        eliminar = new Vista.PanelCurvas();
+        btnEliminar_TN = new javax.swing.JButton();
         modificar1 = new Vista.PanelCurvas();
         btnRestablecer = new javax.swing.JButton();
 
@@ -129,6 +134,14 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         MenuPlegable.setBackground(new java.awt.Color(64, 81, 115));
+        MenuPlegable.setMaximumSize(new java.awt.Dimension(230, 900));
+        MenuPlegable.setMinimumSize(new java.awt.Dimension(230, 900));
+        MenuPlegable.setPreferredSize(new java.awt.Dimension(230, 900));
+        MenuPlegable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MenuPlegableMouseClicked(evt);
+            }
+        });
         MenuPlegable.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnCasa.setBackground(new java.awt.Color(64, 81, 115));
@@ -172,7 +185,7 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
                     .addComponent(txtCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        MenuPlegable.add(btnCasa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 230, -1));
+        MenuPlegable.add(btnCasa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 230, -1));
         MenuPlegable.add(txtLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 90, 90));
 
         txtBarras.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -223,7 +236,7 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
                     .addComponent(Productoicon, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        MenuPlegable.add(btnProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, -1, 50));
+        MenuPlegable.add(btnProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, -1, 50));
 
         btnTrabajador.setBackground(new java.awt.Color(64, 81, 115));
         btnTrabajador.setRoundBottomLeft(25);
@@ -266,7 +279,7 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
                     .addComponent(Trabajadoricon, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        MenuPlegable.add(btnTrabajador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, -1, 50));
+        MenuPlegable.add(btnTrabajador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, -1, 50));
 
         btnBodega.setBackground(new java.awt.Color(64, 81, 115));
         btnBodega.setRoundBottomLeft(25);
@@ -309,7 +322,7 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
                     .addComponent(Bodegaicon, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        MenuPlegable.add(btnBodega, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, -1, -1));
+        MenuPlegable.add(btnBodega, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, -1, -1));
 
         btnBitacora.setBackground(new java.awt.Color(64, 81, 115));
         btnBitacora.setRoundBottomLeft(25);
@@ -352,7 +365,7 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
                     .addComponent(Bitacoraicon, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        MenuPlegable.add(btnBitacora, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 630, -1, -1));
+        MenuPlegable.add(btnBitacora, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 600, -1, -1));
 
         btnCliente.setBackground(new java.awt.Color(64, 81, 115));
         btnCliente.setRoundBottomLeft(25);
@@ -395,7 +408,7 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
                     .addComponent(Clienteicon, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        MenuPlegable.add(btnCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 230, -1));
+        MenuPlegable.add(btnCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 230, -1));
 
         btnRuta.setBackground(new java.awt.Color(64, 81, 115));
         btnRuta.setRoundBottomLeft(25);
@@ -438,7 +451,7 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
                     .addComponent(Rutaicon, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        MenuPlegable.add(btnRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, -1, -1));
+        MenuPlegable.add(btnRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 530, -1, -1));
 
         btnVehiculos.setBackground(new java.awt.Color(64, 81, 115));
         btnVehiculos.setRoundBottomLeft(25);
@@ -484,9 +497,54 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        MenuPlegable.add(btnVehiculos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 230, 53));
+        MenuPlegable.add(btnVehiculos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 230, 53));
 
-        jPanel1.add(MenuPlegable, new org.netbeans.lib.awtextra.AbsoluteConstraints(-150, 0, 230, 760));
+        btnSalir.setBackground(new java.awt.Color(64, 81, 115));
+        btnSalir.setRoundBottomLeft(25);
+        btnSalir.setRoundBottomRight(25);
+        btnSalir.setRoundTopLeft(25);
+        btnSalir.setRoundTopRight(25);
+        btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSalirMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSalirMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSalirMouseExited(evt);
+            }
+        });
+
+        txtBitacora1.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        txtBitacora1.setForeground(new java.awt.Color(255, 153, 153));
+        txtBitacora1.setText("Cerrar secion");
+
+        javax.swing.GroupLayout btnSalirLayout = new javax.swing.GroupLayout(btnSalir);
+        btnSalir.setLayout(btnSalirLayout);
+        btnSalirLayout.setHorizontalGroup(
+            btnSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnSalirLayout.createSequentialGroup()
+                .addContainerGap(42, Short.MAX_VALUE)
+                .addComponent(txtBitacora1)
+                .addGap(18, 18, 18)
+                .addComponent(logOut, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        btnSalirLayout.setVerticalGroup(
+            btnSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnSalirLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(logOut, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(btnSalirLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtBitacora1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(12, 12, 12))
+        );
+
+        MenuPlegable.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 750, 230, 53));
+
+        jPanel1.add(MenuPlegable, new org.netbeans.lib.awtextra.AbsoluteConstraints(-150, 0, 230, 810));
 
         jpSubMenu.setBackground(new java.awt.Color(64, 81, 115));
         jpSubMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -619,67 +677,20 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
         jLabel2.setText("Datos tiendas");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 320, 41));
 
-        agregar.setBackground(new java.awt.Color(172, 147, 110));
-        agregar.setRoundBottomLeft(25);
-        agregar.setRoundBottomRight(25);
-        agregar.setRoundTopLeft(25);
-        agregar.setRoundTopRight(25);
+        jLabel8.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel8.setText("<html>Ordenar por Cliente:</html>");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 120, 150, 60));
 
-        btnAgregar_CL.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        btnAgregar_CL.setForeground(new java.awt.Color(255, 255, 255));
-        btnAgregar_CL.setText("Agregar");
-        btnAgregar_CL.addMouseListener(new java.awt.event.MouseAdapter() {
+        jcbBuscador.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        jPanel1.add(jcbBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 130, 220, 50));
+
+        btnBuscarcmx.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAgregar_CLMouseClicked(evt);
+                btnBuscarcmxMouseClicked(evt);
             }
         });
-        btnAgregar_CL.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregar_CLActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout agregarLayout = new javax.swing.GroupLayout(agregar);
-        agregar.setLayout(agregarLayout);
-        agregarLayout.setHorizontalGroup(
-            agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, agregarLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnAgregar_CL, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        agregarLayout.setVerticalGroup(
-            agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, agregarLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnAgregar_CL, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jPanel1.add(agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 670, -1, -1));
-
-        modificar.setBackground(new java.awt.Color(172, 147, 110));
-        modificar.setRoundBottomLeft(25);
-        modificar.setRoundBottomRight(25);
-        modificar.setRoundTopLeft(25);
-        modificar.setRoundTopRight(25);
-
-        btnModificar_CL.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        btnModificar_CL.setForeground(new java.awt.Color(255, 255, 255));
-        btnModificar_CL.setText("Modificar");
-
-        javax.swing.GroupLayout modificarLayout = new javax.swing.GroupLayout(modificar);
-        modificar.setLayout(modificarLayout);
-        modificarLayout.setHorizontalGroup(
-            modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnModificar_CL, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-        );
-        modificarLayout.setVerticalGroup(
-            modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, modificarLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnModificar_CL, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jPanel1.add(modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 670, -1, -1));
+        jPanel1.add(btnBuscarcmx, new org.netbeans.lib.awtextra.AbsoluteConstraints(1035, 130, 40, 50));
 
         jScrollPane1.setBackground(new java.awt.Color(172, 147, 110));
 
@@ -704,37 +715,7 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tbTienda);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 560, 460));
-
-        eliminar.setBackground(new java.awt.Color(172, 147, 110));
-        eliminar.setRoundBottomLeft(25);
-        eliminar.setRoundBottomRight(25);
-        eliminar.setRoundTopLeft(25);
-        eliminar.setRoundTopRight(25);
-
-        btnEliminar_TN.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        btnEliminar_TN.setForeground(new java.awt.Color(255, 255, 255));
-        btnEliminar_TN.setText("Eliminar");
-        btnEliminar_TN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminar_TNActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout eliminarLayout = new javax.swing.GroupLayout(eliminar);
-        eliminar.setLayout(eliminarLayout);
-        eliminarLayout.setHorizontalGroup(
-            eliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnEliminar_TN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
-        );
-        eliminarLayout.setVerticalGroup(
-            eliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eliminarLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnEliminar_TN, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jPanel1.add(eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 670, -1, -1));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 560, 510));
 
         panelCurvas1.setBackground(new java.awt.Color(172, 147, 110));
         panelCurvas1.setRoundBottomLeft(35);
@@ -774,22 +755,22 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        panelCurvas1.add(panelCurvas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 240, 50));
+        panelCurvas1.add(panelCurvas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 240, 50));
 
         jLabel3.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("<html>Persona Responsable:</html>");
-        panelCurvas1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 150, 60));
+        panelCurvas1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 150, 60));
 
         jLabel5.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setText("Cliente:");
-        panelCurvas1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 140, 41));
+        panelCurvas1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 140, 41));
 
         jLabel7.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
         jLabel7.setText("Informacion");
-        panelCurvas1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 167, 41));
+        panelCurvas1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 167, 41));
 
         panelCurvas6.setBackground(new java.awt.Color(246, 234, 204));
         panelCurvas6.setRoundBottomLeft(25);
@@ -822,40 +803,117 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        panelCurvas1.add(panelCurvas6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 240, 50));
+        panelCurvas1.add(panelCurvas6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 240, 50));
 
         jcbTienda.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        panelCurvas1.add(jcbTienda, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 240, 50));
+        panelCurvas1.add(jcbTienda, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, 240, 50));
 
         jLabel6.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
         jLabel6.setText("Tienda:");
-        panelCurvas1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 140, 30));
+        panelCurvas1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 140, 30));
 
         jLabel4.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
         jLabel4.setText("Telefono:");
-        panelCurvas1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 140, 41));
+        panelCurvas1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 140, 41));
 
         jcbCliente.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        panelCurvas1.add(jcbCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 240, 50));
+        panelCurvas1.add(jcbCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, 240, 50));
 
-        jPanel1.add(panelCurvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 210, 410, 360));
+        jPanel1.add(panelCurvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 220, 410, 440));
 
-        jcbBuscador.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        jPanel1.add(jcbBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 130, 220, 50));
+        agregar.setBackground(new java.awt.Color(172, 147, 110));
+        agregar.setRoundBottomLeft(25);
+        agregar.setRoundBottomRight(25);
+        agregar.setRoundTopLeft(25);
+        agregar.setRoundTopRight(25);
 
-        jLabel8.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel8.setText("<html>Ordenar por Cliente:</html>");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 120, 150, 60));
-
-        btnBuscarcmx.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnAgregar_CL.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        btnAgregar_CL.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregar_CL.setText("Agregar");
+        btnAgregar_CL.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnBuscarcmxMouseClicked(evt);
+                btnAgregar_CLMouseClicked(evt);
             }
         });
-        jPanel1.add(btnBuscarcmx, new org.netbeans.lib.awtextra.AbsoluteConstraints(1035, 130, 40, 50));
+        btnAgregar_CL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregar_CLActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout agregarLayout = new javax.swing.GroupLayout(agregar);
+        agregar.setLayout(agregarLayout);
+        agregarLayout.setHorizontalGroup(
+            agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, agregarLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnAgregar_CL, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        agregarLayout.setVerticalGroup(
+            agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, agregarLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnAgregar_CL, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPanel1.add(agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 715, -1, -1));
+
+        modificar.setBackground(new java.awt.Color(172, 147, 110));
+        modificar.setRoundBottomLeft(25);
+        modificar.setRoundBottomRight(25);
+        modificar.setRoundTopLeft(25);
+        modificar.setRoundTopRight(25);
+
+        btnModificar_CL.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        btnModificar_CL.setForeground(new java.awt.Color(255, 255, 255));
+        btnModificar_CL.setText("Modificar");
+
+        javax.swing.GroupLayout modificarLayout = new javax.swing.GroupLayout(modificar);
+        modificar.setLayout(modificarLayout);
+        modificarLayout.setHorizontalGroup(
+            modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnModificar_CL, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+        );
+        modificarLayout.setVerticalGroup(
+            modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, modificarLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnModificar_CL, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPanel1.add(modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 715, -1, -1));
+
+        eliminar.setBackground(new java.awt.Color(172, 147, 110));
+        eliminar.setRoundBottomLeft(25);
+        eliminar.setRoundBottomRight(25);
+        eliminar.setRoundTopLeft(25);
+        eliminar.setRoundTopRight(25);
+
+        btnEliminar_TN.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        btnEliminar_TN.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar_TN.setText("Eliminar");
+        btnEliminar_TN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminar_TNActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout eliminarLayout = new javax.swing.GroupLayout(eliminar);
+        eliminar.setLayout(eliminarLayout);
+        eliminarLayout.setHorizontalGroup(
+            eliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnEliminar_TN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+        );
+        eliminarLayout.setVerticalGroup(
+            eliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eliminarLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnEliminar_TN, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPanel1.add(eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 715, -1, -1));
 
         modificar1.setBackground(new java.awt.Color(172, 147, 110));
         modificar1.setRoundBottomLeft(25);
@@ -880,10 +938,10 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
         );
         modificar1Layout.setVerticalGroup(
             modificar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnRestablecer, javax.swing.GroupLayout.PREFERRED_SIZE, 60, Short.MAX_VALUE)
+            .addComponent(btnRestablecer)
         );
 
-        jPanel1.add(modificar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 670, -1, 60));
+        jPanel1.add(modificar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 715, -1, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -978,10 +1036,16 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnAgregar_CLMouseClicked
 
+    private void btnRestablecerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRestablecerMouseClicked
+        
+    }//GEN-LAST:event_btnRestablecerMouseClicked
+
+    private void btnBuscarcmxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarcmxMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarcmxMouseClicked
+
     private void btnCasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseClicked
-        Main vista = new Main();
-        vista.INIT();
-        this.dispose();
+
     }//GEN-LAST:event_btnCasaMouseClicked
 
     private void btnCasaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseEntered
@@ -1132,21 +1196,38 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVehiculosMouseExited
 
-    private void btnRestablecerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRestablecerMouseClicked
-        
-    }//GEN-LAST:event_btnRestablecerMouseClicked
+    private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
+        // [64,81,115]
+        LoginPTC vista = new LoginPTC();
+        vista.INIT();
+        this.dispose();
+    }//GEN-LAST:event_btnSalirMouseClicked
 
-    private void btnBuscarcmxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarcmxMouseClicked
+    private void btnSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseEntered
+        btnSalir.setBackground(new Color(102,0,0));
+    }//GEN-LAST:event_btnSalirMouseEntered
+
+    private void btnSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseExited
+
+        btnSalir.setBackground(new Color(64,81,115));
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnBuscarcmxMouseClicked
+    }//GEN-LAST:event_btnSalirMouseExited
+
+    private void MenuPlegableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuPlegableMouseClicked
+        Main vista = new Main();
+        vista.INIT();
+        this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_MenuPlegableMouseClicked
 
     public void INIT(){
         VCliente_DatosTiendas vista =new VCliente_DatosTiendas();
+        CCliente_DatosTiendas Cvista =new CCliente_DatosTiendas();
+        RTiendas Rvista =new RTiendas();
         UTiendas vistaU =new UTiendas();
+        ctrlDatosTiendas control=new ctrlDatosTiendas(vista, modelo, Cvista, Rvista, vistaU);
         
         vista.setVisible(true);
         modelo.MostrarTabla(vista);
-        ctrlDatosTiendas control=new ctrlDatosTiendas(vista, modelo, vistaU);
     }
     
     /**
@@ -1221,6 +1302,7 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
     private Vista.PanelCurvas btnProducto;
     public javax.swing.JButton btnRestablecer;
     private Vista.PanelCurvas btnRuta;
+    private Vista.PanelCurvas btnSalir;
     private Vista.PanelCurvas btnSubMarcas;
     private Vista.PanelCurvas btnSubProductos;
     private Vista.PanelCurvas btnTrabajador;
@@ -1240,6 +1322,7 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> jcbCliente;
     public javax.swing.JComboBox<String> jcbTienda;
     private javax.swing.JPanel jpSubMenu;
+    private javax.swing.JLabel logOut;
     private Vista.PanelCurvas modificar;
     private Vista.PanelCurvas modificar1;
     private Vista.PanelCurvas panelCurvas1;
@@ -1248,6 +1331,7 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
     public javax.swing.JTable tbTienda;
     private javax.swing.JLabel txtBarras;
     private javax.swing.JLabel txtBitacora;
+    private javax.swing.JLabel txtBitacora1;
     private javax.swing.JLabel txtBodega;
     private javax.swing.JLabel txtCasa;
     private javax.swing.JLabel txtCliente;

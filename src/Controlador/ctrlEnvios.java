@@ -2,6 +2,7 @@ package Controlador;
 
 import Modelo.BitacoraDistribuciones;
 import Vista.Controlador.CRutas_Envios;
+import Vista.Repartidor.REnvios;
 import Vista.VRutas_Envios;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,11 +12,13 @@ public class ctrlEnvios implements ActionListener {
 
     private VRutas_Envios vistaEnvios;
     private CRutas_Envios CvistaEnvios;
+    private REnvios RvistaEnvios;
     private BitacoraDistribuciones modeloEnvios;
 
-    public ctrlEnvios(VRutas_Envios vistaEnvios, BitacoraDistribuciones modeloEnvios, CRutas_Envios CvistaEnvios) {
+    public ctrlEnvios(VRutas_Envios vistaEnvios, BitacoraDistribuciones modeloEnvios, REnvios RvistaEnvios, CRutas_Envios CvistaEnvios) {
         this.modeloEnvios = modeloEnvios;
         this.vistaEnvios = vistaEnvios;
+        this.RvistaEnvios = RvistaEnvios;
         this.CvistaEnvios = CvistaEnvios;
         this.vistaEnvios.btnAgregar.addActionListener(this);
         this.vistaEnvios.btnEliminar.addActionListener(this);
@@ -23,6 +26,7 @@ public class ctrlEnvios implements ActionListener {
         this.CvistaEnvios.btnAgregar.addActionListener(this);
         this.CvistaEnvios.btnEliminar.addActionListener(this);
         this.CvistaEnvios.btnModificarMP.addActionListener(this);
+        this.RvistaEnvios.btnModificarMP.addActionListener(this);
     }
 
     @Override
@@ -106,6 +110,13 @@ public class ctrlEnvios implements ActionListener {
             } else {
                 JOptionPane.showMessageDialog(null, "la fecha tiene que tener la estructura de ''año-mes-dia''");
             }
+        }
+        
+    ////////////////Repartidor///////////////////////////////////////////////////////
+        if (e.getSource()==RvistaEnvios.btnModificarMP) {
+            modeloEnvios.setIdEstado(RvistaEnvios.jcbEstado.getSelectedItem().toString());
+            modeloEnvios.REditar(modeloEnvios, vistaEnvios.jcbEstado, RvistaEnvios);
+            modeloEnvios.RMostrarTabla(RvistaEnvios);
         }
 //        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }

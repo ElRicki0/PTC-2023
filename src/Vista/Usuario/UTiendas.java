@@ -6,6 +6,8 @@ import desplazable.Desface;
 import java.awt.Color;
 import Modelo.*;
 import Controlador.*;
+import Vista.Controlador.CCliente_DatosTiendas;
+import Vista.Repartidor.RTiendas;
 
 public class UTiendas extends javax.swing.JFrame {
 
@@ -25,7 +27,8 @@ public class UTiendas extends javax.swing.JFrame {
         rsscalelabel.RSScaleLabel.setScaleLabel(icoCarro, "src/Vista/Iconos/vehiculo.png");
         
         desplace = new Desface();
-        
+        modelo.llenarcmbBuscador(jcbBuscador);
+
 //        TextPrompt telefono         = new TextPrompt("Referencia de ubicacion...", txtReferencia);
 //        TextPrompt correo       = new TextPrompt("Correo Electronico...", txtCorreo_CL);        
         
@@ -63,6 +66,13 @@ public class UTiendas extends javax.swing.JFrame {
         btnVehiculos = new Vista.PanelCurvas();
         icoCarro = new javax.swing.JLabel();
         txtCliente2 = new javax.swing.JLabel();
+        btnSalir = new Vista.PanelCurvas();
+        logOut = new javax.swing.JLabel();
+        txtBitacora2 = new javax.swing.JLabel();
+        btnBuscarcmx = new javax.swing.JButton();
+        jcbBuscador = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+        btnRestablecer = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1080, 760));
@@ -100,7 +110,7 @@ public class UTiendas extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tbTienda);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 970, 540));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 970, 460));
 
         MenuPlegable.setBackground(new java.awt.Color(64, 81, 115));
         MenuPlegable.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -331,7 +341,77 @@ public class UTiendas extends javax.swing.JFrame {
 
         MenuPlegable.add(btnVehiculos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 230, 53));
 
-        jPanel1.add(MenuPlegable, new org.netbeans.lib.awtextra.AbsoluteConstraints(-150, 0, 230, 760));
+        btnSalir.setBackground(new java.awt.Color(64, 81, 115));
+        btnSalir.setRoundBottomLeft(25);
+        btnSalir.setRoundBottomRight(25);
+        btnSalir.setRoundTopLeft(25);
+        btnSalir.setRoundTopRight(25);
+        btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSalirMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSalirMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSalirMouseExited(evt);
+            }
+        });
+
+        txtBitacora2.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        txtBitacora2.setForeground(new java.awt.Color(255, 153, 153));
+        txtBitacora2.setText("Cerrar secion");
+
+        javax.swing.GroupLayout btnSalirLayout = new javax.swing.GroupLayout(btnSalir);
+        btnSalir.setLayout(btnSalirLayout);
+        btnSalirLayout.setHorizontalGroup(
+            btnSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnSalirLayout.createSequentialGroup()
+                .addContainerGap(42, Short.MAX_VALUE)
+                .addComponent(txtBitacora2)
+                .addGap(18, 18, 18)
+                .addComponent(logOut, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        btnSalirLayout.setVerticalGroup(
+            btnSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnSalirLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(logOut, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(btnSalirLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtBitacora2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(12, 12, 12))
+        );
+
+        MenuPlegable.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 750, -1, -1));
+
+        jPanel1.add(MenuPlegable, new org.netbeans.lib.awtextra.AbsoluteConstraints(-150, 0, 230, 810));
+
+        btnBuscarcmx.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBuscarcmxMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnBuscarcmx, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 90, 40, 50));
+
+        jcbBuscador.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        jPanel1.add(jcbBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 90, 220, 50));
+
+        jLabel8.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel8.setText("<html>Ordenar por Cliente:</html>");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 80, 150, 60));
+
+        btnRestablecer.setFont(new java.awt.Font("Leelawadee UI", 1, 23)); // NOI18N
+        btnRestablecer.setForeground(new java.awt.Color(51, 51, 51));
+        btnRestablecer.setText("<html>Restablecer tabla</html>");
+        btnRestablecer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRestablecerMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnRestablecer, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 650, 180, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -433,12 +513,40 @@ public class UTiendas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVehiculosMouseExited
 
+    private void btnBuscarcmxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarcmxMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarcmxMouseClicked
+
+    private void btnRestablecerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRestablecerMouseClicked
+
+    }//GEN-LAST:event_btnRestablecerMouseClicked
+
+    private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
+        // [64,81,115]
+        LoginPTC vista = new LoginPTC();
+        vista.INIT();
+        this.dispose();
+    }//GEN-LAST:event_btnSalirMouseClicked
+
+    private void btnSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseEntered
+        btnSalir.setBackground(new Color(102,0,0));
+    }//GEN-LAST:event_btnSalirMouseEntered
+
+    private void btnSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseExited
+
+        btnSalir.setBackground(new Color(64,81,115));
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSalirMouseExited
+
     public void INIT(){
+        VCliente_DatosTiendas vista =new VCliente_DatosTiendas();
+        CCliente_DatosTiendas Cvista =new CCliente_DatosTiendas();
+        RTiendas Rvista =new RTiendas();
         UTiendas vistaU =new UTiendas();
-        VCliente_DatosTiendas vista= new VCliente_DatosTiendas();
+        ctrlDatosTiendas control=new ctrlDatosTiendas(vista, modelo, Cvista, Rvista, vistaU);
+        
         vistaU.setVisible(true);
         modelo.UMostrarTabla(vistaU);
-        ctrlDatosTiendas control=new ctrlDatosTiendas(vista, modelo, vistaU);
     }
     
     /**
@@ -497,17 +605,24 @@ public class UTiendas extends javax.swing.JFrame {
     private javax.swing.JPanel MenuPlegable;
     private javax.swing.JLabel Productoicon;
     private javax.swing.JLabel Rutaicon;
+    public javax.swing.JButton btnBuscarcmx;
     private Vista.PanelCurvas btnCasa;
     private Vista.PanelCurvas btnCliente;
     private Vista.PanelCurvas btnProducto;
+    public javax.swing.JButton btnRestablecer;
     private Vista.PanelCurvas btnRuta;
+    private Vista.PanelCurvas btnSalir;
     private Vista.PanelCurvas btnVehiculos;
     private javax.swing.JLabel icoCarro;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JComboBox<String> jcbBuscador;
+    private javax.swing.JLabel logOut;
     public javax.swing.JTable tbTienda;
     private javax.swing.JLabel txtBarras;
+    private javax.swing.JLabel txtBitacora2;
     private javax.swing.JLabel txtCasa;
     private javax.swing.JLabel txtCliente;
     private javax.swing.JLabel txtCliente2;

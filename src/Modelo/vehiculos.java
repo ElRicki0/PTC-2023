@@ -6,6 +6,7 @@
 package Modelo;
 
 import Vista.Controlador.CVehiculo;
+import Vista.Repartidor.RVehiculos;
 import Vista.Usuario.UVehiculos;
 import Vista.VVehiculo;
 import java.sql.Connection;
@@ -431,6 +432,43 @@ public class vehiculos {
         }
     }
 
+    //////////////////////////////////////////////////////////Apartado de Repartidor///////////////////////////////////////////////////////////////////////////////////////
+    public void RMostrarTabla(RVehiculos vistaVehiculos) {
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(new Object[]{"ID", "Marca", "Modelo", "Mecanico", "Taller"});
+        try {
+            Statement st = CConexion.getConexion().createStatement();
+            String SQL = "select idVehiculo, vehi_Matricula, tbModelos.Modelo, tbMantenimiento.Mecanico, tbTalleres.Tall_Nombre from tbVehiculos \n"
+                    + "inner join tbModelos on tbVehiculos.idModelo=tbModelos.idModelo inner join tbMantenimiento on tbVehiculos.idMantenimeinto=tbMantenimiento.idMantenimiento inner join tbTalleres on tbMantenimiento.idTaller=tbTalleres.idTaller";
+            ResultSet rs = st.executeQuery(SQL);
+
+            while (rs.next()) {
+                modelo.addRow(new Object[]{rs.getInt("idVehiculo"), rs.getString("vehi_Matricula"), rs.getString("Modelo"), rs.getString("Mecanico"), rs.getString("Tall_Nombre")});
+            }
+            vistaVehiculos.tbVehiculos.setModel(modelo);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error tabla vehiculos A " + e.getMessage());
+        }
+    }
+    
+    public void RBuscador(RVehiculos vistaVehiculos) {
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(new Object[]{"ID", "Marca", "Modelo", "Mecanico", "Taller"});
+        try {
+            Statement st = CConexion.getConexion().createStatement();
+            String SQL = "select idVehiculo, vehi_Matricula, tbModelos.Modelo, tbMantenimiento.Mecanico, tbTalleres.Tall_Nombre from tbVehiculos \n"
+                    + "inner join tbModelos on tbVehiculos.idModelo=tbModelos.idModelo inner join tbMantenimiento on tbVehiculos.idMantenimeinto=tbMantenimiento.idMantenimiento inner join tbTalleres on tbMantenimiento.idTaller=tbTalleres.idTaller where tbModelos.Modelo='" + vistaVehiculos.jcbBuscador.getSelectedItem() + "'";
+            ResultSet rs = st.executeQuery(SQL);
+
+            while (rs.next()) {
+                modelo.addRow(new Object[]{rs.getInt("idVehiculo"), rs.getString("vehi_Matricula"), rs.getString("Modelo"), rs.getString("Mecanico"), rs.getString("Tall_Nombre")});
+            }
+            vistaVehiculos.tbVehiculos.setModel(modelo);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error tabla vehiculos A " + e.getMessage());
+        }
+    }
+    
     //////////////////////////////////////////////////////////Apartado de Usuarios///////////////////////////////////////////////////////////////////////////////////////
     public void UMostrarTabla(UVehiculos vistaVehiculos) {
         DefaultTableModel modelo = new DefaultTableModel();

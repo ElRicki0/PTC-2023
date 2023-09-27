@@ -6,6 +6,7 @@
 package Modelo;
 
 import Vista.Controlador.CRutas_Envios;
+import Vista.Repartidor.REnvios;
 import Vista.Usuario.UEnvios;
 import Vista.VRutas_Envios;
 import java.sql.Connection;
@@ -599,6 +600,54 @@ public class BitacoraDistribuciones {
         }
     }
 
+    //////////////////Usuario/////////////////////////////////////////////////////
+    public void REditar(BitacoraDistribuciones modelo, JComboBox jcbEstado, REnvios vista){
+         try {
+            String sql = "update tbBitacoraDistribuciones set idEstado=? where idBitacoraDistribucion=?";
+            PreparedStatement EEnvios = CConexion.getConexion().prepareStatement(sql);
+
+
+            int SelectEstado = jcbEstado.getSelectedIndex();
+            if (SelectEstado != -1) {
+                Map<Integer, String> idEstado = (Map<Integer, String>) jcbEstado.getClientProperty("idEstado");
+                int selID = (int) idEstado.keySet().toArray()[SelectEstado];
+                EEnvios.setInt(1, selID);
+            } else {
+            }
+
+            int filaSeleccionada = vista.tbEnvios.getSelectedRow();
+            String miId = vista.tbEnvios.getValueAt(filaSeleccionada, 0).toString();
+            EEnvios.setString(2, miId);
+
+            EEnvios.execute();
+            JOptionPane.showMessageDialog(null, "Estado editada exitosamente");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Seleccione un dato a editar");
+        }
+    }
+    
+    public void RMostrarTabla(REnvios vista) {
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(new Object[]{"ID", "Fecha entrega", "Empleado ENC", "usuario ENC", "matricula vehiculo", "Paqueteria", "Estado entrega"});
+        try {
+            Statement st = CConexion.getConexion().createStatement();
+            String sql = "select idBitacoraDistribucion, FechaEntrega, tbEmpleados.emp_nombre, tbUsuarios.usr_nombre, tbVehiculos.vehi_Matricula, tbPaqueteria.pqt_Nombre, tbEstadoEntrega.Estado from tbBitacoraDistribuciones \n"
+                    + "inner join tbEmpleados		on tbBitacoraDistribuciones.idEmpleado=tbEmpleados.idEmpleado\n"
+                    + "inner join tbUsuarios		on tbBitacoraDistribuciones.idUsuario=tbUsuarios.idUsuario\n"
+                    + "inner join tbVehiculos		on tbBitacoraDistribuciones.idVehiculo= tbVehiculos.idVehiculo\n"
+                    + "inner join tbPaqueteria		on tbBitacoraDistribuciones.idPaqueteria=tbPaqueteria.idPaqueteria\n"
+                    + "inner join tbEstadoEntrega            on tbBitacoraDistribuciones.idEstado=tbEstadoEntrega.idEstado";
+            ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                modelo.addRow(new Object[]{rs.getInt("idBitacoraDistribucion"), rs.getDate("FechaEntrega"), rs.getString("emp_nombre"), rs.getString("usr_nombre"), rs.getString("vehi_Matricula"), rs.getString("pqt_Nombre"), rs.getString("Estado")});
+            }
+            vista.tbEnvios.setModel(modelo); // Corregir el nombre de la tabla
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error tabla usuarios " + e.getMessage());
+        }
+    }
+    
     //////////////////Usuario/////////////////////////////////////////////////////
     public void UMostrarTabla(UEnvios vista) {
         DefaultTableModel modelo = new DefaultTableModel();
