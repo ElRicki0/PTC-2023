@@ -467,14 +467,14 @@ public class MainC extends javax.swing.JFrame {
 
         txtBitacora2.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
         txtBitacora2.setForeground(new java.awt.Color(255, 153, 153));
-        txtBitacora2.setText("Cerrar secion");
+        txtBitacora2.setText("Cerrar sesión");
 
         javax.swing.GroupLayout btnSalirLayout = new javax.swing.GroupLayout(btnSalir);
         btnSalir.setLayout(btnSalirLayout);
         btnSalirLayout.setHorizontalGroup(
             btnSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnSalirLayout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
+                .addContainerGap(43, Short.MAX_VALUE)
                 .addComponent(txtBitacora2)
                 .addGap(18, 18, 18)
                 .addComponent(logOut, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -672,6 +672,7 @@ public class MainC extends javax.swing.JFrame {
 
     private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
         // [64,81,115]
+        //usuarios.getUsr_nombre() == "";
         LoginPTC vista = new LoginPTC();
         vista.INIT();
         this.dispose();

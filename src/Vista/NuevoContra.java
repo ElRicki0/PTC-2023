@@ -295,10 +295,14 @@ public class NuevoContra extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    
+    
     public void INIT() {
         NuevoContra vistaPUsuario = new NuevoContra();
+        ActContra vistaNuevaC = new ActContra();
         usuarios modelo = new usuarios();
-        ctrlActualizarContra control = new ctrlActualizarContra(modelo, vistaPUsuario);
+        LoginPTC vistaLG = new LoginPTC();
+        ctrlActualizarContra control = new ctrlActualizarContra(modelo, vistaPUsuario, vistaNuevaC, vistaLG);
         vistaPUsuario.setVisible(true);
     }
 

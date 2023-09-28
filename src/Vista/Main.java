@@ -699,12 +699,7 @@ public class Main extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    private String NombreUsr;
     
-    public void NombreUsr(String NombreUsr){
-        this.NombreUsr=NombreUsr;
-        Nombrelbl.setText(NombreUsr);
-    }
     
     public void INIT(){
         Main main= new Main();

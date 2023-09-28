@@ -23,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
 public class usuarios {
 
     private int idUsuario;
-    private String usr_nombre;
+    private static String usr_nombre;
     private String usr_contra;
     private String usr_preguntasSeguridad;
     private String idEmpleado;
@@ -48,12 +48,12 @@ public class usuarios {
         this.idUsuario = idUsuario;
     }
 
-    public String getUsr_nombre() {
+    public static String getUsr_nombre() {
         return usr_nombre;
     }
 
-    public void setUsr_nombre(String usr_nombre) {
-        this.usr_nombre = usr_nombre;
+    public static void setUsr_nombre(String usr_nombre) {
+        usuarios.usr_nombre = usr_nombre;
     }
 
     public String getUsr_contra() {
@@ -86,6 +86,29 @@ public class usuarios {
 
     public void setIdBodega(int idBodega) {
         this.idBodega = idBodega;
+    }
+
+    public void ActNuevaContra(usuarios modeloUsuario) {
+
+        try {
+
+            String sql = "update tbUsuarios set usr_contrasenia=? where usr_nombre=?";
+            try {
+                PreparedStatement AUsuario = CConexion.getConexion().prepareStatement(sql);
+                AUsuario.setString(1, modeloUsuario.getUsr_contra());
+                AUsuario.setString(2, modeloUsuario.getUsr_nombre());
+                JOptionPane.showMessageDialog(null, "Contraseña actualizada correctamente");
+                AUsuario.execute();
+
+                System.out.println("nombre es " + getUsr_nombre().toString());
+                System.out.println("contra es " + getUsr_contra().toString());
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "error actualizar contrasenia" + e.toString());
+                System.out.println(e.toString());
+            }
+        } catch (Exception ae) {
+            System.out.println("" + ae.toString());
+        }
     }
 
     public void PMUsuario(usuarios modeloUsuario) {
@@ -170,28 +193,41 @@ public class usuarios {
                         LoginPTC vista = new LoginPTC();
                         vista.dispose();
                         Main main = new Main();
-
                         main.INIT();
+                        if (contraseñaAlmacenada.matches("9b8769a4a742959a2d0298c36fb70623f2dfacda8436237df08d8dfd5b37374c")) {
+                            ActContra vistaContra = new ActContra();
+                            vistaContra.INIT();
+                        }
                     }
                     if (nivelU.equals("2")) {
-//                    if (nivelU.equals("2")) {
                         LoginPTC vista = new LoginPTC();
-                        vista.dispose();
-                        if (contraseñaAlmacenada.matches("9b8769a4a742959a2d0298c36fb70623f2dfacda8436237df08d8dfd5b37374c")) {
-                            System.out.println("si papa" + contraseñaAlmacenada);
-                        }
+                        vista.setVisible(false);
                         MainC main = new MainC();
                         main.INIT();
+                        if (contraseñaAlmacenada.matches("9b8769a4a742959a2d0298c36fb70623f2dfacda8436237df08d8dfd5b37374c")) {
+                            ActContra vistaContra = new ActContra();
+                            vistaContra.INIT();
+                        }
                     }
                     if (nivelU.equals("3")) {
                         RMain main = new RMain();
                         main.setVisible(true);
                         LoginPTC vista = new LoginPTC();
                         vista.dispose();
+                        if (contraseñaAlmacenada.matches("9b8769a4a742959a2d0298c36fb70623f2dfacda8436237df08d8dfd5b37374c")) {
+                            ActContra vistaContra = new ActContra();
+                            vistaContra.INIT();
+                        }
                     }
                     if (nivelU.equals("4")) {
                         UMain main = new UMain();
-                        main.setVisible(true);
+                        main.INIT();
+                        LoginPTC vista = new LoginPTC();
+                        vista.dispose();
+                        if (contraseñaAlmacenada.matches("9b8769a4a742959a2d0298c36fb70623f2dfacda8436237df08d8dfd5b37374c")) {
+                            ActContra vistaContra = new ActContra();
+                            vistaContra.INIT();
+                        }
                     } else {
 //                        JOptionPane.showMessageDialog(null, "entidad tipo "+nivelU.toString());
                     }
@@ -307,6 +343,7 @@ public class usuarios {
                 System.out.println(e.toString());
             }
         } catch (Exception e) {
+            System.out.println("" + e.toString());
         }
     }
 
@@ -553,4 +590,5 @@ public class usuarios {
             JOptionPane.showMessageDialog(null, "Seleccione un valor a modificar ");
         }
     }
+
 }

@@ -1,6 +1,7 @@
 package Controlador;
 
 import Modelo.*;
+import Modelo.NombreUser;
 import Vista.*;
 import Controlador.ctrlEncriptacion;
 import java.awt.event.ActionEvent;
@@ -12,6 +13,8 @@ public class ctrlLogin implements ActionListener {
     
     private usuarios modeloUsuario;
     private LoginPTC vistaLogin;
+    private NombreUser modeloNUser;
+    
     private Main main;
     private ctrlEncriptacion encript;
 
@@ -31,20 +34,19 @@ public class ctrlLogin implements ActionListener {
                 String contraseñaIngresada = vistaLogin.txtContraseña.getText();
 
                 modeloUsuario.setUsr_nombre(usuarioIngresado);
-
+                
                 String contraseñaIngresadaEncriptada = encript.convertirSHA256(contraseñaIngresada);
                 String contraseñaAlmacenada = modeloUsuario.obtenerContraseñaDesdeBD();
 
                 if (contraseñaAlmacenada != null && contraseñaAlmacenada.equals(contraseñaIngresadaEncriptada)) {
                     
-//                    MNombre.setNombreUsr(vistaLogin.txtUsuario.getText());
-                    modeloUsuario.setUsr_nombre(vistaLogin.txtUsuario.getText());
+//                    modeloUsuario.setUsr_nombre(vistaLogin.txtUsuario.getText());
+                    usuarios.setUsr_nombre(vistaLogin.txtUsuario.getText());
                     modeloUsuario.setUsr_contra(encript.convertirSHA256(vistaLogin.txtContraseña.getText()));
-//                    Main main = new Main();
-//                    main.setVisible(true);
+                    //System.out.println(""+modeloUsuario.getUsr_nombre().toString());
                     modeloUsuario.ValidarUsuario(modeloUsuario);
                     LoginPTC loginvista= new LoginPTC();
-                    loginvista.dispose();
+//                    loginvista.dispose();
                 } else {
                     JOptionPane.showMessageDialog(null, "Credenciales inválidas1");
                 }

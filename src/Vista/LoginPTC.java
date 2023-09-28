@@ -278,8 +278,6 @@ public class LoginPTC extends javax.swing.JFrame {
 
     private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
         inicio();
-        Main vista = new Main();
-        vista.NombreUsr(txtUsuario.getText());
     }//GEN-LAST:event_btnLoginMouseClicked
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
@@ -360,7 +358,7 @@ public class LoginPTC extends javax.swing.JFrame {
                     if (l.equals("2")) {
                         MainC main = new MainC();
                         main.setVisible(true);
-                        this.dispose();
+                        this.setVisible(false);
                     }
                     if (l.equals("3")) {
                         Vista.Repartidor.RMain main = new Vista.Repartidor.RMain();
