@@ -31,11 +31,8 @@ public class RecContrasenia extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         btnSMS = new Vista.PanelCurvas();
         jLabel8 = new javax.swing.JLabel();
-        btnPreguntas = new Vista.PanelCurvas();
-        jLabel7 = new javax.swing.JLabel();
         panelCurvas7 = new Vista.PanelCurvas();
         jLabel1 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
 
@@ -75,7 +72,7 @@ public class RecContrasenia extends javax.swing.JFrame {
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/correo.png"))); // NOI18N
         btnCorreo.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 130, 130));
 
-        jPanel1.add(btnCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 170, 170));
+        jPanel1.add(btnCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 170, 170));
 
         btnSMS.setBackground(new java.awt.Color(255, 255, 255));
         btnSMS.setRoundBottomLeft(25);
@@ -92,19 +89,7 @@ public class RecContrasenia extends javax.swing.JFrame {
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/SMS.png"))); // NOI18N
         btnSMS.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 130, 130));
 
-        jPanel1.add(btnSMS, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, 170, 170));
-
-        btnPreguntas.setBackground(new java.awt.Color(255, 255, 255));
-        btnPreguntas.setRoundBottomLeft(25);
-        btnPreguntas.setRoundBottomRight(25);
-        btnPreguntas.setRoundTopLeft(25);
-        btnPreguntas.setRoundTopRight(25);
-        btnPreguntas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Iconos/preguntas.png"))); // NOI18N
-        btnPreguntas.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 130, 130));
-
-        jPanel1.add(btnPreguntas, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 230, 170, 170));
+        jPanel1.add(btnSMS, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 230, 170, 170));
 
         panelCurvas7.setBackground(new java.awt.Color(255, 255, 255));
         panelCurvas7.setPreferredSize(new java.awt.Dimension(100, 100));
@@ -139,20 +124,15 @@ public class RecContrasenia extends javax.swing.JFrame {
 
         jPanel1.add(panelCurvas7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 100, 100));
 
-        jLabel14.setFont(new java.awt.Font("Leelawadee UI", 1, 20)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(64, 81, 115));
-        jLabel14.setText("Preguntas de usuario");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 190, 200, 30));
-
         jLabel16.setFont(new java.awt.Font("Leelawadee UI", 1, 20)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(64, 81, 115));
         jLabel16.setText("Correo electronico");
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 180, 30));
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 180, 30));
 
         jLabel17.setFont(new java.awt.Font("Leelawadee UI", 1, 20)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(64, 81, 115));
         jLabel17.setText("Mensaje SMS");
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, 130, 30));
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 190, 130, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -249,14 +229,11 @@ public class RecContrasenia extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Vista.PanelCurvas btnCorreo;
-    private Vista.PanelCurvas btnPreguntas;
     private Vista.PanelCurvas btnSMS;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;

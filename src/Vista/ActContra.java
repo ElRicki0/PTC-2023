@@ -22,10 +22,15 @@ public class ActContra extends javax.swing.JFrame {
         initComponents();
         this.jbNo.setVisible(false);
         this.setLocationRelativeTo(null);
-        TextPrompt textPrompta2 = new TextPrompt("Ingresas una contraseña", this.txtContra);
-        rsscalelabel.RSScaleLabel.setScaleLabel(jbVer, "src/Vista/Iconos/ver.png");
-        rsscalelabel.RSScaleLabel.setScaleLabel(jbNo, "src/Vista/Iconos/noVer.png");
+        TextPrompt textPrompta2 = new TextPrompt("Ingresar una contraseña", this.txtContra);
+        TextPrompt textPrompta3 = new TextPrompt("Confirmar contraseña", this.txtContra2);
+        rsscalelabel.RSScaleLabel.setScaleLabel(lbVer, "src/Vista/Iconos/ver.png");
+        rsscalelabel.RSScaleLabel.setScaleLabel(lbNover, "src/Vista/Iconos/noVer.png");
+        rsscalelabel.RSScaleLabel.setScaleLabel(lbVer2, "src/Vista/Iconos/ver.png");
+        rsscalelabel.RSScaleLabel.setScaleLabel(lbNover2, "src/Vista/Iconos/noVer.png");
         transparenciaBotin();
+        this.lbNover.setVisible(false);
+        this.lbNover2.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -37,7 +42,7 @@ public class ActContra extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         panelCurvas3 = new Vista.PanelCurvas();
-        txtContra2 = new javax.swing.JTextField();
+        txtContra2 = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         panelCurvas4 = new Vista.PanelCurvas();
         txtContra = new javax.swing.JPasswordField();
@@ -46,6 +51,10 @@ public class ActContra extends javax.swing.JFrame {
         jbVer = new javax.swing.JLabel();
         jbNo = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        lbVer = new javax.swing.JLabel();
+        lbNover = new javax.swing.JLabel();
+        lbVer2 = new javax.swing.JLabel();
+        lbNover2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(750, 730));
@@ -80,10 +89,9 @@ public class ActContra extends javax.swing.JFrame {
         panelCurvas3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtContra2.setBackground(new java.awt.Color(255, 255, 255));
-        txtContra2.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
-        txtContra2.setForeground(new java.awt.Color(51, 51, 51));
+        txtContra2.setForeground(new java.awt.Color(0, 0, 0));
         txtContra2.setBorder(null);
-        panelCurvas3.add(txtContra2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 270, 40));
+        panelCurvas3.add(txtContra2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 260, 40));
 
         jPanel1.add(panelCurvas3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, 290, 60));
 
@@ -100,8 +108,9 @@ public class ActContra extends javax.swing.JFrame {
         panelCurvas4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtContra.setBackground(new java.awt.Color(255, 255, 255));
+        txtContra.setForeground(new java.awt.Color(0, 0, 0));
         txtContra.setBorder(null);
-        panelCurvas4.add(txtContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 270, 40));
+        panelCurvas4.add(txtContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 260, 40));
 
         jPanel1.add(panelCurvas4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, 290, 60));
 
@@ -163,6 +172,34 @@ public class ActContra extends javax.swing.JFrame {
         jLabel3.setText("<html>Se ha detectado que es la primera ves en el sistema, por favor ingrese su nueva contraseña para su usuario</html>");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 520, 110));
 
+        lbVer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbVerMouseClicked(evt);
+            }
+        });
+        jPanel1.add(lbVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 290, 50, 50));
+
+        lbNover.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbNoverMouseClicked(evt);
+            }
+        });
+        jPanel1.add(lbNover, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 290, 50, 50));
+
+        lbVer2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbVer2MouseClicked(evt);
+            }
+        });
+        jPanel1.add(lbVer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 400, 50, 50));
+
+        lbNover2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbNover2MouseClicked(evt);
+            }
+        });
+        jPanel1.add(lbNover2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 400, 50, 50));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -198,6 +235,30 @@ public class ActContra extends javax.swing.JFrame {
         txtContra.setEchoChar('*');
     }//GEN-LAST:event_jbNoMouseClicked
 
+    private void lbVerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbVerMouseClicked
+        lbVer.setVisible(false);
+        lbNover.setVisible(true);
+        txtContra.setEchoChar((char) 0);
+    }//GEN-LAST:event_lbVerMouseClicked
+
+    private void lbNoverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbNoverMouseClicked
+        lbVer.setVisible(true);
+        lbNover.setVisible(false);
+        txtContra.setEchoChar('*');
+    }//GEN-LAST:event_lbNoverMouseClicked
+
+    private void lbVer2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbVer2MouseClicked
+        lbVer2.setVisible(false);
+        lbNover2.setVisible(true);
+        txtContra2.setEchoChar((char) 0);
+    }//GEN-LAST:event_lbVer2MouseClicked
+
+    private void lbNover2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbNover2MouseClicked
+        lbVer2.setVisible(true);
+        lbNover2.setVisible(false);
+        txtContra2.setEchoChar('*');
+    }//GEN-LAST:event_lbNover2MouseClicked
+
     public void transparenciaBotin() {
         btnActualizar.setOpaque(false);
         btnActualizar.setContentAreaFilled(false);
@@ -213,13 +274,10 @@ public class ActContra extends javax.swing.JFrame {
         usuarios modelo = new usuarios();
         LoginPTC vistaLG = new LoginPTC();
         ctrlActualizarContra control = new ctrlActualizarContra(modelo, vistaPUsuario, vistaNuevaC, vistaLG);
-        
+
         vistaNuevaC.setVisible(true);
     }
     ctrlEncriptacion encript;
-
-    
-  
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -273,14 +331,18 @@ public class ActContra extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel1;
+    public javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jbNo;
     private javax.swing.JLabel jbVer;
+    private javax.swing.JLabel lbNover;
+    private javax.swing.JLabel lbNover2;
+    private javax.swing.JLabel lbVer;
+    private javax.swing.JLabel lbVer2;
     private Vista.PanelCurvas panelCurvas1;
     private Vista.PanelCurvas panelCurvas3;
     private Vista.PanelCurvas panelCurvas4;
     private Vista.PanelCurvas panelCurvas7;
     public javax.swing.JPasswordField txtContra;
-    public javax.swing.JTextField txtContra2;
+    public javax.swing.JPasswordField txtContra2;
     // End of variables declaration//GEN-END:variables
 }

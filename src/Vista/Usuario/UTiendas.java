@@ -404,7 +404,7 @@ public class UTiendas extends javax.swing.JFrame {
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 80, 150, 60));
 
         btnRestablecer.setFont(new java.awt.Font("Leelawadee UI", 1, 23)); // NOI18N
-        btnRestablecer.setForeground(new java.awt.Color(51, 51, 51));
+        btnRestablecer.setForeground(new java.awt.Color(255, 255, 255));
         btnRestablecer.setText("<html>Restablecer tabla</html>");
         btnRestablecer.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

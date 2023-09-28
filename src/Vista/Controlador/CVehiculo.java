@@ -728,7 +728,7 @@ public class CVehiculo extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(51, 51, 51));
         jLabel8.setText("<html>Buscar por Modelo de vehiculo</html>");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 120, 220, 60));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 120, 260, 60));
 
         eliminar2.setBackground(new java.awt.Color(172, 147, 110));
         eliminar2.setRoundBottomLeft(25);
@@ -749,7 +749,9 @@ public class CVehiculo extends javax.swing.JFrame {
         eliminar2.setLayout(eliminar2Layout);
         eliminar2Layout.setHorizontalGroup(
             eliminar2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnRestaurar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+            .addGroup(eliminar2Layout.createSequentialGroup()
+                .addComponent(btnRestaurar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         eliminar2Layout.setVerticalGroup(
             eliminar2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -758,7 +760,7 @@ public class CVehiculo extends javax.swing.JFrame {
                 .addComponent(btnRestaurar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(eliminar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 680, -1, -1));
+        jPanel1.add(eliminar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 680, -1, -1));
 
         eliminar3.setBackground(new java.awt.Color(172, 147, 110));
         eliminar3.setRoundBottomLeft(25);
@@ -1346,16 +1348,22 @@ public class CVehiculo extends javax.swing.JFrame {
         });
     }
         
-            public void transpareciaBoton(){
-        btnAgregar.setOpaque(false);        
+    public void transpareciaBoton() {
+        btnAgregar.setOpaque(false);
         btnAgregar.setContentAreaFilled(false);
         btnAgregar.setBorderPainted(false);
-        btnEliminar.setOpaque(false);        
+        btnEliminar.setOpaque(false);
         btnEliminar.setContentAreaFilled(false);
         btnEliminar.setBorderPainted(false);
-        btnModificarMP.setOpaque(false);        
+        btnModificarMP.setOpaque(false);
         btnModificarMP.setContentAreaFilled(false);
         btnModificarMP.setBorderPainted(false);
+        btnRestaurar.setOpaque(false);
+        btnRestaurar.setContentAreaFilled(false);
+        btnRestaurar.setBorderPainted(false);
+        btnBuscar.setOpaque(false);
+        btnBuscar.setContentAreaFilled(false);
+        btnBuscar.setBorderPainted(false);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

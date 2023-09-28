@@ -1322,16 +1322,22 @@ public class VVehiculo extends javax.swing.JFrame {
         });
     }
         
-            public void transpareciaBoton(){
-        btnAgregar.setOpaque(false);        
+    public void transpareciaBoton() {
+        btnAgregar.setOpaque(false);
         btnAgregar.setContentAreaFilled(false);
         btnAgregar.setBorderPainted(false);
-        btnEliminar.setOpaque(false);        
+        btnEliminar.setOpaque(false);
         btnEliminar.setContentAreaFilled(false);
         btnEliminar.setBorderPainted(false);
-        btnModificarMP.setOpaque(false);        
+        btnModificarMP.setOpaque(false);
         btnModificarMP.setContentAreaFilled(false);
         btnModificarMP.setBorderPainted(false);
+        btnRestaurar.setOpaque(false);
+        btnRestaurar.setContentAreaFilled(false);
+        btnRestaurar.setBorderPainted(false);
+        btnBuscar.setOpaque(false);
+        btnBuscar.setContentAreaFilled(false);
+        btnBuscar.setBorderPainted(false);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

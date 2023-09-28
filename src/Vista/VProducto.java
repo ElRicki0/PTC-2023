@@ -744,7 +744,7 @@ public class VProducto extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel10.setText("Informacion");
+        jLabel10.setText("Información");
         panelCurvas1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 167, 41));
 
         jpProductos.add(panelCurvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 160, 410, 430));
@@ -837,7 +837,7 @@ public class VProducto extends javax.swing.JFrame {
                 .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jpProductos.add(modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 610, 160, 60));
+        jpProductos.add(modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 610, 160, 60));
 
         jcbReporte.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
         jpProductos.add(jcbReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 60, 190, 40));
@@ -867,7 +867,7 @@ public class VProducto extends javax.swing.JFrame {
         panelCurvas3Layout.setVerticalGroup(
             panelCurvas3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCurvas3Layout.createSequentialGroup()
-                .addGap(0, 2, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btnCXBuscar))
         );
 
@@ -919,7 +919,7 @@ public class VProducto extends javax.swing.JFrame {
 
         btnReporte_General.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         btnReporte_General.setForeground(new java.awt.Color(255, 255, 255));
-        btnReporte_General.setText("<html>Reporte Genera</html>");
+        btnReporte_General.setText("<html>Reporte General</html>");
         btnReporte_General.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnReporte_GeneralMouseClicked(evt);
@@ -930,10 +930,9 @@ public class VProducto extends javax.swing.JFrame {
         modificar1.setLayout(modificar1Layout);
         modificar1Layout.setHorizontalGroup(
             modificar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, modificar1Layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
-                .addComponent(btnReporte_General, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+            .addGroup(modificar1Layout.createSequentialGroup()
+                .addComponent(btnReporte_General, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         modificar1Layout.setVerticalGroup(
             modificar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -942,7 +941,7 @@ public class VProducto extends javax.swing.JFrame {
                 .addComponent(btnReporte_General, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jpProductos.add(modificar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 610, -1, -1));
+        jpProductos.add(modificar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 610, -1, -1));
 
         jPanel1.add(jpProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 1000, 700));
 
@@ -1369,14 +1368,14 @@ public class VProducto extends javax.swing.JFrame {
         modeloProductos.MostrarProductos(vista);        
     }
     
-    public void transpareciaBoton(){
-        btnAgregar.setOpaque(false);        
+    public void transpareciaBoton() {
+        btnAgregar.setOpaque(false);
         btnAgregar.setContentAreaFilled(false);
         btnAgregar.setBorderPainted(false);
-        btnEliminar.setOpaque(false);        
+        btnEliminar.setOpaque(false);
         btnEliminar.setContentAreaFilled(false);
         btnEliminar.setBorderPainted(false);
-        btnModificar.setOpaque(false);        
+        btnModificar.setOpaque(false);
         btnModificar.setContentAreaFilled(false);
         btnModificar.setBorderPainted(false);
         btnCXBuscar.setOpaque(false);
@@ -1385,6 +1384,10 @@ public class VProducto extends javax.swing.JFrame {
         btnReporte_Marca.setOpaque(false);
         btnReporte_Marca.setContentAreaFilled(false);
         btnReporte_Marca.setBorderPainted(false);
+        btnReporte_General.setOpaque(false);
+        btnReporte_General.setContentAreaFilled(false);
+        btnReporte_General.setBorderPainted(false);
+
     }
     
     public static void main(String args[]) {

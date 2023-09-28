@@ -536,7 +536,7 @@ public class CVehiculo_Mantenimiento extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel2.setText("Mantenimeinto");
+        jLabel2.setText("Mantenimiento");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 360, 70));
 
         panelCurvas1.setBackground(new java.awt.Color(172, 147, 110));
@@ -558,7 +558,7 @@ public class CVehiculo_Mantenimiento extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel5.setText("<html>Telefono mecanico:</html>");
+        jLabel5.setText("<html>Telefono del mecanico:</html>");
         panelCurvas1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 150, 60));
 
         jLabel6.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
@@ -800,7 +800,9 @@ public class CVehiculo_Mantenimiento extends javax.swing.JFrame {
         btnRestaurador.setLayout(btnRestauradorLayout);
         btnRestauradorLayout.setHorizontalGroup(
             btnRestauradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnRestaurar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+            .addGroup(btnRestauradorLayout.createSequentialGroup()
+                .addComponent(btnRestaurar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         btnRestauradorLayout.setVerticalGroup(
             btnRestauradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -809,7 +811,7 @@ public class CVehiculo_Mantenimiento extends javax.swing.JFrame {
                 .addComponent(btnRestaurar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(btnRestaurador, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 680, -1, -1));
+        jPanel1.add(btnRestaurador, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 680, -1, -1));
 
         jpSubMenu.setBackground(new java.awt.Color(64, 81, 115));
         jpSubMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1355,17 +1357,23 @@ public class CVehiculo_Mantenimiento extends javax.swing.JFrame {
             }
         });
     }
-        
-            public void transpareciaBoton(){
-        btnAgregar.setOpaque(false);        
+
+    public void transpareciaBoton() {
+        btnAgregar.setOpaque(false);
         btnAgregar.setContentAreaFilled(false);
         btnAgregar.setBorderPainted(false);
-        btnEliminar.setOpaque(false);        
+        btnEliminar.setOpaque(false);
         btnEliminar.setContentAreaFilled(false);
         btnEliminar.setBorderPainted(false);
-        btnModificarMP.setOpaque(false);        
+        btnModificarMP.setOpaque(false);
         btnModificarMP.setContentAreaFilled(false);
         btnModificarMP.setBorderPainted(false);
+        btnRestaurar.setOpaque(false);
+        btnRestaurar.setContentAreaFilled(false);
+        btnRestaurar.setBorderPainted(false);
+        btnBuscar.setOpaque(false);
+        btnBuscar.setContentAreaFilled(false);
+        btnBuscar.setBorderPainted(false);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

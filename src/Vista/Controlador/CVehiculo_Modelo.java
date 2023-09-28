@@ -829,7 +829,9 @@ public class CVehiculo_Modelo extends javax.swing.JFrame {
         btnRestaurador.setLayout(btnRestauradorLayout);
         btnRestauradorLayout.setHorizontalGroup(
             btnRestauradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnRestaurar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+            .addGroup(btnRestauradorLayout.createSequentialGroup()
+                .addComponent(btnRestaurar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         btnRestauradorLayout.setVerticalGroup(
             btnRestauradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -838,7 +840,7 @@ public class CVehiculo_Modelo extends javax.swing.JFrame {
                 .addComponent(btnRestaurar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(btnRestaurador, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 680, -1, -1));
+        jPanel1.add(btnRestaurador, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 680, -1, -1));
 
         jpSubMenu.setBackground(new java.awt.Color(64, 81, 115));
         jpSubMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1437,62 +1439,25 @@ public class CVehiculo_Modelo extends javax.swing.JFrame {
             }
         });
     }
-        
-            public void transpareciaBoton(){
-        btnAgregar.setOpaque(false);        
+
+    public void transpareciaBoton() {
+        btnAgregar.setOpaque(false);
         btnAgregar.setContentAreaFilled(false);
         btnAgregar.setBorderPainted(false);
-        btnEliminar.setOpaque(false);        
+        btnEliminar.setOpaque(false);
         btnEliminar.setContentAreaFilled(false);
         btnEliminar.setBorderPainted(false);
-        btnModificarMP.setOpaque(false);        
+        btnModificarMP.setOpaque(false);
         btnModificarMP.setContentAreaFilled(false);
         btnModificarMP.setBorderPainted(false);
+        btnRestaurar.setOpaque(false);
+        btnRestaurar.setContentAreaFilled(false);
+        btnRestaurar.setBorderPainted(false);
+        btnBuscar.setOpaque(false);
+        btnBuscar.setContentAreaFilled(false);
+        btnBuscar.setBorderPainted(false);
     }
-            /*
-            ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠄⠀⠀⠀⠀⠀⠈⠒⠤⡀⠀⠀⠀⢀⢀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠁⠀⠀⠀⠀⠀⢄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⢀⢢⠁⠀⠀⢀⡌⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠢⢄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⡈⠈⠀⠀⣁⠏⠀⠀⡄⠀⠀⠆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠂⠄⡀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠇⠀⠀⠀⠃⠀⠀⠜⠀⢀⣼⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠐⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⡌⠀⠀⠀⠀⠀⠀⡈⣠⠖⠋⠀⠐⠢⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠑⠄⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⡔⠁⠀⠀⠀⠀⠀⡼⠂⠀⠀⠀⠀⠀⠀⠀⠉⠀⠠⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠐⠀⠀⠀⠀⠀⠀⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠒⠦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⡆⠀
-⠀⠀⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠁⠲⢄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⠀
-⠀⠀⠀⢀⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠄⠓⠠⢀⠀⠀⠀⠀⠀⠀⠀⠀⡈⠀
-⠀⠀⠀⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⢔⡡⠖⠙⡂⠀⠑⢆⡀⠀⠀⠀⠀⡜⠁⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠤⣢⠔⠻⡄⠀⠀⠐⢄⡄⠀⠙⢳⡖⠒⠈⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⣀⡤⠶⢯⠀⠀⣀⣄⠀⠀⠀⠀⠙⢦⡀⠀⠐⠄⠀⢀⣀⠀
-⠈⠢⢀⠀⠀⠀⢀⠄⠀⠀⠀⠀⠀⡀⣀⣤⣤⣶⣦⣴⣶⣖⠛⠉⠉⠀⠀⢀⣴⣿⣿⣿⣿⣶⣄⠀⠀⠀⡇⠀⠇⠀⠀⠀⠀⢁
-⠀⠀⠀⢋⠁⠀⠀⠀⠀⣄⠀⠀⢰⠋⣼⣿⣿⣿⣿⣿⣟⠿⣷⣤⣀⣀⣤⣾⢿⣿⣿⣿⣿⣿⣿⣧⠀⠀⡇⢀⠀⠀⠀⢀⠔⠁
-⠀⠀⠀⠀⠢⠀⣀⣀⡼⠛⡆⠀⡏⢼⣿⠏⠻⣿⣿⠏⣽⣴⠟⠉⠉⠉⠉⠛⢦⣻⣹⣿⡿⠃⢙⡿⠛⠀⠇⠂⠁⠆⠉⠀⠀⠀
-⠀⠀⠀⠀⠀⡴⠂⠀⠀⠀⣱⡀⣣⠀⢨⠷⣤⣤⡽⠞⠋⠁⠀⠀⠛⠛⠂⠀⠀⠉⠛⠶⠶⠶⠛⠇⠀⠠⡠⡀⠀⠀⠀⣰⠀⠀
-⠀⠀⠀⠀⠀⠈⠂⠀⠀⠀⡯⢃⣠⣀⠀⠀⠦⠀⠀⠀⠀⠀⠐⠶⠖⠒⠒⠚⠀⠀⠀⠀⠀⠀⠀⣀⣴⣤⣱⣵⠀⠐⠀⠁⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠴⠍⠿⠏⠑⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⠚⠁⠀⠀⠈⡑⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠣⠤⠤⠀⠂⠉⡠⠘⢳⡄⠂⠠⠀⠀⠀⠀⠀⠀⠀⢀⡠⠀⣴⠈⠂⠀⠐⠤⠠⠤⠞⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠸⠈⣢⣀⠈⠉⠁⠀⡀⠀⠀⢀⣠⡈⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡠⠀⠀⠀⠀⢀⡠⠔⣿⣿⣿⣿⣶⣴⣀⣨⣴⣶⣿⣿⣿⡞⠤⢄⡀⠀⠀⠠⡀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⢀⠄⠁⠀⠀⣀⠤⠚⠉⠀⢸⣿⣿⣏⣋⠉⠋⠉⠉⠛⠛⢛⣿⣿⠇⠀⠀⠑⢦⡀⠀⠈⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⢀⠔⠁⠀⠀⣠⠔⠁⠀⠀⠀⠀⣸⣿⣿⡿⠿⠿⠷⠶⠶⠿⢿⣿⣿⣿⠀⠀⠀⠀⠀⢹⡄⠀⠀⠡⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠁⠀⠀⢀⡼⠁⠀⠀⠀⢀⣤⣾⣿⣿⣿⡿⠿⠷⠶⠶⠶⠶⣿⣿⣿⣿⣿⣦⡄⠀⠀⠀⠙⡤⠀⠀⠈⠂⡀⠀⠀
-⠀⠀⠀⠀⠀⠐⠄⠀⠋⠀⠀⠀⠀⣠⣿⣿⣿⣿⣿⣿⣿⣶⣤⣤⣤⣤⣤⣶⣿⣿⣿⣿⣿⣿⣦⠀⠀⠀⠘⡆⠀⠀⠀⢈⠄⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⣿⣿⣿⣿⣽⣿⣿⣿⢿⣿⣿⡿⣿⣿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠀⠈⠆⡀⠀⡸⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢿⣿⣿⡿⣿⣿⣟⣿⣯⣿⣿⣿⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣴⠉⠛⠛⠿⣿⢿⣿⠿⠛⠛⠉⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⠀⠀⠀⢀⡟⢸⣧⠀⠀⠀⢠⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣧⣤⣶⣿⡄⢸⣿⣶⣶⣶⣟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⣿⣿⣿⣿⣼⣿⣿⣿⣿⣿⣦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⠹⣿⣿⣿⣿⣿⣿⣿⣿⣷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⢻⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣿⣿⣿⣿⣿⣿⣿⡏⠀⠈⢿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⠿⣿⣿⡿⠿⠟⠀⠀⠀⠈⢛⠿⢿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠐⠒⠊⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-            */
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Bitacoraicon;

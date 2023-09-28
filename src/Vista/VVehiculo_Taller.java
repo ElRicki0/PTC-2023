@@ -114,7 +114,7 @@ public class VVehiculo_Taller extends javax.swing.JFrame {
         modificar1 = new Vista.PanelCurvas();
         btnModificarMP = new javax.swing.JButton();
         eliminar2 = new Vista.PanelCurvas();
-        btnRestaurar = new javax.swing.JButton();
+        btnClasificar = new javax.swing.JButton();
         jpSubMenu = new javax.swing.JPanel();
         btnSubTaller = new Vista.PanelCurvas();
         txtSub1 = new javax.swing.JLabel();
@@ -126,7 +126,8 @@ public class VVehiculo_Taller extends javax.swing.JFrame {
         txtSub4 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jcbDuenio = new javax.swing.JComboBox<>();
-        btnClasificar = new javax.swing.JButton();
+        eliminar3 = new Vista.PanelCurvas();
+        btnRestaurar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1080, 760));
@@ -822,29 +823,22 @@ public class VVehiculo_Taller extends javax.swing.JFrame {
         eliminar2.setRoundTopLeft(25);
         eliminar2.setRoundTopRight(25);
 
-        btnRestaurar.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        btnRestaurar.setForeground(new java.awt.Color(255, 255, 255));
-        btnRestaurar.setText("<html>Restaurar tabla</html>");
-        btnRestaurar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRestaurarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout eliminar2Layout = new javax.swing.GroupLayout(eliminar2);
         eliminar2.setLayout(eliminar2Layout);
         eliminar2Layout.setHorizontalGroup(
             eliminar2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnRestaurar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eliminar2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnClasificar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         eliminar2Layout.setVerticalGroup(
             eliminar2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eliminar2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnRestaurar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnClasificar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(eliminar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 740, -1, -1));
+        jPanel1.add(eliminar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 160, 50, 50));
 
         jpSubMenu.setBackground(new java.awt.Color(64, 81, 115));
         jpSubMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1008,11 +1002,42 @@ public class VVehiculo_Taller extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
         jLabel4.setText("<html>Clasificar por dueño:</html>");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 150, 140, 60));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 150, 250, 60));
 
         jcbDuenio.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
         jPanel1.add(jcbDuenio, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 160, 240, 50));
-        jPanel1.add(btnClasificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1025, 160, 50, 50));
+
+        eliminar3.setBackground(new java.awt.Color(172, 147, 110));
+        eliminar3.setRoundBottomLeft(25);
+        eliminar3.setRoundBottomRight(25);
+        eliminar3.setRoundTopLeft(25);
+        eliminar3.setRoundTopRight(25);
+
+        btnRestaurar.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        btnRestaurar.setForeground(new java.awt.Color(255, 255, 255));
+        btnRestaurar.setText("<html>Restaurar tabla</html>");
+        btnRestaurar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRestaurarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout eliminar3Layout = new javax.swing.GroupLayout(eliminar3);
+        eliminar3.setLayout(eliminar3Layout);
+        eliminar3Layout.setHorizontalGroup(
+            eliminar3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(eliminar3Layout.createSequentialGroup()
+                .addComponent(btnRestaurar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        eliminar3Layout.setVerticalGroup(
+            eliminar3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eliminar3Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnRestaurar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPanel1.add(eliminar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 740, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1174,10 +1199,6 @@ public class VVehiculo_Taller extends javax.swing.JFrame {
         btnSubVehiculo.setBackground(new Color (172,147,110));
         txtSub4.setForeground(Color.BLACK);
     }//GEN-LAST:event_btnSubVehiculoMouseExited
-
-    private void btnRestaurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestaurarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRestaurarActionPerformed
 
     private void btnCasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseClicked
         Main vista = new Main();
@@ -1350,6 +1371,10 @@ public class VVehiculo_Taller extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSalirMouseExited
 
+    private void btnRestaurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestaurarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRestaurarActionPerformed
+
     
     public void INIT(){
         VVehiculo_Taller vista = new VVehiculo_Taller();
@@ -1398,15 +1423,21 @@ public class VVehiculo_Taller extends javax.swing.JFrame {
     }
         
             public void transpareciaBoton(){
-        btnAgregar.setOpaque(false);        
-        btnAgregar.setContentAreaFilled(false);
-        btnAgregar.setBorderPainted(false);
-        btnEliminar.setOpaque(false);        
-        btnEliminar.setContentAreaFilled(false);
-        btnEliminar.setBorderPainted(false);
-        btnModificarMP.setOpaque(false);        
-        btnModificarMP.setContentAreaFilled(false);
-        btnModificarMP.setBorderPainted(false);
+                btnAgregar.setOpaque(false);
+                btnAgregar.setContentAreaFilled(false);
+                btnAgregar.setBorderPainted(false);
+                btnEliminar.setOpaque(false);
+                btnEliminar.setContentAreaFilled(false);
+                btnEliminar.setBorderPainted(false);
+                btnModificarMP.setOpaque(false);
+                btnModificarMP.setContentAreaFilled(false);
+                btnModificarMP.setBorderPainted(false);
+                btnRestaurar.setOpaque(false);
+                btnRestaurar.setContentAreaFilled(false);
+                btnRestaurar.setBorderPainted(false);
+                btnClasificar.setOpaque(false);
+                btnClasificar.setContentAreaFilled(false);
+                btnClasificar.setBorderPainted(false);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1439,6 +1470,7 @@ public class VVehiculo_Taller extends javax.swing.JFrame {
     private Vista.PanelCurvas btnVehiculos;
     private Vista.PanelCurvas eliminar1;
     private Vista.PanelCurvas eliminar2;
+    private Vista.PanelCurvas eliminar3;
     private javax.swing.JLabel icoCarro;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -404,7 +404,7 @@ public class REnvios extends javax.swing.JFrame {
 
         panelCurvas1.add(jcbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 240, 50));
 
-        jPanel1.add(panelCurvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 580, 420, 120));
+        jPanel1.add(panelCurvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 600, 420, 120));
 
         panelCurvas2.setBackground(new java.awt.Color(172, 147, 110));
         panelCurvas2.setRoundBottomLeft(25);
@@ -442,7 +442,7 @@ public class REnvios extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel1.add(panelCurvas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 580, 160, 110));
+        jPanel1.add(panelCurvas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 600, 160, 110));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -738,7 +738,9 @@ public class VVehiculo_Mantenimiento extends javax.swing.JFrame {
         btnRestaurador.setLayout(btnRestauradorLayout);
         btnRestauradorLayout.setHorizontalGroup(
             btnRestauradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnRestaurar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnRestauradorLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnRestaurar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         btnRestauradorLayout.setVerticalGroup(
             btnRestauradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -747,7 +749,7 @@ public class VVehiculo_Mantenimiento extends javax.swing.JFrame {
                 .addComponent(btnRestaurar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(btnRestaurador, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 730, -1, -1));
+        jPanel1.add(btnRestaurador, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 730, -1, -1));
 
         modificar1.setBackground(new java.awt.Color(172, 147, 110));
         modificar1.setRoundBottomLeft(25);
@@ -1344,15 +1346,21 @@ public class VVehiculo_Mantenimiento extends javax.swing.JFrame {
     }
         
             public void transpareciaBoton(){
-        btnAgregar.setOpaque(false);        
-        btnAgregar.setContentAreaFilled(false);
-        btnAgregar.setBorderPainted(false);
-        btnEliminar.setOpaque(false);        
-        btnEliminar.setContentAreaFilled(false);
-        btnEliminar.setBorderPainted(false);
-        btnModificarMP.setOpaque(false);        
-        btnModificarMP.setContentAreaFilled(false);
-        btnModificarMP.setBorderPainted(false);
+                btnAgregar.setOpaque(false);
+                btnAgregar.setContentAreaFilled(false);
+                btnAgregar.setBorderPainted(false);
+                btnEliminar.setOpaque(false);
+                btnEliminar.setContentAreaFilled(false);
+                btnEliminar.setBorderPainted(false);
+                btnModificarMP.setOpaque(false);
+                btnModificarMP.setContentAreaFilled(false);
+                btnModificarMP.setBorderPainted(false);
+                btnRestaurar.setOpaque(false);
+                btnRestaurar.setContentAreaFilled(false);
+                btnRestaurar.setBorderPainted(false);
+                btnBuscar.setOpaque(false);
+                btnBuscar.setContentAreaFilled(false);
+                btnBuscar.setBorderPainted(false);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
