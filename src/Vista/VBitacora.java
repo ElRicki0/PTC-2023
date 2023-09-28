@@ -453,7 +453,7 @@ public class VBitacora extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseClicked
-        Main vista = new Main();
+        VMain vista = new VMain();
         vista.INIT();
         this.dispose();
     }//GEN-LAST:event_btnCasaMouseClicked

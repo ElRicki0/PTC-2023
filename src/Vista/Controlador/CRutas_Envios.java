@@ -1123,9 +1123,10 @@ public class CRutas_Envios extends javax.swing.JFrame {
     
     public void INIT(){
         VRutas_Envios vista = new VRutas_Envios();
+        VMain_Rutas main= new VMain_Rutas();
         CRutas_Envios Cvista = new CRutas_Envios();
         REnvios Rvista = new REnvios();
-        ctrlEnvios ctrl = new ctrlEnvios(vista, modelo, Rvista, Cvista);
+        ctrlEnvios ctrl = new ctrlEnvios(vista, main, modelo, Rvista, Cvista);
         Cvista.setVisible(true);
         modelo.CMostrarTabla(Cvista);
     }

@@ -1,21 +1,18 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Vista;
 
-
-
-import Vista.*;
-import Controlador.ctrlDatosDistribucion;
-import Controlador.ctrlEnvios;
-import Controlador.ctrlPaqueteria;
-import Modelo.*;
-import javax.swing.ImageIcon;
-import desplazable.Desface;
-import java.awt.Color;
-import java.awt.event.ActionEvent;
-import javax.swing.JComboBox;
+import Controlador.ctrlDatosTiendas;
 import Modelo.CConexion;
+import Modelo.DatosTiendas;
 import Modelo.productos;
-import Vista.Controlador.CRutas_Envios;
-import Vista.Repartidor.REnvios;
+import Modelo.usuarios;
+import Vista.Controlador.CCliente_DatosTiendas;
+import Vista.Repartidor.RTiendas;
+import Vista.Usuario.UTiendas;
 import javax.swing.ImageIcon;
 import desplazable.Desface;
 import java.awt.Color;
@@ -23,15 +20,15 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 
-public class VRutas_Envios extends javax.swing.JFrame {
+/**
+ *
+ * @author rnmel
+ */
+public class VMain extends javax.swing.JFrame {
 
-        
-    
-    BitacoraDistribuciones modelo = new BitacoraDistribuciones();
     Desface desplace;
-    
-    public VRutas_Envios() {
-        
+    DatosTiendas modelo = new DatosTiendas();
+    public VMain() {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/Vista/Iconos/CASA.png")).getImage());
 
@@ -45,17 +42,12 @@ public class VRutas_Envios extends javax.swing.JFrame {
         rsscalelabel.RSScaleLabel.setScaleLabel(Bodegaicon, "src/Vista/Iconos/almacenamiento.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(txtBarras, "src/Vista/Iconos/lista.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(icoCarro, "src/Vista/Iconos/vehiculo.png");
-        
-        
+        rsscalelabel.RSScaleLabel.setScaleLabel(logOut, "src/Vista/Iconos/Logout.png");
+
+        modelo.llenarcmbBuscador(jcbBuscador);
         desplace = new Desface();
-        modelo.LlenarcbxEmpleado(jcbEmpleado);
-        modelo.LlenarcbxUsuario(jcbUsuario);
-        modelo.LlenarcbxVehiculo(jcbVehiculo);
-        modelo.LlenarcbxPaqueteria(jcbPaquete);
-        modelo.LlenarcbxEstado(jcbEstado);
         
         this.setLocationRelativeTo(null);
-        transpareciaBoton();
     }
 
     /**
@@ -98,44 +90,35 @@ public class VRutas_Envios extends javax.swing.JFrame {
         btnSalir = new Vista.PanelCurvas();
         logOut = new javax.swing.JLabel();
         txtBitacora1 = new javax.swing.JLabel();
+        btnPerfil = new Vista.PanelCurvas();
+        perfil = new javax.swing.JLabel();
+        txtBitacora2 = new javax.swing.JLabel();
         jpSubMenu = new javax.swing.JPanel();
-        btnDistribucion = new Vista.PanelCurvas();
-        txtSub = new javax.swing.JLabel();
-        btnUsuarios = new Vista.PanelCurvas();
+        btnVehiculo = new Vista.PanelCurvas();
         txtSub1 = new javax.swing.JLabel();
-        btnUsuarios1 = new Vista.PanelCurvas();
-        txtSub3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        btnTiendas = new Vista.PanelCurvas();
+        txtSub = new javax.swing.JLabel();
+        btnRutas = new Vista.PanelCurvas();
+        txtDatos = new javax.swing.JLabel();
+        jcbBuscador = new javax.swing.JComboBox<>();
+        restablcer = new Vista.PanelCurvas();
+        btnRestablecer = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbEnvios = new javax.swing.JTable();
-        panelCurvas1 = new Vista.PanelCurvas();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jcbPaquete = new javax.swing.JComboBox<>();
-        jLabel4 = new javax.swing.JLabel();
-        jcbVehiculo = new javax.swing.JComboBox<>();
-        panelCurvas2 = new Vista.PanelCurvas();
-        txtFecha = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        tbTienda = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
-        jcbUsuario = new javax.swing.JComboBox<>();
-        jcbEmpleado = new javax.swing.JComboBox<>();
-        jLabel9 = new javax.swing.JLabel();
-        jcbEstado = new javax.swing.JComboBox<>();
-        agregar1 = new Vista.PanelCurvas();
-        btnAgregar = new javax.swing.JButton();
-        eliminar1 = new Vista.PanelCurvas();
-        btnEliminar = new javax.swing.JButton();
-        modificar1 = new Vista.PanelCurvas();
-        btnModificarMP = new javax.swing.JButton();
+        btnBuscarcmx = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        moversee = new Vista.PanelCurvas();
+        moverse = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1080, 760));
+        setMinimumSize(new java.awt.Dimension(1080, 850));
         setResizable(false);
-        setSize(new java.awt.Dimension(1080, 760));
+        setSize(new java.awt.Dimension(1080, 850));
 
         jPanel1.setBackground(new java.awt.Color(246, 234, 204));
+        jPanel1.setMinimumSize(new java.awt.Dimension(230, 0));
+        jPanel1.setPreferredSize(new java.awt.Dimension(230, 810));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         MenuPlegable.setBackground(new java.awt.Color(64, 81, 115));
@@ -393,7 +376,7 @@ public class VRutas_Envios extends javax.swing.JFrame {
         btnClienteLayout.setHorizontalGroup(
             btnClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnClienteLayout.createSequentialGroup()
-                .addGap(0, 86, Short.MAX_VALUE)
+                .addGap(0, 81, Short.MAX_VALUE)
                 .addComponent(txtCliente)
                 .addGap(25, 25, 25)
                 .addComponent(Clienteicon, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -518,14 +501,14 @@ public class VRutas_Envios extends javax.swing.JFrame {
 
         txtBitacora1.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
         txtBitacora1.setForeground(new java.awt.Color(255, 153, 153));
-        txtBitacora1.setText("Cerrar secion");
+        txtBitacora1.setText("Cerrar sesión");
 
         javax.swing.GroupLayout btnSalirLayout = new javax.swing.GroupLayout(btnSalir);
         btnSalir.setLayout(btnSalirLayout);
         btnSalirLayout.setHorizontalGroup(
             btnSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnSalirLayout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
+                .addContainerGap(43, Short.MAX_VALUE)
                 .addComponent(txtBitacora1)
                 .addGap(18, 18, 18)
                 .addComponent(logOut, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -544,139 +527,213 @@ public class VRutas_Envios extends javax.swing.JFrame {
 
         MenuPlegable.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 750, 230, 53));
 
+        btnPerfil.setBackground(new java.awt.Color(64, 81, 115));
+        btnPerfil.setRoundBottomLeft(25);
+        btnPerfil.setRoundBottomRight(25);
+        btnPerfil.setRoundTopLeft(25);
+        btnPerfil.setRoundTopRight(25);
+        btnPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPerfilMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPerfilMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnPerfilMouseExited(evt);
+            }
+        });
+
+        txtBitacora2.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        txtBitacora2.setForeground(new java.awt.Color(255, 255, 255));
+        txtBitacora2.setText("Perfil");
+
+        javax.swing.GroupLayout btnPerfilLayout = new javax.swing.GroupLayout(btnPerfil);
+        btnPerfil.setLayout(btnPerfilLayout);
+        btnPerfilLayout.setHorizontalGroup(
+            btnPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnPerfilLayout.createSequentialGroup()
+                .addGap(0, 96, Short.MAX_VALUE)
+                .addComponent(txtBitacora2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(perfil, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
+        );
+        btnPerfilLayout.setVerticalGroup(
+            btnPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnPerfilLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(btnPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtBitacora2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(perfil, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
+        MenuPlegable.add(btnPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 670, -1, 53));
+
         jPanel1.add(MenuPlegable, new org.netbeans.lib.awtextra.AbsoluteConstraints(-150, 0, 230, 810));
 
         jpSubMenu.setBackground(new java.awt.Color(64, 81, 115));
         jpSubMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnDistribucion.setBackground(new java.awt.Color(172, 147, 110));
-        btnDistribucion.setRoundBottomLeft(25);
-        btnDistribucion.setRoundBottomRight(25);
-        btnDistribucion.setRoundTopLeft(25);
-        btnDistribucion.setRoundTopRight(25);
-        btnDistribucion.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnVehiculo.setBackground(new java.awt.Color(172, 147, 110));
+        btnVehiculo.setPreferredSize(new java.awt.Dimension(151, 53));
+        btnVehiculo.setRoundBottomLeft(25);
+        btnVehiculo.setRoundBottomRight(25);
+        btnVehiculo.setRoundTopLeft(25);
+        btnVehiculo.setRoundTopRight(25);
+        btnVehiculo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnDistribucionMouseClicked(evt);
+                btnVehiculoMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnDistribucionMouseEntered(evt);
+                btnVehiculoMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnDistribucionMouseExited(evt);
-            }
-        });
-
-        txtSub.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        txtSub.setForeground(new java.awt.Color(51, 51, 51));
-        txtSub.setText("Distribucion");
-
-        javax.swing.GroupLayout btnDistribucionLayout = new javax.swing.GroupLayout(btnDistribucion);
-        btnDistribucion.setLayout(btnDistribucionLayout);
-        btnDistribucionLayout.setHorizontalGroup(
-            btnDistribucionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnDistribucionLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(txtSub)
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
-        btnDistribucionLayout.setVerticalGroup(
-            btnDistribucionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnDistribucionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtSub, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jpSubMenu.add(btnDistribucion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 150, 60));
-
-        btnUsuarios.setBackground(new java.awt.Color(172, 147, 110));
-        btnUsuarios.setRoundBottomLeft(25);
-        btnUsuarios.setRoundBottomRight(25);
-        btnUsuarios.setRoundTopLeft(25);
-        btnUsuarios.setRoundTopRight(25);
-        btnUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnUsuariosMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnUsuariosMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnUsuariosMouseExited(evt);
+                btnVehiculoMouseExited(evt);
             }
         });
 
         txtSub1.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
         txtSub1.setForeground(new java.awt.Color(51, 51, 51));
-        txtSub1.setText("Paqueteria");
+        txtSub1.setText("Vehiculos");
 
-        javax.swing.GroupLayout btnUsuariosLayout = new javax.swing.GroupLayout(btnUsuarios);
-        btnUsuarios.setLayout(btnUsuariosLayout);
-        btnUsuariosLayout.setHorizontalGroup(
-            btnUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnUsuariosLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(txtSub1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+        javax.swing.GroupLayout btnVehiculoLayout = new javax.swing.GroupLayout(btnVehiculo);
+        btnVehiculo.setLayout(btnVehiculoLayout);
+        btnVehiculoLayout.setHorizontalGroup(
+            btnVehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnVehiculoLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(txtSub1)
+                .addContainerGap(34, Short.MAX_VALUE))
         );
-        btnUsuariosLayout.setVerticalGroup(
-            btnUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnUsuariosLayout.createSequentialGroup()
+        btnVehiculoLayout.setVerticalGroup(
+            btnVehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnVehiculoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtSub1, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                .addComponent(txtSub1, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jpSubMenu.add(btnUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 30, 150, 60));
+        jpSubMenu.add(btnVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 30, -1, -1));
 
-        btnUsuarios1.setBackground(new java.awt.Color(172, 147, 110));
-        btnUsuarios1.setRoundBottomLeft(25);
-        btnUsuarios1.setRoundBottomRight(25);
-        btnUsuarios1.setRoundTopLeft(25);
-        btnUsuarios1.setRoundTopRight(25);
-        btnUsuarios1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnTiendas.setBackground(new java.awt.Color(172, 147, 110));
+        btnTiendas.setRoundBottomLeft(25);
+        btnTiendas.setRoundBottomRight(25);
+        btnTiendas.setRoundTopLeft(25);
+        btnTiendas.setRoundTopRight(25);
+        btnTiendas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnUsuarios1MouseClicked(evt);
+                btnTiendasMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnUsuarios1MouseEntered(evt);
+                btnTiendasMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnUsuarios1MouseExited(evt);
+                btnTiendasMouseExited(evt);
             }
         });
 
-        txtSub3.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        txtSub3.setForeground(new java.awt.Color(51, 51, 51));
-        txtSub3.setText("<html>Envios Productos</html>");
+        txtSub.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        txtSub.setForeground(new java.awt.Color(51, 51, 51));
+        txtSub.setText("Tiendas");
 
-        javax.swing.GroupLayout btnUsuarios1Layout = new javax.swing.GroupLayout(btnUsuarios1);
-        btnUsuarios1.setLayout(btnUsuarios1Layout);
-        btnUsuarios1Layout.setHorizontalGroup(
-            btnUsuarios1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnUsuarios1Layout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
-                .addComponent(txtSub3, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+        javax.swing.GroupLayout btnTiendasLayout = new javax.swing.GroupLayout(btnTiendas);
+        btnTiendas.setLayout(btnTiendasLayout);
+        btnTiendasLayout.setHorizontalGroup(
+            btnTiendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnTiendasLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(txtSub)
+                .addContainerGap(47, Short.MAX_VALUE))
         );
-        btnUsuarios1Layout.setVerticalGroup(
-            btnUsuarios1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnUsuarios1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtSub3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4))
+        btnTiendasLayout.setVerticalGroup(
+            btnTiendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnTiendasLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(txtSub, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        jpSubMenu.add(btnUsuarios1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 30, 150, 60));
+        jpSubMenu.add(btnTiendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 150, -1));
+
+        btnRutas.setBackground(new java.awt.Color(172, 147, 110));
+        btnRutas.setPreferredSize(new java.awt.Dimension(151, 53));
+        btnRutas.setRoundBottomLeft(25);
+        btnRutas.setRoundBottomRight(25);
+        btnRutas.setRoundTopLeft(25);
+        btnRutas.setRoundTopRight(25);
+        btnRutas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRutasMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnRutasMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnRutasMouseExited(evt);
+            }
+        });
+
+        txtDatos.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        txtDatos.setForeground(new java.awt.Color(51, 51, 51));
+        txtDatos.setText("Rutas");
+
+        javax.swing.GroupLayout btnRutasLayout = new javax.swing.GroupLayout(btnRutas);
+        btnRutas.setLayout(btnRutasLayout);
+        btnRutasLayout.setHorizontalGroup(
+            btnRutasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnRutasLayout.createSequentialGroup()
+                .addContainerGap(40, Short.MAX_VALUE)
+                .addComponent(txtDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        btnRutasLayout.setVerticalGroup(
+            btnRutasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnRutasLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(txtDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        jpSubMenu.add(btnRutas, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 30, 140, -1));
 
         jPanel1.add(jpSubMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 1040, 110));
 
-        jLabel2.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel2.setText("Envios Productos");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 111, 390, 70));
+        jcbBuscador.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        jPanel1.add(jcbBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 130, 220, 50));
 
-        tbEnvios.setModel(new javax.swing.table.DefaultTableModel(
+        restablcer.setBackground(new java.awt.Color(172, 147, 110));
+        restablcer.setRoundBottomLeft(25);
+        restablcer.setRoundBottomRight(25);
+        restablcer.setRoundTopLeft(25);
+        restablcer.setRoundTopRight(25);
+
+        btnRestablecer.setFont(new java.awt.Font("Leelawadee UI", 1, 23)); // NOI18N
+        btnRestablecer.setForeground(new java.awt.Color(51, 51, 51));
+        btnRestablecer.setText("<html>Restablecer tabla</html>");
+        btnRestablecer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRestablecerMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout restablcerLayout = new javax.swing.GroupLayout(restablcer);
+        restablcer.setLayout(restablcerLayout);
+        restablcerLayout.setHorizontalGroup(
+            restablcerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnRestablecer, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+        );
+        restablcerLayout.setVerticalGroup(
+            restablcerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnRestablecer)
+        );
+
+        jPanel1.add(restablcer, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 720, -1, 60));
+
+        jScrollPane1.setBackground(new java.awt.Color(172, 147, 110));
+
+        tbTienda.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
+        tbTienda.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -687,290 +744,75 @@ public class VRutas_Envios extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tbEnvios.addMouseListener(new java.awt.event.MouseAdapter() {
+        tbTienda.setFocusable(false);
+        tbTienda.setRowHeight(30);
+        tbTienda.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbEnviosMouseClicked(evt);
+                tbTiendaMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tbEnvios);
+        jScrollPane1.setViewportView(tbTienda);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 210, 550, 480));
-
-        panelCurvas1.setBackground(new java.awt.Color(172, 147, 110));
-        panelCurvas1.setRoundBottomLeft(35);
-        panelCurvas1.setRoundBottomRight(35);
-        panelCurvas1.setRoundTopLeft(35);
-        panelCurvas1.setRoundTopRight(35);
-        panelCurvas1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel3.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel3.setText("<html>Fecha de entrega:</html>");
-        panelCurvas1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 150, 60));
-
-        jLabel7.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel7.setText("Informacion");
-        panelCurvas1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 167, 41));
-
-        panelCurvas1.add(jcbPaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, 240, 50));
-
-        jLabel4.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel4.setText("Vehiculo:");
-        panelCurvas1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 140, 60));
-
-        panelCurvas1.add(jcbVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, 240, 50));
-
-        panelCurvas2.setBackground(new java.awt.Color(246, 234, 204));
-        panelCurvas2.setRoundBottomLeft(25);
-        panelCurvas2.setRoundBottomRight(25);
-        panelCurvas2.setRoundTopLeft(25);
-        panelCurvas2.setRoundTopRight(25);
-
-        txtFecha.setBackground(new java.awt.Color(246, 234, 204));
-        txtFecha.setForeground(new java.awt.Color(51, 51, 51));
-        txtFecha.setBorder(null);
-
-        javax.swing.GroupLayout panelCurvas2Layout = new javax.swing.GroupLayout(panelCurvas2);
-        panelCurvas2.setLayout(panelCurvas2Layout);
-        panelCurvas2Layout.setHorizontalGroup(
-            panelCurvas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCurvas2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        panelCurvas2Layout.setVerticalGroup(
-            panelCurvas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCurvas2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        panelCurvas1.add(panelCurvas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 240, 50));
-
-        jLabel5.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel5.setText("Paqueteria:");
-        panelCurvas1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 150, 60));
-
-        jLabel6.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel6.setText("Empleado:");
-        panelCurvas1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 140, 60));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 960, 510));
 
         jLabel8.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel8.setText("Usuario:");
-        panelCurvas1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 150, 60));
+        jLabel8.setText("<html>Ordenar por Cliente:</html>");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 120, 150, 60));
 
-        panelCurvas1.add(jcbUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 240, 50));
-
-        panelCurvas1.add(jcbEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 240, 50));
-
-        jLabel9.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel9.setText("<html>Estado entrega:</html>");
-        panelCurvas1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 150, 60));
-
-        panelCurvas1.add(jcbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 410, 240, 50));
-
-        jPanel1.add(panelCurvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 210, 420, 480));
-
-        agregar1.setBackground(new java.awt.Color(172, 147, 110));
-        agregar1.setRoundBottomLeft(25);
-        agregar1.setRoundBottomRight(25);
-        agregar1.setRoundTopLeft(25);
-        agregar1.setRoundTopRight(25);
-
-        btnAgregar.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
-        btnAgregar.setText("Agregar");
-        btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnBuscarcmx.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAgregarMouseClicked(evt);
+                btnBuscarcmxMouseClicked(evt);
             }
         });
-        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarActionPerformed(evt);
-            }
-        });
+        jPanel1.add(btnBuscarcmx, new org.netbeans.lib.awtextra.AbsoluteConstraints(1035, 130, 40, 50));
 
-        javax.swing.GroupLayout agregar1Layout = new javax.swing.GroupLayout(agregar1);
-        agregar1.setLayout(agregar1Layout);
-        agregar1Layout.setHorizontalGroup(
-            agregar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, agregar1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        agregar1Layout.setVerticalGroup(
-            agregar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, agregar1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        jLabel2.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel2.setText("Datos tiendas");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 320, 41));
 
-        jPanel1.add(agregar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 730, -1, 60));
+        moversee.setBackground(new java.awt.Color(172, 147, 110));
+        moversee.setRoundBottomLeft(25);
+        moversee.setRoundBottomRight(25);
+        moversee.setRoundTopLeft(25);
+        moversee.setRoundTopRight(25);
 
-        eliminar1.setBackground(new java.awt.Color(172, 147, 110));
-        eliminar1.setRoundBottomLeft(25);
-        eliminar1.setRoundBottomRight(25);
-        eliminar1.setRoundTopLeft(25);
-        eliminar1.setRoundTopRight(25);
-
-        btnEliminar.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
-        btnEliminar.setText("Eliminar");
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout eliminar1Layout = new javax.swing.GroupLayout(eliminar1);
-        eliminar1.setLayout(eliminar1Layout);
-        eliminar1Layout.setHorizontalGroup(
-            eliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
-        );
-        eliminar1Layout.setVerticalGroup(
-            eliminar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eliminar1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jPanel1.add(eliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 730, -1, -1));
-
-        modificar1.setBackground(new java.awt.Color(172, 147, 110));
-        modificar1.setRoundBottomLeft(25);
-        modificar1.setRoundBottomRight(25);
-        modificar1.setRoundTopLeft(25);
-        modificar1.setRoundTopRight(25);
-
-        btnModificarMP.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        btnModificarMP.setForeground(new java.awt.Color(255, 255, 255));
-        btnModificarMP.setText("Modificar");
-        btnModificarMP.addMouseListener(new java.awt.event.MouseAdapter() {
+        moverse.setFont(new java.awt.Font("Leelawadee UI", 1, 23)); // NOI18N
+        moverse.setForeground(new java.awt.Color(51, 51, 51));
+        moverse.setText("Ir a tabla");
+        moverse.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnModificarMPMouseClicked(evt);
+                moverseMouseClicked(evt);
             }
         });
 
-        javax.swing.GroupLayout modificar1Layout = new javax.swing.GroupLayout(modificar1);
-        modificar1.setLayout(modificar1Layout);
-        modificar1Layout.setHorizontalGroup(
-            modificar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnModificarMP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+        javax.swing.GroupLayout moverseeLayout = new javax.swing.GroupLayout(moversee);
+        moversee.setLayout(moverseeLayout);
+        moverseeLayout.setHorizontalGroup(
+            moverseeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(moverse, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
         );
-        modificar1Layout.setVerticalGroup(
-            modificar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, modificar1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnModificarMP, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+        moverseeLayout.setVerticalGroup(
+            moverseeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(moverse, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        jPanel1.add(modificar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 730, 160, 60));
+        jPanel1.add(moversee, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 720, -1, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1081, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
-        
-    }//GEN-LAST:event_btnAgregarMouseClicked
-
-    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarActionPerformed
-
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEliminarActionPerformed
-
-    private void btnModificarMPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMPMouseClicked
-            
-    }//GEN-LAST:event_btnModificarMPMouseClicked
-
-    private void tbEnviosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbEnviosMouseClicked
-         int filaSeleccionada = tbEnvios.getSelectedRow();
-
-        String Fecha = tbEnvios.getValueAt(filaSeleccionada, 1).toString();
-        
-        txtFecha.setText(Fecha);
-    }//GEN-LAST:event_tbEnviosMouseClicked
-
-    private void btnUsuarios1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuarios1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnUsuarios1MouseExited
-
-    private void btnUsuarios1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuarios1MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnUsuarios1MouseEntered
-
-    private void btnUsuarios1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuarios1MouseClicked
-
-    }//GEN-LAST:event_btnUsuarios1MouseClicked
-
-    private void btnUsuariosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMouseExited
-        btnUsuarios.setBackground(new Color(64,81,152));
-    }//GEN-LAST:event_btnUsuariosMouseExited
-
-    private void btnUsuariosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMouseEntered
-        btnUsuarios.setBackground(new Color(45,40,37));
-        txtSub1.setForeground(Color.white);
-    }//GEN-LAST:event_btnUsuariosMouseEntered
-
-    private void btnUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMouseClicked
-        VRutas_Paqueteria vista = new VRutas_Paqueteria();
-        vista.INIT();
-        this.dispose();
-    }//GEN-LAST:event_btnUsuariosMouseClicked
-
-    private void btnDistribucionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDistribucionMouseExited
-        btnDistribucion.setBackground(new Color(64,81,152));
-    }//GEN-LAST:event_btnDistribucionMouseExited
-
-    private void btnDistribucionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDistribucionMouseEntered
-        btnDistribucion.setBackground(new Color(45,40,37));
-        txtSub.setForeground(Color.white);
-    }//GEN-LAST:event_btnDistribucionMouseEntered
-
-    private void btnDistribucionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDistribucionMouseClicked
-        VRutas_DatosDis vista =new VRutas_DatosDis();
-        vista.INIT();
-        this.dispose();
-    }//GEN-LAST:event_btnDistribucionMouseClicked
-
-    private void btnCasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseClicked
-        VMain vista = new VMain();
-        vista.INIT();
-        this.dispose();
-    }//GEN-LAST:event_btnCasaMouseClicked
-
-    private void btnCasaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseEntered
-        btnCasa.setBackground(new Color(45,40,37));
-    }//GEN-LAST:event_btnCasaMouseEntered
-
-    private void btnCasaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseExited
-        btnCasa.setBackground(new Color(64,81,115));
-    }//GEN-LAST:event_btnCasaMouseExited
 
     private void txtBarrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtBarrasMouseClicked
         if (MenuPlegable.getX()==-150) {
@@ -978,7 +820,71 @@ public class VRutas_Envios extends javax.swing.JFrame {
         } else if(MenuPlegable.getX() == 0) {
             desplace.desplazarIzquierda(MenuPlegable, MenuPlegable.getX(), -150, 15, 10);
         }
+
     }//GEN-LAST:event_txtBarrasMouseClicked
+
+    //BTN_REACCION_CURSOR////////////////////////////////////////////////////////////
+    private void btnCasaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseExited
+        btnCasa.setBackground(new Color(64,81,115));  
+    }//GEN-LAST:event_btnCasaMouseExited
+
+    private void btnCasaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseEntered
+        btnCasa.setBackground(new Color(45,40,37));   
+
+    }//GEN-LAST:event_btnCasaMouseEntered
+
+    private void btnProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseEntered
+        btnProducto.setBackground(new Color(45,40,37));      
+    }//GEN-LAST:event_btnProductoMouseEntered
+
+    private void btnProductoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseExited
+        btnProducto.setBackground(new Color(64,81,115));
+    }//GEN-LAST:event_btnProductoMouseExited
+
+    private void btnClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseExited
+        btnCliente.setBackground(new Color(64,81,115));
+    }//GEN-LAST:event_btnClienteMouseExited
+
+    private void btnClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseEntered
+        btnCliente.setBackground(new Color(45,40,37));
+    }//GEN-LAST:event_btnClienteMouseEntered
+
+    private void btnBitacoraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitacoraMouseExited
+        btnBitacora.setBackground(new Color(64,81,115));
+    }//GEN-LAST:event_btnBitacoraMouseExited
+
+    private void btnBitacoraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitacoraMouseEntered
+        btnBitacora.setBackground(new Color(45,40,37));
+    }//GEN-LAST:event_btnBitacoraMouseEntered
+
+    private void btnTrabajadorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadorMouseExited
+        btnTrabajador.setBackground(new Color(64,81,115));
+    }//GEN-LAST:event_btnTrabajadorMouseExited
+
+    private void btnTrabajadorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadorMouseEntered
+        btnTrabajador.setBackground(new Color(45,40,37));
+    }//GEN-LAST:event_btnTrabajadorMouseEntered
+
+    private void btnRutaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseExited
+        btnRuta.setBackground(new Color(64,81,115));
+    }//GEN-LAST:event_btnRutaMouseExited
+
+    private void btnRutaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseEntered
+        btnRuta.setBackground(new Color(45,40,37));
+    }//GEN-LAST:event_btnRutaMouseEntered
+
+    private void btnBodegaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseExited
+        btnBodega.setBackground(new Color(64,81,115));
+    }//GEN-LAST:event_btnBodegaMouseExited
+
+    private void btnBodegaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseEntered
+        btnBodega.setBackground(new Color(45,40,37));
+    }//GEN-LAST:event_btnBodegaMouseEntered
+
+    //BTN_MOVIMIENTO///////////////////////////////////////////////////////////////
+    private void btnCasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseClicked
+        
+    }//GEN-LAST:event_btnCasaMouseClicked
 
     private void btnProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseClicked
         int resultado = 0;
@@ -1001,60 +907,10 @@ public class VRutas_Envios extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "error boton producto//bodega" + oe.toString());
         }
 
-        //        VProducto producto = new VProducto();
-        //        producto.NIT();
-        //        this.dispose();
+//        VProducto producto = new VProducto();
+//        producto.NIT();
+//        this.dispose();
     }//GEN-LAST:event_btnProductoMouseClicked
-
-    private void btnProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseEntered
-        btnProducto.setBackground(new Color(45,40,37));
-    }//GEN-LAST:event_btnProductoMouseEntered
-
-    private void btnProductoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseExited
-        btnProducto.setBackground(new Color(64,81,115));
-    }//GEN-LAST:event_btnProductoMouseExited
-
-    private void btnTrabajadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadorMouseClicked
-        VEmpleados empleados = new VEmpleados();
-        empleados.INIT();
-        this.dispose();
-    }//GEN-LAST:event_btnTrabajadorMouseClicked
-
-    private void btnTrabajadorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadorMouseEntered
-        btnTrabajador.setBackground(new Color(45,40,37));
-    }//GEN-LAST:event_btnTrabajadorMouseEntered
-
-    private void btnTrabajadorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadorMouseExited
-        btnTrabajador.setBackground(new Color(64,81,115));
-    }//GEN-LAST:event_btnTrabajadorMouseExited
-
-    private void btnBodegaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseClicked
-        VBodega bodegas = new VBodega();
-        bodegas.INIT();
-        this.dispose();
-    }//GEN-LAST:event_btnBodegaMouseClicked
-
-    private void btnBodegaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseEntered
-        btnBodega.setBackground(new Color(45,40,37));
-    }//GEN-LAST:event_btnBodegaMouseEntered
-
-    private void btnBodegaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseExited
-        btnBodega.setBackground(new Color(64,81,115));
-    }//GEN-LAST:event_btnBodegaMouseExited
-
-    private void btnBitacoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitacoraMouseClicked
-        VBitacora bitacora = new VBitacora();
-        bitacora.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_btnBitacoraMouseClicked
-
-    private void btnBitacoraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitacoraMouseEntered
-        btnBitacora.setBackground(new Color(45,40,37));
-    }//GEN-LAST:event_btnBitacoraMouseEntered
-
-    private void btnBitacoraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitacoraMouseExited
-        btnBitacora.setBackground(new Color(64,81,115));
-    }//GEN-LAST:event_btnBitacoraMouseExited
 
     private void btnClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseClicked
         VCliente vista= new VCliente();
@@ -1062,25 +918,45 @@ public class VRutas_Envios extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnClienteMouseClicked
 
-    private void btnClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseEntered
-        btnCliente.setBackground(new Color(45,40,37));
-    }//GEN-LAST:event_btnClienteMouseEntered
+    private void btnBitacoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBitacoraMouseClicked
+        VBitacora bitacora = new VBitacora();
+        bitacora.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnBitacoraMouseClicked
 
-    private void btnClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseExited
-        btnCliente.setBackground(new Color(64,81,115));
-    }//GEN-LAST:event_btnClienteMouseExited
+    private void btnTrabajadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrabajadorMouseClicked
+        VEmpleados empleados = new VEmpleados();
+        empleados.INIT();
+        this.dispose();
+    }//GEN-LAST:event_btnTrabajadorMouseClicked
 
     private void btnRutaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseClicked
+        int resultado = 0;
+        String sql = "select idProducto from tbProductos";
+        try {
+            Statement sta = CConexion.getConexion().createStatement();
+            ResultSet rs = sta.executeQuery(sql);
+            if (rs.next()) {
+                resultado = 1;
+                if (resultado == 1) {
+                    VRutas_DatosDis vista = new VRutas_DatosDis();
+                    vista.INIT();
+                    this.dispose();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Agrege un producto para continuar");
+            }
 
+        } catch (Exception oe) {
+            JOptionPane.showMessageDialog(null, "error 1" + oe.toString());
+        }
     }//GEN-LAST:event_btnRutaMouseClicked
 
-    private void btnRutaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseEntered
-        btnRuta.setBackground(new Color(45,40,37));
-    }//GEN-LAST:event_btnRutaMouseEntered
-
-    private void btnRutaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseExited
-        btnRuta.setBackground(new Color(64,81,115));
-    }//GEN-LAST:event_btnRutaMouseExited
+    private void btnBodegaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBodegaMouseClicked
+        VBodega bodegas = new VBodega();
+        bodegas.INIT();
+        this.dispose();
+    }//GEN-LAST:event_btnBodegaMouseClicked
 
     private void btnVehiculosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculosMouseClicked
         VVehiculo_Taller vista =new VVehiculo_Taller();
@@ -1113,18 +989,135 @@ public class VRutas_Envios extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSalirMouseExited
 
+    private void btnPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPerfilMouseClicked
+        VPerfil vista = new VPerfil();
+        vista.INIT();
+        this.dispose();
+    }//GEN-LAST:event_btnPerfilMouseClicked
+
+    private void btnPerfilMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPerfilMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPerfilMouseEntered
+
+    private void btnPerfilMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPerfilMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPerfilMouseExited
+
+    private void btnVehiculoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculoMouseClicked
+        VMain_Vehiculos vista = new VMain_Vehiculos();
+        vista.INIT();
+        this.dispose();
+    }//GEN-LAST:event_btnVehiculoMouseClicked
+
+    private void btnVehiculoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculoMouseEntered
+        btnVehiculo.setBackground(new Color(45,40,37));
+        txtSub1.setForeground(Color.white);
+    }//GEN-LAST:event_btnVehiculoMouseEntered
+
+    private void btnVehiculoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculoMouseExited
+        btnVehiculo.setBackground(new Color(172,147,110));
+        txtSub1.setForeground(new Color(45,40,37));
+    }//GEN-LAST:event_btnVehiculoMouseExited
+
+    private void btnTiendasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTiendasMouseClicked
+
+    }//GEN-LAST:event_btnTiendasMouseClicked
+
+    private void btnTiendasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTiendasMouseEntered
+//        btnSubCliente.setBackground(new Color(45,40,37));
+        txtSub.setForeground(Color.white);
+    }//GEN-LAST:event_btnTiendasMouseEntered
+
+    private void btnTiendasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTiendasMouseExited
+//        btnSubCliente.setBackground(new Color(172,147,110));
+        txtSub.setForeground(new Color(45,40,37));
+    }//GEN-LAST:event_btnTiendasMouseExited
+
+    private void btnRutasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutasMouseClicked
+        VMain_Rutas vista = new VMain_Rutas();
+        vista.INIT();
+        this.dispose();
+    }//GEN-LAST:event_btnRutasMouseClicked
+
+    private void btnRutasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutasMouseEntered
+        btnRutas.setBackground(new Color (45,40,37));
+        txtDatos.setForeground(Color.white);
+    }//GEN-LAST:event_btnRutasMouseEntered
+
+    private void btnRutasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutasMouseExited
+        btnRutas.setBackground(new Color (172,147,110));
+        txtDatos.setForeground(Color.BLACK);
+    }//GEN-LAST:event_btnRutasMouseExited
+
+    private void btnRestablecerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRestablecerMouseClicked
+
+    }//GEN-LAST:event_btnRestablecerMouseClicked
+
+    private void tbTiendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbTiendaMouseClicked
+        
+    }//GEN-LAST:event_tbTiendaMouseClicked
+
+    private void btnBuscarcmxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarcmxMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarcmxMouseClicked
+
+    private void moverseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_moverseMouseClicked
+        int resultado = 0;
+        String sql = "select idCliente from tbClientes";
+        try {
+            Statement sta = CConexion.getConexion().createStatement();
+            ResultSet rs = sta.executeQuery(sql);
+            if (rs.next()) {
+                resultado = 1;
+                if (resultado == 1) {
+                    int resultado2 = 0;
+                    String sql2 = "select idTienda from tbTiendas";
+                    try {
+                        Statement sta2 = CConexion.getConexion().createStatement();
+                        ResultSet rs2 = sta2.executeQuery(sql2);
+                        if (rs2.next()) {
+                            resultado2 = 1;
+                            if (resultado == 1) {
+                                VCliente_DatosTiendas vista = new VCliente_DatosTiendas();
+                                vista.INIT();
+                                this.dispose();
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Agrege una tienda para continuar");
+                        }
+
+                    } catch (Exception oe) {
+                        JOptionPane.showMessageDialog(null, "error boton cliente//datos" + oe.toString());
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Agrege un cliente para continuar");
+            }
+
+        } catch (Exception oe) {
+            JOptionPane.showMessageDialog(null, "error boton cliente//datos" + oe.toString());
+        }
+    }//GEN-LAST:event_moverseMouseClicked
+
+    /**
+     * @param args the command line arguments
+     */
+    
     
     public void INIT(){
-        VRutas_Envios vista = new VRutas_Envios();
-        VMain_Rutas main= new VMain_Rutas();
-        CRutas_Envios Cvista = new CRutas_Envios();
-        REnvios Rvista = new REnvios();
-        ctrlEnvios ctrl = new ctrlEnvios(vista, main, modelo, Rvista, Cvista);
-        modelo.MostrarTabla(vista);
-        vista.setVisible(true);
+        VMain main= new VMain();
+        VCliente_DatosTiendas vista =new VCliente_DatosTiendas();
+        CCliente_DatosTiendas Cvista =new CCliente_DatosTiendas();
+        RTiendas Rvista =new RTiendas();
+        UTiendas vistaU =new UTiendas();
+        ctrlDatosTiendas control=new ctrlDatosTiendas(vista, main, modelo, Cvista, Rvista, vistaU);
+        modelo.MostrarTablaM(main);
+        main.setVisible(true);
+        System.out.println("nombre es "+usuarios.getUsr_nombre());
+//        txtNombre.setText(modelo.getNombreUsr());
     }
     
-        public static void main(String args[]) {
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -1138,20 +1131,14 @@ public class VRutas_Envios extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VRutas_Envios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VRutas_Envios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VRutas_Envios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VRutas_Envios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -1160,18 +1147,6 @@ public class VRutas_Envios extends javax.swing.JFrame {
             public void run() {
             }
         });
-    }
-        
-            public void transpareciaBoton(){
-        btnAgregar.setOpaque(false);        
-        btnAgregar.setContentAreaFilled(false);
-        btnAgregar.setBorderPainted(false);
-        btnEliminar.setOpaque(false);        
-        btnEliminar.setContentAreaFilled(false);
-        btnEliminar.setBorderPainted(false);
-        btnModificarMP.setOpaque(false);        
-        btnModificarMP.setContentAreaFilled(false);
-        btnModificarMP.setBorderPainted(false);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1183,59 +1158,48 @@ public class VRutas_Envios extends javax.swing.JFrame {
     private javax.swing.JLabel Productoicon;
     private javax.swing.JLabel Rutaicon;
     private javax.swing.JLabel Trabajadoricon;
-    private Vista.PanelCurvas agregar1;
-    public javax.swing.JButton btnAgregar;
     private Vista.PanelCurvas btnBitacora;
     private Vista.PanelCurvas btnBodega;
+    public javax.swing.JButton btnBuscarcmx;
     private Vista.PanelCurvas btnCasa;
     private Vista.PanelCurvas btnCliente;
-    private Vista.PanelCurvas btnDistribucion;
-    public javax.swing.JButton btnEliminar;
-    public javax.swing.JButton btnModificarMP;
+    private Vista.PanelCurvas btnPerfil;
     private Vista.PanelCurvas btnProducto;
+    public javax.swing.JButton btnRestablecer;
     private Vista.PanelCurvas btnRuta;
+    private Vista.PanelCurvas btnRutas;
     private Vista.PanelCurvas btnSalir;
+    private Vista.PanelCurvas btnTiendas;
     private Vista.PanelCurvas btnTrabajador;
-    private Vista.PanelCurvas btnUsuarios;
-    private Vista.PanelCurvas btnUsuarios1;
+    private Vista.PanelCurvas btnVehiculo;
     private Vista.PanelCurvas btnVehiculos;
-    private Vista.PanelCurvas eliminar1;
     private javax.swing.JLabel icoCarro;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JComboBox<String> jcbEmpleado;
-    public javax.swing.JComboBox<String> jcbEstado;
-    public javax.swing.JComboBox<String> jcbPaquete;
-    public javax.swing.JComboBox<String> jcbUsuario;
-    public javax.swing.JComboBox<String> jcbVehiculo;
+    public javax.swing.JComboBox<String> jcbBuscador;
     private javax.swing.JPanel jpSubMenu;
     private javax.swing.JLabel logOut;
-    private Vista.PanelCurvas modificar1;
-    private Vista.PanelCurvas panelCurvas1;
-    private Vista.PanelCurvas panelCurvas2;
-    public javax.swing.JTable tbEnvios;
+    public javax.swing.JButton moverse;
+    private Vista.PanelCurvas moversee;
+    private javax.swing.JLabel perfil;
+    private Vista.PanelCurvas restablcer;
+    public javax.swing.JTable tbTienda;
     private javax.swing.JLabel txtBarras;
     private javax.swing.JLabel txtBitacora;
     private javax.swing.JLabel txtBitacora1;
+    private javax.swing.JLabel txtBitacora2;
     private javax.swing.JLabel txtBodega;
     private javax.swing.JLabel txtCasa;
     private javax.swing.JLabel txtCliente;
     private javax.swing.JLabel txtCliente2;
+    private javax.swing.JLabel txtDatos;
     private javax.swing.JLabel txtEmpleado;
-    public javax.swing.JTextField txtFecha;
     private javax.swing.JLabel txtLogo;
     private javax.swing.JLabel txtRuta;
     private javax.swing.JLabel txtSub;
     private javax.swing.JLabel txtSub1;
-    private javax.swing.JLabel txtSub3;
     private javax.swing.JLabel txtproducto;
     // End of variables declaration//GEN-END:variables
 }

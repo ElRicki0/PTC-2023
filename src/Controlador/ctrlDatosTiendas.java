@@ -3,6 +3,7 @@ package Controlador;
 import Vista.VCliente_DatosTiendas;
 import Modelo.*;
 import Vista.Controlador.CCliente_DatosTiendas;
+import Vista.VMain;
 import Vista.Repartidor.RTiendas;
 import Vista.Usuario.UTiendas;
 import java.awt.event.ActionEvent;
@@ -12,14 +13,16 @@ import javax.swing.JOptionPane;
 public class ctrlDatosTiendas implements ActionListener {
 
     private VCliente_DatosTiendas vistaDatos;
+    private VMain vistaMain;
     private CCliente_DatosTiendas CvistaDatos;
     private RTiendas RvistaDatos;
     private UTiendas UvistaDatos;
     private DatosTiendas modeloDatos;
 
-    public ctrlDatosTiendas(VCliente_DatosTiendas vistaDatos, DatosTiendas modeloDatos, CCliente_DatosTiendas CvistaDatos, RTiendas RvistaDatos, UTiendas UvistaDatos) {
+    public ctrlDatosTiendas(VCliente_DatosTiendas vistaDatos, VMain vistaMain, DatosTiendas modeloDatos, CCliente_DatosTiendas CvistaDatos, RTiendas RvistaDatos, UTiendas UvistaDatos) {
         this.modeloDatos = modeloDatos;
         this.vistaDatos = vistaDatos;
+        this.vistaMain = vistaMain;
         this.CvistaDatos = CvistaDatos;
         this.RvistaDatos = RvistaDatos;
         this.UvistaDatos = UvistaDatos;
@@ -28,6 +31,8 @@ public class ctrlDatosTiendas implements ActionListener {
         this.vistaDatos.btnEliminar_TN.addActionListener(this);
         this.vistaDatos.btnModificar_CL.addActionListener(this);
         this.vistaDatos.btnRestablecer.addActionListener(this);
+        this.vistaMain.btnRestablecer.addActionListener(this);
+        this.vistaMain.btnBuscarcmx.addActionListener(this);
         this.vistaDatos.btnBuscarcmx.addActionListener(this);
     ///////////Controlador////////////////////////////////////////////////////////////
         this.CvistaDatos.btnAgregar_CL.addActionListener(this);
@@ -109,6 +114,13 @@ public class ctrlDatosTiendas implements ActionListener {
         if (e.getSource() == vistaDatos.btnRestablecer) {
             modeloDatos.MostrarTabla(vistaDatos);
         }
+        if (e.getSource() == vistaMain.btnBuscarcmx) {
+            modeloDatos.ABuscadorM(vistaMain);
+        }
+        if (e.getSource() == vistaMain.btnRestablecer) {
+            modeloDatos.MostrarTablaM(vistaMain);
+        }
+        
 
         ////////////////Controlador///////////////////////////////////////////////////////
         if (e.getSource() == CvistaDatos.btnAgregar_CL) {

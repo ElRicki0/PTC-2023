@@ -192,7 +192,7 @@ public class usuarios {
                     if (nivelU.equals("1")) {
                         LoginPTC vista = new LoginPTC();
                         vista.dispose();
-                        Main main = new Main();
+                        VMain main = new VMain();
                         main.INIT();
                         if (contraseñaAlmacenada.matches("9b8769a4a742959a2d0298c36fb70623f2dfacda8436237df08d8dfd5b37374c")) {
                             ActContra vistaContra = new ActContra();
@@ -447,6 +447,20 @@ public class usuarios {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Seleccione un valor a modificar ");
         }
+    }
+    
+    public void MostrarNombre(){
+        try {
+            Statement st = CConexion.getConexion().createStatement();
+            String sql = "SELECT E.emp_nombre AS NombreEmpleadoFROM tbUsuarios AS UINNER JOIN tbEmpleados AS E ON U.idEmpleado = E.idEmpleadoWHERE U.usr_nombre = '"+usuarios.getUsr_nombre()+"';";
+            ResultSet rs = st.executeQuery(sql);
+            if (rs.next()) {                 
+                String Usuario = rs.getString("emp_nombre");
+                System.out.println("");
+            }
+        } catch (Exception e) {
+        }
+        
     }
 
     /////////////////////////Controlador/////////////////////////////////////////////////////

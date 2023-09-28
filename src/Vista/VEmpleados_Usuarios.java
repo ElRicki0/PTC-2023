@@ -963,7 +963,7 @@ public class VEmpleados_Usuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUsuarios1MouseExited
 
     private void btnCasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseClicked
-        Main vista = new Main();
+        VMain vista = new VMain();
         vista.INIT();
         this.dispose();
     }//GEN-LAST:event_btnCasaMouseClicked

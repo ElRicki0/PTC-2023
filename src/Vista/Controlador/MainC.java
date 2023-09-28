@@ -8,6 +8,7 @@ package Vista.Controlador;
 import Vista.*;
 import Modelo.CConexion;
 import Modelo.productos;
+import Modelo.usuarios;
 import Vista.Repartidor.RProducto;
 import javax.swing.ImageIcon;
 import desplazable.Desface;
@@ -36,6 +37,8 @@ public class MainC extends javax.swing.JFrame {
         rsscalelabel.RSScaleLabel.setScaleLabel(icoCarro, "src/Vista/Iconos/vehiculo.png");
         
         desplace = new Desface();
+
+        Nombrelbl.setText(usuarios.getUsr_nombre());
         
         this.setLocationRelativeTo(null);
     }
@@ -81,6 +84,7 @@ public class MainC extends javax.swing.JFrame {
         logOut = new javax.swing.JLabel();
         txtBitacora2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        Nombrelbl = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1080, 760));
@@ -500,6 +504,9 @@ public class MainC extends javax.swing.JFrame {
         jLabel1.setText("Controlador");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 200, -1));
 
+        Nombrelbl.setText("-----");
+        jPanel1.add(Nombrelbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 220, 90, 50));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -734,6 +741,7 @@ public class MainC extends javax.swing.JFrame {
     private javax.swing.JLabel Casaicon;
     private javax.swing.JLabel Clienteicon;
     private javax.swing.JPanel MenuPlegable;
+    private javax.swing.JLabel Nombrelbl;
     private javax.swing.JLabel Productoicon;
     private javax.swing.JLabel Rutaicon;
     private javax.swing.JLabel Trabajadoricon;

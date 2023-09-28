@@ -122,7 +122,7 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
         btnModificar_CL = new javax.swing.JButton();
         eliminar = new Vista.PanelCurvas();
         btnEliminar_TN = new javax.swing.JButton();
-        modificar1 = new Vista.PanelCurvas();
+        restablcer = new Vista.PanelCurvas();
         btnRestablecer = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -915,11 +915,11 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
 
         jPanel1.add(eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 715, -1, -1));
 
-        modificar1.setBackground(new java.awt.Color(172, 147, 110));
-        modificar1.setRoundBottomLeft(25);
-        modificar1.setRoundBottomRight(25);
-        modificar1.setRoundTopLeft(25);
-        modificar1.setRoundTopRight(25);
+        restablcer.setBackground(new java.awt.Color(172, 147, 110));
+        restablcer.setRoundBottomLeft(25);
+        restablcer.setRoundBottomRight(25);
+        restablcer.setRoundTopLeft(25);
+        restablcer.setRoundTopRight(25);
 
         btnRestablecer.setFont(new java.awt.Font("Leelawadee UI", 1, 23)); // NOI18N
         btnRestablecer.setForeground(new java.awt.Color(51, 51, 51));
@@ -930,18 +930,18 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout modificar1Layout = new javax.swing.GroupLayout(modificar1);
-        modificar1.setLayout(modificar1Layout);
-        modificar1Layout.setHorizontalGroup(
-            modificar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout restablcerLayout = new javax.swing.GroupLayout(restablcer);
+        restablcer.setLayout(restablcerLayout);
+        restablcerLayout.setHorizontalGroup(
+            restablcerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(btnRestablecer, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
         );
-        modificar1Layout.setVerticalGroup(
-            modificar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        restablcerLayout.setVerticalGroup(
+            restablcerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(btnRestablecer)
         );
 
-        jPanel1.add(modificar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 715, -1, 60));
+        jPanel1.add(restablcer, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 715, -1, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1214,17 +1214,18 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirMouseExited
 
     private void MenuPlegableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuPlegableMouseClicked
-        Main vista = new Main();
+        VMain vista = new VMain();
         vista.INIT();
         this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_MenuPlegableMouseClicked
 
     public void INIT(){
+        VMain main= new VMain();
         VCliente_DatosTiendas vista =new VCliente_DatosTiendas();
         CCliente_DatosTiendas Cvista =new CCliente_DatosTiendas();
         RTiendas Rvista =new RTiendas();
         UTiendas vistaU =new UTiendas();
-        ctrlDatosTiendas control=new ctrlDatosTiendas(vista, modelo, Cvista, Rvista, vistaU);
+        ctrlDatosTiendas control=new ctrlDatosTiendas(vista, main, modelo, Cvista, Rvista, vistaU);
         
         vista.setVisible(true);
         modelo.MostrarTabla(vista);
@@ -1324,10 +1325,10 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
     private javax.swing.JPanel jpSubMenu;
     private javax.swing.JLabel logOut;
     private Vista.PanelCurvas modificar;
-    private Vista.PanelCurvas modificar1;
     private Vista.PanelCurvas panelCurvas1;
     private Vista.PanelCurvas panelCurvas2;
     private Vista.PanelCurvas panelCurvas6;
+    private Vista.PanelCurvas restablcer;
     public javax.swing.JTable tbTienda;
     private javax.swing.JLabel txtBarras;
     private javax.swing.JLabel txtBitacora;

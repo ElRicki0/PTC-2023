@@ -1255,7 +1255,7 @@ public class VCliente_Tiendas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirMouseExited
 
     private void MenuPlegableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuPlegableMouseClicked
-        Main vista = new Main();
+        VMain vista = new VMain();
         vista.INIT();
         this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_MenuPlegableMouseClicked

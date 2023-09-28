@@ -8,6 +8,7 @@ package Modelo;
 import Vista.Controlador.CRutas_Envios;
 import Vista.Repartidor.REnvios;
 import Vista.Usuario.UEnvios;
+import Vista.VMain_Rutas;
 import Vista.VRutas_Envios;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -285,6 +286,23 @@ public class BitacoraDistribuciones {
 
         }
     }
+    
+    public void RellenarBuscadorCBX(JComboBox combo){
+        combo.removeAllItems();
+        String sql = "select Estado from tbEstadoEntrega";
+        Statement st;
+        CConexion con = new CConexion();
+        Connection conexion = con.getConexion();
+        try {
+            st = conexion.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                combo.addItem(rs.getString("Estado"));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error en Estado distribucion buscador  " + e.toString());
+        }
+    }
 
     ///////////////////////Admin////////////////////////////////////////////////
     public void MostrarTabla(VRutas_Envios vista) {
@@ -443,6 +461,50 @@ public class BitacoraDistribuciones {
         }
     }
 
+    public void MostrarTablaM(VMain_Rutas vista) {
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(new Object[]{"ID", "Fecha entrega", "Empleado ENC", "usuario ENC", "matricula vehiculo", "Paqueteria", "Estado entrega"});
+        try {
+            Statement st = CConexion.getConexion().createStatement();
+            String sql = "select idBitacoraDistribucion, FechaEntrega, tbEmpleados.emp_nombre, tbUsuarios.usr_nombre, tbVehiculos.vehi_Matricula, tbPaqueteria.pqt_Nombre, tbEstadoEntrega.Estado from tbBitacoraDistribuciones \n"
+                    + "inner join tbEmpleados		on tbBitacoraDistribuciones.idEmpleado=tbEmpleados.idEmpleado\n"
+                    + "inner join tbUsuarios		on tbBitacoraDistribuciones.idUsuario=tbUsuarios.idUsuario\n"
+                    + "inner join tbVehiculos		on tbBitacoraDistribuciones.idVehiculo= tbVehiculos.idVehiculo\n"
+                    + "inner join tbPaqueteria		on tbBitacoraDistribuciones.idPaqueteria=tbPaqueteria.idPaqueteria\n"
+                    + "inner join tbEstadoEntrega            on tbBitacoraDistribuciones.idEstado=tbEstadoEntrega.idEstado";
+            ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                modelo.addRow(new Object[]{rs.getInt("idBitacoraDistribucion"), rs.getDate("FechaEntrega"), rs.getString("emp_nombre"), rs.getString("usr_nombre"), rs.getString("vehi_Matricula"), rs.getString("pqt_Nombre"), rs.getString("Estado")});
+            }
+            vista.tbEnvios.setModel(modelo); // Corregir el nombre de la tabla
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error tabla usuarios " + e.getMessage());
+        }
+    }
+    
+    public void BuscarTablaM(VMain_Rutas vista) {
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(new Object[]{"ID", "Fecha entrega", "Empleado ENC", "usuario ENC", "matricula vehiculo", "Paqueteria", "Estado entrega"});
+        try {
+            Statement st = CConexion.getConexion().createStatement();
+            String sql = "select idBitacoraDistribucion, FechaEntrega, tbEmpleados.emp_nombre, tbUsuarios.usr_nombre, tbVehiculos.vehi_Matricula, tbPaqueteria.pqt_Nombre, tbEstadoEntrega.Estado from tbBitacoraDistribuciones \n"
+                    + "inner join tbEmpleados		on tbBitacoraDistribuciones.idEmpleado=tbEmpleados.idEmpleado\n"
+                    + "inner join tbUsuarios		on tbBitacoraDistribuciones.idUsuario=tbUsuarios.idUsuario\n"
+                    + "inner join tbVehiculos		on tbBitacoraDistribuciones.idVehiculo= tbVehiculos.idVehiculo\n"
+                    + "inner join tbPaqueteria		on tbBitacoraDistribuciones.idPaqueteria=tbPaqueteria.idPaqueteria\n"
+                    + "inner join tbEstadoEntrega            on tbBitacoraDistribuciones.idEstado=tbEstadoEntrega.idEstado where tbEstadoEntrega.Estado= '"+vista.jcbEstado.getSelectedItem()+"'";
+            ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                modelo.addRow(new Object[]{rs.getInt("idBitacoraDistribucion"), rs.getDate("FechaEntrega"), rs.getString("emp_nombre"), rs.getString("usr_nombre"), rs.getString("vehi_Matricula"), rs.getString("pqt_Nombre"), rs.getString("Estado")});
+            }
+            vista.tbEnvios.setModel(modelo); // Corregir el nombre de la tabla
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error tabla usuarios " + e.getMessage());
+        }
+    }
+    
     ////////////Controlador///////////////////////////////////////////////////////////
     public void CMostrarTabla(CRutas_Envios vista) {
         DefaultTableModel modelo = new DefaultTableModel();

@@ -331,7 +331,7 @@ public class LoginPTC extends javax.swing.JFrame {
     public void INIT(){
         usuarios modeloUsuario = new usuarios();
         LoginPTC vistaLogin = new LoginPTC(); 
-        Main main = new Main();
+        VMain main = new VMain();
         ctrlEncriptacion encript = new ctrlEncriptacion();
         ctrlLogin controlador = new ctrlLogin(modeloUsuario, vistaLogin, main, encript);
         vistaLogin.setVisible(true);
@@ -351,7 +351,7 @@ public class LoginPTC extends javax.swing.JFrame {
                 String l = rs.getString("idNivelUser");
                 if (pass.equals(p)) {
                     if (l.equals("1")) {
-                        Main main = new Main();
+                        VMain main = new VMain();
                         main.INIT();
                         this.dispose();
                     }

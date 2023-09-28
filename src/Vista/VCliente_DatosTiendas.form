@@ -1352,7 +1352,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="Vista.PanelCurvas" name="modificar1">
+        <Container class="Vista.PanelCurvas" name="restablcer">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="6e" green="93" red="ac" type="rgb"/>

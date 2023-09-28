@@ -1120,7 +1120,7 @@ public class VVehiculo_Mantenimiento extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRestaurarMouseClicked
 
     private void btnCasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseClicked
-        Main vista = new Main();
+        VMain vista = new VMain();
         vista.INIT();
         this.dispose();
     }//GEN-LAST:event_btnCasaMouseClicked

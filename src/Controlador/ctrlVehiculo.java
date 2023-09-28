@@ -4,6 +4,7 @@ import Modelo.vehiculos;
 import Vista.Controlador.CVehiculo;
 import Vista.Repartidor.RVehiculos;
 import Vista.Usuario.UVehiculos;
+import Vista.VMain_Vehiculos;
 import Vista.VVehiculo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,14 +17,16 @@ import javax.swing.JOptionPane;
 public class ctrlVehiculo implements ActionListener {
 
     private VVehiculo vistaVehiculo;
+    private VMain_Vehiculos VistaM;
     private CVehiculo CvistaVehiculo;
     private RVehiculos RvistaVehiculo;
     private UVehiculos UvistaVehiculo;
     private vehiculos modeloVehiculo;
 
-    public ctrlVehiculo(VVehiculo vistaVehiculo, vehiculos modeloVehiculo, CVehiculo CvistaVehiculo, RVehiculos RvistaVehiculo, UVehiculos UvistaVehiculo) {
+    public ctrlVehiculo(VVehiculo vistaVehiculo, VMain_Vehiculos vistaM,  vehiculos modeloVehiculo, CVehiculo CvistaVehiculo, RVehiculos RvistaVehiculo, UVehiculos UvistaVehiculo) {
         this.modeloVehiculo = modeloVehiculo;
         this.vistaVehiculo = vistaVehiculo;
+        this.VistaM = vistaM;
         this.CvistaVehiculo = CvistaVehiculo;
         this.RvistaVehiculo = RvistaVehiculo;
         this.UvistaVehiculo = UvistaVehiculo;
@@ -33,6 +36,8 @@ public class ctrlVehiculo implements ActionListener {
         this.vistaVehiculo.btnModificarMP.addActionListener(this);
         this.vistaVehiculo.btnRestaurar.addActionListener(this);
         this.vistaVehiculo.btnBuscar.addActionListener(this);
+        this.VistaM.btnRestaurar.addActionListener(this);
+        this.VistaM.btnBuscar.addActionListener(this);
     /////////////Controlador//////////////////////////////////////////////////////////
         this.CvistaVehiculo.btnAgregar.addActionListener(this);
         this.CvistaVehiculo.btnEliminar.addActionListener(this);
@@ -93,6 +98,12 @@ public class ctrlVehiculo implements ActionListener {
         if (e.getSource() == vistaVehiculo.btnBuscar) {
             modeloVehiculo.Buscador(vistaVehiculo);
         }
+        if (e.getSource() == VistaM.btnBuscar) {
+            modeloVehiculo.BuscadorM(VistaM);
+        }
+        if (e.getSource() == VistaM.btnRestaurar) {
+            modeloVehiculo.MostrarTablaM(VistaM);
+        }
         //////////////////Controlador/////////////////////////////////////////////////////
         if (e.getSource() == vistaVehiculo.btnAgregar) {
             String texto1 = vistaVehiculo.txtMatricula.getText();
@@ -152,6 +163,7 @@ public class ctrlVehiculo implements ActionListener {
             modeloVehiculo.UBuscador(UvistaVehiculo);
         }
 //        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    
 
+    }
 }

@@ -1218,11 +1218,12 @@ public class CCliente_DatosTiendas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirMouseExited
 
     public void INIT(){
+        VMain main= new VMain();
         VCliente_DatosTiendas vista =new VCliente_DatosTiendas();
         CCliente_DatosTiendas Cvista =new CCliente_DatosTiendas();
         RTiendas Rvista =new RTiendas();
         UTiendas vistaU =new UTiendas();
-        ctrlDatosTiendas control=new ctrlDatosTiendas(vista, modelo, Cvista, Rvista, vistaU);
+        ctrlDatosTiendas control=new ctrlDatosTiendas(vista, main, modelo, Cvista, Rvista, vistaU);
         
         Cvista.setVisible(true);
         modelo.CMostrarTabla(Cvista);

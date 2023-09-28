@@ -512,7 +512,7 @@ public class VBodega extends javax.swing.JFrame {
 
         MenuPlegable.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 750, 230, 53));
 
-        jPanel1.add(MenuPlegable, new org.netbeans.lib.awtextra.AbsoluteConstraints(-150, 0, 230, 900));
+        jPanel1.add(MenuPlegable, new org.netbeans.lib.awtextra.AbsoluteConstraints(-150, 0, 230, 810));
 
         jScrollPane1.setBackground(new java.awt.Color(172, 147, 110));
 
@@ -537,7 +537,7 @@ public class VBodega extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tbBodegas);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 560, 640));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 560, 560));
 
         jLabel2.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
@@ -672,7 +672,7 @@ public class VBodega extends javax.swing.JFrame {
         jLabel8.setText("Informacion");
         panelCurvas1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 167, 41));
 
-        jPanel1.add(panelCurvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 240, 410, 440));
+        jPanel1.add(panelCurvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 180, 410, 440));
 
         agregar.setBackground(new java.awt.Color(172, 147, 110));
         agregar.setRoundBottomLeft(25);
@@ -709,7 +709,7 @@ public class VBodega extends javax.swing.JFrame {
                 .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 810, -1, 60));
+        jPanel1.add(agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 700, -1, 60));
 
         eliminar.setBackground(new java.awt.Color(172, 147, 110));
         eliminar.setRoundBottomLeft(25);
@@ -739,7 +739,7 @@ public class VBodega extends javax.swing.JFrame {
                 .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 810, -1, -1));
+        jPanel1.add(eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 700, -1, -1));
 
         modificar.setBackground(new java.awt.Color(172, 147, 110));
         modificar.setRoundBottomLeft(25);
@@ -764,7 +764,7 @@ public class VBodega extends javax.swing.JFrame {
                 .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 810, 160, 60));
+        jPanel1.add(modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 700, 160, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -801,21 +801,7 @@ public class VBodega extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCorreo_bdgActionPerformed
 
     private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
-        //        String SQL = "insert into tbProductos (Prod_Nombre, Prod_idMarca, Prod_Unidades, Prod_PrecioUnitario, idBodega) values(?,?,?,?,?)";
-        //        try {
-            //            PreparedStatement AProducto = CConexion.getConexion().prepareStatement(SQL);
-            //            AProducto.setString (1, txtNombre_pdt.getText());
-            //            AProducto.setString(2,  jcbMarca_pdt.getSelectedItem().toString());
-            //            AProducto.setInt    (3, Integer.parseInt(txtUnidades_pdt.getText()) );
-            //            AProducto.setString (4, txtPrecioUnitario_pdt.getText());
-            //            AProducto.setString(5, jcbMarca_pdt.getSelectedItem().toString());
-            //            AProducto.executeUpdate();
-            //            JOptionPane.showMessageDialog(null, "El producto  se agrego correctamente");
-            //            MostrarProductos();
-            //        } catch (Exception e) {
-            //            JOptionPane.showMessageDialog(null, "Error "+ e.toString());
-            //        }
-
+        
     }//GEN-LAST:event_btnAgregarMouseClicked
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
@@ -827,7 +813,7 @@ public class VBodega extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnCasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseClicked
-        Main vista = new Main ();
+        VMain vista = new VMain ();
         vista.INIT();
         this.dispose();
     }//GEN-LAST:event_btnCasaMouseClicked

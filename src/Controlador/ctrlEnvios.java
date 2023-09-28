@@ -3,6 +3,7 @@ package Controlador;
 import Modelo.BitacoraDistribuciones;
 import Vista.Controlador.CRutas_Envios;
 import Vista.Repartidor.REnvios;
+import Vista.VMain_Rutas;
 import Vista.VRutas_Envios;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,18 +12,22 @@ import javax.swing.JOptionPane;
 public class ctrlEnvios implements ActionListener {
 
     private VRutas_Envios vistaEnvios;
+    private VMain_Rutas vistaM;
     private CRutas_Envios CvistaEnvios;
     private REnvios RvistaEnvios;
     private BitacoraDistribuciones modeloEnvios;
 
-    public ctrlEnvios(VRutas_Envios vistaEnvios, BitacoraDistribuciones modeloEnvios, REnvios RvistaEnvios, CRutas_Envios CvistaEnvios) {
+    public ctrlEnvios(VRutas_Envios vistaEnvios, VMain_Rutas vistaM, BitacoraDistribuciones modeloEnvios, REnvios RvistaEnvios, CRutas_Envios CvistaEnvios) {
         this.modeloEnvios = modeloEnvios;
         this.vistaEnvios = vistaEnvios;
+        this.vistaM = vistaM;
         this.RvistaEnvios = RvistaEnvios;
         this.CvistaEnvios = CvistaEnvios;
         this.vistaEnvios.btnAgregar.addActionListener(this);
         this.vistaEnvios.btnEliminar.addActionListener(this);
         this.vistaEnvios.btnModificarMP.addActionListener(this);
+        this.vistaM.btnBuscar.addActionListener(this);
+        this.vistaM.btnRestaurar.addActionListener(this);
         this.CvistaEnvios.btnAgregar.addActionListener(this);
         this.CvistaEnvios.btnEliminar.addActionListener(this);
         this.CvistaEnvios.btnModificarMP.addActionListener(this);
@@ -70,6 +75,12 @@ public class ctrlEnvios implements ActionListener {
             } else {
                 JOptionPane.showMessageDialog(null, "la fecha tiene que tener la estructura de ''año-mes-dia''");
             }
+        }
+        if (e.getSource()==vistaM.btnBuscar) {
+            modeloEnvios.BuscarTablaM(vistaM);
+        }
+        if (e.getSource()==vistaM.btnRestaurar) {
+            modeloEnvios.MostrarTablaM(vistaM);
         }
         ///////////////Controlador////////////////////////////////////////////////////////
         if (e.getSource() == CvistaEnvios.btnAgregar) {

@@ -546,11 +546,12 @@ public class RVehiculos extends javax.swing.JFrame {
 
     
     public void INIT(){
+        VMain_Vehiculos main= new VMain_Vehiculos();
         VVehiculo vista = new VVehiculo();
         CVehiculo Cvista = new CVehiculo();
         RVehiculos Rvista = new RVehiculos();
         UVehiculos Uvista = new UVehiculos();
-        ctrlVehiculo ctrl = new ctrlVehiculo(vista, modeloVehiculos, Cvista, Rvista, Uvista);
+        ctrlVehiculo ctrl = new ctrlVehiculo(vista, main, modeloVehiculos, Cvista, Rvista, Uvista);
         modeloVehiculos.RMostrarTabla(Rvista);
         Rvista.setVisible(true);
     }

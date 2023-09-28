@@ -994,7 +994,7 @@ public class VRutas_Paqueteria extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSubEnviosMouseExited
 
     private void btnCasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseClicked
-        Main vista = new Main();
+        VMain vista = new VMain();
         vista.INIT();
         this.dispose();
     }//GEN-LAST:event_btnCasaMouseClicked

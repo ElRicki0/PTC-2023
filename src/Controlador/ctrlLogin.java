@@ -15,10 +15,10 @@ public class ctrlLogin implements ActionListener {
     private LoginPTC vistaLogin;
     private NombreUser modeloNUser;
     
-    private Main main;
+    private VMain main;
     private ctrlEncriptacion encript;
 
-    public ctrlLogin(usuarios modeloUsuario, LoginPTC vistaLogin, Main main, ctrlEncriptacion encript) {
+    public ctrlLogin(usuarios modeloUsuario, LoginPTC vistaLogin, VMain main, ctrlEncriptacion encript) {
         this.modeloUsuario = modeloUsuario;
         this.vistaLogin = vistaLogin;
         this.main = main;
