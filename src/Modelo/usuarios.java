@@ -9,8 +9,8 @@ import Controlador.ctrlEncriptacion;
 import Vista.*;
 import Controlador.ctrlLogin;
 import Vista.Controlador.CEmpleados_Usuarios;
-import Vista.Controlador.MainC;
-import Vista.Controlador.MainC;
+import Vista.Controlador.CMain;
+import Vista.Controlador.CMain;
 import Vista.Repartidor.RMain;
 import Vista.Usuario.UMain;
 import java.sql.*;
@@ -202,7 +202,7 @@ public class usuarios {
                     if (nivelU.equals("2")) {
                         LoginPTC vista = new LoginPTC();
                         vista.setVisible(false);
-                        MainC main = new MainC();
+                        CMain main = new CMain();
                         main.INIT();
                         if (contraseñaAlmacenada.matches("9b8769a4a742959a2d0298c36fb70623f2dfacda8436237df08d8dfd5b37374c")) {
                             ActContra vistaContra = new ActContra();

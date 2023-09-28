@@ -52,13 +52,6 @@ public class UVehiculos extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnRestaurar = new javax.swing.JButton();
-        btnBuscar = new javax.swing.JButton();
-        jcbBuscador = new javax.swing.JComboBox<>();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tbVehiculos = new javax.swing.JTable();
         MenuPlegable = new javax.swing.JPanel();
         btnCasa = new Vista.PanelCurvas();
         Casaicon = new javax.swing.JLabel();
@@ -80,6 +73,13 @@ public class UVehiculos extends javax.swing.JFrame {
         btnSalir = new Vista.PanelCurvas();
         logOut = new javax.swing.JLabel();
         txtBitacora2 = new javax.swing.JLabel();
+        btnRestaurar = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
+        jcbBuscador = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbVehiculos = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1080, 760));
@@ -88,58 +88,6 @@ public class UVehiculos extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(246, 234, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnRestaurar.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        btnRestaurar.setForeground(new java.awt.Color(255, 255, 255));
-        btnRestaurar.setText("<html>Restaurar Tabla</html>");
-        btnRestaurar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRestaurarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnRestaurar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 680, 210, -1));
-
-        btnBuscar.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 60, 40, 50));
-
-        jcbBuscador.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
-        jPanel1.add(jcbBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 60, 220, 50));
-
-        jLabel8.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel8.setText("<html>Buscar por Modelo de vehiculo:</html>");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 50, 240, 60));
-
-        jLabel2.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel2.setText("Vehiculos");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, 360, 70));
-
-        tbVehiculos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        tbVehiculos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbVehiculosMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tbVehiculos);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 970, 500));
 
         MenuPlegable.setBackground(new java.awt.Color(64, 81, 115));
         MenuPlegable.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -416,6 +364,58 @@ public class UVehiculos extends javax.swing.JFrame {
         MenuPlegable.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 750, -1, -1));
 
         jPanel1.add(MenuPlegable, new org.netbeans.lib.awtextra.AbsoluteConstraints(-150, 0, 230, 810));
+
+        btnRestaurar.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        btnRestaurar.setForeground(new java.awt.Color(255, 255, 255));
+        btnRestaurar.setText("<html>Restaurar Tabla</html>");
+        btnRestaurar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRestaurarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnRestaurar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 680, 210, -1));
+
+        btnBuscar.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 60, 40, 50));
+
+        jcbBuscador.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        jPanel1.add(jcbBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 60, 220, 50));
+
+        jLabel8.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel8.setText("<html>Buscar por Modelo de vehiculo:</html>");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 50, 240, 60));
+
+        jLabel2.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel2.setText("Vehiculos");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, 360, 70));
+
+        tbVehiculos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tbVehiculos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbVehiculosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tbVehiculos);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 970, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

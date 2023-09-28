@@ -48,7 +48,6 @@ public class VMain_Vehiculos extends javax.swing.JFrame {
         rsscalelabel.RSScaleLabel.setScaleLabel(txtBarras, "src/Vista/Iconos/lista.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(icoCarro, "src/Vista/Iconos/vehiculo.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(logOut, "src/Vista/Iconos/Logout.png");
-
         desplace = new Desface();
         modeloVehiculos.RellenarBuscador(jcbBuscador);
         

@@ -225,8 +225,8 @@ public class EmpleadosM {
     public boolean MAgregarEmpleado(EmpleadosM modeloEmpleados, JComboBox jcbGenero, JComboBox jcbTipo ){
         try {
             
-            String sql="insert into tbEmpleados(emp_nombre,emp_fecha, emp_direccion, emp_telefono, emp_correo, idGenero, idTipoEmpleado) "
-                    + "values(?, ?, ?, ?, ?, ?, ?);";
+            String sql="insert into tbEmpleados(emp_nombre,emp_fecha, emp_direccion, emp_telefono, emp_correo, idGenero, idTipoEmpleado) values(?, ?, ?, ?, ?, ?, ?);";
+        
         
         PreparedStatement ANEmpleado= CConexion.getConexion().prepareStatement(sql);
         ANEmpleado.setString(1, modeloEmpleados.getEmp_nombre());
@@ -249,11 +249,12 @@ public class EmpleadosM {
                 int selTEP=(int) idTipoEmpleado.keySet().toArray()[SelectTEmpl];
                 ANEmpleado.setInt(7, selTEP);
             } else {
-            }     
+            }         
+        
         ANEmpleado.execute();
         JOptionPane.showMessageDialog(null, "El Empleado  se agrego correctamente123");
         } catch (Exception e) {
-            System.out.println(e);        
+            System.out.println("ayuda  "+e.toString());        
         }
         return true;
     }

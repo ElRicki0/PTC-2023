@@ -53,8 +53,10 @@ public class ctrlEmpleado implements ActionListener {
                                 modeloEmpleado.setEmp_telefono(vistaEmpleado.txtTelefono_emp.getText());
                                 modeloEmpleado.setEmp_correo(vistaEmpleado.txtCorreo_emp.getText());
                                 modeloEmpleado.setIdGenero(vistaEmpleado.jcbGenero.getSelectedItem().toString());
+                                modeloEmpleado.setIdTipoEmpleado(vistaEmpleado.jcbTipo.getSelectedItem().toString());
                                 modeloEmpleado.MAgregarEmpleado(modeloEmpleado, vistaEmpleado.jcbGenero, vistaEmpleado.jcbTipo);
                                 modeloEmpleado.MostrarEmpleados(vistaEmpleado);
+                                System.out.println("llega hasta aqui");
                             }
                         } else {
                             JOptionPane.showMessageDialog(null, "El Numero de telefono tiene que tener 8 digitos");
@@ -99,6 +101,7 @@ public class ctrlEmpleado implements ActionListener {
                                 modeloEmpleado.setEmp_telefono(vistaEmpleado.txtTelefono_emp.getText());
                                 modeloEmpleado.setEmp_correo(vistaEmpleado.txtCorreo_emp.getText());
                                 modeloEmpleado.setIdGenero(vistaEmpleado.jcbGenero.getSelectedItem().toString());
+                                modeloEmpleado.setIdTipoEmpleado(vistaEmpleado.jcbTipo.getSelectedItem().toString());
                                 modeloEmpleado.actualizar(modeloEmpleado, vistaEmpleado.jcbGenero, vistaEmpleado.jcbTipo, vistaEmpleado);
                                 modeloEmpleado.MostrarEmpleados(vistaEmpleado);
                             }
@@ -131,14 +134,18 @@ public class ctrlEmpleado implements ActionListener {
                             if (!texto3.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
                                 JOptionPane.showMessageDialog(null, "El correo electronico tiene que ser valido");
                             } else {
+                                
                                 modeloEmpleado.setEmp_nombre(CvistaEmpleado.txtNombre_emp.getText());
                                 modeloEmpleado.setEmp_fecha(CvistaEmpleado.txtFN_emp.getText());
                                 modeloEmpleado.setEmp_direccion(CvistaEmpleado.txtDireccion_emp.getText());
                                 modeloEmpleado.setEmp_telefono(CvistaEmpleado.txtTelefono_emp.getText());
                                 modeloEmpleado.setEmp_correo(CvistaEmpleado.txtCorreo_emp.getText());
                                 modeloEmpleado.setIdGenero(CvistaEmpleado.jcbGenero.getSelectedItem().toString());
+                                modeloEmpleado.setIdTipoEmpleado(CvistaEmpleado.jcbTipo.getSelectedItem().toString());
                                 modeloEmpleado.CMAgregarEmpleado(modeloEmpleado, CvistaEmpleado.jcbGenero, CvistaEmpleado.jcbTipo);
                                 modeloEmpleado.CMostrarEmpleados(CvistaEmpleado);
+                                
+                                
                             }
                         } else {
                             JOptionPane.showMessageDialog(null, "El Numero de telefono tiene que tener 8 digitos");
@@ -183,6 +190,7 @@ public class ctrlEmpleado implements ActionListener {
                                 modeloEmpleado.setEmp_telefono(CvistaEmpleado.txtTelefono_emp.getText());
                                 modeloEmpleado.setEmp_correo(CvistaEmpleado.txtCorreo_emp.getText());
                                 modeloEmpleado.setIdGenero(CvistaEmpleado.jcbGenero.getSelectedItem().toString());
+                                modeloEmpleado.setIdTipoEmpleado(CvistaEmpleado.jcbTipo.getSelectedItem().toString());
                                 modeloEmpleado.CActualizar(modeloEmpleado, CvistaEmpleado.jcbGenero, CvistaEmpleado.jcbTipo, CvistaEmpleado);
                                 modeloEmpleado.CMostrarEmpleados(CvistaEmpleado);
                             }

@@ -14,7 +14,7 @@ import java.sql.*;
 import javax.swing.JOptionPane;
 import Modelo.usuarios;
 import Controlador.ctrlPrimerUsuario;
-import Vista.Controlador.MainC;
+import Vista.Controlador.CMain;
 import java.awt.event.MouseEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -332,7 +332,7 @@ public class LoginPTC extends javax.swing.JFrame {
         usuarios modeloUsuario = new usuarios();
         LoginPTC vistaLogin = new LoginPTC(); 
         VMain main = new VMain();
-        ctrlEncriptacion encript = new ctrlEncriptacion();
+         ctrlEncriptacion encript = new ctrlEncriptacion();
         ctrlLogin controlador = new ctrlLogin(modeloUsuario, vistaLogin, main, encript);
         vistaLogin.setVisible(true);
     }
@@ -356,7 +356,7 @@ public class LoginPTC extends javax.swing.JFrame {
                         this.dispose();
                     }
                     if (l.equals("2")) {
-                        MainC main = new MainC();
+                        CMain main = new CMain();
                         main.setVisible(true);
                         this.setVisible(false);
                     }

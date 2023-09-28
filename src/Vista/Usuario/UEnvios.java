@@ -49,9 +49,6 @@ public class UEnvios extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tbEnvios = new javax.swing.JTable();
         MenuPlegable = new javax.swing.JPanel();
         btnCasa = new Vista.PanelCurvas();
         Casaicon = new javax.swing.JLabel();
@@ -70,9 +67,12 @@ public class UEnvios extends javax.swing.JFrame {
         btnVehiculos = new Vista.PanelCurvas();
         icoCarro = new javax.swing.JLabel();
         txtCliente2 = new javax.swing.JLabel();
-        btnSalir2 = new Vista.PanelCurvas();
+        btnSalir = new Vista.PanelCurvas();
         logOut2 = new javax.swing.JLabel();
         txtBitacora4 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbEnvios = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1080, 760));
@@ -81,31 +81,6 @@ public class UEnvios extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(246, 234, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel2.setText("Envios Productos");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 390, 70));
-
-        tbEnvios.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        tbEnvios.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbEnviosMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tbEnvios);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 960, -1));
 
         MenuPlegable.setBackground(new java.awt.Color(64, 81, 115));
         MenuPlegable.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -341,20 +316,20 @@ public class UEnvios extends javax.swing.JFrame {
 
         MenuPlegable.add(btnVehiculos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 230, 53));
 
-        btnSalir2.setBackground(new java.awt.Color(64, 81, 115));
-        btnSalir2.setRoundBottomLeft(25);
-        btnSalir2.setRoundBottomRight(25);
-        btnSalir2.setRoundTopLeft(25);
-        btnSalir2.setRoundTopRight(25);
-        btnSalir2.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnSalir.setBackground(new java.awt.Color(64, 81, 115));
+        btnSalir.setRoundBottomLeft(25);
+        btnSalir.setRoundBottomRight(25);
+        btnSalir.setRoundTopLeft(25);
+        btnSalir.setRoundTopRight(25);
+        btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSalir2MouseClicked(evt);
+                btnSalirMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnSalir2MouseEntered(evt);
+                btnSalirMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnSalir2MouseExited(evt);
+                btnSalirMouseExited(evt);
             }
         });
 
@@ -362,31 +337,56 @@ public class UEnvios extends javax.swing.JFrame {
         txtBitacora4.setForeground(new java.awt.Color(255, 153, 153));
         txtBitacora4.setText("Cerrar secion");
 
-        javax.swing.GroupLayout btnSalir2Layout = new javax.swing.GroupLayout(btnSalir2);
-        btnSalir2.setLayout(btnSalir2Layout);
-        btnSalir2Layout.setHorizontalGroup(
-            btnSalir2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnSalir2Layout.createSequentialGroup()
+        javax.swing.GroupLayout btnSalirLayout = new javax.swing.GroupLayout(btnSalir);
+        btnSalir.setLayout(btnSalirLayout);
+        btnSalirLayout.setHorizontalGroup(
+            btnSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnSalirLayout.createSequentialGroup()
                 .addContainerGap(42, Short.MAX_VALUE)
                 .addComponent(txtBitacora4)
                 .addGap(18, 18, 18)
                 .addComponent(logOut2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        btnSalir2Layout.setVerticalGroup(
-            btnSalir2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnSalir2Layout.createSequentialGroup()
+        btnSalirLayout.setVerticalGroup(
+            btnSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnSalirLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(logOut2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(btnSalir2Layout.createSequentialGroup()
+            .addGroup(btnSalirLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(txtBitacora4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(12, 12, 12))
         );
 
-        MenuPlegable.add(btnSalir2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 750, -1, -1));
+        MenuPlegable.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 750, -1, -1));
 
         jPanel1.add(MenuPlegable, new org.netbeans.lib.awtextra.AbsoluteConstraints(-150, 0, 230, 810));
+
+        jLabel2.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel2.setText("Envios Productos");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 390, 70));
+
+        tbEnvios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tbEnvios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbEnviosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tbEnvios);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 960, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -490,22 +490,22 @@ public class UEnvios extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_MenuPlegableMouseClicked
 
-    private void btnSalir2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalir2MouseClicked
+    private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
         // [64,81,115]
         LoginPTC vista = new LoginPTC();
         vista.INIT();
         this.dispose();
-    }//GEN-LAST:event_btnSalir2MouseClicked
+    }//GEN-LAST:event_btnSalirMouseClicked
 
-    private void btnSalir2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalir2MouseEntered
+    private void btnSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseEntered
         btnSalir.setBackground(new Color(102,0,0));
-    }//GEN-LAST:event_btnSalir2MouseEntered
+    }//GEN-LAST:event_btnSalirMouseEntered
 
-    private void btnSalir2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalir2MouseExited
+    private void btnSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseExited
 
         btnSalir.setBackground(new Color(64,81,115));
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnSalir2MouseExited
+    }//GEN-LAST:event_btnSalirMouseExited
 
     
     public void INIT(){
@@ -566,20 +566,14 @@ public class UEnvios extends javax.swing.JFrame {
     private Vista.PanelCurvas btnProducto;
     private Vista.PanelCurvas btnRuta;
     private Vista.PanelCurvas btnSalir;
-    private Vista.PanelCurvas btnSalir1;
-    private Vista.PanelCurvas btnSalir2;
     private Vista.PanelCurvas btnVehiculos;
     private javax.swing.JLabel icoCarro;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel logOut;
-    private javax.swing.JLabel logOut1;
     private javax.swing.JLabel logOut2;
     public javax.swing.JTable tbEnvios;
     private javax.swing.JLabel txtBarras;
-    private javax.swing.JLabel txtBitacora2;
-    private javax.swing.JLabel txtBitacora3;
     private javax.swing.JLabel txtBitacora4;
     private javax.swing.JLabel txtCasa;
     private javax.swing.JLabel txtCliente;

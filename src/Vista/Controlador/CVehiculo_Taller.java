@@ -1179,7 +1179,7 @@ public class CVehiculo_Taller extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRestaurarActionPerformed
 
     private void btnCasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseClicked
-        MainC vista = new MainC();
+        CMain vista = new CMain();
         vista.INIT();
         this.dispose();
     }//GEN-LAST:event_btnCasaMouseClicked

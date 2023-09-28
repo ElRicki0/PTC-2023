@@ -13,10 +13,10 @@ public class CConexion { // <- Editar por el nombre del archivo de la clase
         try {
             try {
              //Cadena de conexión
-        String conexionUrl  = "jdbc:sqlserver:// localhost:54855;" // <- Editar por su puerto de SQL
-                            + "databaseName=EXPOdb;" // <- Editar por su base de datos
-                            + "user=sa;"
-                            + "password=Melara2006#;" 
+        String conexionUrl  = "jdbc:sqlserver:// 192.168.84.75:1433;" // <- Editar por su puerto de SQL
+                            + "databaseName=EXPOdb2;" // <- Editar por su base de datos
+                            + "user=Komi Android;"
+                            + "password=Miku;" 
                             + "encrypt=true;trustServerCertificate=true";
         //Melara:Melara2006#, 54855
         //Escritorio melara: itr2023, 60805

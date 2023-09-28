@@ -45,9 +45,6 @@ public class UTiendas extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tbTienda = new javax.swing.JTable();
         MenuPlegable = new javax.swing.JPanel();
         btnCasa = new Vista.PanelCurvas();
         Casaicon = new javax.swing.JLabel();
@@ -69,6 +66,9 @@ public class UTiendas extends javax.swing.JFrame {
         btnSalir = new Vista.PanelCurvas();
         logOut = new javax.swing.JLabel();
         txtBitacora2 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbTienda = new javax.swing.JTable();
         btnBuscarcmx = new javax.swing.JButton();
         jcbBuscador = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
@@ -81,36 +81,6 @@ public class UTiendas extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(246, 234, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel2.setText("Datos tiendas");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 320, 41));
-
-        jScrollPane1.setBackground(new java.awt.Color(172, 147, 110));
-
-        tbTienda.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
-        tbTienda.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        tbTienda.setFocusable(false);
-        tbTienda.setRowHeight(30);
-        tbTienda.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbTiendaMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tbTienda);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 970, 460));
 
         MenuPlegable.setBackground(new java.awt.Color(64, 81, 115));
         MenuPlegable.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -387,6 +357,36 @@ public class UTiendas extends javax.swing.JFrame {
         MenuPlegable.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 750, -1, -1));
 
         jPanel1.add(MenuPlegable, new org.netbeans.lib.awtextra.AbsoluteConstraints(-150, 0, 230, 810));
+
+        jLabel2.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel2.setText("Datos tiendas");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 320, 41));
+
+        jScrollPane1.setBackground(new java.awt.Color(172, 147, 110));
+
+        tbTienda.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
+        tbTienda.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tbTienda.setFocusable(false);
+        tbTienda.setRowHeight(30);
+        tbTienda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbTiendaMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tbTienda);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 970, 460));
 
         btnBuscarcmx.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

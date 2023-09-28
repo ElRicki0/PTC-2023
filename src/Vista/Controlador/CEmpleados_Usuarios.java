@@ -944,7 +944,7 @@ public class CEmpleados_Usuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUsuariosMouseExited
 
     private void btnCasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseClicked
-        MainC vista = new MainC();
+        CMain vista = new CMain();
         vista.INIT();
         this.dispose();
     }//GEN-LAST:event_btnCasaMouseClicked
