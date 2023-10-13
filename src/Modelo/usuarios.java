@@ -211,7 +211,7 @@ public class usuarios {
                     }
                     if (nivelU.equals("3")) {
                         RMain main = new RMain();
-                        main.setVisible(true);
+                        main.INIT();
                         LoginPTC vista = new LoginPTC();
                         vista.dispose();
                         if (contraseñaAlmacenada.matches("9b8769a4a742959a2d0298c36fb70623f2dfacda8436237df08d8dfd5b37374c")) {
