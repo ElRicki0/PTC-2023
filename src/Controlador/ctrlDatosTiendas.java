@@ -195,7 +195,7 @@ public class ctrlDatosTiendas implements ActionListener {
             modeloDatos.ABuscadorC(vistaMainC);
         }
         if (e.getSource() == vistaMainC.btnRestablecer) {
-            modeloDatos.MostrarTablaC(vistaMainC);
+            modeloDatos.MostrarTablaMC(vistaMainC);
         }
     ///////////////repartidor////////////////////////////////////////////////////////
         if (e.getSource() == RvistaDatos.btnBuscarcmx) {

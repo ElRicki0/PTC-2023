@@ -5,8 +5,11 @@
  */
 package Vista.Usuario;
 
+import Controlador.ctrlDatosTiendas;
+import Modelo.DatosTiendas;
 import Vista.Controlador.*;
 import Vista.*;
+import Vista.Repartidor.RTiendas;
 import Vista.Usuario.*;
 import javax.swing.ImageIcon;
 import desplazable.Desface;
@@ -19,6 +22,7 @@ import java.awt.Color;
 public class UMain extends javax.swing.JFrame {
 
     Desface desplace;
+    DatosTiendas modelo = new DatosTiendas();
     public UMain() {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/Vista/Iconos/CASA.png")).getImage());
@@ -32,6 +36,7 @@ public class UMain extends javax.swing.JFrame {
         rsscalelabel.RSScaleLabel.setScaleLabel(icoCarro, "src/Vista/Iconos/vehiculo.png");
         
         desplace = new Desface();
+        modelo.llenarcmbBuscador(jcbBuscador);
         
         this.setLocationRelativeTo(null);
     }
@@ -67,13 +72,19 @@ public class UMain extends javax.swing.JFrame {
         btnSalir = new Vista.PanelCurvas();
         logOut = new javax.swing.JLabel();
         txtBitacora2 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbTienda = new javax.swing.JTable();
+        jLabel8 = new javax.swing.JLabel();
+        jcbBuscador = new javax.swing.JComboBox<>();
+        btnBuscarcmx = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1080, 760));
         setResizable(false);
         setSize(new java.awt.Dimension(1080, 760));
 
-        jPanel1.setBackground(new java.awt.Color(0, 102, 204));
+        jPanel1.setBackground(new java.awt.Color(246, 234, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         MenuPlegable.setBackground(new java.awt.Color(64, 81, 115));
@@ -352,6 +363,51 @@ public class UMain extends javax.swing.JFrame {
 
         jPanel1.add(MenuPlegable, new org.netbeans.lib.awtextra.AbsoluteConstraints(-150, 0, 230, 810));
 
+        jLabel2.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel2.setText("Datos tiendas");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 320, 41));
+
+        jScrollPane1.setBackground(new java.awt.Color(172, 147, 110));
+
+        tbTienda.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
+        tbTienda.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tbTienda.setFocusable(false);
+        tbTienda.setRowHeight(30);
+        tbTienda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbTiendaMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tbTienda);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 970, 460));
+
+        jLabel8.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel8.setText("<html>Ordenar por Cliente:</html>");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 80, 150, 60));
+
+        jcbBuscador.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        jPanel1.add(jcbBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 90, 220, 50));
+
+        btnBuscarcmx.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBuscarcmxMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnBuscarcmx, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 90, 40, 50));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -459,12 +515,35 @@ public class UMain extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSalirMouseExited
 
+    private void tbTiendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbTiendaMouseClicked
+        int filaSeleccionada = tbTienda.getSelectedRow();
+
+        String telefono = tbTienda.getValueAt(filaSeleccionada, 1).toString();
+        String encargado = tbTienda.getValueAt(filaSeleccionada, 2).toString();
+
+        //        txtReferencia.setText(telefono);
+        //        txtCorreo_CL.setText(correo);
+    }//GEN-LAST:event_tbTiendaMouseClicked
+
+    private void btnBuscarcmxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarcmxMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarcmxMouseClicked
+
     /**
      * @param args the command line arguments
      */
     public void INIT(){
-        UMain main= new UMain();
-        main.setVisible(true);
+        UMain vistaM = new UMain();
+        VMain main= new VMain();
+        CMain mainC= new CMain();
+        VCliente_DatosTiendas vista =new VCliente_DatosTiendas();
+        CCliente_DatosTiendas Cvista =new CCliente_DatosTiendas();
+        RTiendas Rvista =new RTiendas();
+        UTiendas vistaU =new UTiendas();
+        ctrlDatosTiendas control=new ctrlDatosTiendas(vista, main, mainC, modelo, Cvista, Rvista, vistaU);
+        
+        vistaM.setVisible(true);
+        modelo.UMostrarTablaM(vistaM);
     }
     
     public static void main(String args[]) {
@@ -507,6 +586,7 @@ public class UMain extends javax.swing.JFrame {
     private javax.swing.JPanel MenuPlegable;
     private javax.swing.JLabel Productoicon;
     private javax.swing.JLabel Rutaicon;
+    public javax.swing.JButton btnBuscarcmx;
     private Vista.PanelCurvas btnCasa;
     private Vista.PanelCurvas btnCliente;
     private Vista.PanelCurvas btnProducto;
@@ -514,8 +594,13 @@ public class UMain extends javax.swing.JFrame {
     private Vista.PanelCurvas btnSalir;
     private Vista.PanelCurvas btnVehiculos;
     private javax.swing.JLabel icoCarro;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JComboBox<String> jcbBuscador;
     private javax.swing.JLabel logOut;
+    public javax.swing.JTable tbTienda;
     private javax.swing.JLabel txtBarras;
     private javax.swing.JLabel txtBitacora2;
     private javax.swing.JLabel txtCasa;

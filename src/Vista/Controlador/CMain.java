@@ -101,13 +101,13 @@ public class CMain extends javax.swing.JFrame {
         jcbBuscador = new javax.swing.JComboBox<>();
         restablcer = new Vista.PanelCurvas();
         btnRestablecer = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tbTienda = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
         btnBuscarcmx = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         moversee = new Vista.PanelCurvas();
         moverse = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbTienda = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1080, 850));
@@ -682,31 +682,6 @@ public class CMain extends javax.swing.JFrame {
 
         jPanel1.add(restablcer, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 720, -1, 60));
 
-        jScrollPane1.setBackground(new java.awt.Color(172, 147, 110));
-
-        tbTienda.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
-        tbTienda.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        tbTienda.setFocusable(false);
-        tbTienda.setRowHeight(30);
-        tbTienda.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbTiendaMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tbTienda);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 960, 510));
-
         jLabel8.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(51, 51, 51));
         jLabel8.setText("<html>Ordenar por Cliente:</html>");
@@ -751,6 +726,31 @@ public class CMain extends javax.swing.JFrame {
         );
 
         jPanel1.add(moversee, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 720, -1, 60));
+
+        jScrollPane1.setBackground(new java.awt.Color(172, 147, 110));
+
+        tbTienda.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
+        tbTienda.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tbTienda.setFocusable(false);
+        tbTienda.setRowHeight(30);
+        tbTienda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbTiendaMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tbTienda);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 960, 510));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -815,10 +815,6 @@ public class CMain extends javax.swing.JFrame {
     private void btnRestablecerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRestablecerMouseClicked
 
     }//GEN-LAST:event_btnRestablecerMouseClicked
-
-    private void tbTiendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbTiendaMouseClicked
-        
-    }//GEN-LAST:event_tbTiendaMouseClicked
 
     private void btnBuscarcmxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarcmxMouseClicked
         // TODO add your handling code here:
@@ -1033,6 +1029,10 @@ public class CMain extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSalirMouseExited
 
+    private void tbTiendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbTiendaMouseClicked
+
+    }//GEN-LAST:event_tbTiendaMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1041,12 +1041,12 @@ public class CMain extends javax.swing.JFrame {
     public void INIT(){
         VMain main= new VMain();
         CMain mainC= new CMain();
+        modelo.MostrarTablaMC(mainC);
         VCliente_DatosTiendas vista =new VCliente_DatosTiendas();
         CCliente_DatosTiendas Cvista =new CCliente_DatosTiendas();
         RTiendas Rvista =new RTiendas();
         UTiendas vistaU =new UTiendas();
         ctrlDatosTiendas control=new ctrlDatosTiendas(vista, main, mainC, modelo, Cvista, Rvista, vistaU);
-        modelo.MostrarTablaC(mainC);
         main.setVisible(true);
         System.out.println("nombre es "+usuarios.getUsr_nombre());
 //        txtNombre.setText(modelo.getNombreUsr());
