@@ -15,6 +15,7 @@ import Modelo.productos;
 import Modelo.usuarios;
 import Modelo.vehiculos;
 import Vista.Controlador.CCliente_DatosTiendas;
+import Vista.Controlador.CMain_Rutas;
 import Vista.Controlador.CRutas_Envios;
 import Vista.Controlador.CVehiculo;
 import Vista.Repartidor.REnvios;
@@ -805,9 +806,9 @@ public class VMain_Rutas extends javax.swing.JFrame {
         btnRutasLayout.setVerticalGroup(
             btnRutasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnRutasLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(txtDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(txtDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         jpSubMenu.add(btnRutas, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 30, 140, -1));
@@ -1088,7 +1089,9 @@ public class VMain_Rutas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVehiculoMouseExited
 
     private void btnTiendasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTiendasMouseClicked
-
+        VMain vista = new VMain();
+        vista.INIT();
+        this.dispose();
     }//GEN-LAST:event_btnTiendasMouseClicked
 
     private void btnTiendasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTiendasMouseEntered
@@ -1102,9 +1105,7 @@ public class VMain_Rutas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTiendasMouseExited
 
     private void btnRutasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutasMouseClicked
-        VMain_Rutas vista = new VMain_Rutas();
-        vista.INIT();
-        this.dispose();
+        
     }//GEN-LAST:event_btnRutasMouseClicked
 
     private void btnRutasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutasMouseEntered
@@ -1125,9 +1126,10 @@ public class VMain_Rutas extends javax.swing.JFrame {
     public void INIT(){
         VRutas_Envios vista = new VRutas_Envios();
         VMain_Rutas main= new VMain_Rutas();
+        CMain_Rutas mainC= new CMain_Rutas();
         CRutas_Envios Cvista = new CRutas_Envios();
         REnvios Rvista = new REnvios();
-        ctrlEnvios ctrl = new ctrlEnvios(vista, main, modelo, Rvista, Cvista);
+        ctrlEnvios ctrl = new ctrlEnvios(vista, main, mainC, modelo, Rvista, Cvista);
         modelo.BuscarTablaM(main);
        main.setVisible(true);
     }

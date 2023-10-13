@@ -1,6 +1,7 @@
 package Controlador;
 
 import Modelo.BitacoraDistribuciones;
+import Vista.Controlador.CMain_Rutas;
 import Vista.Controlador.CRutas_Envios;
 import Vista.Repartidor.REnvios;
 import Vista.VMain_Rutas;
@@ -13,14 +14,16 @@ public class ctrlEnvios implements ActionListener {
 
     private VRutas_Envios vistaEnvios;
     private VMain_Rutas vistaM;
+    private CMain_Rutas vistaC;
     private CRutas_Envios CvistaEnvios;
     private REnvios RvistaEnvios;
     private BitacoraDistribuciones modeloEnvios;
 
-    public ctrlEnvios(VRutas_Envios vistaEnvios, VMain_Rutas vistaM, BitacoraDistribuciones modeloEnvios, REnvios RvistaEnvios, CRutas_Envios CvistaEnvios) {
+    public ctrlEnvios(VRutas_Envios vistaEnvios, VMain_Rutas vistaM, CMain_Rutas vistaC, BitacoraDistribuciones modeloEnvios, REnvios RvistaEnvios, CRutas_Envios CvistaEnvios) {
         this.modeloEnvios = modeloEnvios;
         this.vistaEnvios = vistaEnvios;
         this.vistaM = vistaM;
+        this.vistaC = vistaC;
         this.RvistaEnvios = RvistaEnvios;
         this.CvistaEnvios = CvistaEnvios;
         this.vistaEnvios.btnAgregar.addActionListener(this);
@@ -28,6 +31,8 @@ public class ctrlEnvios implements ActionListener {
         this.vistaEnvios.btnModificarMP.addActionListener(this);
         this.vistaM.btnBuscar.addActionListener(this);
         this.vistaM.btnRestaurar.addActionListener(this);
+        this.vistaC.btnBuscar.addActionListener(this);
+        this.vistaC.btnRestaurar.addActionListener(this);
         this.CvistaEnvios.btnAgregar.addActionListener(this);
         this.CvistaEnvios.btnEliminar.addActionListener(this);
         this.CvistaEnvios.btnModificarMP.addActionListener(this);
@@ -122,7 +127,12 @@ public class ctrlEnvios implements ActionListener {
                 JOptionPane.showMessageDialog(null, "la fecha tiene que tener la estructura de ''año-mes-dia''");
             }
         }
-        
+        if (e.getSource()==vistaC.btnBuscar) {
+            modeloEnvios.BuscarTablaMC(vistaC);
+        }
+        if (e.getSource()==vistaC.btnRestaurar) {
+            modeloEnvios.CMostrarTablaMC(vistaC);
+        }
     ////////////////Repartidor///////////////////////////////////////////////////////
         if (e.getSource()==RvistaEnvios.btnModificarMP) {
             modeloEnvios.setIdEstado(RvistaEnvios.jcbEstado.getSelectedItem().toString());

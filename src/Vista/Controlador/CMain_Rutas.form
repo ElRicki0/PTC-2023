@@ -62,19 +62,10 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="73" green="51" red="40" type="rgb"/>
             </Property>
-            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[230, 900]"/>
-            </Property>
-            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[230, 900]"/>
-            </Property>
-            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[230, 900]"/>
-            </Property>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="-150" y="0" width="230" height="810"/>
+              <AbsoluteConstraints x="-150" y="0" width="230" height="820"/>
             </Constraint>
           </Constraints>
 
@@ -99,7 +90,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="0" y="110" width="230" height="-1"/>
+                  <AbsoluteConstraints x="0" y="140" width="230" height="-1"/>
                 </Constraint>
               </Constraints>
 
@@ -117,11 +108,11 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="Casaicon" min="-2" pref="53" max="-2" attributes="0"/>
-                              <Component id="txtCasa" min="-2" pref="41" max="-2" attributes="0"/>
+                              <Component id="Casaicon" alignment="0" min="-2" pref="53" max="-2" attributes="0"/>
+                              <Component id="txtCasa" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -177,7 +168,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="0" y="320" width="-1" height="50"/>
+                  <AbsoluteConstraints x="0" y="350" width="-1" height="50"/>
                 </Constraint>
               </Constraints>
 
@@ -198,8 +189,8 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtproducto" min="-2" pref="41" max="-2" attributes="0"/>
-                              <Component id="Productoicon" min="-2" pref="53" max="-2" attributes="0"/>
+                              <Component id="txtproducto" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
+                              <Component id="Productoicon" alignment="0" min="-2" pref="53" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -238,7 +229,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="0" y="180" width="-1" height="50"/>
+                  <AbsoluteConstraints x="0" y="210" width="-1" height="50"/>
                 </Constraint>
               </Constraints>
 
@@ -259,8 +250,8 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtEmpleado" min="-2" pref="41" max="-2" attributes="0"/>
-                              <Component id="Trabajadoricon" min="-2" pref="53" max="-2" attributes="0"/>
+                              <Component id="txtEmpleado" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
+                              <Component id="Trabajadoricon" alignment="0" min="-2" pref="53" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -299,7 +290,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="0" y="250" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="0" y="280" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
 
@@ -320,8 +311,8 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtBodega" min="-2" pref="41" max="-2" attributes="0"/>
-                              <Component id="Bodegaicon" min="-2" pref="53" max="-2" attributes="0"/>
+                              <Component id="txtBodega" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
+                              <Component id="Bodegaicon" alignment="0" min="-2" pref="53" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -360,7 +351,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="0" y="600" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="0" y="630" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
 
@@ -381,8 +372,8 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtBitacora" min="-2" pref="41" max="-2" attributes="0"/>
-                              <Component id="Bitacoraicon" min="-2" pref="53" max="-2" attributes="0"/>
+                              <Component id="txtBitacora" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
+                              <Component id="Bitacoraicon" alignment="0" min="-2" pref="53" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -421,7 +412,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="0" y="390" width="230" height="-1"/>
+                  <AbsoluteConstraints x="0" y="420" width="230" height="-1"/>
                 </Constraint>
               </Constraints>
 
@@ -429,7 +420,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="81" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="86" max="32767" attributes="0"/>
                           <Component id="txtCliente" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                           <Component id="Clienteicon" min="-2" pref="53" max="-2" attributes="0"/>
@@ -442,8 +433,8 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtCliente" min="-2" pref="41" max="-2" attributes="0"/>
-                              <Component id="Clienteicon" min="-2" pref="53" max="-2" attributes="0"/>
+                              <Component id="txtCliente" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
+                              <Component id="Clienteicon" alignment="0" min="-2" pref="53" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -482,7 +473,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="0" y="530" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="0" y="560" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
 
@@ -503,8 +494,8 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtRuta" min="-2" pref="41" max="-2" attributes="0"/>
-                              <Component id="Rutaicon" min="-2" pref="53" max="-2" attributes="0"/>
+                              <Component id="txtRuta" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
+                              <Component id="Rutaicon" alignment="0" min="-2" pref="53" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -543,7 +534,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="0" y="460" width="230" height="53"/>
+                  <AbsoluteConstraints x="0" y="490" width="230" height="53"/>
                 </Constraint>
               </Constraints>
 
@@ -611,7 +602,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="0" y="750" width="230" height="53"/>
+                  <AbsoluteConstraints x="0" y="750" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
 
@@ -619,8 +610,8 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="43" max="32767" attributes="0"/>
-                          <Component id="txtBitacora1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="42" max="32767" attributes="0"/>
+                          <Component id="txtBitacora2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="logOut" min="-2" pref="53" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -633,9 +624,9 @@
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Component id="logOut" min="-2" pref="53" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtBitacora1" max="32767" attributes="0"/>
+                          <Component id="txtBitacora2" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -644,7 +635,7 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="logOut">
                 </Component>
-                <Component class="javax.swing.JLabel" name="txtBitacora1">
+                <Component class="javax.swing.JLabel" name="txtBitacora2">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Leelawadee UI" size="18" style="1"/>
@@ -652,74 +643,222 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="99" green="99" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Cerrar sesi&#xf3;n"/>
-                  </Properties>
-                </Component>
-              </SubComponents>
-            </Container>
-            <Container class="Vista.PanelCurvas" name="btnPerfil">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="73" green="51" red="40" type="rgb"/>
-                </Property>
-                <Property name="roundBottomLeft" type="int" value="25"/>
-                <Property name="roundBottomRight" type="int" value="25"/>
-                <Property name="roundTopLeft" type="int" value="25"/>
-                <Property name="roundTopRight" type="int" value="25"/>
-              </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnPerfilMouseClicked"/>
-                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnPerfilMouseEntered"/>
-                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnPerfilMouseExited"/>
-              </Events>
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="0" y="670" width="-1" height="53"/>
-                </Constraint>
-              </Constraints>
-
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="96" max="32767" attributes="0"/>
-                          <Component id="txtBitacora2" min="-2" pref="56" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="perfil" min="-2" pref="53" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtBitacora2" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
-                              <Component id="perfil" alignment="0" min="-2" pref="53" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-              </Layout>
-              <SubComponents>
-                <Component class="javax.swing.JLabel" name="perfil">
-                </Component>
-                <Component class="javax.swing.JLabel" name="txtBitacora2">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Leelawadee UI" size="18" style="1"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Perfil"/>
+                    <Property name="text" type="java.lang.String" value="Cerrar secion"/>
                   </Properties>
                 </Component>
               </SubComponents>
             </Container>
           </SubComponents>
         </Container>
+        <Container class="Vista.PanelCurvas" name="restaurar">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="6e" green="93" red="ac" type="rgb"/>
+            </Property>
+            <Property name="roundBottomLeft" type="int" value="25"/>
+            <Property name="roundBottomRight" type="int" value="25"/>
+            <Property name="roundTopLeft" type="int" value="25"/>
+            <Property name="roundTopRight" type="int" value="25"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="650" y="720" width="140" height="60"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="btnRestaurar" min="-2" pref="140" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="btnRestaurar" min="-2" pref="60" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JButton" name="btnRestaurar">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Leelawadee UI" size="24" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="&lt;html&gt;Restaurar tabla&lt;/html&gt;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnRestaurarMouseClicked"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="92" y="210" width="960" height="480"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTable" name="tbEnvios">
+              <Properties>
+                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                  <Table columnCount="4" rowCount="4">
+                    <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                    <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                    <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                    <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                  </Table>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbEnviosMouseClicked"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JLabel" name="jLabel2">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Leelawadee UI" size="48" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="33" green="33" red="33" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Envios Productos"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="120" y="111" width="390" height="70"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel9">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Leelawadee UI" size="24" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="33" green="33" red="33" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="&lt;html&gt;Buscar por estado de entrega:&lt;/html&gt;"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="570" y="130" width="210" height="60"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jcbEstado">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="780" y="140" width="240" height="50"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Container class="Vista.PanelCurvas" name="moverse">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="6e" green="93" red="ac" type="rgb"/>
+            </Property>
+            <Property name="roundBottomLeft" type="int" value="25"/>
+            <Property name="roundBottomRight" type="int" value="25"/>
+            <Property name="roundTopLeft" type="int" value="25"/>
+            <Property name="roundTopRight" type="int" value="25"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="370" y="720" width="140" height="-1"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="btnMoverse" min="-2" pref="140" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="btnMoverse" min="-2" pref="60" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JButton" name="btnMoverse">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Leelawadee UI" size="24" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Ir a tabla"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnMoverseMouseClicked"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JButton" name="btnBuscar">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Leelawadee UI" size="24" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="1030" y="140" width="40" height="50"/>
+            </Constraint>
+          </Constraints>
+        </Component>
         <Container class="javax.swing.JPanel" name="jpSubMenu">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -907,208 +1046,6 @@
                 </Component>
               </SubComponents>
             </Container>
-          </SubComponents>
-        </Container>
-        <Component class="javax.swing.JComboBox" name="jcbBuscador">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Leelawadee UI" size="18" style="1"/>
-            </Property>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="0"/>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-          </AuxValues>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="810" y="130" width="220" height="50"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Container class="Vista.PanelCurvas" name="restablcer">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="6e" green="93" red="ac" type="rgb"/>
-            </Property>
-            <Property name="roundBottomLeft" type="int" value="25"/>
-            <Property name="roundBottomRight" type="int" value="25"/>
-            <Property name="roundTopLeft" type="int" value="25"/>
-            <Property name="roundTopRight" type="int" value="25"/>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="670" y="720" width="-1" height="60"/>
-            </Constraint>
-          </Constraints>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnRestablecer" alignment="1" pref="160" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnRestablecer" alignment="0" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JButton" name="btnRestablecer">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Leelawadee UI" size="23" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="33" green="33" red="33" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="&lt;html&gt;Restablecer tabla&lt;/html&gt;"/>
-              </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnRestablecerMouseClicked"/>
-              </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="6e" green="93" red="ac" type="rgb"/>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-          </AuxValues>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="90" y="190" width="960" height="510"/>
-            </Constraint>
-          </Constraints>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-          <SubComponents>
-            <Component class="javax.swing.JTable" name="tbTienda">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Leelawadee UI" size="12" style="0"/>
-                </Property>
-                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="4" rowCount="4">
-                    <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 4" type="java.lang.Object"/>
-                  </Table>
-                </Property>
-                <Property name="focusable" type="boolean" value="false"/>
-                <Property name="rowHeight" type="int" value="30"/>
-              </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbTiendaMouseClicked"/>
-              </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Component class="javax.swing.JLabel" name="jLabel8">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Leelawadee UI" size="24" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="33" green="33" red="33" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="&lt;html&gt;Ordenar por Cliente:&lt;/html&gt;"/>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="660" y="120" width="150" height="60"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnBuscarcmx">
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnBuscarcmxMouseClicked"/>
-          </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-          </AuxValues>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="1035" y="130" width="40" height="50"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Leelawadee UI" size="48" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="33" green="33" red="33" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Datos tiendas"/>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="130" y="130" width="320" height="41"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Container class="Vista.PanelCurvas" name="moversee">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="6e" green="93" red="ac" type="rgb"/>
-            </Property>
-            <Property name="roundBottomLeft" type="int" value="25"/>
-            <Property name="roundBottomRight" type="int" value="25"/>
-            <Property name="roundTopLeft" type="int" value="25"/>
-            <Property name="roundTopRight" type="int" value="25"/>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="370" y="720" width="-1" height="60"/>
-            </Constraint>
-          </Constraints>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="moverse" alignment="1" pref="160" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="moverse" alignment="0" pref="60" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JButton" name="moverse">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Leelawadee UI" size="23" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="33" green="33" red="33" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Ir a tabla"/>
-              </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="moverseMouseClicked"/>
-              </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
           </SubComponents>
         </Container>
       </SubComponents>

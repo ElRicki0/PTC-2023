@@ -1219,11 +1219,12 @@ public class CCliente_DatosTiendas extends javax.swing.JFrame {
 
     public void INIT(){
         VMain main= new VMain();
+        CMain mainC= new CMain();
         VCliente_DatosTiendas vista =new VCliente_DatosTiendas();
         CCliente_DatosTiendas Cvista =new CCliente_DatosTiendas();
         RTiendas Rvista =new RTiendas();
         UTiendas vistaU =new UTiendas();
-        ctrlDatosTiendas control=new ctrlDatosTiendas(vista, main, modelo, Cvista, Rvista, vistaU);
+        ctrlDatosTiendas control=new ctrlDatosTiendas(vista, main, mainC, modelo, Cvista, Rvista, vistaU);
         
         Cvista.setVisible(true);
         modelo.CMostrarTabla(Cvista);

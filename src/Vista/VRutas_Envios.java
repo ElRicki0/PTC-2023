@@ -14,6 +14,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import Modelo.CConexion;
 import Modelo.productos;
+import Vista.Controlador.CMain_Rutas;
 import Vista.Controlador.CRutas_Envios;
 import Vista.Repartidor.REnvios;
 import javax.swing.ImageIcon;
@@ -1117,9 +1118,10 @@ public class VRutas_Envios extends javax.swing.JFrame {
     public void INIT(){
         VRutas_Envios vista = new VRutas_Envios();
         VMain_Rutas main= new VMain_Rutas();
+        CMain_Rutas Cmain= new CMain_Rutas();
         CRutas_Envios Cvista = new CRutas_Envios();
         REnvios Rvista = new REnvios();
-        ctrlEnvios ctrl = new ctrlEnvios(vista, main, modelo, Rvista, Cvista);
+        ctrlEnvios ctrl = new ctrlEnvios(vista, main, Cmain, modelo, Rvista, Cvista);
         modelo.MostrarTabla(vista);
         vista.setVisible(true);
     }

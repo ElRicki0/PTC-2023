@@ -9,6 +9,7 @@ import Controlador.ctrlDatosDistribucion;
 import Controlador.ctrlEnvios;
 import Controlador.ctrlPaqueteria;
 import Modelo.*;
+import Vista.Controlador.CMain_Rutas;
 import Vista.Controlador.CRutas_Envios;
 import javax.swing.ImageIcon;
 import desplazable.Desface;
@@ -569,9 +570,10 @@ public class REnvios extends javax.swing.JFrame {
     public void INIT(){
         VRutas_Envios vista = new VRutas_Envios();
         VMain_Rutas main= new VMain_Rutas();
+        CMain_Rutas mainC= new CMain_Rutas();
         CRutas_Envios Cvista = new CRutas_Envios();
         REnvios Rvista = new REnvios();
-        ctrlEnvios ctrl = new ctrlEnvios(vista, main, modelo, Rvista, Cvista);
+        ctrlEnvios ctrl = new ctrlEnvios(vista, main, mainC, modelo, Rvista, Cvista);
         modelo.RMostrarTabla(Rvista);
         Rvista.setVisible(true);
     }

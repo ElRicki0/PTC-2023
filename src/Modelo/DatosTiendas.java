@@ -522,6 +522,8 @@ public class DatosTiendas {
             JOptionPane.showMessageDialog(null, "Error tabla datos tiendas " + e.getMessage());
         }
     }
+    
+    
     ////////////Repartidor///////////////////////////////////////////////////////////
     public void RMostrarTabla(RTiendas vista) {
         DefaultTableModel modelo = new DefaultTableModel();

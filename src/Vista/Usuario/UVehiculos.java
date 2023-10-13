@@ -10,6 +10,7 @@ import Controlador.ctrlPaqueteria;
 import Controlador.ctrlTalleres;
 import Controlador.ctrlVehiculo;
 import Modelo.*;
+import Vista.Controlador.CMain_Vehiculos;
 import Vista.Controlador.CVehiculo;
 import Vista.Repartidor.RVehiculos;
 import javax.swing.ImageIcon;
@@ -549,11 +550,12 @@ public class UVehiculos extends javax.swing.JFrame {
     
     public void INIT(){
         VMain_Vehiculos main= new VMain_Vehiculos();
+        CMain_Vehiculos mainC= new CMain_Vehiculos();
         VVehiculo vista = new VVehiculo();
         CVehiculo Cvista = new CVehiculo();
         RVehiculos Rvista = new RVehiculos();
         UVehiculos Uvista = new UVehiculos();
-        ctrlVehiculo ctrl = new ctrlVehiculo(vista, main, modeloVehiculos, Cvista, Rvista, Uvista);
+        ctrlVehiculo ctrl = new ctrlVehiculo(vista, main, mainC, modeloVehiculos, Cvista, Rvista, Uvista);
         modeloVehiculos.UMostrarTabla(Uvista);
         Uvista.setVisible(true);
     }

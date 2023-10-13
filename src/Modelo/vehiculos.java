@@ -5,6 +5,7 @@
  */
 package Modelo;
 
+import Vista.Controlador.CMain_Vehiculos;
 import Vista.Controlador.CVehiculo;
 import Vista.Repartidor.RVehiculos;
 import Vista.Usuario.UVehiculos;
@@ -335,7 +336,7 @@ public class vehiculos {
         }
     }
     
-    ///////////////////////////////////////////////////////////////////////
+    ////////////Controlador///////////////////////////////////////////////////////////
     public void CBuscador(CVehiculo vistaVehiculos) {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(new Object[]{"ID", "Marca", "Modelo", "Mecanico", "Taller"});
@@ -468,6 +469,24 @@ public class vehiculos {
             JOptionPane.showMessageDialog(null, "Seleccione un dato a modificar");
         }
     }
+    
+    public void MostrarTablaMC(CMain_Vehiculos vistaVehiculos) {
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(new Object[]{"ID", "Marca", "Modelo", "Mecanico", "Taller"});
+        try {
+            Statement st = CConexion.getConexion().createStatement();
+            String SQL = "select idVehiculo, vehi_Matricula, tbModelos.Modelo, tbMantenimiento.Mecanico, tbTalleres.Tall_Nombre from tbVehiculos \n"
+                    + "inner join tbModelos on tbVehiculos.idModelo=tbModelos.idModelo inner join tbMantenimiento on tbVehiculos.idMantenimeinto=tbMantenimiento.idMantenimiento inner join tbTalleres on tbMantenimiento.idTaller=tbTalleres.idTaller";
+            ResultSet rs = st.executeQuery(SQL);
+
+            while (rs.next()) {
+                modelo.addRow(new Object[]{rs.getInt("idVehiculo"), rs.getString("vehi_Matricula"), rs.getString("Modelo"), rs.getString("Mecanico"), rs.getString("Tall_Nombre")});
+            }
+            vistaVehiculos.tbVehiculos.setModel(modelo);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error tabla vehiculos A " + e.getMessage());
+        }
+    }
 
     //////////////////////////////////////////////////////////Apartado de Repartidor///////////////////////////////////////////////////////////////////////////////////////
     public void RMostrarTabla(RVehiculos vistaVehiculos) {
@@ -542,4 +561,5 @@ public class vehiculos {
             JOptionPane.showMessageDialog(null, "Error tabla vehiculos A " + e.getMessage());
         }
     }
+    
 }

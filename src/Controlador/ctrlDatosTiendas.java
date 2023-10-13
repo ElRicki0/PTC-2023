@@ -3,6 +3,7 @@ package Controlador;
 import Vista.VCliente_DatosTiendas;
 import Modelo.*;
 import Vista.Controlador.CCliente_DatosTiendas;
+import Vista.Controlador.CMain;
 import Vista.VMain;
 import Vista.Repartidor.RTiendas;
 import Vista.Usuario.UTiendas;
@@ -14,15 +15,17 @@ public class ctrlDatosTiendas implements ActionListener {
 
     private VCliente_DatosTiendas vistaDatos;
     private VMain vistaMain;
+    private CMain vistaMainC;
     private CCliente_DatosTiendas CvistaDatos;
     private RTiendas RvistaDatos;
     private UTiendas UvistaDatos;
     private DatosTiendas modeloDatos;
 
-    public ctrlDatosTiendas(VCliente_DatosTiendas vistaDatos, VMain vistaMain, DatosTiendas modeloDatos, CCliente_DatosTiendas CvistaDatos, RTiendas RvistaDatos, UTiendas UvistaDatos) {
+    public ctrlDatosTiendas(VCliente_DatosTiendas vistaDatos, VMain vistaMain, CMain vistaMainC, DatosTiendas modeloDatos, CCliente_DatosTiendas CvistaDatos, RTiendas RvistaDatos, UTiendas UvistaDatos) {
         this.modeloDatos = modeloDatos;
         this.vistaDatos = vistaDatos;
         this.vistaMain = vistaMain;
+        this.vistaMainC = vistaMainC;
         this.CvistaDatos = CvistaDatos;
         this.RvistaDatos = RvistaDatos;
         this.UvistaDatos = UvistaDatos;
@@ -39,6 +42,8 @@ public class ctrlDatosTiendas implements ActionListener {
         this.CvistaDatos.btnEliminar_TN.addActionListener(this);
         this.CvistaDatos.btnModificar_CL.addActionListener(this);
         this.CvistaDatos.btnRestablecer.addActionListener(this);
+        this.vistaMainC.btnRestablecer.addActionListener(this);
+        this.vistaMainC.btnBuscarcmx.addActionListener(this);
         this.CvistaDatos.btnBuscarcmx.addActionListener(this);
     ///////////repartidor////////////////////////////////////////////////////////////
         this.RvistaDatos.btnRestablecer.addActionListener(this);
@@ -185,6 +190,12 @@ public class ctrlDatosTiendas implements ActionListener {
         }
         if (e.getSource() == CvistaDatos.btnRestablecer) {
             modeloDatos.CMostrarTabla(CvistaDatos);
+        }
+        if (e.getSource() == vistaMainC.btnBuscarcmx) {
+            modeloDatos.ABuscadorC(vistaMainC);
+        }
+        if (e.getSource() == vistaMainC.btnRestablecer) {
+            modeloDatos.MostrarTablaC(vistaMainC);
         }
     ///////////////repartidor////////////////////////////////////////////////////////
         if (e.getSource() == RvistaDatos.btnBuscarcmx) {

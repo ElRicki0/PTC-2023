@@ -13,6 +13,7 @@ import Modelo.productos;
 import Modelo.usuarios;
 import Modelo.vehiculos;
 import Vista.Controlador.CCliente_DatosTiendas;
+import Vista.Controlador.CMain_Vehiculos;
 import Vista.Controlador.CVehiculo;
 import Vista.Repartidor.RTiendas;
 import Vista.Repartidor.RVehiculos;
@@ -824,9 +825,9 @@ public class VMain_Vehiculos extends javax.swing.JFrame {
         btnRutasLayout.setVerticalGroup(
             btnRutasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnRutasLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(txtDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(txtDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         jpSubMenu.add(btnRutas, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 30, 140, -1));
@@ -1094,9 +1095,7 @@ public class VMain_Vehiculos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMoverseMouseClicked
 
     private void btnVehiculoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculoMouseClicked
-        VMain vista = new VMain();
-        vista.INIT();
-        this.dispose();
+        
     }//GEN-LAST:event_btnVehiculoMouseClicked
 
     private void btnVehiculoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculoMouseEntered
@@ -1126,7 +1125,9 @@ public class VMain_Vehiculos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTiendasMouseExited
 
     private void btnRutasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutasMouseClicked
-        
+        VMain_Rutas vista = new VMain_Rutas();
+        vista.INIT();
+        this.dispose();
     }//GEN-LAST:event_btnRutasMouseClicked
 
     private void btnRutasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutasMouseEntered
@@ -1146,11 +1147,12 @@ public class VMain_Vehiculos extends javax.swing.JFrame {
     
     public void INIT(){
         VMain_Vehiculos main= new VMain_Vehiculos();
+        CMain_Vehiculos mainC= new CMain_Vehiculos();
         VVehiculo vista = new VVehiculo();
         CVehiculo Cvista = new CVehiculo();
         RVehiculos Rvista = new RVehiculos();
         UVehiculos Uvista = new UVehiculos();
-        ctrlVehiculo ctrl = new ctrlVehiculo(vista, main, modeloVehiculos, Cvista, Rvista, Uvista);
+        ctrlVehiculo ctrl = new ctrlVehiculo(vista, main, mainC, modeloVehiculos, Cvista, Rvista, Uvista);
         modeloVehiculos.MostrarTablaM(main);
         main.setVisible(true);
 //        txtNombre.setText(modelo.getNombreUsr());

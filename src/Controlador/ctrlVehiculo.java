@@ -1,6 +1,7 @@
 package Controlador;
 
 import Modelo.vehiculos;
+import Vista.Controlador.CMain_Vehiculos;
 import Vista.Controlador.CVehiculo;
 import Vista.Repartidor.RVehiculos;
 import Vista.Usuario.UVehiculos;
@@ -18,15 +19,17 @@ public class ctrlVehiculo implements ActionListener {
 
     private VVehiculo vistaVehiculo;
     private VMain_Vehiculos VistaM;
+    private CMain_Vehiculos VistaMC;
     private CVehiculo CvistaVehiculo;
     private RVehiculos RvistaVehiculo;
     private UVehiculos UvistaVehiculo;
     private vehiculos modeloVehiculo;
 
-    public ctrlVehiculo(VVehiculo vistaVehiculo, VMain_Vehiculos vistaM,  vehiculos modeloVehiculo, CVehiculo CvistaVehiculo, RVehiculos RvistaVehiculo, UVehiculos UvistaVehiculo) {
+    public ctrlVehiculo(VVehiculo vistaVehiculo, VMain_Vehiculos vistaM, CMain_Vehiculos VistaMC,  vehiculos modeloVehiculo, CVehiculo CvistaVehiculo, RVehiculos RvistaVehiculo, UVehiculos UvistaVehiculo) {
         this.modeloVehiculo = modeloVehiculo;
         this.vistaVehiculo = vistaVehiculo;
         this.VistaM = vistaM;
+        this.VistaMC = VistaMC;
         this.CvistaVehiculo = CvistaVehiculo;
         this.RvistaVehiculo = RvistaVehiculo;
         this.UvistaVehiculo = UvistaVehiculo;
@@ -43,7 +46,8 @@ public class ctrlVehiculo implements ActionListener {
         this.CvistaVehiculo.btnEliminar.addActionListener(this);
         this.CvistaVehiculo.btnModificarMP.addActionListener(this);
         this.CvistaVehiculo.btnRestaurar.addActionListener(this);
-        this.CvistaVehiculo.btnBuscar.addActionListener(this);
+        this.VistaMC.btnRestaurar.addActionListener(this);
+        this.VistaM.btnBuscar.addActionListener(this);
     /////////////repartidor//////////////////////////////////////////////////////////
         this.RvistaVehiculo.btnRestaurar.addActionListener(this);
         this.RvistaVehiculo.btnBuscar.addActionListener(this);
@@ -147,6 +151,9 @@ public class ctrlVehiculo implements ActionListener {
         }
         if (e.getSource() == CvistaVehiculo.btnBuscar) {
             modeloVehiculo.CBuscador(CvistaVehiculo);
+        }
+        if (e.getSource() == VistaMC.btnRestaurar) {
+            modeloVehiculo.MostrarTablaMC(VistaMC);
         }
         ////////////////////Repartidor///////////////////////////////////////////////////
         if (e.getSource() == RvistaVehiculo.btnRestaurar) {

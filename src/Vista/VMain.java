@@ -11,6 +11,7 @@ import Modelo.DatosTiendas;
 import Modelo.productos;
 import Modelo.usuarios;
 import Vista.Controlador.CCliente_DatosTiendas;
+import Vista.Controlador.CMain;
 import Vista.Repartidor.RTiendas;
 import Vista.Usuario.UTiendas;
 import javax.swing.ImageIcon;
@@ -690,9 +691,9 @@ public class VMain extends javax.swing.JFrame {
         btnRutasLayout.setVerticalGroup(
             btnRutasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnRutasLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(txtDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(txtDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         jpSubMenu.add(btnRutas, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 30, 140, -1));
@@ -1106,11 +1107,12 @@ public class VMain extends javax.swing.JFrame {
     
     public void INIT(){
         VMain main= new VMain();
+        CMain mainC= new CMain();
         VCliente_DatosTiendas vista =new VCliente_DatosTiendas();
         CCliente_DatosTiendas Cvista =new CCliente_DatosTiendas();
         RTiendas Rvista =new RTiendas();
         UTiendas vistaU =new UTiendas();
-        ctrlDatosTiendas control=new ctrlDatosTiendas(vista, main, modelo, Cvista, Rvista, vistaU);
+        ctrlDatosTiendas control=new ctrlDatosTiendas(vista, main, mainC, modelo, Cvista, Rvista, vistaU);
         modelo.MostrarTablaM(main);
         main.setVisible(true);
         System.out.println("nombre es "+usuarios.getUsr_nombre());

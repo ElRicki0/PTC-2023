@@ -9,6 +9,7 @@ import Vista.Usuario.UTiendas;
 import Modelo.CConexion;
 import Modelo.productos;
 import Vista.Controlador.CCliente_DatosTiendas;
+import Vista.Controlador.CMain;
 import Vista.Repartidor.RTiendas;
 import javax.swing.ImageIcon;
 import desplazable.Desface;
@@ -1221,11 +1222,12 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
 
     public void INIT(){
         VMain main= new VMain();
+        CMain mainC= new CMain();
         VCliente_DatosTiendas vista =new VCliente_DatosTiendas();
         CCliente_DatosTiendas Cvista =new CCliente_DatosTiendas();
         RTiendas Rvista =new RTiendas();
         UTiendas vistaU =new UTiendas();
-        ctrlDatosTiendas control=new ctrlDatosTiendas(vista, main, modelo, Cvista, Rvista, vistaU);
+        ctrlDatosTiendas control=new ctrlDatosTiendas(vista, main, mainC, modelo, Cvista, Rvista, vistaU);
         
         vista.setVisible(true);
         modelo.MostrarTabla(vista);
