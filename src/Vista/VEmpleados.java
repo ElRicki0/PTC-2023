@@ -844,6 +844,11 @@ public class VEmpleados extends javax.swing.JFrame {
         txtFN_emp.setBackground(new java.awt.Color(246, 234, 204));
         txtFN_emp.setForeground(new java.awt.Color(51, 51, 51));
         txtFN_emp.setBorder(null);
+        txtFN_emp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtFN_empKeyTyped(evt);
+            }
+        });
         panelCurvas6.add(txtFN_emp, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 8, 219, 30));
 
         panelCurvas1.add(panelCurvas6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 240, 50));
@@ -1256,6 +1261,19 @@ public class VEmpleados extends javax.swing.JFrame {
         btnSalir.setBackground(new Color(64,81,115));
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSalirMouseExited
+
+    private void txtFN_empKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFN_empKeyTyped
+         if (txtFN_emp.getText().length()>=10) {
+            evt.consume();
+        }
+        char c = evt.getKeyChar();
+    
+        // Verifica si la tecla presionada es un espacio (' ')
+        if (c == ' ') {
+            evt.consume(); // Esto evita que el espacio se inserte
+            txtFN_emp.setText(txtFN_emp.getText() + "-"); // Agregar el guión
+        }
+    }//GEN-LAST:event_txtFN_empKeyTyped
 
         public void transpareciaBoton(){
         btnAgregar.setOpaque(false);        

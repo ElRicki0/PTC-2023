@@ -144,6 +144,11 @@ public class PrimerEmpleado extends javax.swing.JFrame {
         txtFecha.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         txtFecha.setForeground(new java.awt.Color(51, 51, 51));
         txtFecha.setBorder(null);
+        txtFecha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtFechaKeyTyped(evt);
+            }
+        });
         panelCurvas4.add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 270, 40));
 
         jPanel1.add(panelCurvas4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, 290, 60));
@@ -267,6 +272,20 @@ public class PrimerEmpleado extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAgregarMouseClicked
 
+    private void txtFechaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFechaKeyTyped
+        if (txtFecha.getText().length()>=10) {
+            evt.consume();
+        }
+        char c = evt.getKeyChar();
+    
+        // Verifica si la tecla presionada es un espacio (' ')
+        if (c == ' ') {
+            evt.consume(); // Esto evita que el espacio se inserte
+            txtFecha.setText(txtFecha.getText() + "-"); // Agregar el guión
+        }
+    }//GEN-LAST:event_txtFechaKeyTyped
+
+    
     public void transparenciaBotin(){
         btnAgregar.setOpaque(false);        
         btnAgregar.setContentAreaFilled(false);
