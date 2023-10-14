@@ -94,7 +94,7 @@ select*from tbBodegas
 create table tbUsuarios(
 idUsuario			int identity (1,1) primary key,
 usr_nombre			varchar(50) not null unique,
-usr_contrasenia	varchar(250) not null,
+usr_contrasenia	varchar(5000) not null,
 usr_preguntasSeguridad	varchar(50),
 idEmpleado			int unique
 foreign key references [dbo].[tbEmpleados]([idEmpleado]),
