@@ -1,7 +1,5 @@
 package Vista.Repartidor;
 
-
-
 import Vista.Usuario.*;
 import Vista.*;
 import Vista.*;
@@ -18,12 +16,12 @@ import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 
 public class REnvios extends javax.swing.JFrame {
-    
+
     BitacoraDistribuciones modelo = new BitacoraDistribuciones();
     Desface desplace;
-    
+
     public REnvios() {
-        
+
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/Vista/Iconos/CASA.png")).getImage());
 
@@ -34,10 +32,9 @@ public class REnvios extends javax.swing.JFrame {
         rsscalelabel.RSScaleLabel.setScaleLabel(Rutaicon, "src/Vista/Iconos/entrega.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(txtBarras, "src/Vista/Iconos/lista.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(icoCarro, "src/Vista/Iconos/vehiculo.png");
-        
-        
+
         desplace = new Desface();
-        
+
         this.setLocationRelativeTo(null);
         transpareciaBoton();
     }
@@ -462,7 +459,7 @@ public class REnvios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tbEnviosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbEnviosMouseClicked
-         
+
     }//GEN-LAST:event_tbEnviosMouseClicked
 
     private void btnModificarMPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMPMouseClicked
@@ -480,17 +477,17 @@ public class REnvios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCasaMouseClicked
 
     private void btnCasaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseEntered
-        btnCasa.setBackground(new Color(45,40,37));
+        btnCasa.setBackground(new Color(45, 40, 37));
     }//GEN-LAST:event_btnCasaMouseEntered
 
     private void btnCasaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCasaMouseExited
-        btnCasa.setBackground(new Color(64,81,115));
+        btnCasa.setBackground(new Color(64, 81, 115));
     }//GEN-LAST:event_btnCasaMouseExited
 
     private void txtBarrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtBarrasMouseClicked
-        if (MenuPlegable.getX()==-150) {
+        if (MenuPlegable.getX() == -150) {
             desplace.desplazarDerecha(MenuPlegable, MenuPlegable.getX(), 0, 15, 10);
-        } else if(MenuPlegable.getX() == 0) {
+        } else if (MenuPlegable.getX() == 0) {
             desplace.desplazarIzquierda(MenuPlegable, MenuPlegable.getX(), -150, 15, 10);
         }
     }//GEN-LAST:event_txtBarrasMouseClicked
@@ -502,37 +499,37 @@ public class REnvios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProductoMouseClicked
 
     private void btnProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseEntered
-        btnProducto.setBackground(new Color(45,40,37));
+        btnProducto.setBackground(new Color(45, 40, 37));
     }//GEN-LAST:event_btnProductoMouseEntered
 
     private void btnProductoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseExited
-        btnProducto.setBackground(new Color(64,81,115));
+        btnProducto.setBackground(new Color(64, 81, 115));
     }//GEN-LAST:event_btnProductoMouseExited
 
     private void btnClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseClicked
-        RTiendas vista= new RTiendas();
+        RTiendas vista = new RTiendas();
         vista.INIT();
         this.dispose();
     }//GEN-LAST:event_btnClienteMouseClicked
 
     private void btnClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseEntered
-        btnCliente.setBackground(new Color(45,40,37));
+        btnCliente.setBackground(new Color(45, 40, 37));
     }//GEN-LAST:event_btnClienteMouseEntered
 
     private void btnClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseExited
-        btnCliente.setBackground(new Color(64,81,115));
+        btnCliente.setBackground(new Color(64, 81, 115));
     }//GEN-LAST:event_btnClienteMouseExited
 
     private void btnRutaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseClicked
-        
+
     }//GEN-LAST:event_btnRutaMouseClicked
 
     private void btnRutaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseEntered
-        btnRuta.setBackground(new Color(45,40,37));
+        btnRuta.setBackground(new Color(45, 40, 37));
     }//GEN-LAST:event_btnRutaMouseEntered
 
     private void btnRutaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRutaMouseExited
-        btnRuta.setBackground(new Color(64,81,115));
+        btnRuta.setBackground(new Color(64, 81, 115));
     }//GEN-LAST:event_btnRutaMouseExited
 
     private void btnVehiculosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculosMouseClicked
@@ -557,28 +554,27 @@ public class REnvios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirMouseClicked
 
     private void btnSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseEntered
-        btnSalir.setBackground(new Color(102,0,0));
+        btnSalir.setBackground(new Color(102, 0, 0));
     }//GEN-LAST:event_btnSalirMouseEntered
 
     private void btnSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseExited
 
-        btnSalir.setBackground(new Color(64,81,115));
+        btnSalir.setBackground(new Color(64, 81, 115));
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSalirMouseExited
 
-    
-    public void INIT(){
+    public void INIT() {
         VRutas_Envios vista = new VRutas_Envios();
-        VMain_Rutas main= new VMain_Rutas();
-        CMain_Rutas mainC= new CMain_Rutas();
+        VMain_Rutas main = new VMain_Rutas();
+        CMain_Rutas mainC = new CMain_Rutas();
         CRutas_Envios Cvista = new CRutas_Envios();
         REnvios Rvista = new REnvios();
         ctrlEnvios ctrl = new ctrlEnvios(vista, main, mainC, modelo, Rvista, Cvista);
         modelo.RMostrarTabla(Rvista);
         Rvista.setVisible(true);
     }
-    
-        public static void main(String args[]) {
+
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -623,8 +619,11 @@ public class REnvios extends javax.swing.JFrame {
             }
         });
     }
-        
-    public void transpareciaBoton(){
+
+    public void transpareciaBoton() {
+        btnModificarMP.setOpaque(false);
+        btnModificarMP.setContentAreaFilled(false);
+        btnModificarMP.setBorderPainted(false);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -917,13 +917,14 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
         jPanel1.add(eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 715, -1, -1));
 
         restablcer.setBackground(new java.awt.Color(172, 147, 110));
+        restablcer.setForeground(new java.awt.Color(255, 255, 255));
         restablcer.setRoundBottomLeft(25);
         restablcer.setRoundBottomRight(25);
         restablcer.setRoundTopLeft(25);
         restablcer.setRoundTopRight(25);
 
         btnRestablecer.setFont(new java.awt.Font("Leelawadee UI", 1, 23)); // NOI18N
-        btnRestablecer.setForeground(new java.awt.Color(51, 51, 51));
+        btnRestablecer.setForeground(new java.awt.Color(255, 255, 255));
         btnRestablecer.setText("<html>Restablecer tabla</html>");
         btnRestablecer.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -935,14 +936,16 @@ public class VCliente_DatosTiendas extends javax.swing.JFrame {
         restablcer.setLayout(restablcerLayout);
         restablcerLayout.setHorizontalGroup(
             restablcerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnRestablecer, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+            .addGroup(restablcerLayout.createSequentialGroup()
+                .addComponent(btnRestablecer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         restablcerLayout.setVerticalGroup(
             restablcerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(btnRestablecer)
         );
 
-        jPanel1.add(restablcer, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 715, -1, 60));
+        jPanel1.add(restablcer, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 720, -1, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

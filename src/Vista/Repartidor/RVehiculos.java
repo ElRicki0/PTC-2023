@@ -41,6 +41,19 @@ public class RVehiculos extends javax.swing.JFrame {
         desplace = new Desface();
         
         this.setLocationRelativeTo(null);
+        
+        transpareciaBoton();
+    }
+    
+        public void transpareciaBoton() {
+
+        btnBuscar.setOpaque(false);
+        btnBuscar.setContentAreaFilled(false);
+        btnBuscar.setBorderPainted(false);
+        btnRestaurar.setOpaque(false);
+        btnRestaurar.setContentAreaFilled(false);
+        btnRestaurar.setBorderPainted(false);
+
     }
 
     /**
@@ -81,6 +94,7 @@ public class RVehiculos extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbVehiculos = new javax.swing.JTable();
+        panelCurvas2 = new Vista.PanelCurvas();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1080, 760));
@@ -418,6 +432,25 @@ public class RVehiculos extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 970, 500));
 
+        panelCurvas2.setBackground(new java.awt.Color(172, 147, 110));
+        panelCurvas2.setRoundBottomLeft(25);
+        panelCurvas2.setRoundBottomRight(25);
+        panelCurvas2.setRoundTopLeft(25);
+        panelCurvas2.setRoundTopRight(25);
+
+        javax.swing.GroupLayout panelCurvas2Layout = new javax.swing.GroupLayout(panelCurvas2);
+        panelCurvas2.setLayout(panelCurvas2Layout);
+        panelCurvas2Layout.setHorizontalGroup(
+            panelCurvas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 210, Short.MAX_VALUE)
+        );
+        panelCurvas2Layout.setVerticalGroup(
+            panelCurvas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(panelCurvas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 670, 210, 60));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -673,6 +706,7 @@ public class RVehiculos extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JComboBox<String> jcbBuscador;
     private javax.swing.JLabel logOut;
+    private Vista.PanelCurvas panelCurvas2;
     public javax.swing.JTable tbVehiculos;
     private javax.swing.JLabel txtBarras;
     private javax.swing.JLabel txtBitacora2;
